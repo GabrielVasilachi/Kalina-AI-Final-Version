@@ -2,7 +2,6 @@
 
 import { Demo } from '@/components/sections/Demo'
 import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
 
 export default function DemoPage() {
@@ -66,8 +65,6 @@ export default function DemoPage() {
             </div>
           </section>
         </main>
-        
-        <Footer />
       </div>
     </SmoothScrollProvider>
   )

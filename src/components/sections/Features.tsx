@@ -1,133 +1,136 @@
-'use client'
+"use client"
 
 import { useScrollReveal } from '@/hooks/useScrollReveal'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export function Features() {
-  const titleReveal = useScrollReveal('right', 0.3)
-  const cardsReveal = useScrollReveal('left', 0.2)
+  // Removed scroll reveal hooks
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [centeredIndex, setCenteredIndex] = useState(0)
 
   const features = [
     {
-      title: "Ultra-Low Latency",
-      description: "Sub-100ms latency for real-time conversations"
+      title: 'Frontier intelligence, tailored to You.',
+      description: 'Make your AI your own. Train, distill, fine-tune, and build with the world’s best open source models.'
     },
     {
-      title: "AI Enhancement",
-      description: "Crystal-clear audio with noise cancellation"
+      title: 'Enterprise-grade. Agent-ready.',
+      description: 'Deploy agents that execute, adapt, and deliver real results, with powerful orchestration, tooling, and safety.'
     },
     {
-      title: "Global Coverage",
-      description: "Reliable connections in 120+ countries"
+      title: 'Privacy-first.',
+      description: 'Deploy and build with AI anywhere—on-premises, cloud, edge, devices, and more—while retaining full control of your data.'
     },
     {
-      title: "End-to-End Encryption",
-      description: "Military-grade security for all calls"
-    }
+      title: 'Deeply engaged solutioning and value delivery.',
+      description: 'Hands-on assistance from the world’s foremost applied AI scientists across deployment, solutioning, safety, and beyond.'
+    },
   ]
 
-  useEffect(() => {
-    function handleScroll() {
-      cardRefs.current.forEach((el) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const cardCenter = rect.top + rect.height / 2;
-        const centerDist = Math.abs(windowHeight / 2 - cardCenter);
-        const maxDist = windowHeight / 2 + rect.height / 2;
-        let scale = 0.85 + (1.18 - 0.85) * (1 - Math.min(centerDist / maxDist, 1));
-        let opacity = 0.5 + 0.5 * (1 - Math.min(centerDist / maxDist, 1));
-        // Reset animation if card is out of viewport
-        if (rect.bottom < 0 || rect.top > windowHeight) {
-          el.style.transform = '';
-          el.style.opacity = '';
-          el.style.transition = '';
-          return;
-        }
-        el.style.transform = `translateY(0) scale(${scale})`;
-        el.style.opacity = String(opacity);
-        el.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)';
-      });
-    }
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
+  // Removed feature card scaling/fading animation on scroll
 
   return (
     <section id="features" className="section-padding">
       <div className="container-width">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Side - Title and Description */}
-          <div 
-            ref={titleReveal.ref}
-            className={`lg:col-span-5 lg:sticky lg:top-32 ${titleReveal.classes}`}
-          >
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 glass px-6 py-3 rounded-full text-base text-brand-400 magnetic-hover animate-pulse-glow">
+          <div className="lg:col-span-5 lg:sticky lg:top-32">
+            <div className="space-y-6 md:space-y-8">
+              <div className="inline-flex items-center gap-2 glass px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base text-brand-400 magnetic-hover animate-pulse-glow">
                 <span className="text-brand-300 animate-pulse"></span>
-                Core Features
+                Funcții principale
               </div>
               
-              <h2 className="text-4xl lg:text-6xl font-bold text-brand-400 leading-tight text-shimmer">
-                Powerful Features
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-400 leading-tight text-shimmer">
+                Caracteristici puternice
               </h2>
               
-              <p className="text-xl text-brand-300 leading-relaxed">
-                Everything you need for crystal-clear AI-powered communication. 
-                Our advanced technology stack delivers unmatched performance 
-                and reliability for your voice communications.
+              <p className="text-base sm:text-lg md:text-xl text-brand-300 leading-relaxed">
+                Răspunsuri rapide, precise și eficiente, livrate de un AI care înțelege și se adaptează perfect nevoilor clienților tăi. Redefinește comunicarea vocală cu tehnologia noastră avansată.
               </p>
-              
+              {/* Dynamic text below main text with smooth animation */}
+              <div className="mt-6 md:mt-8 min-h-[2rem] md:min-h-[2.5rem]">
+                <AnimatePresence mode="wait">
+                  {centeredIndex === 0 && (
+                    <motion.p
+                      key="Image-1"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeOut' }}
+                      className="text-sm sm:text-base md:text-lg text-brand-400 font-semibold"
+                    >
+                      Revoluționează Comunicarea cu Clienții Prin Tehnologia AI Avansată
+                    </motion.p>
+                  )}
+                  {centeredIndex === 1 && (
+                    <motion.p
+                      key="Image-2"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeOut' }}
+                      className="text-sm sm:text-base md:text-lg text-brand-400 font-semibold"
+                    >
+                      Prezență Globală, Servicii Locale
+                    </motion.p>
+                  )}
+                  {centeredIndex === 2 && (
+                    <motion.p
+                      key="Image-3"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeOut' }}
+                      className="text-sm sm:text-base md:text-lg text-brand-400 font-semibold"
+                    >
+                      Securitate de Nivel Enterprise pentru Comunicările Tale
+                    </motion.p>
+                  )}
+                  {centeredIndex === 3 && (
+                    <motion.p
+                      key="Image-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeOut' }}
+                      className="text-sm sm:text-base md:text-lg text-brand-400 font-semibold"
+                    >
+                      Inteligență Artificială Care Înțelege și Răspunde Perfect
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </div>
               <div className="space-y-4">
                 <div className="flex items-center gap-3 text-brand-300 magnetic-hover">
                   <div className="w-2 h-2 bg-brand-300 rounded-full animate-pulse"></div>
-                  <span>Enterprise-grade infrastructure</span>
+                  <span>Scalabilitate și Flexibilitate Pentru Nevoile Afacerii Tale</span>
                 </div>
                 <div className="flex items-center gap-3 text-brand-300 magnetic-hover">
                   <div className="w-2 h-2 bg-brand-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <span>24/7 global support</span>
+                  <span>24/7 Suport Global</span>
                 </div>
                 <div className="flex items-center gap-3 text-brand-300 magnetic-hover">
                   <div className="w-2 h-2 bg-brand-300 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                  <span>99.9% uptime guarantee</span>
+                  <span>99.9% Garanție Uptime</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Side - Feature Cards Column */}
-          <div 
-            ref={cardsReveal.ref}
-            className={`lg:col-span-7 ${cardsReveal.classes}`}
-          >
-            <div className="flex flex-col items-center gap-[20rem] pt-40">
+          <div className="lg:col-span-7">
+            <div className="flex flex-col items-center gap-40 pt-12">
               {features.map((feature, index) => (
                 <div
                   key={index}
                   ref={el => { cardRefs.current[index] = el || null; }}
                   className="glass-card rounded-2xl p-8 magnetic-hover"
-                  style={{ transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)', transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="flex items-start gap-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-gradient-to-br from-brand-200/20 to-brand-400/20 rounded-2xl flex items-center justify-center text-2xl animate-float morphing-shape">
-                      </div>
-                    </div>
-                    
-                    <div className="flex-1 space-y-3">
-                      <h3 className="text-2xl font-semibold text-brand-400 text-glow">
-                        {feature.title}
-                      </h3>
-                      <p className="text-brand-300 leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
+                  <div className="flex flex-col gap-4">
+                    <h3 className="text-2xl font-bold text-black mb-2">{feature.title}</h3>
+                    <p className="text-base text-black leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               ))}

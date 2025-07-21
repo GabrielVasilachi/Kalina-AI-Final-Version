@@ -2,7 +2,6 @@
 
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
 
 export default function SolutionsPage() {
@@ -116,8 +115,6 @@ export default function SolutionsPage() {
             </div>
           </section>
         </main>
-        
-        <Footer />
       </div>
     </SmoothScrollProvider>
   )

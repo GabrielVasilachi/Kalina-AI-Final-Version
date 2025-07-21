@@ -1,5 +1,9 @@
 import './globals.css'
+import { Footer } from '@/components/layout/Footer'
+import BottomBar from '@/components/layout/BottomBar'
+import { LoadingWrapper } from '@/components/LoadingWrapper'
 import { Providers } from './providers'
+// import { inter } from './fonts'
 
 export const metadata = {
   title: 'Kalina AI - Crystal-clear AI calls, anywhere',
@@ -11,7 +15,10 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   themeColor: '#333446',
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
@@ -21,10 +28,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <Providers>
-          {children}
-        </Providers>
+      {/* If you want to use a custom font, uncomment and fix the import for inter */}
+      <body /* className={inter.className} */>
+        <LoadingWrapper>
+          <Providers>
+            {children}
+            <Footer />
+            <BottomBar />
+          </Providers>
+        </LoadingWrapper>
       </body>
     </html>
   )

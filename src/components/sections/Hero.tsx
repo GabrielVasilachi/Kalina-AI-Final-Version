@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { motion } from 'framer-motion'
 
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -10,6 +11,29 @@ export function Hero() {
   const descReveal = useScrollReveal('up', 0.3)
   const buttonsReveal = useScrollReveal('up', 0.4)
   const featuresReveal = useScrollReveal('up', 0.5)
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  }
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.2, 0.65, 0.3, 0.9]
+      }
+    }
+  }
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -33,7 +57,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="hero" className="relative section-padding pt-32 overflow-hidden">
+    <section id="hero" className="relative py-10 pt-24 overflow-hidden">
       {/* Dynamic background elements */}
       <div 
         className="absolute inset-0 opacity-30"
@@ -42,79 +66,66 @@ export function Hero() {
           transition: 'transform 0.3s ease-out'
         }}
       >
-        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-brand-300/30 to-brand-400/30 rounded-full morphing-shape animate-float"></div>
-        <div className="absolute top-60 right-32 w-24 h-24 bg-gradient-to-br from-brand-400/40 to-brand-400/40 rounded-full morphing-shape animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-40 left-32 w-20 h-20 bg-gradient-to-br from-brand-400/20 to-brand-400/20 rounded-full morphing-shape animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-brand-300/30 text-black rounded-full morphing-shape animate-float"></div>
+        <div className="absolute top-60 right-32 w-24 h-24 bg-gradient-to-br text-black to-brand-400/40 rounded-full morphing-shape animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-40 left-32 w-20 h-20 bg-gradient-to-br text-black to-brand-400/20 rounded-full morphing-shape animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="container-width relative z-10">
         {/* Centered Content */}
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
-          <div className="space-y-10">
-            <div className="space-y-8">
-              <div 
-                ref={badgeReveal.ref}
-                className={`inline-flex items-center gap-2 glass px-6 py-3 rounded-full text-base text-brand-400 magnetic-hover ${badgeReveal.classes} stagger-1`}
-              >
-                <span className="text-brand-300 animate-pulse">★</span>
-                Vorbește liber. AI se ocupă.
-              </div>
+          <div className="space-y-6">
+            <div className="space-y-6">
               
-              <h1 
+              
+              <motion.h1 
                 ref={titleReveal.ref}
-                className={`text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-400 leading-tight ${titleReveal.classes} stagger-2`}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black leading-tight stagger-2"
+                variants={containerVariants}
+                initial="hidden"
+                animate={titleReveal.isVisible ? "visible" : "hidden"}
               >
-                Vocea ta sună{' '}
-                <span className="text-shimmer animate-gradient">
-                  natural,
-                </span>
-                {' '} algoritmii noștri îi dau 
-                <span className="text-shimmer animate-gradient" style={{ animationDelay: '0.5s' }}>
-                  {' '}forță.
-                </span>
-              </h1>
+                <motion.span variants={childVariants}>Creează agent </motion.span>
+                <motion.span variants={childVariants} className="text-shimmer animate-gradient">
+                  AI
+                </motion.span>
+                <motion.span variants={childVariants}> în </motion.span>
+                <motion.span variants={childVariants} className="text-shimmer animate-gradient" style={{ animationDelay: '0.5s' }}>
+                  3 minute
+                </motion.span>
+              </motion.h1>
               
-              <p 
+              <motion.p 
                 ref={descReveal.ref}
-                className={`text-2xl lg:text-3xl text-brand-300 max-w-4xl mx-auto leading-relaxed ${descReveal.classes} stagger-3`}
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-300 max-w-4xl mx-auto leading-relaxed stagger-3"
+                variants={childVariants}
+                initial="hidden"
+                animate={descReveal.isVisible ? "visible" : "hidden"}
               >
-                Apeluri audio ultracurate, optimizate în timp real de inteligența artificială: conectează‑te instant, fără zgomot, oriunde în lume.
-              </p>
+                Transformă-ți afacerea cu primul angajat digital perfect instruit.
+              </motion.p>
             </div>
-
-            <div 
+            <motion.div 
               ref={buttonsReveal.ref}
-              className={`flex flex-col sm:flex-row gap-6 justify-center ${buttonsReveal.classes} stagger-4`}
+              className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center stagger-4"
+              variants={containerVariants}
+              initial="hidden"
+              animate={buttonsReveal.isVisible ? "visible" : "hidden"}
             >
-              <button className="btn-primary btn-magnetic flex items-center gap-2 group text-lg px-8 py-4 animate-pulse-glow">
-                Start Free Trial
+              <motion.button variants={childVariants} className="btn-primary btn-magnetic flex items-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4 animate-pulse-glow">
+                Începe Trial Gratuit
                 <span className="group-hover:translate-x-1 transition-transform duration-300"></span>
-              </button>
-              
-              <button className="btn-secondary btn-magnetic flex items-center gap-2 group text-lg px-8 py-4">
-                <span className="group-hover:scale-110 transition-transform duration-300"></span>
-                Watch Demo
-              </button>
-            </div>
-
-            {/* Features preview */}
-            <div 
-              ref={featuresReveal.ref}
-              className={`flex flex-wrap gap-8 pt-12 justify-center ${featuresReveal.classes} stagger-5`}
-            >
-              <div className="flex items-center gap-3 text-lg text-brand-300 magnetic-hover">
-                <span className="text-success-400 animate-pulse">⛊</span>
-                End-to-end encrypted
-              </div>
-              <div className="flex items-center gap-3 text-lg text-brand-300 magnetic-hover">
-                <span className="text-accent-400 animate-pulse" style={{ animationDelay: '0.5s' }}></span>
-                Sub-100ms latency
-              </div>
-              <div className="flex items-center gap-3 text-lg text-brand-300 magnetic-hover">
-                <div className="w-3 h-3 bg-success-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-                99.9% uptime
-              </div>
-            </div>
+              </motion.button>
+              <motion.div variants={childVariants}>
+                <a
+                  href="/auth"
+                  className="btn-secondary btn-magnetic flex items-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
+                >
+                  <span className="group-hover:scale-110 transition-transform duration-300"></span>
+                  Sign In
+                </a>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
