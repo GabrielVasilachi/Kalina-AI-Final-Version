@@ -1,208 +1,283 @@
-# 🚀 Kalina AI - Modern Landing Page
+# Kalina AI - Crystal-Clear AI Voice Platform
 
-A cutting-edge, production-ready landing page built with Next.js 14, TypeScript, and Tailwind CSS, featuring beautiful 3D floating cards and smooth animations.
+<div align="center">
 
-![Kalina AI Landing Page](https://via.placeholder.com/1200x600/0ea5e9/ffffff?text=Kalina+AI+Landing+Page)
+![Kalina AI](public/favicon.svg)
+
+**Experience ultra-low latency voice calls with AI-enhanced quality, end-to-end encryption, and global coverage for seamless communication.**
+
+[![Next.js](https://img.shields.io/badge/Next.js-14.2.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+
+</div>
 
 ## ✨ Features
 
-- **🎨 Modern Design**: Glass morphism, gradients, and premium visual effects
-- **⚡ Ultra Performance**: Next.js 14 with optimized builds and fast loading
-- **📱 Fully Responsive**: Mobile-first design that works on all devices
-- **🎭 Smooth Animations**: CSS animations and floating elements
-- **🎯 Accessible**: WCAG compliant with semantic HTML
-- **🔧 TypeScript**: Full type safety for better development experience
-- **🎨 Tailwind CSS**: Utility-first CSS framework for rapid styling
-- **📈 SEO Optimized**: Meta tags, structured data, and Open Graph
+- � **Ultra-Low Latency** - Real-time voice communication with <50ms latency
+- 🔒 **End-to-End Encryption** - Enterprise-grade security for all communications
+- 🌍 **Global Coverage** - 120+ countries with 99.9% uptime SLA
+- 🤖 **AI-Enhanced Quality** - Advanced voice processing and noise reduction
+- 📱 **Responsive Design** - Works seamlessly across all devices and platforms
+- � **Modern UI/UX** - Beautiful animations with WebGL wave effects
+- 🔧 **Modular Architecture** - Clean, maintainable, and scalable codebase
+- ⚡ **Real-time Demo** - Live voice AI demonstration with Socket.io integration
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: CSS Animations + Keyframes
-- **Icons**: Unicode symbols + custom graphics
-- **Fonts**: Inter (Google Fonts)
-- **Deployment**: Vercel-ready
+### Frontend
+- **Next.js 14** - React framework with App Router architecture
+- **TypeScript 5.0** - Type-safe JavaScript development
+- **React 18.2.0** - Modern UI library with hooks and components
+- **Tailwind CSS 3.4.0** - Utility-first CSS framework
+- **Framer Motion** - Smooth animations and page transitions
+- **OGL** - WebGL library for custom wave animations
+- **Socket.io Client** - Real-time bidirectional communication
 
-## 📋 Prerequisites
+### Backend
+- **Node.js** - JavaScript runtime environment
+- **Express.js** - Fast, unopinionated web framework
+- **Socket.io** - Real-time communication server
+- **ElevenLabs API** - Advanced voice AI integration
 
-- Node.js 18.0.0 or higher
-- npm 8.0.0 or higher
+### Development & Build
+- **TypeScript** - Static type checking
+- **ESLint** - Code linting and quality assurance
+- **PostCSS** - CSS processing and optimization
+- **Vercel** - Deployment platform
 
-## 🚀 Quick Start
+## � Quick Start
 
-1. **Clone and install**
+### Prerequisites
+
+- Node.js 18.x or later
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd kalina-ai-landing
+   git clone https://github.com/YOUR_USERNAME/kalina-ai.git
+   cd kalina-ai
+   ```
+
+2. **Install frontend dependencies**
+   ```bash
    npm install
    ```
 
-2. **Start development server**
+3. **Install backend dependencies**
    ```bash
-   npm run dev
+   cd backend
+   npm install
+   cd ..
    ```
 
-3. **Open your browser**
+4. **Set up environment variables**
+   ```bash
+   cp .env.local.example .env.local
+   # Edit .env.local with your configuration
+   ```
+
+5. **Start the backend server**
+   ```bash
+   cd backend
+   npm start
+   # Server runs on http://localhost:8081
+   ```
+
+6. **Start the frontend development server**
+   ```bash
+   npm run dev
+   # Frontend runs on http://localhost:3000
+   ```
+
+7. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📝 Available Scripts
 
+### Frontend
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 - `npm run type-check` - Run TypeScript checks
-- `npm run clean` - Clean build artifacts
+
+### Backend
+- `cd backend && npm start` - Start backend server
+- `cd backend && npm run dev` - Start backend in development mode
 
 ## 🏗️ Project Structure
 
 ```
-src/
-├── app/                    # Next.js 14 App Router
-│   ├── layout.tsx         # Root layout with metadata
-│   ├── page.tsx           # Home page
-│   ├── globals.css        # Global styles
-│   └── providers.tsx      # Context providers
-├── components/            # React components
-│   ├── layout/           # Layout components
-│   │   ├── Header.tsx    # Navigation header
-│   │   └── Footer.tsx    # Site footer
-│   ├── sections/         # Page sections
-│   │   ├── Hero.tsx      # Hero section
-│   │   ├── Features.tsx  # Features showcase
-│   │   ├── Demo.tsx      # Interactive demo
-│   │   ├── HowItWorks.tsx # Process explanation
-│   │   ├── TrustedBy.tsx # Social proof
-│   │   ├── FAQ.tsx       # Frequently asked questions
-│   │   └── CTA.tsx       # Call to action
-│   ├── three/            # 3D components
-│   │   └── FloatingCards.tsx # Floating card animation
-│   └── providers/        # Context providers
-│       └── SmoothScrollProvider.tsx
-└── lib/                  # Utilities
-    └── utils.ts          # Helper functions
+├── src/
+│   ├── app/                 # Next.js 14 App Router
+│   │   ├── (pages)/        # Route groups for different sections
+│   │   ├── globals.css     # Global styles and animations
+│   │   ├── layout.tsx      # Root layout with metadata
+│   │   └── page.tsx        # Home page component
+│   ├── components/         # Reusable UI components
+│   │   ├── layout/        # Layout components
+│   │   │   ├── Header.tsx    # Navigation header
+│   │   │   └── Footer.tsx    # Site footer
+│   │   ├── sections/      # Page sections
+│   │   │   ├── Hero.tsx      # Hero section with CTA
+│   │   │   ├── Features.tsx  # Features showcase
+│   │   │   ├── Demo.tsx      # Interactive voice demo
+│   │   │   ├── HowItWorks.tsx # Process explanation
+│   │   │   ├── TrustedBy.tsx # Company logos & metrics
+│   │   │   ├── FAQ.tsx       # Frequently asked questions
+│   │   │   └── CTA.tsx       # Call to action
+│   │   ├── ui/           # Base UI components
+│   │   │   └── PixelCard.tsx # Custom card component
+│   │   └── providers/    # Context providers
+│   ├── hooks/             # Custom React hooks
+│   │   ├── useDeviceDetection.ts # Device type detection
+│   │   └── useScrollReveal.ts    # Scroll animations
+│   └── lib/               # Utility functions
+│       └── utils.ts       # Helper functions
+├── backend/               # Backend server
+│   ├── server.js          # Express.js server with Socket.io
+│   └── package.json       # Backend dependencies
+├── public/                # Static assets
+│   ├── assets/           # Images and icons
+│   └── *.mp4             # Video files for demos
+└── README.md             # Project documentation
 ```
 
-## 🎨 Design System
+## 🎨 Key Components
 
-### Colors
-- **Primary**: Blue spectrum (#0ea5e9 to #3b82f6)
-- **Accent**: Yellow/Amber (#f59e0b to #facc15)
-- **Success**: Green (#22c55e)
-- **Background**: Slate gradients (#0f172a to #1e293b)
+### Hero Section
+Interactive landing section with animated text, gradient backgrounds, and call-to-action buttons.
 
-### Typography
-- **Font**: Inter (400, 500, 600, 700, 800, 900)
-- **Hierarchy**: 7xl, 5xl, 4xl, 2xl, xl, lg, base, sm
+### Demo Section
+Real-time voice AI demonstration featuring:
+- WebSocket connection to backend
+- ElevenLabs API integration
+- Live audio streaming and processing
+- Interactive UI controls
 
-### Components
-- **Glass Effect**: `backdrop-blur` with opacity overlays
-- **Buttons**: Gradient primary, glass secondary
-- **Cards**: Rounded corners with glass effect
-- **Animations**: Float, pulse, gradients
+### Features Section
+Comprehensive platform capabilities showcase with:
+- Stacked feature cards
+- Video backgrounds
+- Smooth scroll animations
+- Responsive grid layout
 
-## 🔧 Customization
+### Trusted By Section
+Dynamic company showcase featuring:
+- Animated company logos
+- Real-time metrics display
+- Custom WebGL wave animation background
+- Responsive layout for all screen sizes
 
-### Adding New Sections
-1. Create component in `src/components/sections/`
-2. Import in `src/app/page.tsx`
-3. Add to main layout
-
-### Modifying Styles
-- Global styles: `src/app/globals.css`
-- Tailwind config: `tailwind.config.js`
-- Component styles: Use Tailwind utility classes
-
-### Adding 3D Elements
-- Enhanced 3D cards available with React Three Fiber
-- Current implementation uses CSS transforms for performance
-- Upgrade path provided in component comments
+### Wave Animation (Threads Component)
+Custom WebGL-based wave animation using OGL library:
+- Smooth performance with 60fps
+- Customizable amplitude and distance
+- Responsive to screen size
+- Optimized for mobile devices
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
-```bash
-npm run build
-# Deploy to Vercel
-vercel --prod
+### Frontend (Vercel - Recommended)
+
+1. **Build the project**
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy to Vercel**
+   ```bash
+   npm install -g vercel
+   vercel --prod
+   ```
+
+### Backend Deployment
+
+1. **Navigate to backend directory**
+   ```bash
+   cd backend
+   ```
+
+2. **Install production dependencies**
+   ```bash
+   npm install --production
+   ```
+
+3. **Start the server**
+   ```bash
+   npm start
+   ```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```env
+# ElevenLabs API Configuration
+NEXT_PUBLIC_ELEVENLABS_API_KEY=your_api_key_here
+NEXT_PUBLIC_ELEVENLABS_AGENT_ID=your_agent_id_here
+
+# Backend Configuration
+NEXT_PUBLIC_BACKEND_URL=http://localhost:8081
+
+# Production Backend URL (for deployment)
+NEXT_PUBLIC_BACKEND_URL=https://your-backend-domain.com
 ```
 
-### Docker
-```dockerfile
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY . .
-RUN npm run build
-EXPOSE 3000
-CMD ["npm", "start"]
-```
+## 📱 Responsive Design
 
-### Static Export
-```bash
-npm run build
-npm run export
-# Deploy `out` folder to any static host
-```
+The application is fully responsive and optimized for:
+- 📱 **Mobile devices** (320px+) - Touch-optimized interactions
+- 📟 **Tablets** (768px+) - Adapted layouts for medium screens  
+- 💻 **Desktop** (1024px+) - Full feature experience
+- 🖥️ **Large screens** (1440px+) - Enhanced visual elements
 
-## 📊 Performance
+## ⚡ Performance
 
 - **Lighthouse Score**: 95+ (Performance, Accessibility, SEO)
-- **Core Web Vitals**: All green
-- **Bundle Size**: < 500KB gzipped
-- **First Load**: < 2s on 3G
-
-## 🔮 Future Enhancements
-
-### Phase 1 - Enhanced Interactions
-- [ ] React Three Fiber integration for 3D cards
-- [ ] GSAP animations for scroll triggers
-- [ ] Lenis smooth scrolling
-- [ ] Framer Motion page transitions
-
-### Phase 2 - Advanced Features
-- [ ] Contact form with validation
-- [ ] Blog/CMS integration
-- [ ] User authentication
-- [ ] Analytics integration
-- [ ] A/B testing framework
-
-### Phase 3 - Enterprise Features
-- [ ] Multi-language support (i18n)
-- [ ] Advanced SEO (structured data)
-- [ ] Performance monitoring
-- [ ] CDN optimization
-- [ ] Progressive Web App (PWA)
+- **Core Web Vitals**: All metrics in green
+- **Bundle Size**: Optimized with Next.js automatic code splitting
+- **First Load**: <2s on 3G networks
+- **WebGL Animations**: 60fps with hardware acceleration
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 License
+## � License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## 🆘 Support & Contact
 
-- [Next.js](https://nextjs.org/) - React framework
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework  
-- [Inter Font](https://fonts.google.com/specimen/Inter) - Typography
-- [Heroicons](https://heroicons.com/) - Icon inspiration
+If you have any questions or need assistance:
 
-## 📞 Support
+- � **Email**: [gabriel.vasilachi@example.com](mailto:gabriel.vasilachi@example.com)
+- 💬 **Issues**: [Create an issue on GitHub](https://github.com/YOUR_USERNAME/kalina-ai/issues)
+- 📖 **Documentation**: Check this README for detailed setup instructions
 
-- 📧 Email: support@kalina.ai
-- 💬 Discord: [Join our community](https://discord.gg/kalina-ai)
-- 📖 Documentation: [docs.kalina.ai](https://docs.kalina.ai)
-- 🐛 Issues: [GitHub Issues](https://github.com/kalina-ai/landing/issues)
+## �🙏 Acknowledgments
+
+- [Next.js Team](https://nextjs.org/) for the incredible React framework
+- [Vercel](https://vercel.com/) for seamless deployment platform
+- [ElevenLabs](https://elevenlabs.io/) for cutting-edge voice AI technology
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
+- [OGL](https://github.com/oframe/ogl) for lightweight WebGL library
 
 ---
 
-**Built with ❤️ by the Kalina AI team**
+<div align="center">
+
+**[🌐 Live Demo](https://kalina-ai.vercel.app)** | **[📖 Documentation](docs/)** | **[🐛 Report Bug](https://github.com/YOUR_USERNAME/kalina-ai/issues)**
+
+Made with ❤️ by [Gabriel Vasilachi](https://github.com/GabrielVasilachi)
+
+</div>
