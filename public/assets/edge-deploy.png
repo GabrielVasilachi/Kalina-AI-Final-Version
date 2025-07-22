@@ -1,0 +1,50 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#EAEFEF"/>
+  <g transform="translate(300, 200)">
+    <!-- Edge nodes network -->
+    <g opacity="0.8">
+      <!-- Central node -->
+      <circle cx="0" cy="0" r="20" fill="#333446"/>
+      
+      <!-- Edge nodes -->
+      <circle cx="-100" cy="-60" r="15" fill="#7F8CAA"/>
+      <circle cx="100" cy="-60" r="15" fill="#7F8CAA"/>
+      <circle cx="-120" cy="40" r="15" fill="#7F8CAA"/>
+      <circle cx="120" cy="40" r="15" fill="#7F8CAA"/>
+      <circle cx="0" cy="-100" r="15" fill="#7F8CAA"/>
+      <circle cx="0" cy="100" r="15" fill="#7F8CAA"/>
+      
+      <!-- Connections -->
+      <line x1="0" y1="0" x2="-100" y2="-60" stroke="#B8CFCE" stroke-width="2"/>
+      <line x1="0" y1="0" x2="100" y2="-60" stroke="#B8CFCE" stroke-width="2"/>
+      <line x1="0" y1="0" x2="-120" y2="40" stroke="#B8CFCE" stroke-width="2"/>
+      <line x1="0" y1="0" x2="120" y2="40" stroke="#B8CFCE" stroke-width="2"/>
+      <line x1="0" y1="0" x2="0" y2="-100" stroke="#B8CFCE" stroke-width="2"/>
+      <line x1="0" y1="0" x2="0" y2="100" stroke="#B8CFCE" stroke-width="2"/>
+      
+      <!-- Inter-edge connections -->
+      <line x1="-100" y1="-60" x2="100" y2="-60" stroke="#B8CFCE" stroke-width="1" opacity="0.5"/>
+      <line x1="-120" y1="40" x2="120" y2="40" stroke="#B8CFCE" stroke-width="1" opacity="0.5"/>
+    </g>
+    
+    <!-- Deployment indicators -->
+    <rect x="-80" y="-80" width="20" height="15" rx="3" fill="#333446"/>
+    <rect x="60" y="-80" width="20" height="15" rx="3" fill="#333446"/>
+    <rect x="-100" y="60" width="20" height="15" rx="3" fill="#333446"/>
+    <rect x="80" y="60" width="20" height="15" rx="3" fill="#333446"/>
+    
+    <!-- Data flow arrows -->
+    <path d="M-70,-40 Q-35,-20 0,0" stroke="#7F8CAA" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+    <path d="M70,-40 Q35,-20 0,0" stroke="#7F8CAA" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7F8CAA"/>
+    </marker>
+  </defs>
+  
+  <text x="300" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333446">
+    Edge Deployment Architecture
+  </text>
+</svg>

@@ -1,0 +1,52 @@
+{
+  "name": "kalina-ai-landing",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next out dist node_modules/.cache",
+    "export": "next export",
+    "deploy": "npm run build && touch out/.nojekyll"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.0",
+    "@react-three/drei": "^9.88.0",
+    "@react-three/fiber": "^8.15.0",
+    "@react-three/postprocessing": "^2.15.0",
+    "@tabler/icons-react": "^2.40.0",
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.0",
+    "lenis": "^1.0.0",
+    "lucide-react": "^0.294.0",
+    "next": "^14.2.0",
+    "ogl": "^1.0.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.47.0",
+    "socket.io-client": "^4.8.1",
+    "tailwind-merge": "^2.0.0",
+    "three": "^0.158.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/three": "^0.158.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^14.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

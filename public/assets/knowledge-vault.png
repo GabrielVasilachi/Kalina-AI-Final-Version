@@ -1,0 +1,59 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#EAEFEF"/>
+  <g transform="translate(300, 200)">
+    <!-- Vault container -->
+    <rect x="-120" y="-80" width="240" height="160" rx="12" fill="#333446" opacity="0.9"/>
+    
+    <!-- Lock mechanism -->
+    <circle cx="0" cy="-20" r="25" fill="#7F8CAA"/>
+    <rect x="-8" y="-35" width="16" height="20" rx="8" fill="none" stroke="#B8CFCE" stroke-width="3"/>
+    <circle cx="0" cy="-20" r="8" fill="#B8CFCE"/>
+    
+    <!-- Data folders/files -->
+    <g opacity="0.8">
+      <!-- Folder 1 -->
+      <rect x="-90" y="-10" width="35" height="25" rx="3" fill="#B8CFCE"/>
+      <rect x="-90" y="-15" width="10" height="5" rx="2" fill="#B8CFCE"/>
+      
+      <!-- Folder 2 -->
+      <rect x="-45" y="-10" width="35" height="25" rx="3" fill="#B8CFCE"/>
+      <rect x="-45" y="-15" width="10" height="5" rx="2" fill="#B8CFCE"/>
+      
+      <!-- Folder 3 -->
+      <rect x="15" y="-10" width="35" height="25" rx="3" fill="#B8CFCE"/>
+      <rect x="15" y="-15" width="10" height="5" rx="2" fill="#B8CFCE"/>
+      
+      <!-- Documents -->
+      <rect x="-90" y="25" width="25" height="30" rx="2" fill="#EAEFEF"/>
+      <line x1="-85" y1="35" x2="-70" y2="35" stroke="#7F8CAA" stroke-width="1"/>
+      <line x1="-85" y1="40" x2="-70" y2="40" stroke="#7F8CAA" stroke-width="1"/>
+      <line x1="-85" y1="45" x2="-75" y2="45" stroke="#7F8CAA" stroke-width="1"/>
+      
+      <rect x="-55" y="25" width="25" height="30" rx="2" fill="#EAEFEF"/>
+      <line x1="-50" y1="35" x2="-35" y2="35" stroke="#7F8CAA" stroke-width="1"/>
+      <line x1="-50" y1="40" x2="-35" y2="40" stroke="#7F8CAA" stroke-width="1"/>
+      <line x1="-50" y1="45" x2="-40" y2="45" stroke="#7F8CAA" stroke-width="1"/>
+      
+      <rect x="-20" y="25" width="25" height="30" rx="2" fill="#EAEFEF"/>
+      <line x1="-15" y1="35" x2="0" y2="35" stroke="#7F8CAA" stroke-width="1"/>
+      <line x1="-15" y1="40" x2="0" y2="40" stroke="#7F8CAA" stroke-width="1"/>
+      <line x1="-15" y1="45" x2="-5" y2="45" stroke="#7F8CAA" stroke-width="1"/>
+    </g>
+    
+    <!-- Security shield -->
+    <path d="M-140,-100 Q-140,-120 -125,-120 L125,-120 Q140,-120 140,-100 L140,40 Q140,80 0,90 Q-140,80 -140,40 Z" 
+          fill="none" stroke="#7F8CAA" stroke-width="2" opacity="0.6"/>
+          
+    <!-- Encryption indicators -->
+    <circle cx="-100" cy="-60" r="3" fill="#B8CFCE"/>
+    <circle cx="-80" cy="-65" r="3" fill="#B8CFCE"/>
+    <circle cx="-60" cy="-60" r="3" fill="#B8CFCE"/>
+    <circle cx="60" cy="-60" r="3" fill="#B8CFCE"/>
+    <circle cx="80" cy="-65" r="3" fill="#B8CFCE"/>
+    <circle cx="100" cy="-60" r="3" fill="#B8CFCE"/>
+  </g>
+  
+  <text x="300" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333446">
+    Private Knowledge Vault
+  </text>
+</svg>
