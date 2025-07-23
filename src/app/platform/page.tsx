@@ -255,6 +255,188 @@ export default function PlatformPage() {
         </div>
       </section>
 
+      {/* LLM-Based TTS System */}
+      <section className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-3xl font-bold text-center mb-12">Sistem TTS Bazat pe LLM</h2>
+        
+        <div className="bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-8 mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-4">Inteligență Emoțională Vocală Revoluționară</h3>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Angajatul Digital Kallina produce vorbire cu precizie și control stilistic de neegalat, înțelegând contextul și nuanțele emoționale pentru o dinamică conversațională adaptivă.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+                </svg>
+              </div>
+              <h4 className="text-lg font-semibold mb-3">Analiză Semantică Profundă</h4>
+              <p className="text-gray-600 text-sm">Modele lingvistice mari analizează textul lexical, semantic și contextual pentru înțelegere completă</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <h4 className="text-lg font-semibold mb-3">Adaptabilitate Emoțională</h4>
+              <p className="text-gray-600 text-sm">Generare vocală care se adaptează dinamic la contextul emoțional al conversației</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z"/>
+                </svg>
+              </div>
+              <h4 className="text-lg font-semibold mb-3">Optimizare Continuă</h4>
+              <p className="text-gray-600 text-sm">Echilibru perfect între expresivitate și viteză cu învățare din fiecare interacțiune</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
+            <h4 className="text-xl font-semibold mb-4 text-center">Conversie Vocală Emoțională Adaptivă</h4>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h5 className="font-semibold mb-3 text-indigo-700">Capability Overview:</h5>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Modificare dinamică a emoției în mesajele vocale existente</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Păstrarea identității vorbitorului cu schimbarea expresiei</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Control fin asupra intensității emoționale</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Răspunsuri empatice bazate pe contextul conversației</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-semibold mb-3 text-indigo-700">Use Cases:</h5>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Personalizarea mesajelor de confirmare după tonul clientului</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Adaptarea tonului în scenarii de suport clienți</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Crearea de agenți de vânzări mai persuasivi</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-indigo-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>Răspunsuri cu gamă emoțională largă și credibilă</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Advanced Voice Capabilities */}
+      <section className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-3xl font-bold text-center mb-12">Capabilități Vocale Avansate</h2>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="border border-gray-200 rounded-xl p-6 text-center">
+            <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Personalitate Vocală</h3>
+            <p className="text-gray-600 text-sm">Voci personalizate cu tonuri, accente și stiluri unice adaptate brandului</p>
+          </div>
+
+          <div className="border border-gray-200 rounded-xl p-6 text-center">
+            <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Branding Vocal</h3>
+            <p className="text-gray-600 text-sm">Identitate vocală unică care reflectă valorile și personalitatea companiei</p>
+          </div>
+
+          <div className="border border-gray-200 rounded-xl p-6 text-center">
+            <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Inteligență Conversațională</h3>
+            <p className="text-gray-600 text-sm">Înțelegere contextuală avansată și răspunsuri naturale în timp real</p>
+          </div>
+
+          <div className="border border-gray-200 rounded-xl p-6 text-center">
+            <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z"/>
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Decizie în Timp Real</h3>
+            <p className="text-gray-600 text-sm">Procesare instantanie și decizii autonome bazate pe context și intenție</p>
+          </div>
+        </div>
+
+        <div className="mt-12 bg-gray-50 rounded-2xl p-8">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-4">Caracteristici Tehnice Avansate</h3>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Platforma Kallina integrează cele mai avansate tehnologii de procesare vocală și inteligență artificială pentru a livra experiențe conversaționale de excepție.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full border border-gray-200 mb-4">
+                <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                </svg>
+              </div>
+              <h4 className="font-semibold mb-2">Neural Voice Synthesis</h4>
+              <p className="text-gray-600 text-sm">Generare vocală neurală cu 99.7% naturalețe și expresivitate emoțională</p>
+            </div>
+
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full border border-gray-200 mb-4">
+                <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9,5V9H21V5M9,19H21V15H9M9,14H21V10H9M4,9H8L6,7M4,19H8L6,17M4,14H8L6,12"/>
+                </svg>
+              </div>
+              <h4 className="font-semibold mb-2">Context Memory</h4>
+              <p className="text-gray-600 text-sm">Memorie contextuală de lungă durată pentru conversații coerente și personalizate</p>
+            </div>
+
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full border border-gray-200 mb-4">
+                <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,12.5A1.5,1.5 0 0,1 10.5,11A1.5,1.5 0 0,1 12,9.5A1.5,1.5 0 0,1 13.5,11A1.5,1.5 0 0,1 12,12.5M12,7.2C9.9,7.2 8.2,8.9 8.2,11C8.2,14 12,17.5 12,17.5C12,17.5 15.8,14 15.8,11C15.8,8.9 14.1,7.2 12,7.2Z"/>
+                </svg>
+              </div>
+              <h4 className="font-semibold mb-2">Adaptive Learning</h4>
+              <p className="text-gray-600 text-sm">Învățare adaptivă continuă pentru optimizarea performanței în timp real</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Roadmap */}
       <section className="max-w-4xl mx-auto mb-20">
         <h2 className="text-3xl font-bold text-center mb-12">Roadmap Tehnologic</h2>

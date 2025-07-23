@@ -270,6 +270,227 @@ export default function AIAgentsPage() {
         </div>
       </section>
 
+      {/* Advanced Dialogue & Multi-Character System */}
+      <section className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-3xl font-bold text-center mb-12">Sistem Avansat de Dialog Multicaracter</h2>
+        
+        <div className="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-8 mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-4">Mod Text-către-Dialog Revoluționar</h3>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Permite crearea de scenarii în care Angajatul Digital Kallina poate simula conversații între mai multe "personaje" sau poate transfera conversația către departamente virtuale diferite.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="bg-white rounded-xl p-6 border border-emerald-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M17,7H14V9H17V16H14V18H17A1,1 0 0,0 18,17V8A1,1 0 0,0 17,7M11,7H7A1,1 0 0,0 6,8V17A1,1 0 0,0 7,18H11V16H8V9H11V7Z"/>
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold">Dialoguri Multi-Locutor</h4>
+              </div>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="w-2 h-2 bg-emerald-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Conversații între mai multe "personaje" AI în același flux audio</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-2 h-2 bg-emerald-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Transferuri seamless către "departamente" virtuale</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-2 h-2 bg-emerald-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Generare automată a fluxului emoțional realist</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-2 h-2 bg-emerald-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Structurare JSON simplă pentru scenarii complexe</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-emerald-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12,2C17.52,2 22,6.48 22,12C22,17.52 17.52,22 12,22C6.48,22 2,17.52 2,12C2,6.48 6.48,2 12,2M15.5,8H14.5C14.5,6.75 13.25,5.5 12,5.5C10.75,5.5 9.5,6.75 9.5,8H8.5C8.5,6.19 9.69,5 11.5,5H12.5C14.31,5 15.5,6.19 15.5,8M12,8.5C10.62,8.5 9.5,9.62 9.5,11V15.5C9.5,16.88 10.62,18 12,18C13.38,18 14.5,16.88 14.5,15.5V11C14.5,9.62 13.38,8.5 12,8.5Z"/>
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold">Comutare Multi-Personaj</h4>
+              </div>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="w-2 h-2 bg-emerald-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Un singur agent comută între diferite personalități</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-2 h-2 bg-emerald-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Schimbarea vocii și stilului de comunicare dinamic</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-2 h-2 bg-emerald-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>Reguli de business pentru comutare contextualizeată</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-2 h-2 bg-emerald-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span>De la "Recepționer" la "Manager evenimente" instant</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-black text-white rounded-xl p-6">
+            <h4 className="text-xl font-semibold mb-4 text-center">Use Cases Avansate</h4>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                  </svg>
+                </div>
+                <h5 className="font-semibold mb-2">Suport Tehnic pe Nivele</h5>
+                <p className="text-gray-300 text-sm">Tier 1 → Tier 2 → Specialist cu tranziții naturale</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19Z"/>
+                  </svg>
+                </div>
+                <h5 className="font-semibold mb-2">Simulări Training</h5>
+                <p className="text-gray-300 text-sm">Scenarii interactive cu roluri multiple pentru educație</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M21,9V7L9,5V9L21,9M12,2A7,7 0 0,1 19,9A7,7 0 0,1 12,16A7,7 0 0,1 5,9A7,7 0 0,1 12,2M12,4A5,5 0 0,0 7,9A5,5 0 0,0 12,14A5,5 0 0,0 17,9A5,5 0 0,0 12,4Z"/>
+                  </svg>
+                </div>
+                <h5 className="font-semibold mb-2">Campanii Narative</h5>
+                <p className="text-gray-300 text-sm">Marketing storytelling cu personaje multiple captivante</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Multi-Agent Intelligence */}
+      <section className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-3xl font-bold text-center mb-12">Sistem Multi-Agent Inteligent</h2>
+        
+        <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-4">Coordonare Autonomă de Agenți</h3>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Platforma Kallina orchestrează ecosisteme complexe de agenți AI care colaborează în timp real pentru a livra rezultate excepționale.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M12,4A0.5,0.5 0 0,0 11.5,4.5A0.5,0.5 0 0,0 12,5A0.5,0.5 0 0,0 12.5,4.5A0.5,0.5 0 0,0 12,4Z"/>
+                </svg>
+              </div>
+              <h4 className="font-semibold mb-2">A2A Protocols</h4>
+              <p className="text-gray-600 text-sm">Protocoale avansate de comunicare agent-to-agent pentru coordonare seamless</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+                </svg>
+              </div>
+              <h4 className="font-semibold mb-2">Context Sharing</h4>
+              <p className="text-gray-600 text-sm">Memorie partajată și context comun pentru coherență conversațională</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8L10,17Z"/>
+                </svg>
+              </div>
+              <h4 className="font-semibold mb-2">Task Distribution</h4>
+              <p className="text-gray-600 text-sm">Distribuție inteligentă de sarcini bazată pe specializare și disponibilitate</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z"/>
+                </svg>
+              </div>
+              <h4 className="font-semibold mb-2">Adaptive Learning</h4>
+              <p className="text-gray-600 text-sm">Învățare colaborativă și optimizare continuă a performanței de grup</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="border border-gray-200 rounded-xl p-6">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,14L6.5,9.5L7.91,8.09L11,11.18L16.09,6.09L17.5,7.5L11,14Z"/>
+              </svg>
+              Workflow Orchestration
+            </h3>
+            <ul className="space-y-3 text-gray-600">
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></span>
+                <span>Coordonare automată între agenți pentru procese complexe</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></span>
+                <span>Escaladare inteligentă bazată pe competențe și context</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></span>
+                <span>Handoff seamless între agenți specializați</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></span>
+                <span>Monitorizare în timp real a performanței colective</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="border border-gray-200 rounded-xl p-6">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20,2H4A2,2 0 0,0 2,4V16A2,2 0 0,0 4,18H18L22,22V4A2,2 0 0,0 20,2M6,9H18V11H6M6,5H18V7H6M6,13H15V15H6V13Z"/>
+              </svg>
+              Knowledge Federation
+            </h3>
+            <ul className="space-y-3 text-gray-600">
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></span>
+                <span>Bază de cunoștințe federată accesibilă instant</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></span>
+                <span>Actualizări în timp real ale informațiilor partajate</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></span>
+                <span>Verificare și validare cross-agent pentru acuratețe</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></span>
+                <span>Învățare distribuită și sincronizare de experiență</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* Success Stories */}
       <section className="max-w-4xl mx-auto mb-20">
         <h2 className="text-3xl font-bold text-center mb-12">Cazuri de Succes</h2>
