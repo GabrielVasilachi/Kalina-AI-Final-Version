@@ -2,8 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: process.env.NODE_ENV === 'production' ? '/Kalina-AI' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/Kalina-AI/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
   images: {
     unoptimized: true,
     domains: ['images.unsplash.com', 'assets.kalina.ai'],

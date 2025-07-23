@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function DevelopersPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Portal Dezvoltatori"
       description="Totul ce ai nevoie pentru a construi cu Kallina.ai. API-ul cel mai puternic și simplu de integrat din industrie."
     >
@@ -397,6 +397,6 @@ call = agent.start_call(
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

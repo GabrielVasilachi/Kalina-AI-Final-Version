@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 
 type RevealDirection = 'left' | 'right' | 'up' | 'down'
 
-export function useScrollReveal(direction: RevealDirection = 'up', threshold: number = 0.15) {
+export function useScrollAnimationReveal(direction: RevealDirection = 'up', threshold: number = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 

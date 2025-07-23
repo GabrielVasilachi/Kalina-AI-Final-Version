@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function PlatformPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Platforma Kallina.ai"
       description="Cea mai avansată platformă AI vocală din România și Europa. Arhitectură în 3 niveluri pentru performanță și scalabilitate maximă."
     >
@@ -475,6 +475,6 @@ export default function PlatformPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

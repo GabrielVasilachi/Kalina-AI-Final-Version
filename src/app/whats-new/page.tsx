@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function WhatsNewPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Noutăți și Actualizări"
       description="Rămâi la curent cu ultimele funcționalități, îmbunătățiri și actualizări ale platformei Kallina.ai"
     >
@@ -302,6 +302,6 @@ export default function WhatsNewPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

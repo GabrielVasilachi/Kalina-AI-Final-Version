@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function LegalServicesAI() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="AI pentru Servicii Juridice"
       description="Soluții AI avansate pentru cabinetele de avocatură și firmele de consultanță juridică"
     >
@@ -276,6 +276,6 @@ export default function LegalServicesAI() {
           </div>
         </section>
       </div>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

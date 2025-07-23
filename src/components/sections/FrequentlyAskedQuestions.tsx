@@ -1,10 +1,12 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
+import { useLanguage } from '@/lib/i18n'
 
-export function FAQ() {
-  const { ref, classes, isVisible } = useScrollReveal('up')
+export function FrequentlyAskedQuestions() {
+  const { t } = useLanguage()
+  const { ref, classes, isVisible } = useScrollAnimationReveal('up')
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const sectionRef = ref
   const [isHeaderOverFAQ, setIsHeaderOverFAQ] = useState(false)
@@ -33,20 +35,20 @@ export function FAQ() {
   }, [isHeaderOverFAQ])
   const faqs = [
     {
-      question: "Care este latența apelurilor voastre?",
-      answer: "Infrastructura noastră cu AI oferă latență sub 100ms la nivel global, asigurând conversații în timp real."
+      question: t('faq.question1'),
+      answer: t('faq.answer1')
     },
     {
-      question: "Cât de sigure sunt apelurile?",
-      answer: "Toate apelurile folosesc criptare end-to-end cu protocoale de securitate de nivel militar pentru a vă proteja comunicațiile."
+      question: t('faq.question2'),
+      answer: t('faq.answer2')
     },
     {
-      question: "Ce țări sunt suportate?",
-      answer: "Oferim acoperire fiabilă în peste 120 de țări cu infrastructură locală pentru performanță optimă."
+      question: t('faq.question3'),
+      answer: t('faq.answer3')
     },
     {
-      question: "Pot integra cu sistemele mele existente?",
-      answer: "Da, oferim API-uri și SDK-uri complete pentru integrare fără probleme cu infrastructura actuală."
+      question: t('faq.question4'),
+      answer: t('faq.answer4')
     }
   ]
 
@@ -62,10 +64,10 @@ export function FAQ() {
       <div className="container-width" ref={ref}>
         <div className={`text-center mb-16 ${classes}`}>
           <h2 className="text-4xl lg:text-5xl font-bold text-brand-100 mb-6 text-shimmer">
-            Întrebări Frecvente
+            {t('faq.title')}
           </h2>
           <p className="text-xl text-brand-100 max-w-2xl mx-auto animate-fade-in-up delay-200">
-            Tot ce trebuie să știi despre platforma noastră de apeluri cu AI
+            {t('faq.subtitle')}
           </p>
         </div>
         

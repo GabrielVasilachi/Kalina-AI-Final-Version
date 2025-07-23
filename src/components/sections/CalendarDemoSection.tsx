@@ -1,6 +1,6 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { useEffect, useState } from 'react'
 
 // Simple animated grid background
@@ -19,8 +19,8 @@ function AnimatedGridBG() {
   )
 }
 
-export function CalendarSection() {
-  const { ref, classes, isVisible } = useScrollReveal('up')
+export function CalendarDemoSection() {
+  const { ref, classes, isVisible } = useScrollAnimationReveal('up')
   const [selectedDate, setSelectedDate] = useState(15)
   const [aiMessages, setAiMessages] = useState([
     { from: 'ai', text: 'Bună! Cu ce te pot ajuta astăzi?' },

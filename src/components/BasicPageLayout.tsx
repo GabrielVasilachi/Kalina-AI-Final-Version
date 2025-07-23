@@ -1,19 +1,19 @@
 'use client'
 
-import { Header } from '@/components/layout/Header'
+import { NavigationHeader } from '@/components/layout/NavigationHeader'
 import { ReactNode } from 'react'
 
-interface MinimalPageProps {
+interface BasicPageLayoutProps {
   title: string
   description: string
   children: ReactNode
   className?: string
 }
 
-export function MinimalPage({ title, description, children, className = '' }: MinimalPageProps) {
+export function BasicPageLayout({ title, description, children, className = '' }: BasicPageLayoutProps) {
   return (
     <>
-      <Header />
+      <NavigationHeader />
       <div className={`min-h-screen bg-white text-black ${className}`}>
         {/* Hero Section */}
         <section className="pt-32 pb-20 px-4">

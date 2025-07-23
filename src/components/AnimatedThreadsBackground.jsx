@@ -128,7 +128,7 @@ void main() {
 }
 `;
 
-const Threads = ({
+const AnimatedThreadsBackground = ({
   className = '',
   color = [1, 1, 1],
   amplitude = 1,
@@ -247,4 +247,4 @@ const Threads = ({
   );
 };
 
-export default Threads;
+export default AnimatedThreadsBackground;

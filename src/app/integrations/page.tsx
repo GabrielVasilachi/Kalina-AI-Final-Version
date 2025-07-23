@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function IntegrationsPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Integrări Complete"
       description="Conectează-te cu toate aplicațiile și serviciile pe care le folosești deja. 200+ integrări native disponibile."
     >
@@ -174,6 +174,6 @@ export default function IntegrationsPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

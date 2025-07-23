@@ -1,10 +1,10 @@
 "use client"
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { useRef, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-export function Features() {
+export function MainFeaturesSection() {
   // Removed scroll reveal hooks
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
   const [centeredIndex, setCenteredIndex] = useState(0)

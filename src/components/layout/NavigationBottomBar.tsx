@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from 'react'
 
-export default function BottomBar() {
+export default function NavigationBottomBar() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<any[]>([]);
 

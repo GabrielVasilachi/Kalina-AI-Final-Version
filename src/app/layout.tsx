@@ -1,7 +1,7 @@
 import './globals.css'
-import { Footer } from '@/components/layout/Footer'
-import BottomBar from '@/components/layout/BottomBar'
-import { LoadingWrapper } from '@/components/LoadingWrapper'
+import { SiteFooter } from '@/components/layout/SiteFooter'
+import NavigationBottomBar from '@/components/layout/NavigationBottomBar'
+import { PageLoadingWrapper } from '@/components/PageLoadingWrapper'
 import { Providers } from './providers'
 // import { inter } from './fonts'
 
@@ -30,13 +30,13 @@ export default function RootLayout({
     <html lang="en">
       {/* If you want to use a custom font, uncomment and fix the import for inter */}
       <body /* className={inter.className} */>
-        <LoadingWrapper>
+        <PageLoadingWrapper>
           <Providers>
             {children}
-            <Footer />
-            <BottomBar />
+            <SiteFooter />
+            <NavigationBottomBar />
           </Providers>
-        </LoadingWrapper>
+        </PageLoadingWrapper>
       </body>
     </html>
   )

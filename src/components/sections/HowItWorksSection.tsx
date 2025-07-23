@@ -1,9 +1,9 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { motion } from 'framer-motion'
 
-export function HowItWorks() {
+export function HowItWorksSection() {
   const steps = [
     {
       number: "01",

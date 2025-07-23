@@ -1,41 +1,41 @@
-import { Hero } from '@/components/sections/Hero'
-import { Features } from '@/components/sections/Features'
-import { StackedFeatureSections } from '@/components/StackedFeatureSections'
-import { Demo } from '@/components/sections/Demo'
-import { AdvancedCapabilities } from '@/components/sections/AdvancedCapabilities'
+import { HeroSection } from '@/components/sections/HeroSection'
+import { MainFeaturesSection } from '@/components/sections/MainFeaturesSection'
+import { InteractiveFeatureCards } from '@/components/InteractiveFeatureCards'
+import { ProductDemoSection } from '@/components/sections/ProductDemoSection'
+import { AdvancedCapabilitiesSection } from '@/components/sections/AdvancedCapabilitiesSection'
 
-import { HowItWorks } from '@/components/sections/HowItWorks'
-import { TrustedBy } from '@/components/sections/TrustedBy'
-import { CalendarSection } from '@/components/sections/Calendar'
-import { FAQ } from '@/components/sections/FAQ'
-import { CTA } from '@/components/sections/CTA'
-import { Header } from '@/components/layout/Header'
-import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
+import { HowItWorksSection } from '@/components/sections/HowItWorksSection'
+import { TrustedBySection } from '@/components/sections/TrustedBySection'
+import { CalendarDemoSection } from '@/components/sections/CalendarDemoSection'
+import { FrequentlyAskedQuestions } from '@/components/sections/FrequentlyAskedQuestions'
+import { CallToActionSection } from '@/components/sections/CallToActionSection'
+import { NavigationHeader } from '@/components/layout/NavigationHeader'
+import { SmoothScrollContextProvider } from '@/components/providers/SmoothScrollContextProvider'
 
 export default function HomePage() {
   return (
-    <SmoothScrollProvider>
+    <SmoothScrollContextProvider>
       <div className="relative min-h-screen bg-white">
         {/* Background Effects removed for pure white */}
         
         {/* Navigation */}
-        <Header />
+        <NavigationHeader />
         
         {/* Main Content */}
         <main>
-          <Hero />
-          <Demo />
-          <TrustedBy />
-          <Features />
-          <AdvancedCapabilities />
+          <HeroSection />
+          <ProductDemoSection />
+          <TrustedBySection />
+          <MainFeaturesSection />
+          <AdvancedCapabilitiesSection />
           
           {/* Stacked Feature Sections */}
-          <StackedFeatureSections />
-          <HowItWorks />
-          <FAQ />
-          <CTA />
+          <InteractiveFeatureCards />
+          <HowItWorksSection />
+          <FrequentlyAskedQuestions />
+          <CallToActionSection />
         </main>
       </div>
-    </SmoothScrollProvider>
+    </SmoothScrollContextProvider>
   )
 }

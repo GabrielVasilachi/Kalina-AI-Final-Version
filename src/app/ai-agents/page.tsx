@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function AIAgentsPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Agenții AI"
       description="Cunoaște echipa ta virtuală - fiecare expert în domeniul său. Ana, Mihai și Elena, specializați în vânzări, suport și marketing."
     >
@@ -560,6 +560,6 @@ export default function AIAgentsPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function Blog() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Blog & Cazuri de Studiu"
       description="Ultimele tendințe în AI, cazuri de succes și insights din industrie"
     >
@@ -205,6 +205,6 @@ export default function Blog() {
           </div>
         </section>
       </div>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

@@ -1,10 +1,10 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { useState, useEffect, useRef } from 'react'
 
-export function CTA() {
-  const { ref, classes, isVisible } = useScrollReveal('up')
+export function CallToActionSection() {
+  const { ref, classes, isVisible } = useScrollAnimationReveal('up')
   const [isHovered, setIsHovered] = useState(false)
   const [isHeaderOverCTA, setIsHeaderOverCTA] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)

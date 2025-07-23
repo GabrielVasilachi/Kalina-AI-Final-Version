@@ -1,10 +1,13 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
+import { useLanguage } from '@/lib/i18n'
 
 export default function FeaturesPage() {
+  const { t } = useLanguage()
+  
   return (
-    <MinimalPage
-      title="Funcționalități Complete"
-      description="Toate capabilitățile platformei Kallina.ai într-un singur loc. De la AI conversațional la automatizări complexe."
+    <BasicPageLayout
+      title={t('pages.featuresPage.title')}
+      description={t('pages.featuresPage.subtitle')}
     >
       {/* Hero Features Overview */}
       <section className="max-w-6xl mx-auto mb-20">
@@ -15,8 +18,8 @@ export default function FeaturesPage() {
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
               </svg>
             </div>
-            <h3 className="text-2xl font-bold mb-2">50+ Funcționalități</h3>
-            <p className="text-gray-600">De la conversații simple la automatizări complexe</p>
+            <h3 className="text-2xl font-bold mb-2">{t('pages.featuresPage.heroFeatures')}</h3>
+            <p className="text-gray-600">{t('pages.featuresPage.heroFeaturesDesc')}</p>
           </div>
 
           <div className="text-center">
@@ -25,8 +28,8 @@ export default function FeaturesPage() {
                 <path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"/>
               </svg>
             </div>
-            <h3 className="text-2xl font-bold mb-2">Integrări Native</h3>
-            <p className="text-gray-600">Conectare cu 200+ aplicații și servicii</p>
+            <h3 className="text-2xl font-bold mb-2">{t('pages.featuresPage.nativeIntegrations')}</h3>
+            <p className="text-gray-600">{t('pages.featuresPage.nativeIntegrationsDesc')}</p>
           </div>
 
           <div className="text-center">
@@ -35,15 +38,15 @@ export default function FeaturesPage() {
                 <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
               </svg>
             </div>
-            <h3 className="text-2xl font-bold mb-2">Enterprise Ready</h3>
-            <p className="text-gray-600">Securitate, scalabilitate și compliance complete</p>
+            <h3 className="text-2xl font-bold mb-2">{t('pages.featuresPage.enterpriseReady')}</h3>
+            <p className="text-gray-600">{t('pages.featuresPage.enterpriseReadyDesc')}</p>
           </div>
         </div>
       </section>
 
       {/* Core AI Features */}
       <section className="max-w-6xl mx-auto mb-20">
-        <h2 className="text-3xl font-bold text-center mb-12">Capabilități AI Conversaționale</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">{t('pages.featuresPage.aiConversationalTitle')}</h2>
         
         <div className="grid md:grid-cols-2 gap-8">
           <div className="border border-gray-200 rounded-2xl p-8">
@@ -771,6 +774,6 @@ export default function FeaturesPage() {
           </table>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

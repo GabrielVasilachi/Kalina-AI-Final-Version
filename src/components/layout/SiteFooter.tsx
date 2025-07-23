@@ -1,10 +1,10 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { useEffect, useState, useRef } from 'react'
 
-export function Footer() {
-  const { ref, classes, isVisible } = useScrollReveal('up')
+export function SiteFooter() {
+  const { ref, classes, isVisible } = useScrollAnimationReveal('up')
   const [isHeaderOverFooter, setIsHeaderOverFooter] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 

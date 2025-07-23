@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function AnalyticsPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Analytics Dashboard"
       description="Analytics în timp real și insights AI pentru optimizarea conversațiilor și creșterea performanței business."
     >
@@ -469,6 +469,6 @@ export default function AnalyticsPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

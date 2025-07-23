@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function Community() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Comunitatea Kallina"
       description="Alătură-te comunității noastre de dezvoltatori, antreprenori și pasionați de AI"
     >
@@ -308,6 +308,6 @@ export default function Community() {
           </div>
         </section>
       </div>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

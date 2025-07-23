@@ -1,11 +1,11 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
-import { Header } from '@/components/layout/Header'
-import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
+import { NavigationHeader } from '@/components/layout/NavigationHeader'
+import { SmoothScrollContextProvider } from '@/components/providers/SmoothScrollContextProvider'
 
 export default function ResourcesPage() {
-  const { ref, classes, isVisible } = useScrollReveal('up')
+  const { ref, classes, isVisible } = useScrollAnimationReveal('up')
 
   const resources = [
     {
@@ -80,9 +80,9 @@ export default function ResourcesPage() {
   ]
 
   return (
-    <SmoothScrollProvider>
+    <SmoothScrollContextProvider>
       <div className="relative min-h-screen bg-white">
-        <Header />
+        <NavigationHeader />
         
         <main className="pt-16">
           {/* Hero Section */}
@@ -176,6 +176,6 @@ export default function ResourcesPage() {
           </section>
         </main>
       </div>
-    </SmoothScrollProvider>
+    </SmoothScrollContextProvider>
   )
 }

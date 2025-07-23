@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useLanguage } from '../../lib/i18n'
+import { LanguageSelector } from '../LanguageSelector'
 
-export function Header() {
+export function NavigationHeader() {
+  const { t } = useLanguage()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOverDemo, setIsOverDemo] = useState(false)
   // Dropdown state for each menu
@@ -94,7 +97,7 @@ export function Header() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
-                  Products
+                  {t('nav.products')}
                 </span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
               </button>
@@ -108,7 +111,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
-                    Platforma AI
+                    {t('products.platform')}
                   </span>
                 </Link>
                 <Link href="/ai-agents" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all">
@@ -116,7 +119,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
                     </svg>
-                    Agenții AI
+                    {t('products.agents')}
                   </span>
                 </Link>
                 <Link href="/features" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all">
@@ -124,7 +127,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                     </svg>
-                    Funcționalități
+                    {t('products.features')}
                   </span>
                 </Link>
                 <Link href="/integrations" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all rounded-b-xl">
@@ -132,7 +135,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
-                    Integrări
+                    {t('products.integrations')}
                   </span>
                 </Link>
               </div>
@@ -155,7 +158,7 @@ export function Header() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                   </svg>
-                  Solutions
+                  {t('nav.solutions')}
                 </span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
               </button>
@@ -169,7 +172,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
-                    Sănătate
+                    {t('solutions.healthcare')}
                   </span>
                 </Link>
                 <Link href="/restaurants" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all">
@@ -177,7 +180,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
-                    Restaurante
+                    {t('solutions.restaurants')}
                   </span>
                 </Link>
                 <Link href="/enterprise" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all rounded-b-xl">
@@ -185,7 +188,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                     </svg>
-                    Enterprise
+                    {t('solutions.enterprise')}
                   </span>
                 </Link>
               </div>
@@ -208,7 +211,7 @@ export function Header() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
-                  Research
+                  {t('nav.research')}
                 </span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
               </button>
@@ -222,7 +225,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                     </svg>
-                    Dezvoltatori
+                    {t('research.developers')}
                   </span>
                 </Link>
                 <Link href="/api-documentation" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all">
@@ -230,7 +233,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                     </svg>
-                    API & SDK
+                    {t('research.apiSdk')}
                   </span>
                 </Link>
                 <Link href="/analytics" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all">
@@ -238,7 +241,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                     </svg>
-                    Analytics
+                    {t('research.analytics')}
                   </span>
                 </Link>
                 <Link href="/getting-started" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all rounded-b-xl">
@@ -246,7 +249,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
-                    Ghid Rapid
+                    {t('research.quickGuide')}
                   </span>
                 </Link>
               </div>
@@ -269,7 +272,7 @@ export function Header() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                   </svg>
-                  Resources
+                  {t('nav.resources')}
                 </span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
               </button>
@@ -283,7 +286,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                     </svg>
-                    Blog & Cazuri
+                    {t('resources.blogCases')}
                   </span>
                 </Link>
                 <Link href="/whats-new" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all">
@@ -291,7 +294,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
-                    Noutăți
+                    {t('resources.news')}
                   </span>
                 </Link>
                 <Link href="/support" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all">
@@ -299,7 +302,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
-                    Suport
+                    {t('resources.support')}
                   </span>
                 </Link>
                 <Link href="/community" className="block px-6 py-3 text-brand-300 hover:text-blue-900 hover:bg-blue-100/20 transition-all rounded-b-xl">
@@ -307,7 +310,7 @@ export function Header() {
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
-                    Comunitate
+                    {t('resources.community')}
                   </span>
                 </Link>
               </div>
@@ -316,24 +319,25 @@ export function Header() {
             <Link href="/pricing" className={`transition-all duration-300 magnetic-hover relative group px-4 py-2 ${
               isOverDemo ? 'text-white hover:text-gray-200' : 'text-brand-300 hover:text-blue-900'
             }`}>
-              Pricing
+              {t('nav.pricing')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link href="/company" className={`transition-all duration-300 magnetic-hover relative group px-4 py-2 ${
               isOverDemo ? 'text-white hover:text-gray-200' : 'text-brand-300 hover:text-blue-900'
             }`}>
-              Company
+              {t('nav.company')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </nav>
           
           {/* Desktop CTA & Sign in Buttons */}
           <div className="hidden md:flex items-center space-x-3">
+            <LanguageSelector />
             <Link href="https://preview--kallina.lovable.app/auth" className="btn-secondary px-6 py-2 rounded-lg font-semibold border border-black text-black bg-white hover:bg-blue-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200">
-              Sign in
+              {t('nav.signIn')}
             </Link>
             <button className="btn-primary btn-magnetic animate-pulse-glow">
-              Get Started
+              {t('nav.getStarted')}
             </button>
           </div>
 
@@ -376,7 +380,7 @@ export function Header() {
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
-                      Products
+                      {t('nav.products')}
                     </span>
                     <svg 
                       className={`w-5 h-5 transition-transform duration-200 ${openMobileDropdown === 'products' ? 'rotate-180' : ''}`} 
@@ -392,25 +396,25 @@ export function Header() {
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
-                        Platforma AI
+                        {t('products.platform')}
                       </Link>
                       <Link href="/ai-agents" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
                         </svg>
-                        Agenții AI
+                        {t('products.agents')}
                       </Link>
                       <Link href="/features" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                         </svg>
-                        Funcționalități
+                        {t('products.features')}
                       </Link>
                       <Link href="/integrations" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
-                        Integrări
+                        {t('products.integrations')}
                       </Link>
                     </div>
                   )}
@@ -426,7 +430,7 @@ export function Header() {
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                       </svg>
-                      Solutions
+                      {t('nav.solutions')}
                     </span>
                     <svg 
                       className={`w-5 h-5 transition-transform duration-200 ${openMobileDropdown === 'solutions' ? 'rotate-180' : ''}`} 
@@ -442,19 +446,19 @@ export function Header() {
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
-                        Sănătate
+                        {t('solutions.healthcare')}
                       </Link>
                       <Link href="/restaurants" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                         </svg>
-                        Restaurante
+                        {t('solutions.restaurants')}
                       </Link>
                       <Link href="/enterprise" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                         </svg>
-                        Enterprise
+                        {t('solutions.enterprise')}
                       </Link>
                     </div>
                   )}
@@ -470,7 +474,7 @@ export function Header() {
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
-                      Research
+                      {t('nav.research')}
                     </span>
                     <svg 
                       className={`w-5 h-5 transition-transform duration-200 ${openMobileDropdown === 'research' ? 'rotate-180' : ''}`} 
@@ -486,25 +490,25 @@ export function Header() {
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                         </svg>
-                        Dezvoltatori
+                        {t('research.developers')}
                       </Link>
                       <Link href="/api-documentation" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                         </svg>
-                        API & SDK
+                        {t('research.apiSdk')}
                       </Link>
                       <Link href="/analytics" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                         </svg>
-                        Analytics
+                        {t('research.analytics')}
                       </Link>
                       <Link href="/getting-started" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
-                        Ghid Rapid
+                        {t('research.quickGuide')}
                       </Link>
                     </div>
                   )}
@@ -520,7 +524,7 @@ export function Header() {
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                       </svg>
-                      Resources
+                      {t('nav.resources')}
                     </span>
                     <svg 
                       className={`w-5 h-5 transition-transform duration-200 ${openMobileDropdown === 'resources' ? 'rotate-180' : ''}`} 
@@ -536,25 +540,25 @@ export function Header() {
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                         </svg>
-                        Blog & Cazuri
+                        {t('resources.blogCases')}
                       </Link>
                       <Link href="/whats-new" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
-                        Noutăți
+                        {t('resources.news')}
                       </Link>
                       <Link href="/support" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                         </svg>
-                        Suport
+                        {t('resources.support')}
                       </Link>
                       <Link href="/community" className="flex items-center gap-3 text-gray-600 py-2 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                         </svg>
-                        Comunitate
+                        {t('resources.community')}
                       </Link>
                     </div>
                   )}
@@ -563,14 +567,19 @@ export function Header() {
                 {/* Simple Links */}
                 <div className="border-b border-gray-100">
                   <Link href="/pricing" className="flex items-center text-brand-300 font-semibold text-lg py-3 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                    Pricing
+                    {t('nav.pricing')}
                   </Link>
                 </div>
 
                 <div className="border-b border-gray-100">
                   <Link href="/company" className="flex items-center text-brand-300 font-semibold text-lg py-3 hover:text-blue-900 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                    Company
+                    {t('nav.company')}
                   </Link>
+                </div>
+
+                {/* Language Selector for Mobile */}
+                <div className="border-b border-gray-100 py-3">
+                  <LanguageSelector />
                 </div>
 
                 {/* CTA Buttons */}
@@ -580,13 +589,13 @@ export function Header() {
                     className="w-full block text-center border border-black text-black bg-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Sign in
+                    {t('nav.signIn')}
                   </Link>
                   <button 
                     className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors btn-magnetic animate-pulse-glow"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Get Started
+                    {t('nav.getStarted')}
                   </button>
                 </div>
               </div>

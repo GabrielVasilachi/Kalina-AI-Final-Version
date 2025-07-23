@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function GettingStartedPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Ghid Rapid de Început"
       description="De la zero la primul agent AI funcțional în mai puțin de 3 minute. Onboarding perfect pentru utilizatori noi."
     >
@@ -338,6 +338,6 @@ export default function GettingStartedPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

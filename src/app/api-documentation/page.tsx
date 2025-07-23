@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function APIDocumentationPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Documentația API"
       description="API-ul cel mai puternic din industrie pentru dezvoltatori. Documentație completă, exemple și referințe tehnice."
     >
@@ -480,6 +480,6 @@ function verifyWebhook(payload, signature, secret) {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

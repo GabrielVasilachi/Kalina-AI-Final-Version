@@ -1,6 +1,6 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { useState, useEffect, useRef } from 'react'
 
 interface FeatureCardProps {
@@ -13,7 +13,7 @@ interface FeatureCardProps {
 }
 
 function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCardProps) {
-  const cardReveal = useScrollReveal('up', 0.2)
+  const cardReveal = useScrollAnimationReveal('up', 0.2)
   const [isHovered, setIsHovered] = useState(false)
   const featureVideoRef = useRef<HTMLVideoElement>(null)
 
@@ -167,7 +167,7 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
   )
 }
 
-export function StackedFeatureSections() {
+export function InteractiveFeatureCards() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isHeaderOverSection, setIsHeaderOverSection] = useState(false)
 

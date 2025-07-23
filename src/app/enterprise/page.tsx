@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function EnterprisePage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Enterprise Solutions"
       description="Soluții AI conversaționale la scară enterprise. Securitate, compliance și integrări pentru organizații mari."
     >
@@ -586,6 +586,6 @@ export default function EnterprisePage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

@@ -1,11 +1,13 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { useEffect, useState } from 'react'
-import Threads from '../Threads'
+import AnimatedThreadsBackground from '../AnimatedThreadsBackground'
+import { useLanguage } from '@/lib/i18n'
 
-export function TrustedBy() {
-  const { ref, classes, isVisible } = useScrollReveal('up')
+export function TrustedBySection() {
+  const { t } = useLanguage()
+  const { ref, classes, isVisible } = useScrollAnimationReveal('up')
   const [isMobile, setIsMobile] = useState(false)
   
   useEffect(() => {
@@ -28,15 +30,15 @@ export function TrustedBy() {
   ]
 
   const metrics = [
-    { value: "1M+", label: "Developers" },
-    { value: "10B+", label: "Characters generated" },
-    { value: "29", label: "Languages supported" },
-    { value: "99.9%", label: "Uptime" }
+    { value: "1M+", label: t('trustedBy.developers') },
+    { value: "10B+", label: t('trustedBy.charactersGenerated') },
+    { value: "29", label: t('trustedBy.languagesSupported') },
+    { value: "99.9%", label: t('trustedBy.uptime') }
   ]
 
   return (
     <section className="relative overflow-hidden bg-white py-16 md:py-10">
-      <Threads
+      <AnimatedThreadsBackground
         className="absolute inset-0 z-0 pointer-events-none w-full h-full"
         color={[0, 0, 0]}
         amplitude={isMobile ? 0.8 : 1.5}
@@ -51,10 +53,10 @@ export function TrustedBy() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
         }`}>
           <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-            Trusted by leading companies
+            {t('trustedBy.title')}
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Join thousands of developers and companies building the future of voice AI
+            {t('trustedBy.subtitle')}
           </p>
         </div>
 
@@ -104,10 +106,10 @@ export function TrustedBy() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
         }`}>
           <p className="text-gray-600 mb-6">
-            Ready to get started?
+            {t('cta.title')}
           </p>
           <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200">
-            Start building
+            {t('common.getStarted')}
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 
 interface FeatureSectionProps {
   title: string
@@ -10,8 +10,8 @@ interface FeatureSectionProps {
 }
 
 export function FeatureSection({ title, body, imgSrc, imgAlt }: FeatureSectionProps) {
-  const textReveal = useScrollReveal('left')
-  const imageReveal = useScrollReveal('right')
+  const textReveal = useScrollAnimationReveal('left')
+  const imageReveal = useScrollAnimationReveal('right')
 
   return (
     <section className="section-padding">

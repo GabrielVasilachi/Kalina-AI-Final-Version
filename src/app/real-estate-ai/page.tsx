@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function RealEstateAI() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="AI pentru Imobiliare"
       description="Soluții AI avansate pentru agenții imobiliare și dezvoltatorii de proprietăți"
     >
@@ -311,6 +311,6 @@ export default function RealEstateAI() {
           </div>
         </section>
       </div>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

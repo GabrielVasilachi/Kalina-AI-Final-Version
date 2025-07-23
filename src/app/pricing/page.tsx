@@ -1,66 +1,71 @@
 'use client'
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
-import { Header } from '@/components/layout/Header'
-import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
+import { NavigationHeader } from '@/components/layout/NavigationHeader'
+import { SmoothScrollContextProvider } from '@/components/providers/SmoothScrollContextProvider'
+import { useLanguage } from '@/lib/i18n'
 
 export default function PricingPage() {
-  const { ref, classes, isVisible } = useScrollReveal('up')
+  const { t } = useLanguage()
+  const { ref, classes, isVisible } = useScrollAnimationReveal('up')
 
   const plans = [
     {
-      name: "Starter",
+      name: t('pages.pricing.starter'),
       price: "€29",
-      period: "/lună",
-      description: "Perfect pentru echipe mici și freelanceri",
+      period: t('pages.pricing.perMonth'),
+      description: t('pages.pricing.starterDesc'),
       features: [
         "Până la 1,000 minute/lună",
-        "Reducerea zgomotului AI",
-        "Suport email",
-        "API basic",
-        "99.5% uptime"
+        t('pages.pricing.aiNoiseReduction'),
+        t('pages.pricing.emailSupport'),
+        t('pages.pricing.basicApi'),
+        t('pages.pricing.uptime99')
       ],
-      highlighted: false
+      highlighted: false,
+      cta: t('pages.pricing.startFree')
     },
     {
-      name: "Professional", 
+      name: t('pages.pricing.professional'),
       price: "€99",
-      period: "/lună",
-      description: "Ideal pentru echipe medii și companii în creștere",
+      period: t('pages.pricing.perMonth'),
+      description: t('pages.pricing.professionalDesc'),
       features: [
         "Până la 10,000 minute/lună",
-        "Toate funcțiile AI",
-        "Suport prioritar",
-        "API complet",
-        "99.9% uptime",
-        "Analize avansate",
-        "Integrări personalizate"
+        t('pages.pricing.allAiFeatures'),
+        t('pages.pricing.prioritySupport'),
+        t('pages.pricing.fullApi'),
+        t('pages.pricing.uptime999'),
+        t('pages.pricing.advancedAnalytics'),
+        t('pages.pricing.customIntegrations')
       ],
-      highlighted: true
+      highlighted: true,
+      cta: t('pages.pricing.startFree')
     },
     {
-      name: "Enterprise",
-      price: "Personalizat",
+      name: t('pages.pricing.enterprise'),
+      price: t('pages.pricing.custom'),
       period: "",
-      description: "Soluții scalabile pentru organizații mari",
+      description: t('pages.pricing.enterpriseDesc2'),
       features: [
-        "Minute nelimitate",
-        "AI personalizat",
-        "Account manager dedicat",
-        "SLA garantat",
-        "99.99% uptime", 
-        "Securitate avansată",
-        "Deploy on-premise",
-        "Conformitate GDPR/HIPAA"
+        t('pages.pricing.unlimitedMinutes'),
+        t('pages.pricing.customAi'),
+        t('pages.pricing.dedicatedManager'),
+        t('pages.pricing.guaranteedSla'),
+        t('pages.pricing.uptime9999'),
+        t('pages.pricing.advancedSecurity'),
+        t('pages.pricing.onPremiseDeploy'),
+        t('pages.pricing.gdprCompliance')
       ],
-      highlighted: false
+      highlighted: false,
+      cta: t('pages.pricing.contactUs')
     }
   ]
 
   return (
-    <SmoothScrollProvider>
+    <SmoothScrollContextProvider>
       <div className="relative min-h-screen bg-white">
-        <Header />
+        <NavigationHeader />
         
         <main className="pt-16">
           {/* Hero Section */}
@@ -68,47 +73,49 @@ export default function PricingPage() {
             <div className="morph-shape-3 absolute top-20 left-20 opacity-20"></div>
             <div className="morph-shape-1 absolute bottom-40 right-20 opacity-30"></div>
             
-            <div className="container-width" ref={ref}>
-              <div className={`text-center mb-16 ${classes}`}>
-                <h1 className="text-6xl lg:text-7xl font-bold text-brand-400 mb-6 text-shimmer">
-                  Prețuri Simple și Transparente
-                </h1>
-                <p className="text-xl text-brand-300 max-w-3xl mx-auto animate-fade-in-up delay-200">
-                  Alege planul perfect pentru nevoile tale. Toate planurile includ încercare gratuită de 14 zile.
-                </p>
-              </div>
-
-              {/* Pricing Cards */}
-              <div className="grid lg:grid-cols-3 gap-8 mt-16">
+        <div className="container max-w-8xl mx-auto px-6 pt-32 pb-24">
+          <div 
+            ref={ref}
+            className={`${classes} text-center mb-16`}
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-black mb-8 break-words leading-tight">
+              {t('pages.pricing.title')}
+            </h1>
+            <p className="text-xl text-gray-400 max-w-4xl mx-auto mb-4 break-words leading-normal">
+              {t('pages.pricing.subtitle')}
+            </p>
+          </div>              {/* Pricing Cards */}
+              <div className="grid lg:grid-cols-3 gap-x-12 gap-y-16 mt-20">
                 {plans.map((plan, index) => (
                   <div 
                     key={index}
-                    className={`glass-card rounded-2xl p-8 magnetic-hover transition-all duration-700 relative ${
-                      plan.highlighted ? 'border-2 border-brand-400 scale-105' : ''
-                    } ${
-                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+                    className={`bg-white/10 backdrop-blur-sm rounded-2xl p-8 relative border border-white/20 shadow-lg ${
+                      plan.highlighted ? 'border-2 border-brand-400' : ''
                     }`}
                     style={{
-                      transitionDelay: `${index * 200}ms`
+                      overflow: 'visible',
+                      paddingTop: plan.highlighted ? '2.5rem' : undefined, // extra space for badge
+                      background: 'rgba(234, 239, 239, 0.1)',
+                      boxShadow: '0 8px 32px rgba(51, 52, 70, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                     }}
                   >
                     {plan.highlighted && (
                       <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                         <span className="bg-brand-400 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                          Cel mai popular
+                          {t('pages.pricing.mostPopular')}
                         </span>
                       </div>
                     )}
                     
-                    <div className="text-center mb-8">
-                      <h3 className="text-2xl font-bold text-brand-400 mb-2 text-glow">
+                    <div className="text-center mb-10">
+                      <h3 className="text-2xl font-bold text-brand-400 mb-3 break-words leading-tight">
                         {plan.name}
                       </h3>
-                      <p className="text-brand-300 text-sm mb-6">
+                      <p className="text-brand-300 text-base mb-7 break-words leading-normal">
                         {plan.description}
                       </p>
-                      <div className="flex items-baseline justify-center">
-                        <span className="text-4xl font-bold text-brand-400 text-shimmer">
+                      <div className="flex flex-wrap items-baseline justify-center gap-x-2">
+                        <span className="text-4xl font-bold text-brand-400">
                           {plan.price}
                         </span>
                         <span className="text-brand-300 ml-1">
@@ -117,50 +124,63 @@ export default function PricingPage() {
                       </div>
                     </div>
                     
-                    <ul className="space-y-4 mb-8">
+                    <ul className="space-y-4 mb-10">
                       {plan.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center space-x-3">
+                        <li key={featureIndex} className="flex items-center space-x-3 break-words">
                           <span className="text-green-400 flex-shrink-0">✓</span>
-                          <span className="text-brand-300">{feature}</span>
+                          <span className="text-brand-300 break-words leading-normal">{feature}</span>
                         </li>
                       ))}
                     </ul>
                     
-                    <button className={`w-full btn-magnetic transition-all ${
-                      plan.highlighted 
-                        ? 'btn-primary' 
-                        : 'btn-secondary hover:bg-brand-400 hover:text-white'
-                    }`}>
-                      {plan.name === 'Enterprise' ? 'Contactează-ne' : 'Începe Gratuit'}
+                    <button 
+                      className="w-full font-semibold py-3 px-6 rounded-xl cursor-pointer"
+                      style={{
+                        background: plan.highlighted 
+                          ? 'linear-gradient(135deg, var(--brand-400), var(--brand-300))' 
+                          : 'rgba(234, 239, 239, 0.6)',
+                        color: plan.highlighted ? 'var(--brand-100)' : 'var(--brand-400)',
+                        border: plan.highlighted ? 'none' : '1px solid rgba(127, 140, 170, 0.3)',
+                        boxShadow: plan.highlighted 
+                          ? '0 10px 25px rgba(51, 52, 70, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                          : 'none'
+                      }}
+                    >
+                      {plan.cta}
                     </button>
                   </div>
                 ))}
               </div>
 
               {/* FAQ Section */}
-              <div className={`mt-20 transition-all duration-700 delay-600 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-              }`}>
-                <h2 className="text-3xl font-bold text-brand-400 mb-8 text-center text-glow">
-                  Întrebări Frecvente despre Prețuri
+              <div className="mt-20">
+                <h2 className="text-3xl font-bold text-brand-400 mb-8 text-center">
+                  {t('pages.pricing.faqTitle')}
                 </h2>
                 
                 <div className="max-w-3xl mx-auto space-y-6">
                   {[
                     {
-                      q: "Pot schimba planul oricând?",
-                      a: "Da, poți face upgrade sau downgrade oricând. Modificările se aplică în următorul ciclu de facturare."
+                      q: t('pages.pricing.faqQuestion1'),
+                      a: t('pages.pricing.faqAnswer1')
                     },
                     {
-                      q: "Există costuri ascunse?",
-                      a: "Nu. Prețurile afișate sunt finale și includ toate funcțiile menționate în plan."
+                      q: t('pages.pricing.faqQuestion2'),
+                      a: t('pages.pricing.faqAnswer2')
                     },
                     {
-                      q: "Ce înseamnă încercarea gratuită?",
-                      a: "14 zile complete de acces la toate funcțiile planului Professional, fără card de credit."
+                      q: t('pages.pricing.faqQuestion3'),
+                      a: t('pages.pricing.faqAnswer3')
                     }
                   ].map((faq, index) => (
-                    <div key={index} className="glass-card rounded-xl p-6">
+                    <div 
+                      key={index} 
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg"
+                      style={{
+                        background: 'rgba(234, 239, 239, 0.1)',
+                        boxShadow: '0 8px 32px rgba(51, 52, 70, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                      }}
+                    >
                       <h3 className="text-lg font-semibold text-brand-400 mb-2">
                         {faq.q}
                       </h3>
@@ -175,6 +195,6 @@ export default function PricingPage() {
           </section>
         </main>
       </div>
-    </SmoothScrollProvider>
+    </SmoothScrollContextProvider>
   )
 }

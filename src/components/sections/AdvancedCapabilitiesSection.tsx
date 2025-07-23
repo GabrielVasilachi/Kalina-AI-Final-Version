@@ -1,4 +1,4 @@
-export function AdvancedCapabilities() {
+export function AdvancedCapabilitiesSection() {
   return (
     <>
       {/* Advanced Capabilities Section */}

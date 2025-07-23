@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function DemoPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Demo Live"
       description="Demonstrație interactivă a platformei Kallina.ai în acțiune. Vorbește cu Ana, Mihai sau Elena - agenții noștri AI în 30 de secunde."
     >
@@ -104,6 +104,6 @@ export default function DemoPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

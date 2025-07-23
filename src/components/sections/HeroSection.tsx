@@ -1,16 +1,18 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/lib/i18n'
 
-export function Hero() {
+export function HeroSection() {
+  const { t } = useLanguage()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const badgeReveal = useScrollReveal('up', 0.1)
-  const titleReveal = useScrollReveal('up', 0.2)
-  const descReveal = useScrollReveal('up', 0.3)
-  const buttonsReveal = useScrollReveal('up', 0.4)
-  const featuresReveal = useScrollReveal('up', 0.5)
+  const badgeReveal = useScrollAnimationReveal('up', 0.1)
+  const titleReveal = useScrollAnimationReveal('up', 0.2)
+  const descReveal = useScrollAnimationReveal('up', 0.3)
+  const buttonsReveal = useScrollAnimationReveal('up', 0.4)
+  const featuresReveal = useScrollAnimationReveal('up', 0.5)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -85,14 +87,7 @@ export function Hero() {
                 initial="hidden"
                 animate={titleReveal.isVisible ? "visible" : "hidden"}
               >
-                <motion.span variants={childVariants}>Creează agent </motion.span>
-                <motion.span variants={childVariants} className="text-shimmer animate-gradient">
-                  AI
-                </motion.span>
-                <motion.span variants={childVariants}> în </motion.span>
-                <motion.span variants={childVariants} className="text-shimmer animate-gradient" style={{ animationDelay: '0.5s' }}>
-                  3 minute
-                </motion.span>
+                <motion.span variants={childVariants}>{t('hero.title')}</motion.span>
               </motion.h1>
               
               <motion.p 
@@ -102,7 +97,7 @@ export function Hero() {
                 initial="hidden"
                 animate={descReveal.isVisible ? "visible" : "hidden"}
               >
-                Transformă-ți afacerea cu primul angajat digital perfect instruit.
+                {t('hero.subtitle')}
               </motion.p>
             </div>
             <motion.div 
@@ -113,7 +108,7 @@ export function Hero() {
               animate={buttonsReveal.isVisible ? "visible" : "hidden"}
             >
               <motion.button variants={childVariants} className="btn-primary btn-magnetic flex items-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4 animate-pulse-glow">
-                Începe Trial Gratuit
+                {t('hero.ctaButton')}
                 <span className="group-hover:translate-x-1 transition-transform duration-300"></span>
               </motion.button>
               <motion.div variants={childVariants}>
@@ -122,7 +117,7 @@ export function Hero() {
                   className="btn-secondary btn-magnetic flex items-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
                 >
                   <span className="group-hover:scale-110 transition-transform duration-300"></span>
-                  Sign In
+                  {t('nav.signIn')}
                 </a>
               </motion.div>
             </motion.div>

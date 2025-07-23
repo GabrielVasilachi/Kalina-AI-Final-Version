@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function HealthcareAIPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="AI Medical"
       description="Revoluționează comunicarea medicală cu AI certificat HIPAA. Programări automate, suport pacienți 24/7 și eficiență maximă."
     >
@@ -486,6 +486,6 @@ export default function HealthcareAIPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

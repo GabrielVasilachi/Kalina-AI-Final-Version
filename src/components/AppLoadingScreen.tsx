@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 
-interface LoadingScreenProps {
+interface AppLoadingScreenProps {
   onLoadingComplete: () => void
 }
 
-export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
+export function AppLoadingScreen({ onLoadingComplete }: AppLoadingScreenProps) {
   const [isVideoEnded, setIsVideoEnded] = useState(false)
   const [videoError, setVideoError] = useState(false)
 

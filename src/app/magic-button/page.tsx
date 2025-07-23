@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function MagicButtonPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Magic Button"
       description="Un click, sute de acțiuni perfecte - magia AI-ului în acțiune. Orchestrare automată de campanii și procese complexe."
     >
@@ -291,6 +291,6 @@ export default function MagicButtonPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

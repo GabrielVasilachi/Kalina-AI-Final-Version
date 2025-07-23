@@ -38,7 +38,7 @@ const AnimatedPath: React.FC<AnimatedPathProps> = ({ d, stroke, strokeWidth, fil
   );
 };
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 
 import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import { io, Socket } from 'socket.io-client'
@@ -47,7 +47,7 @@ import { io, Socket } from 'socket.io-client'
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8081'
 
 
-export function Demo() {
+export function ProductDemoSection() {
   const [activeTab, setActiveTab] = useState<'conversation' | 'calendar'>('conversation');
   
   // Calendar-specific state
@@ -132,7 +132,7 @@ export function Demo() {
   const [isDemoMode, setIsDemoMode] = useState(false)
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
   const lastScrollY = useRef<number>(typeof window !== 'undefined' ? window.scrollY : 0);
-  const { ref, classes, isVisible } = useScrollReveal('up')
+  const { ref, classes, isVisible } = useScrollAnimationReveal('up')
   const sectionRef = useRef<HTMLElement>(null)
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)

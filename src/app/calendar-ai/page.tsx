@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function CalendarAIPage() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Calendar AI"
       description="Calendarul care gândește și acționează pentru tine cu AI avansat. Magic Button, comenzi în limbaj natural și orchestrare automată."
     >
@@ -189,6 +189,6 @@ export default function CalendarAIPage() {
           </div>
         </div>
       </section>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }

@@ -1,8 +1,8 @@
-import { MinimalPage } from '@/components/MinimalPage'
+import { BasicPageLayout } from '@/components/BasicPageLayout'
 
 export default function Support() {
   return (
-    <MinimalPage
+    <BasicPageLayout
       title="Suport & Ajutor"
       description="Găsește răspunsuri la întrebările tale sau contactează echipa noastră de suport"
     >
@@ -289,6 +289,6 @@ export default function Support() {
           </div>
         </section>
       </div>
-    </MinimalPage>
+    </BasicPageLayout>
   )
 }
