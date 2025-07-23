@@ -118,7 +118,7 @@ export function Hero() {
               </motion.button>
               <motion.div variants={childVariants}>
                 <a
-                  href="/auth"
+                  href="https://preview--kallina.lovable.app/auth"
                   className="btn-secondary btn-magnetic flex items-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
                 >
                   <span className="group-hover:scale-110 transition-transform duration-300"></span>

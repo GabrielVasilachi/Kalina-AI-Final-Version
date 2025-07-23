@@ -71,13 +71,26 @@ export function Demo() {
   // You can edit these values for each company index (0,1,2,3)
   const companyMobileLineConfig = [
     // Example: Restaurant
-    { startX: 0.5, startY: 0, endX: 0.5, endY: 0, curveOffset: 40 },
+    { startX: 0.5, startY: -1.8, endX: 0.5, endY: -1, curveOffset: 40 },
     // Example: Clinică
-    { startX: 0.5, startY: 0, endX: 0.5, endY: 0, curveOffset: 60 },
+    { startX: 0.5, startY: -1.8, endX: 0.5, endY: -1, curveOffset: 60 },
     // Example: Service Auto
-    { startX: 0.5, startY: 0, endX: 0.5, endY: 0, curveOffset: 20 },
+    { startX: 0.5, startY: -1, endX: 0.5, endY: -1, curveOffset: 20 },
     // Example: Agenție de Turism
-    { startX: 0.5, startY: 0, endX: 0.5, endY: 0, curveOffset: 80 },
+    { startX: 0.5, startY: -1, endX: 0.5, endY: -1, curveOffset: 80 },
+  ];
+
+  // Per-agent voices mobile line config: [{startX, startY, endX, endY, curveOffset}]
+  // You can edit these values for each voice index (0,1,2,3)
+  const agentVoicesMobileLineConfig = [
+    // Example: Lili
+    { startX: 0.5, startY: -2.6, endX: 0.3, endY: -1, curveOffset: 45 },
+    // Example: Eric
+    { startX: 0.5, startY: -2.6, endX: 0.5, endY: -0.5, curveOffset: 25 },
+    // Example: Kalina
+    { startX: 0.5, startY: -2.6, endX: 0.5, endY: -0.5, curveOffset: 25 },
+    // Example: Alexandra
+    { startX: 0.5, startY: -2.6, endX: 0.7, endY: -1, curveOffset: 45 },
   ];
   // Ref pentru butonul selectat și microfon
   const selectedCompanyRef = useRef<HTMLButtonElement>(null)
@@ -96,7 +109,7 @@ export function Demo() {
   const [selectedCompanyLeft, setSelectedCompanyLeft] = useState<number | null>(null)
   const selectedVoiceRightRef = useRef<HTMLButtonElement>(null)
   const [voiceCurve, setVoiceCurve] = useState<
-    | { x1: number; y1: number; x2: number; y2: number; width: number; height: number }
+    | { x1: number; y1: number; x2: number; y2: number; width: number; height: number; curveOffset?: number }
     | null
   >(null)
   const [selectedVoiceRight, setSelectedVoiceRight] = useState<number | null>(null)
@@ -159,13 +172,15 @@ export function Demo() {
             curveOffset: cfg.curveOffset
           });
         } else {
-          // Desktop: previous logic
+          // Desktop: start and end line higher above the company button
           const micInset = 34;
+          const y1Offset = 74; // raise the start point by 74px
+          const y2Offset = 74; // raise the end point by 74px
           setCurve({
             x1: companyRect.right - sectionRect.left,
-            y1: companyRect.top + companyRect.height * 0 - sectionRect.top,
+            y1: companyRect.top - sectionRect.top - y1Offset,
             x2: micRect.left - sectionRect.left + micInset,
-            y2: micRect.top + micRect.height / 2 - sectionRect.top,
+            y2: micRect.top + micRect.height / 2 - sectionRect.top - y2Offset,
             width: sectionRect.width,
             height: sectionRect.height
           });
@@ -696,28 +711,39 @@ export function Demo() {
         const micRect = micRef.current.getBoundingClientRect();
         const sectionRect = sectionRef.current.getBoundingClientRect();
         const isMobile = window.innerWidth < 640;
-        const micInset = 34; // px, match company curve
+        
         if (isMobile) {
-          // Start from center top of the voice button
-          const x1 = voiceRect.left + voiceRect.width / 2 - sectionRect.left;
-          const y1 = voiceRect.top - sectionRect.top;
-          // End at mic center (same as before)
-          const x2 = micRect.right - sectionRect.left - micInset;
-          const y2 = micRect.top + micRect.height / 2 - sectionRect.top;
+          // Use the agent voices mobile line configuration
+          const cfg = agentVoicesMobileLineConfig[selectedVoiceRight] || agentVoicesMobileLineConfig[0];
+          const startX = typeof cfg.startX === 'number' ? cfg.startX : 0.5;
+          const startY = typeof cfg.startY === 'number' ? cfg.startY : 0;
+          
+          const x1 = voiceRect.left + voiceRect.width * startX - sectionRect.left;
+          const y1 = voiceRect.top + voiceRect.height * startY - sectionRect.top;
+          
+          // End position (relative to mic button, from config)
+          const x2 = micRect.left + micRect.width * cfg.endX - sectionRect.left;
+          const y2 = micRect.top + micRect.height * cfg.endY - sectionRect.top;
+          
           setVoiceCurve({
             x1,
             y1,
             x2,
             y2,
             width: sectionRect.width,
-            height: sectionRect.height
+            height: sectionRect.height,
+            curveOffset: cfg.curveOffset
           });
         } else {
+          // Desktop: start and end line higher above the agent voice button
+          const micInset = 34;
+          const y1Offset = 74; // raise the start point by 74px
+          const y2Offset = 74; // raise the end point by 74px
           setVoiceCurve({
             x1: voiceRect.left - sectionRect.left,
-            y1: voiceRect.top + voiceRect.height * 0 - sectionRect.top,
+            y1: voiceRect.top - sectionRect.top - y1Offset,
             x2: micRect.right - sectionRect.left - micInset,
-            y2: micRect.top + micRect.height / 2 - sectionRect.top,
+            y2: micRect.top + micRect.height / 2 - sectionRect.top - y2Offset,
             width: sectionRect.width,
             height: sectionRect.height
           });
@@ -820,9 +846,9 @@ export function Demo() {
               height={voiceCurve.height}
             >
               {window.innerWidth < 640 ? (
-                // Mobile: curve from top of voice option, curve down to mic center
+                // Mobile: curve using curveOffset from agentVoicesMobileLineConfig
                 <AnimatedPath
-                  d={`M ${voiceCurve.x1} ${voiceCurve.y1} C ${voiceCurve.x1} ${voiceCurve.y1 + ((voiceCurve.y2 - voiceCurve.y1) / 2)}, ${voiceCurve.x2} ${voiceCurve.y2 - ((voiceCurve.y2 - voiceCurve.y1) / 2)}, ${voiceCurve.x2} ${voiceCurve.y2}`}
+                  d={`M ${voiceCurve.x1} ${voiceCurve.y1} C ${voiceCurve.x1 + (voiceCurve.curveOffset ?? 50)} ${voiceCurve.y1}, ${voiceCurve.x2 - (voiceCurve.curveOffset ?? 50)} ${voiceCurve.y2}, ${voiceCurve.x2} ${voiceCurve.y2}`}
                   stroke="black"
                   strokeWidth={3}
                   fill="none"
