@@ -2,6 +2,7 @@
 
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { useEffect, useState } from 'react'
 
 export interface Translations {
   // Navigation
@@ -785,6 +786,8 @@ interface LanguageStore {
   translations: Translations
   setLanguage: (lang: Language) => void
   t: (key: string) => string
+  hasHydrated: boolean
+  setHasHydrated: (state: boolean) => void
 }
 
 export const useLanguage = create<LanguageStore>()(
@@ -792,6 +795,8 @@ export const useLanguage = create<LanguageStore>()(
     (set, get) => ({
       language: 'ro',
       translations: romanianTranslations,
+      hasHydrated: false,
+      setHasHydrated: (state: boolean) => set({ hasHydrated: state }),
       setLanguage: (lang: Language) => {
         const translations = lang === 'ro' ? romanianTranslations : englishTranslations
         set({ language: lang, translations })
@@ -810,6 +815,21 @@ export const useLanguage = create<LanguageStore>()(
     }),
     {
       name: 'kalina-language',
+      skipHydration: true,
     }
   )
 )
+
+// Hook to handle hydration properly
+export const useHydration = () => {
+  const [hasHydrated, setHasHydrated] = useState(false)
+  const { setHasHydrated: setStoreHydrated } = useLanguage()
+
+  useEffect(() => {
+    useLanguage.persist.rehydrate()
+    setHasHydrated(true)
+    setStoreHydrated(true)
+  }, [setStoreHydrated])
+
+  return hasHydrated
+}

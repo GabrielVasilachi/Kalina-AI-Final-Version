@@ -3,11 +3,24 @@
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { NavigationHeader } from '@/components/layout/NavigationHeader'
 import { SmoothScrollContextProvider } from '@/components/providers/SmoothScrollContextProvider'
-import { useLanguage } from '@/lib/i18n'
+import { useLanguage, useHydration } from '@/lib/i18n'
 
 export default function PricingPage() {
   const { t } = useLanguage()
   const { ref, classes, isVisible } = useScrollAnimationReveal('up')
+  const hasHydrated = useHydration()
+
+  // Show loading state until hydrated
+  if (!hasHydrated) {
+    return (
+      <SmoothScrollContextProvider>
+        <NavigationHeader />
+        <div className="pt-20 min-h-screen flex items-center justify-center">
+          <div className="animate-pulse text-xl">Loading...</div>
+        </div>
+      </SmoothScrollContextProvider>
+    )
+  }
 
   const plans = [
     {

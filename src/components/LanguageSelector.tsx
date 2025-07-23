@@ -1,11 +1,22 @@
 'use client'
 
-import { useLanguage, Language } from '@/lib/i18n'
+import { useLanguage, useHydration, Language } from '@/lib/i18n'
 import { useState } from 'react'
 
 export function LanguageSelector() {
   const { language, setLanguage } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
+  const hasHydrated = useHydration()
+
+  // Don't render until hydrated to prevent hydration mismatch
+  if (!hasHydrated) {
+    return (
+      <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+        <span className="text-lg">🇷🇴</span>
+        <span className="text-sm font-medium text-white hidden sm:block">Loading...</span>
+      </div>
+    )
+  }
 
   const languages = [
     { code: 'ro' as Language, name: 'Română', flag: '🇷🇴' },

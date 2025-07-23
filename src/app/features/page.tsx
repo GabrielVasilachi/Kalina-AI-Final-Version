@@ -1,8 +1,25 @@
+'use client'
+
 import { BasicPageLayout } from '@/components/BasicPageLayout'
-import { useLanguage } from '@/lib/i18n'
+import { useLanguage, useHydration } from '@/lib/i18n'
 
 export default function FeaturesPage() {
   const { t } = useLanguage()
+  const hasHydrated = useHydration()
+
+  // Show loading state until hydrated
+  if (!hasHydrated) {
+    return (
+      <BasicPageLayout
+        title="Features"
+        description="Discover our advanced features"
+      >
+        <div className="max-w-6xl mx-auto text-center py-20">
+          <div className="animate-pulse">Loading...</div>
+        </div>
+      </BasicPageLayout>
+    )
+  }
   
   return (
     <BasicPageLayout

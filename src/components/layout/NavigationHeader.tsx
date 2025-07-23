@@ -71,14 +71,14 @@ export function NavigationHeader() {
         ? ' glass border-b border-neutral-200/20' 
         : ' bg-transparent border-b border-transparent')
     } style={{overflow: 'visible'}}>
-      <div className="container-width relative z-50">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className={`text-2xl font-bold magnetic-hover text-shimmer animate-gradient transition-colors duration-300 ml-4 md:ml-0 ${
+      <div className="max-w-7xl mx-auto px-4 relative z-50">
+        <div className="flex items-center justify-between h-20">
+          <Link href="/" className={`text-2xl font-bold magnetic-hover text-shimmer animate-gradient transition-colors duration-300 whitespace-nowrap ${
             isOverDemo ? 'text-white' : 'text-brand-400'
           }`}>
             Kalina AI
           </Link>
-          <nav className="hidden md:flex items-center space-x-8 z-[100]">
+          <nav className="hidden xl:flex items-center gap-x-8 z-[100] whitespace-nowrap">
             {/* PRODUCTS DROPDOWN */}
             <div
               className="relative group/menu"
@@ -331,14 +331,14 @@ export function NavigationHeader() {
           </nav>
           
           {/* Desktop CTA & Sign in Buttons */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden xl:flex items-center gap-x-8 border-l border-gray-200/30 pl-8">
             <LanguageSelector />
-            <Link href="https://preview--kallina.lovable.app/auth" className="btn-secondary px-6 py-2 rounded-lg font-semibold border border-black text-black bg-white hover:bg-blue-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200">
+            <Link href="https://preview--kallina.lovable.app/auth" className="btn-secondary btn-responsive whitespace-nowrap">
               {t('nav.signIn')}
             </Link>
-            <button className="btn-primary btn-magnetic animate-pulse-glow">
+            <Link href="/getting-started" className="btn-primary btn-magnetic btn-responsive animate-pulse-glow whitespace-nowrap">
               {t('nav.getStarted')}
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Burger Menu Button */}
@@ -347,7 +347,7 @@ export function NavigationHeader() {
               console.log('Burger clicked, current state:', isMobileMenuOpen);
               setIsMobileMenuOpen(!isMobileMenuOpen);
             }}
-            className={`md:hidden relative z-[10000] w-10 h-10 flex flex-col justify-center items-center transition-all duration-300 border-2 border-transparent hover:border-brand-300/30 rounded mr-4 ${
+            className={`xl:hidden relative z-[10000] w-10 h-10 flex flex-col justify-center items-center transition-all duration-300 border-2 border-transparent hover:border-brand-300/30 rounded mr-4 ${
               isOverDemo ? 'text-white' : 'text-brand-400'
             }`}
             aria-label="Toggle mobile menu"
@@ -367,7 +367,7 @@ export function NavigationHeader() {
 
         {/* Mobile Navigation Menu - Full Featured */}
         {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-x-0 bg-white shadow-lg z-[9998] border-t overflow-y-auto" style={{ top: '64px', maxHeight: 'calc(100vh - 64px)' }}>
+          <div className="xl:hidden fixed inset-x-0 bg-white shadow-lg z-[9998] border-t overflow-y-auto" style={{ top: '80px', maxHeight: 'calc(100vh - 80px)' }}>
             <nav className="p-4">
               <div className="space-y-1">
                 {/* PRODUCTS DROPDOWN */}
@@ -586,17 +586,18 @@ export function NavigationHeader() {
                 <div className="pt-4 space-y-3">
                   <Link 
                     href="https://preview--kallina.lovable.app/auth"
-                    className="w-full block text-center border border-black text-black bg-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+                    className="w-full block text-center border-2 border-black text-black bg-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-200 mobile-nav-button"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {t('nav.signIn')}
                   </Link>
-                  <button 
-                    className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors btn-magnetic animate-pulse-glow"
+                  <Link 
+                    href="/getting-started"
+                    className="w-full block text-center bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-800 transition-colors mobile-nav-button"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {t('nav.getStarted')}
-                  </button>
+                  </Link>
                 </div>
               </div>
             </nav>

@@ -107,16 +107,25 @@ export function HeroSection() {
               initial="hidden"
               animate={buttonsReveal.isVisible ? "visible" : "hidden"}
             >
-              <motion.button variants={childVariants} className="btn-primary btn-magnetic flex items-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4 animate-pulse-glow">
-                {t('hero.ctaButton')}
-                <span className="group-hover:translate-x-1 transition-transform duration-300"></span>
-              </motion.button>
+              <motion.div variants={childVariants}>
+                <a
+                  href="/getting-started"
+                  className="btn-primary btn-magnetic flex items-center justify-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4 animate-pulse-glow w-full sm:w-auto whitespace-nowrap"
+                >
+                  {t('hero.ctaButton')}
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+              </motion.div>
               <motion.div variants={childVariants}>
                 <a
                   href="https://preview--kallina.lovable.app/auth"
-                  className="btn-secondary btn-magnetic flex items-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4"
+                  className="btn-secondary btn-magnetic flex items-center justify-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto whitespace-nowrap"
                 >
-                  <span className="group-hover:scale-110 transition-transform duration-300"></span>
+                  <svg className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
                   {t('nav.signIn')}
                 </a>
               </motion.div>

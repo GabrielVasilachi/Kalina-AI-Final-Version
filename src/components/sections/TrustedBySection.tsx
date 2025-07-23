@@ -108,9 +108,12 @@ export function TrustedBySection() {
           <p className="text-gray-600 mb-6">
             {t('cta.title')}
           </p>
-          <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200">
+          <a
+            href="/getting-started"
+            className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
+          >
             {t('common.getStarted')}
-          </button>
+          </a>
         </div>
       </div>
     </section>

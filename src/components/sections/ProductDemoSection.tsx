@@ -1133,9 +1133,12 @@ export function ProductDemoSection() {
                 <p className="text-gray-600 mb-6">
                   Calendar AI inteligent, orchestrare campanii, automatizare programări. Încearcă acum!
                 </p>
-                <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200">
+                <a
+                  href="/calendar-ai"
+                  className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
+                >
                   Programează cu AI
-                </button>
+                </a>
               </div>
             </div>
           </div>

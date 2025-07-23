@@ -58,10 +58,15 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
                     {body}
                   </p>
                   
-                  <button className="btn-secondary btn-magnetic group inline-flex items-center gap-2">
+                  <a 
+                    href="/features"
+                    className="btn-secondary btn-magnetic group inline-flex items-center gap-2"
+                  >
                     Află mai multe
-                    <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-110"></span>
-                  </button>
+                    <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
@@ -155,10 +160,15 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
                 {body}
               </p>
               
-              <button className="btn-secondary btn-magnetic group inline-flex items-center gap-2">
+              <a 
+                href="/features"
+                className="btn-secondary btn-magnetic group inline-flex items-center gap-2"
+              >
                 Află mai multe
-                <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-110"></span>
-              </button>
+                <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

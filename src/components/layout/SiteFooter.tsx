@@ -48,37 +48,37 @@ export function SiteFooter() {
     {
       title: "Product",
       links: [
-        { name: "Features" },
-        { name: "Pricing" },
-        { name: "Demo" },
-        { name: "API" }
+        { name: "Features", href: "/features" },
+        { name: "Pricing", href: "/pricing" },
+        { name: "Demo", href: "/demo" },
+        { name: "API", href: "/api-documentation" }
       ]
     },
     {
       title: "Company", 
       links: [
-        { name: "About" },
-        { name: "Careers" },
-        { name: "Contact" },
-        { name: "Blog" }
+        { name: "About", href: "/company" },
+        { name: "Careers", href: "/company" },
+        { name: "Contact", href: "/support" },
+        { name: "Blog", href: "/blog" }
       ]
     },
     {
       title: "Support",
       links: [
-        { name: "Documentation" },
-        { name: "Help Center" },
-        { name: "Status" },
-        { name: "Community" }
+        { name: "Documentation", href: "/api-documentation" },
+        { name: "Help Center", href: "/support" },
+        { name: "Status", href: "/support" },
+        { name: "Community", href: "/community" }
       ]
     }
   ]
 
   const socialLinks = [
-    { name: "Twitter", url: "#" },
-    { name: "LinkedIn", url: "#" },
-    { name: "GitHub", url: "#" },
-    { name: "Discord", url: "#" }
+    { name: "Twitter", url: "https://twitter.com/kalina_ai" },
+    { name: "LinkedIn", url: "https://linkedin.com/company/kalina-ai" },
+    { name: "GitHub", url: "https://github.com/kalina-ai" },
+    { name: "Discord", url: "https://discord.gg/kalina-ai" }
   ]
       // id="demo" 
       // ref={sectionRef}
@@ -107,10 +107,16 @@ export function SiteFooter() {
                 <a
                   key={index}
                   href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-8 h-8 md:w-10 md:h-10 glass-card rounded-lg flex items-center justify-center magnetic-hover group transition-all duration-300 hover:scale-110"
                   title={social.name}
                 >
-                  <span className="group-hover:scale-125 transition-transform duration-300">
+                  <span className="group-hover:scale-125 transition-transform duration-300 text-brand-100">
+                    {social.name === 'Twitter' && '𝕏'}
+                    {social.name === 'LinkedIn' && 'in'}
+                    {social.name === 'GitHub' && '⌘'}
+                    {social.name === 'Discord' && '💬'}
                   </span>
                 </a>
               ))}
@@ -136,10 +142,11 @@ export function SiteFooter() {
                   {section.links.map((link, linkIndex) => (
                     <a
                       key={linkIndex}
-                      href="#"
-                      className="flex items-center space-x-2 text-xs md:text-sm text-brand-100 hover:text-brand-100 transition-all duration-300 magnetic-hover group"
+                      href={link.href}
+                      className="flex items-center space-x-2 text-xs md:text-sm text-brand-100 hover:text-white transition-all duration-300 magnetic-hover group"
                     >
                       <span className="group-hover:scale-110 transition-transform duration-300">
+                        •
                       </span>
                       <span className="group-hover:translate-x-1 transition-transform duration-300">
                         {link.name}
@@ -163,13 +170,13 @@ export function SiteFooter() {
               &copy; 2024 Kalina AI. All rights reserved.
             </p>
             <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 md:space-x-6 text-xs">
-              <a href="#" className="text-brand-100 hover:text-brand-100 transition-colors magnetic-hover">
+              <a href="/legal-services-ai" className="text-brand-100 hover:text-white transition-colors magnetic-hover">
                 Privacy Policy
               </a>
-              <a href="#" className="text-brand-100 hover:text-brand-100 transition-colors magnetic-hover">
+              <a href="/legal-services-ai" className="text-brand-100 hover:text-white transition-colors magnetic-hover">
                 Terms of Service
               </a>
-              <a href="#" className="text-brand-100 hover:text-brand-100 transition-colors magnetic-hover">
+              <a href="/legal-services-ai" className="text-brand-100 hover:text-white transition-colors magnetic-hover">
                 Cookie Policy
               </a>
             </div>
