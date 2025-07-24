@@ -117,31 +117,7 @@ export function ProductDemoSection() {
       setAnalysisProgress(100);
     }, 500);
   };
-  // Per-company mobile line config: [{startX, startY, endX, endY, curveOffset}]
-  // You can edit these values for each company index (0,1,2,3)
-  const companyMobileLineConfig = [
-    // Example: Restaurant
-    { startX: 0.5, startY: -1.8, endX: 0.5, endY: -1, curveOffset: 40 },
-    // Example: Clinică
-    { startX: 0.5, startY: -1.8, endX: 0.5, endY: -1, curveOffset: 60 },
-    // Example: Service Auto
-    { startX: 0.5, startY: -1, endX: 0.5, endY: -1, curveOffset: 20 },
-    // Example: Agenție de Turism
-    { startX: 0.5, startY: -1, endX: 0.5, endY: -1, curveOffset: 80 },
-  ];
 
-  // Per-agent voices mobile line config: [{startX, startY, endX, endY, curveOffset}]
-  // You can edit these values for each voice index (0,1,2,3)
-  const agentVoicesMobileLineConfig = [
-    // Example: Lili
-    { startX: 0.5, startY: -2.6, endX: 0.3, endY: -1, curveOffset: 45 },
-    // Example: Eric
-    { startX: 0.5, startY: -2.6, endX: 0.5, endY: -0.5, curveOffset: 25 },
-    // Example: Kalina
-    { startX: 0.5, startY: -2.6, endX: 0.5, endY: -0.5, curveOffset: 25 },
-    // Example: Alexandra
-    { startX: 0.5, startY: -2.6, endX: 0.7, endY: -1, curveOffset: 45 },
-  ];
   // Ref pentru butonul selectat și microfon
   const selectedCompanyRef = useRef<HTMLButtonElement>(null)
   const micRef = useRef<HTMLButtonElement>(null)
@@ -156,13 +132,13 @@ export function ProductDemoSection() {
   };
   const [curve, setCurve] = useState<CompanyCurve | null>(null)
   // No company selected by default
-  const [selectedCompanyLeft, setSelectedCompanyLeft] = useState<number | null>(null)
+  const [selectedCompanyLeft, setSelectedCompanyLeft] = useState<number | null>(null) // No company selected by default
   const selectedVoiceRightRef = useRef<HTMLButtonElement>(null)
   const [voiceCurve, setVoiceCurve] = useState<
     | { x1: number; y1: number; x2: number; y2: number; width: number; height: number; curveOffset?: number }
     | null
   >(null)
-  const [selectedVoiceRight, setSelectedVoiceRight] = useState<number | null>(null)
+  const [selectedVoiceRight, setSelectedVoiceRight] = useState<number | null>(null) // No agent selected by default
   // ...all useState and useRef declarations...
   // ...state declarations...
   // (all useState/useRef declarations go here)
@@ -178,7 +154,7 @@ export function ProductDemoSection() {
   const lastScrollY = useRef<number>(typeof window !== 'undefined' ? window.scrollY : 0);
   const { ref, classes, isVisible } = useScrollAnimationReveal('up')
   const sectionRef = useRef<HTMLElement>(null)
-  // Calculează pozițiile pentru curbă la fiecare selectare sau resize
+  // Calculate curve for selected company option
   useLayoutEffect(() => {
     function updateCurve() {
       if (
@@ -192,15 +168,13 @@ export function ProductDemoSection() {
         const sectionRect = sectionRef.current.getBoundingClientRect();
         const isMobile = window.innerWidth < 640;
         if (isMobile) {
-          // Start from the top center of the company button
-          const cfg = companyMobileLineConfig[selectedCompanyLeft] || companyMobileLineConfig[0];
-          const startX = typeof cfg.startX === 'number' ? cfg.startX : 0.5;
-          const startY = typeof cfg.startY === 'number' ? cfg.startY : 0;
-          const x1 = companyRect.left + companyRect.width * startX - sectionRect.left;
-          const y1 = companyRect.top + companyRect.height * startY - sectionRect.top;
-          // End position (relative to mic button, from config)
-          const x2 = micRect.left + micRect.width * cfg.endX - sectionRect.left;
-          const y2 = micRect.top + micRect.height * cfg.endY - sectionRect.top;
+          // Mobile: Companies start from bottom center
+          // Start from bottom center of company button, offset by +3
+          const x1 = companyRect.left + companyRect.width * 0.5 - sectionRect.left - 7;
+          const y1 = companyRect.bottom - sectionRect.top - 160;
+          // End at center of microphone, offset by +3, move up by 30px, then even more up by 100px, then 30px more up
+          const x2 = micRect.left + micRect.width * 0.5 - sectionRect.left - 7;
+          const y2 = micRect.top + micRect.height * 0.5 - sectionRect.top - 190;
           setCurve({
             x1,
             y1,
@@ -208,20 +182,42 @@ export function ProductDemoSection() {
             y2,
             width: sectionRect.width,
             height: sectionRect.height,
-            curveOffset: cfg.curveOffset
+            curveOffset: 50 // Default curve offset
           });
         } else {
-          // Desktop: start and end line higher above the company button
-          const micInset = 34;
-          const y1Offset = 74; // raise the start point by 74px
-          const y2Offset = 74; // raise the end point by 74px
+          // Desktop: Center-to-center line positioning
+          console.log('Desktop mode - calculating center-to-center positions');
+          
+          // Calculate absolute center of company button
+          const companyX = companyRect.left + (companyRect.width / 2);
+          const companyY = companyRect.top + (companyRect.height / 2);
+          
+          // Calculate absolute center of microphone
+          const micX = micRect.left + (micRect.width / 2);
+          const micY = micRect.top + (micRect.height / 2);
+          
+          // Convert to relative coordinates within section
+          const x1 = companyX - sectionRect.left + 50;
+          const y1 = companyY - sectionRect.top - 140;
+          const x2 = micX - sectionRect.left - 120;
+          const y2 = micY - sectionRect.top - 140;
+          
+          console.log('Desktop curve calculation:', {
+            selectedCompanyLeft,
+            companyButton: { x: companyX, y: companyY, rect: companyRect },
+            microphone: { x: micX, y: micY, rect: micRect },
+            section: { left: sectionRect.left, top: sectionRect.top },
+            finalCoords: { x1, y1, x2, y2 }
+          });
+          
           setCurve({
-            x1: companyRect.right - sectionRect.left,
-            y1: companyRect.top - sectionRect.top - y1Offset,
-            x2: micRect.left - sectionRect.left + micInset,
-            y2: micRect.top + micRect.height / 2 - sectionRect.top - y2Offset,
+            x1,
+            y1,
+            x2,
+            y2,
             width: sectionRect.width,
-            height: sectionRect.height
+            height: sectionRect.height,
+            curveOffset: 50
           });
         }
       } else {
@@ -339,17 +335,47 @@ export function ProductDemoSection() {
         const isMobile = window.innerWidth < 640;
         
         if (isMobile) {
-          // Use the agent voices mobile line configuration
-          const cfg = agentVoicesMobileLineConfig[selectedVoiceRight] || agentVoicesMobileLineConfig[0];
-          const startX = typeof cfg.startX === 'number' ? cfg.startX : 0.5;
-          const startY = typeof cfg.startY === 'number' ? cfg.startY : 0;
+          // Mobile: Agents start from top center
+          // Start from top center of agent voice button, offset by +3
+          const x1 = voiceRect.left + voiceRect.width * 0.5 - sectionRect.left - 7;
+          const y1 = voiceRect.top - sectionRect.top - 150;
+          // End at center of microphone, offset by +3, move up by 30px, then even more up by 100px, then 30px more up
+          const x2 = micRect.left + micRect.width * 0.5 - sectionRect.left - 7;
+          const y2 = micRect.top + micRect.height * 0.5 - sectionRect.top - 140;
+          setVoiceCurve({
+            x1,
+            y1,
+            x2,
+            y2,
+            width: sectionRect.width,
+            height: sectionRect.height,
+            curveOffset: 50 // Default curve offset
+          });
+        } else {
+          // Desktop: Center-to-center line positioning
+          console.log('Desktop mode - calculating voice center-to-center positions');
           
-          const x1 = voiceRect.left + voiceRect.width * startX - sectionRect.left;
-          const y1 = voiceRect.top + voiceRect.height * startY - sectionRect.top;
+          // Calculate absolute center of voice button
+          const voiceX = voiceRect.left + (voiceRect.width / 2);
+          const voiceY = voiceRect.top + (voiceRect.height / 2);
           
-          // End position (relative to mic button, from config)
-          const x2 = micRect.left + micRect.width * cfg.endX - sectionRect.left;
-          const y2 = micRect.top + micRect.height * cfg.endY - sectionRect.top;
+          // Calculate absolute center of microphone
+          const micX = micRect.left + (micRect.width / 2);
+          const micY = micRect.top + (micRect.height / 2);
+          
+          // Convert to relative coordinates within section
+          const x1 = voiceX - sectionRect.left - 40;
+          const y1 = voiceY - sectionRect.top - 150;
+          const x2 = micX - sectionRect.left + 120;
+          const y2 = micY - sectionRect.top - 140;
+
+          console.log('Desktop voice curve calculation:', {
+            selectedVoiceRight,
+            voiceButton: { x: voiceX, y: voiceY, rect: voiceRect },
+            microphone: { x: micX, y: micY, rect: micRect },
+            section: { left: sectionRect.left, top: sectionRect.top },
+            finalCoords: { x1, y1, x2, y2 }
+          });
           
           setVoiceCurve({
             x1,
@@ -358,20 +384,7 @@ export function ProductDemoSection() {
             y2,
             width: sectionRect.width,
             height: sectionRect.height,
-            curveOffset: cfg.curveOffset
-          });
-        } else {
-          // Desktop: start and end line higher above the agent voice button
-          const micInset = 34;
-          const y1Offset = 74; // raise the start point by 74px
-          const y2Offset = 74; // raise the end point by 74px
-          setVoiceCurve({
-            x1: voiceRect.left - sectionRect.left,
-            y1: voiceRect.top - sectionRect.top - y1Offset,
-            x2: micRect.right - sectionRect.left - micInset,
-            y2: micRect.top + micRect.height / 2 - sectionRect.top - y2Offset,
-            width: sectionRect.width,
-            height: sectionRect.height
+            curveOffset: 50
           });
         }
       } else {
@@ -429,14 +442,14 @@ export function ProductDemoSection() {
               : 'opacity-0 -translate-x-full absolute inset-0 pointer-events-none'
           }`}
         >
-        <div className="relative bg-gray-100 py-8 md:py-10">
+        <div className="relative bg-gray-200 py-8 md:py-10">
           {/* Top white to gray fade overlay */}
           <div className="absolute left-0 top-0 w-full h-24 pointer-events-none z-0 border-none" style={{
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.99) 0%, rgba(243,244,246,1) 100%)',
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.99) 0%, rgba(229,231,235,1) 100%)',
           }} />
           {/* Bottom blur/fade overlay */}
           <div className="absolute left-0 bottom-0 w-full h-24 pointer-events-none z-0 border-none" style={{
-            background: 'linear-gradient(to top, rgba(255,255,255,0.99) 0%, rgba(243,244,246,1) 100%)',
+            background: 'linear-gradient(to top, rgba(255,255,255,0.99) 0%, rgba(229,231,235,1) 100%)',
           }} />
           <div ref={ref} style={{ position: 'relative' }}>
         {/* SVG lines moved below content to avoid interfering with text */}
@@ -552,7 +565,9 @@ export function ProductDemoSection() {
                       className={`px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full border-2 transition-all duration-200 font-medium text-xs sm:text-sm md:text-base ${
                         selectedCompanyLeft === idx
                           ? 'bg-black text-white border-black'
-                          : 'bg-white text-black border-gray-300 hover:border-gray-400'
+                          : selectedCompanyLeft === null
+                            ? 'bg-white text-black border-gray-300 hover:border-gray-400 opacity-70'
+                            : 'bg-white text-black border-gray-300 hover:border-gray-400'
                       }`}
                       style={{ minWidth: '80px', textAlign: 'center', position: 'relative', zIndex: 10 }}
                     >
@@ -584,7 +599,9 @@ export function ProductDemoSection() {
                       className={`px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full border-2 transition-all duration-200 font-medium text-xs sm:text-sm md:text-base ${
                         selectedVoiceRight === index 
                           ? 'bg-black text-white border-black' 
-                          : 'bg-white text-black border-gray-300 hover:border-gray-400'
+                          : selectedVoiceRight === null
+                            ? 'bg-white text-black border-gray-300 hover:border-gray-400 opacity-70'
+                            : 'bg-white text-black border-gray-300 hover:border-gray-400'
                       }`}
                       style={{ minWidth: '80px', textAlign: 'center', position: 'relative', zIndex: 10 }}
                     >
