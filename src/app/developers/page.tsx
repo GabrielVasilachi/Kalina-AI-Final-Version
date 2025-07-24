@@ -133,7 +133,7 @@ call = agent.start_call(
 
           <div className="border border-gray-200 rounded-xl p-6 text-center hover:border-black transition-all">
             <div className="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-2xl">🐍</span>
+              <span className="text-2xl">◈</span>
             </div>
             <h3 className="font-semibold mb-2">Python</h3>
             <p className="text-sm text-gray-600 mb-4">pip package</p>
@@ -144,7 +144,7 @@ call = agent.start_call(
 
           <div className="border border-gray-200 rounded-xl p-6 text-center hover:border-black transition-all">
             <div className="w-16 h-16 bg-red-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-2xl">💎</span>
+              <span className="text-2xl">◊</span>
             </div>
             <h3 className="font-semibold mb-2">Ruby</h3>
             <p className="text-sm text-gray-600 mb-4">gem package</p>
@@ -155,7 +155,7 @@ call = agent.start_call(
 
           <div className="border border-gray-200 rounded-xl p-6 text-center hover:border-black transition-all">
             <div className="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-2xl">📱</span>
+              <span className="text-2xl">◎</span>
             </div>
             <h3 className="font-semibold mb-2">Mobile</h3>
             <p className="text-sm text-gray-600 mb-4">iOS & Android</p>

@@ -116,7 +116,7 @@ export function SiteFooter() {
                     {social.name === 'Twitter' && '𝕏'}
                     {social.name === 'LinkedIn' && 'in'}
                     {social.name === 'GitHub' && '⌘'}
-                    {social.name === 'Discord' && '💬'}
+                    {social.name === 'Discord' && '◉'}
                   </span>
                 </a>
               ))}

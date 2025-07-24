@@ -122,7 +122,7 @@ export function FrequentlyAskedQuestions() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
         }`}>
           <div className="glass-card rounded-2xl p-8 max-w-md mx-auto magnetic-hover">
-            <div className="text-4xl mb-4">💬</div>
+            <div className="text-4xl mb-4">◉</div>
             <h3 className="text-xl font-semibold text-brand-100 mb-2 text-glow">
               Încă ai întrebări?
             </h3>

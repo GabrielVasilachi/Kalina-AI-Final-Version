@@ -9,19 +9,19 @@ export function HowItWorksSection() {
       number: "01",
       title: "Conectează-te",
       description: "Începe un apel cu infrastructura noastră cu latență ultra-redusă",
-      icon: "🔗"
+      icon: "◉"
     },
     {
       number: "02", 
       title: "Procesare inteligentă",
       description: "AI-ul nostru analizează și optimizează calitatea audio în timp real, pentru o experiență impecabilă.",
-      icon: "⚙️"
+      icon: "◎"
     },
     {
       number: "03",
       title: "Conversează natural", 
       description: "Bucură-te de conversații fluide și clare, oriunde în lume, asistate de inteligență artificială.",
-      icon: "💬"
+      icon: "◈"
     }
   ]
 

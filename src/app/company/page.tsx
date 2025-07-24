@@ -12,25 +12,25 @@ export default function CompanyPage() {
       name: "Alex Popescu",
       role: "CEO & Co-Founder",
       bio: "Expert în AI cu peste 15 ani experiență în telecomunicații",
-      image: "👨‍💼"
+      image: "CEO"
     },
     {
       name: "Maria Ionescu", 
       role: "CTO & Co-Founder",
       bio: "Pionier în procesarea audio AI, fost Google Research",
-      image: "👩‍💻"
+      image: "CTO"
     },
     {
       name: "Andrei Georgescu",
       role: "Head of Engineering",
       bio: "Architect software cu experiență în sisteme distribuite",
-      image: "👨‍🔧"
+      image: "ENG"
     },
     {
       name: "Elena Mihai",
       role: "Head of Product",
       bio: "Product leader cu focus pe experiența utilizatorului",
-      image: "👩‍🎨"
+      image: "PD"
     }
   ]
 
@@ -190,17 +190,17 @@ export default function CompanyPage() {
                   {
                     title: "Inovație",
                     description: "Căutăm constant să depășim limitele tehnologiei AI",
-                    icon: "🚀"
+                    icon: "→"
                   },
                   {
                     title: "Transparență", 
                     description: "Comunicăm deschis cu utilizatorii și partenerii noștri",
-                    icon: "💎"
+                    icon: "◊"
                   },
                   {
                     title: "Excelență",
                     description: "Standardele noastre înalte se reflectă în fiecare produs",
-                    icon: "⭐"
+                    icon: "★"
                   }
                 ].map((value, index) => (
                   <div 

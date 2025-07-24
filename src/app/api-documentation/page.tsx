@@ -75,7 +75,7 @@ export default function APIDocumentationPage() {
                 </code>
               </div>
               <p className="text-xs text-gray-500 mt-2">
-                ⚠️ Nu expune niciodată API key-ul în cod client-side
+                ⚠ Nu expune niciodată API key-ul în cod client-side
               </p>
             </div>
           </div>

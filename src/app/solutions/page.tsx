@@ -18,14 +18,14 @@ export default function SolutionsPage() {
     {
       title: "Remote Work",
       description: "Soluții pentru echipe remote și hibride",
-      icon: "💻",
+      icon: "◎",
       benefits: ["Conferințe claire", "Colaborare seamless", "Securitate avansată"],
       industries: ["Tech", "Consulting", "Educație"]
     },
     {
       title: "Healthcare",
       description: "Comunicații sigure pentru domeniul medical",
-      icon: "🏥",
+      icon: "◉",
       benefits: ["Conformitate HIPAA", "Criptare end-to-end", "Înregistrări securizate"],
       industries: ["Spitale", "Clinici", "Telemedicină"]
     }

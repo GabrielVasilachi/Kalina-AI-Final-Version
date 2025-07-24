@@ -12,15 +12,15 @@ export function LanguageSelector() {
   if (!hasHydrated) {
     return (
       <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-gray-400">
-        <span className="text-lg">🇷🇴</span>
+        <span className="text-lg">RO</span>
         <span className="text-sm font-medium text-white hidden sm:block">Loading...</span>
       </div>
     )
   }
 
   const languages = [
-    { code: 'ro' as Language, name: 'Română', flag: '🇷🇴' },
-    { code: 'en' as Language, name: 'English', flag: '🇺🇸' }
+    { code: 'ro' as Language, name: 'Română', flag: 'RO' },
+    { code: 'en' as Language, name: 'English', flag: 'EN' }
   ]
 
   const currentLanguage = languages.find(lang => lang.code === language)

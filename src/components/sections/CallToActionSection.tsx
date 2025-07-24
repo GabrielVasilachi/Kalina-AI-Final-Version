@@ -124,7 +124,7 @@ export function CallToActionSection() {
             <p className={`text-xs md:text-sm text-brand-300 transition-all duration-700 delay-800 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
-              <span className="text-shimmer">🔥 Limited time:</span> Get 50% off your first 3 months
+              <span className="text-shimmer">▲ Limited time:</span> Get 50% off your first 3 months
             </p>
           </div>
         </div>
