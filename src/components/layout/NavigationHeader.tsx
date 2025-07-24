@@ -3,9 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '../../lib/i18n'
+
 import { LanguageSelector } from '../LanguageSelector'
 
-export function NavigationHeader() {
+type NavigationHeaderProps = {
+  logoPosition?: 'left' | 'center' | 'right';
+}
+
+export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProps) {
   const { t } = useLanguage()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOverDemo, setIsOverDemo] = useState(false)
@@ -71,14 +76,18 @@ export function NavigationHeader() {
         ? ' glass border-b border-neutral-200/20' 
         : ' bg-transparent border-b border-transparent')
     } style={{overflow: 'visible'}}>
-      <div className="max-w-7xl mx-auto px-4 relative z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-50">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className={`text-2xl font-bold magnetic-hover text-shimmer animate-gradient transition-colors duration-300 whitespace-nowrap ${
-            isOverDemo ? 'text-white' : 'text-brand-400'
-          }`}>
-            Kalina AI
-          </Link>
-          <nav className="hidden xl:flex items-center gap-x-8 z-[100] whitespace-nowrap">
+          <div className="flex items-center">
+            <Link
+              href="/"
+              className={`text-2xl font-bold magnetic-hover text-shimmer animate-gradient transition-colors duration-300 whitespace-nowrap mr-12 ${
+                isOverDemo ? 'text-white' : 'text-brand-400'
+              }`}
+            >
+              Kalina AI
+            </Link>
+            <nav className="hidden xl:flex items-center gap-x-8 z-[100] whitespace-nowrap">
             {/* PRODUCTS DROPDOWN */}
             <div
               className="relative group/menu"
@@ -328,10 +337,11 @@ export function NavigationHeader() {
               {t('nav.company')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
             </Link>
-          </nav>
+            </nav>
+          </div>
           
           {/* Desktop CTA & Sign in Buttons */}
-          <div className="hidden xl:flex items-center gap-x-8 border-l border-gray-200/30 pl-8">
+          <div className="hidden xl:flex items-center gap-x-4 ml-auto">
             <LanguageSelector />
             <Link href="https://preview--kallina.lovable.app/auth" className="btn-secondary btn-responsive whitespace-nowrap">
               {t('nav.signIn')}

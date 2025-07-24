@@ -11,7 +11,7 @@ export function LanguageSelector() {
   // Don't render until hydrated to prevent hydration mismatch
   if (!hasHydrated) {
     return (
-      <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+      <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-gray-400">
         <span className="text-lg">🇷🇴</span>
         <span className="text-sm font-medium text-white hidden sm:block">Loading...</span>
       </div>
@@ -29,15 +29,15 @@ export function LanguageSelector() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-gray-400 hover:bg-white/20 transition-all duration-200"
         aria-label="Selectează limba"
       >
         <span className="text-lg">{currentLanguage?.flag}</span>
-        <span className="text-sm font-medium text-white hidden sm:block">
+        <span className="text-sm font-medium text-gray-950 hidden sm:block">
           {currentLanguage?.name}
         </span>
         <svg 
-          className={`w-4 h-4 text-white transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 text-gray-950 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ export function LanguageSelector() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 min-w-[140px] z-50">
+        <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-400 min-w-[140px] z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}
@@ -56,7 +56,7 @@ export function LanguageSelector() {
                 setIsOpen(false)
               }}
               className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg ${
-                lang.code === language ? 'bg-blue-50 text-blue-700' : 'text-gray-700'
+                lang.code === language ? 'bg-white/20 text-gray-950 border border-gray-400' : 'text-gray-700'
               }`}
             >
               <span className="text-lg">{lang.flag}</span>

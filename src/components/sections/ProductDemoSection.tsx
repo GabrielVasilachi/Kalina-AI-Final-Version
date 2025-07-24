@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+import { useLanguage } from '@/lib/i18n'
 
 type AnimatedPathProps = {
   d: string;
@@ -41,14 +42,22 @@ const AnimatedPath: React.FC<AnimatedPathProps> = ({ d, stroke, strokeWidth, fil
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 
 import { useState, useEffect, useRef, useLayoutEffect } from 'react'
-import { io, Socket } from 'socket.io-client'
-
-// Backend server configuration - Updated to use correct port
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8081'
 
 
 export function ProductDemoSection() {
-  const [activeTab, setActiveTab] = useState<'conversation' | 'calendar'>('conversation');
+  const [activeTab, setActiveTab] = useState<'conversation' | 'calendar' | 'magicbutton'>('conversation');
+  const { t } = useLanguage();
+  
+  // Magic Button specific state
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [analysisProgress, setAnalysisProgress] = useState(0);
+  const [analysisSteps, setAnalysisSteps] = useState([
+    { id: 1, text: 'Analizez istoricul conversațiilor', completed: false, current: false },
+    { id: 2, text: 'Identific patternuri și tendințe', completed: false, current: false },
+    { id: 3, text: 'Segmentez contactele', completed: false, current: false },
+    { id: 4, text: 'Generez campanii personalizate', completed: false, current: false },
+    { id: 5, text: 'Optimizez timing și mesaje', completed: false, current: false }
+  ]);
   
   // Calendar-specific state
   const [selectedDate, setSelectedDate] = useState(15);
@@ -66,6 +75,47 @@ export function ProductDemoSection() {
       { from: 'user', text: `Aș vrea să reprogramez întâlnirea pentru ${day} iulie.` },
       { from: 'ai', text: `Perfect! Întâlnirea a fost mutată pe ${day} iulie.` }
     ]);
+  };
+
+  // Handle Magic Button AI Analysis
+  const handleMagicButtonClick = async () => {
+    if (isAnalyzing) return;
+    
+    setIsAnalyzing(true);
+    setAnalysisProgress(0);
+    
+    // Reset all steps
+    setAnalysisSteps(steps => steps.map(step => ({ ...step, completed: false, current: false })));
+    
+    // Simulate AI analysis process
+    for (let i = 0; i < analysisSteps.length; i++) {
+      // Mark current step as active
+      setAnalysisSteps(steps => steps.map((step, index) => ({
+        ...step,
+        current: index === i,
+        completed: index < i
+      })));
+      
+      // Simulate processing time (2-4 seconds per step)
+      const processingTime = 2000 + Math.random() * 2000;
+      await new Promise(resolve => setTimeout(resolve, processingTime));
+      
+      // Update progress
+      setAnalysisProgress(((i + 1) / analysisSteps.length) * 100);
+      
+      // Mark step as completed
+      setAnalysisSteps(steps => steps.map((step, index) => ({
+        ...step,
+        current: false,
+        completed: index <= i
+      })));
+    }
+    
+    // Complete the analysis
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      setAnalysisProgress(100);
+    }, 500);
   };
   // Per-company mobile line config: [{startX, startY, endX, endY, curveOffset}]
   // You can edit these values for each company index (0,1,2,3)
@@ -120,25 +170,14 @@ export function ProductDemoSection() {
   const [isRecording, setIsRecording] = useState(false)
   const [audioLevel, setAudioLevel] = useState(0)
   // Removed isHeaderOverDemo state
-  const [isConnecting, setIsConnecting] = useState(false)
-  const [isConnected, setIsConnected] = useState(false)
   const [conversationStatus, setConversationStatus] = useState<string>('')
   const [error, setError] = useState<string>('')
   const [selectedVoice, setSelectedVoice] = useState(0)
   const [selectedVoiceLeft, setSelectedVoiceLeft] = useState(0)
-  const [loadingTimeout, setLoadingTimeout] = useState<NodeJS.Timeout | null>(null)
-  const [socket, setSocket] = useState<Socket | null>(null)
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false)
-  const [isDemoMode, setIsDemoMode] = useState(false)
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
   const lastScrollY = useRef<number>(typeof window !== 'undefined' ? window.scrollY : 0);
   const { ref, classes, isVisible } = useScrollAnimationReveal('up')
   const sectionRef = useRef<HTMLElement>(null)
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
-  const streamRef = useRef<MediaStream | null>(null)
-  const audioContextRef = useRef<AudioContext | null>(null)
-  const analyserRef = useRef<AnalyserNode | null>(null)
-  const animationFrameRef = useRef<number | null>(null)
   // Calculează pozițiile pentru curbă la fiecare selectare sau resize
   useLayoutEffect(() => {
     function updateCurve() {
@@ -192,21 +231,21 @@ export function ProductDemoSection() {
     updateCurve()
     window.addEventListener('resize', updateCurve)
     return () => window.removeEventListener('resize', updateCurve)
-  }, [selectedCompanyLeft, isRecording, isConnected])
-  const conversationIdRef = useRef<string | null>(null)
+  }, [selectedCompanyLeft, isRecording])
 
     // Voice options with exact ElevenLabs voice IDs provided by user
   const voiceOptions = [
-    { id: 'vrlYThSLKW8zkmzKp6HB', name: 'Lili', color: 'from-pink-400 to-rose-500', bgColor: 'bg-gradient-to-br from-pink-400 to-rose-500' },
-    { id: 'cjVigY5qzO86Huf0OWal', name: 'Eric', color: 'from-blue-400 to-indigo-500', bgColor: 'bg-gradient-to-br from-blue-400 to-indigo-500' },
-    { id: 'hnrrfdVZhpEHlvvBppOW', name: 'Kalina', color: 'from-purple-400 to-violet-500', bgColor: 'bg-gradient-to-br from-purple-400 to-violet-500' },
-    { id: 'kdmDKE6EkgrWrrykO9Qt', name: 'Alexandra', color: 'from-yellow-400 to-orange-500', bgColor: 'bg-gradient-to-br from-yellow-400 to-orange-500' },
+    { name: 'Lili'},
+    { name: 'Eric'},
+    { name: 'Kalina'},
+    { name: 'Alexandra'},
   ] as const
+  
   const Companies = [
-    { id: 'vrlYThSLKW8zkmzKp6HB', name: 'Restaurant', color: 'from-pink-400 to-rose-500', bgColor: 'bg-gradient-to-br from-pink-400 to-rose-500' },
-    { id: 'cjVigY5qzO86Huf0OWal', name: 'Clinică', color: 'from-blue-400 to-indigo-500', bgColor: 'bg-gradient-to-br from-blue-400 to-indigo-500' },
-    { id: 'hnrrfdVZhpEHlvvBppOW', name: 'Service Auto', color: 'from-purple-400 to-violet-500', bgColor: 'bg-gradient-to-br from-purple-400 to-violet-500' },
-    { id: 'kdmDKE6EkgrWrrykO9Qt', name: 'Agenție de Turism', color: 'from-yellow-400 to-orange-500', bgColor: 'bg-gradient-to-br from-yellow-400 to-orange-500' },
+    { name: t('companies.restaurant')},
+    { name: t('companies.clinic')},
+    { name: t('companies.autoService')},
+    { name: t('companies.travelAgency')},
   ] as const
 
   // Handle voice selection navigation with smooth animations
@@ -222,41 +261,10 @@ export function ProductDemoSection() {
 
   // Reset function to clear all states
   const resetDemoState = () => {
-    setIsConnecting(false)
-    setIsConnected(false)
     setIsRecording(false)
     setError('')
     setConversationStatus('')
     setAudioLevel(0)
-    setIsAudioPlaying(false)
-    setIsDemoMode(false)
-    conversationIdRef.current = null
-    
-    // Clear any timeouts
-    if (loadingTimeout) {
-      clearTimeout(loadingTimeout)
-      setLoadingTimeout(null)
-    }
-    
-    // Close Socket.IO connection
-    if (socket) {
-      socket.disconnect()
-      setSocket(null)
-    }
-    
-    // Stop all media
-    if (mediaRecorderRef.current) {
-      mediaRecorderRef.current.stop()
-    }
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach(track => track.stop())
-    }
-    if (audioContextRef.current) {
-      audioContextRef.current.close()
-    }
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current)
-    }
   }
 
   useEffect(() => {
@@ -281,420 +289,38 @@ export function ProductDemoSection() {
     }
   }, [])
 
-  // Cleanup effect to prevent stuck loading states
-  useEffect(() => {
-    if (isConnecting) {
-      // Set a maximum loading timeout
-      const timeout = setTimeout(() => {
-        if (isConnecting) {
-          console.warn('Loading timeout reached, resetting state')
-          setIsConnecting(false)
-          setError('Timeout - Aplicația nu răspunde. Încearcă din nou.')
-          setConversationStatus('')
-        }
-      }, 15000) // 15 second maximum loading time
-      
-      setLoadingTimeout(timeout)
-      
-      return () => {
-        if (timeout) {
-          clearTimeout(timeout)
-        }
-      }
-    } else {
-      if (loadingTimeout) {
-        clearTimeout(loadingTimeout)
-        setLoadingTimeout(null)
-      }
-    }
-  }, [isConnecting, loadingTimeout])
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (loadingTimeout) {
-        clearTimeout(loadingTimeout)
-      }
-      if (mediaRecorderRef.current) {
-        mediaRecorderRef.current.stop()
-      }
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach(track => track.stop())
-      }
-      if (audioContextRef.current) {
-        audioContextRef.current.close()
-      }
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
-    }
-  }, [loadingTimeout])
-
   // Removed header overlap effect
 
-  // Backend API functions
-  const startConversationWithBackend = async () => {
-    try {
-      setIsConnecting(true)
-      setError('')
-      setConversationStatus('Conectare la Kalina AI...')
-
-      const selectedVoiceId = voiceOptions[selectedVoice].id
-      console.log(`Starting conversation with voice: ${voiceOptions[selectedVoice].name} (${selectedVoiceId})`)
-
-      // Add timeout to prevent infinite loading
-      const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Connection timeout')), 15000) // 15 second timeout
-      })
-
-      // Start conversation with our backend
-      const fetchPromise = fetch(`${BACKEND_URL}/api/start-conversation`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          voiceId: selectedVoiceId
-        }),
-      })
-
-      const response = await Promise.race([fetchPromise, timeoutPromise])
-
-      if (!(response instanceof Response)) {
-        throw new Error('Invalid response')
-      }
-
-      if (!response.ok) {
-        const errorText = await response.text()
-        throw new Error(`Backend API Error: ${response.status} ${response.statusText} - ${errorText}`)
-      }
-
-      const data = await response.json()
-      conversationIdRef.current = data.conversation_id
-      setIsConnected(true)
-      setIsDemoMode(data.demo_mode || false)
-      setConversationStatus(`Conectat cu ${voiceOptions[selectedVoice].name}! ${data.demo_mode ? '(Mod Demo)' : ''} Vorbește acum...`)
-      
-      // Connect to Socket.IO for real-time communication
-      await connectToBackendSocket(data.conversation_id, selectedVoiceId)
-      
-      console.log('Backend conversation started:', data)
-      return data
-    } catch (error: any) {
-      console.error('Backend connection error:', error)
-      
-      // Handle different types of errors gracefully
-      if (error.message.includes('timeout') || error.message.includes('fetch')) {
-        setError(`Eroare la conectarea cu serverul. Încearcă din nou.`)
-        setConversationStatus('')
-        return null
-      } else {
-        setError('Eroare la conectarea cu Kalina. Încearcă din nou.')
-        setConversationStatus('')
-        return null
-      }
-    } finally {
-      setIsConnecting(false)
-    }
-  }
-
-  const stopConversation = async () => {
-    if (conversationIdRef.current) {
-      try {
-        setConversationStatus('Închidere conversație...')
-        
-        // Disconnect Socket.IO
-        if (socket) {
-          socket.emit('end-conversation')
-          socket.disconnect()
-          setSocket(null)
-        }
-        
-        conversationIdRef.current = null
-        setIsConnected(false)
-        setConversationStatus('')
-        setIsAudioPlaying(false)
-        setIsDemoMode(false)
-        console.log('Kalina AI conversation ended')
-      } catch (error) {
-        console.error('Error ending Kalina AI conversation:', error)
-      }
-    }
-  }
-
-  // Socket.IO connection for real-time conversation
-  const connectToBackendSocket = async (conversationId: string, voiceId: string) => {
-    try {
-      const newSocket = io(BACKEND_URL)
-      
-      newSocket.on('connect', () => {
-        console.log('Connected to backend socket')
-        newSocket.emit('join-conversation', { conversationId, voiceId })
-      })
-
-      newSocket.on('conversation-ready', (data) => {
-        console.log('Conversation ready:', data)
-        setConversationStatus(`Conversație activă cu ${voiceOptions[selectedVoice].name}! ${data.demo_mode ? '(Mod Demo)' : ''}`)
-        setIsDemoMode(data.demo_mode || false)
-      })
-
-      newSocket.on('ai-message', (data) => {
-        console.log('🎵 AI message received:', data.type, 'Demo:', data.demo)
-        
-        if (data.type === 'audio' && data.audio_data) {
-          // Handle audio response - always try to play if audio data is provided
-          console.log('🔊 Playing audio response from', data.agent)
-          handleAIAudioResponse(data.audio_data)
-        } else if (data.type === 'text' || data.demo) {
-          // Handle text response or demo mode
-          console.log('📝 AI text response:', data.message)
-          setIsAudioPlaying(true)
-          setTimeout(() => setIsAudioPlaying(false), 2000) // Simulate audio playback
-        }
-        
-        // Always log the transcript and response for debugging
-        if (data.transcript) {
-          console.log('👂 You said:', data.transcript)
-        }
-        if (data.message) {
-          console.log('🤖 AI replied:', data.message)
-        }
-      })
-
-      newSocket.on('conversation-ended', () => {
-        console.log('Conversation ended by server')
-        setSocket(null)
-        setIsConnected(false)
-      })
-
-      newSocket.on('conversation-error', (data) => {
-        console.error('Conversation error:', data.error)
-        setError('Eroare în conversație. Încearcă din nou.')
-      })
-
-      newSocket.on('disconnect', () => {
-        console.log('Disconnected from backend socket')
-        setSocket(null)
-      })
-
-      setSocket(newSocket)
-      return newSocket
-    } catch (error) {
-      console.error('Error connecting to backend socket:', error)
-      return null
-    }
-  }
-
-  // Handle AI audio response
-  const handleAIAudioResponse = async (audioData: string) => {
-    try {
-      console.log('🎵 Processing audio response, length:', audioData.length)
-      
-      if (!audioContextRef.current) {
-        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
-      }
-
-      // Resume audio context if suspended (required by some browsers)
-      if (audioContextRef.current.state === 'suspended') {
-        await audioContextRef.current.resume()
-        console.log('🔊 Audio context resumed')
-      }
-
-      const binaryString = atob(audioData)
-      const audioArray = new Uint8Array(binaryString.length)
-      for (let i = 0; i < binaryString.length; i++) {
-        audioArray[i] = binaryString.charCodeAt(i)
-      }
-
-      console.log('🎵 Decoding audio buffer, size:', audioArray.byteLength, 'bytes')
-      const audioBuffer = await audioContextRef.current.decodeAudioData(audioArray.buffer)
-      console.log('✅ Audio decoded successfully, duration:', audioBuffer.duration, 'seconds')
-      
-      playAudioBuffer(audioBuffer)
-      
-    } catch (error) {
-      console.error('❌ Error handling AI audio response:', error)
-      // Fallback: show that we're "playing" audio even if it failed
-      setIsAudioPlaying(true)
-      setTimeout(() => setIsAudioPlaying(false), 2000)
-    }
-  }
-
-  // Play audio buffer
-  const playAudioBuffer = (audioBuffer: AudioBuffer) => {
-    if (!audioContextRef.current) {
-      console.error('❌ No audio context available')
-      return
-    }
-    
-    console.log('🔊 Playing audio buffer, duration:', audioBuffer.duration, 'seconds')
-    
-    const source = audioContextRef.current.createBufferSource()
-    source.buffer = audioBuffer
-    source.connect(audioContextRef.current.destination)
-    
-    setIsAudioPlaying(true)
-    
-    source.onended = () => {
-      console.log('✅ Audio playback finished')
-      setIsAudioPlaying(false)
-    }
-    
-    try {
-      source.start()
-      console.log('🎵 Audio playback started')
-    } catch (error) {
-      console.error('❌ Failed to start audio:', error)
-      setIsAudioPlaying(false)
-    }
-  }
-
-  // Send audio to backend
-  const sendAudioToBackend = (audioBlob: Blob) => {
-    console.log('🎤 Sending audio to backend, size:', audioBlob.size, 'socket connected:', socket?.connected)
-    
-    if (socket && socket.connected) {
-      console.log('📡 Socket is connected, processing audio...')
-      const reader = new FileReader()
-      reader.onload = () => {
-        const audioData = new Uint8Array(reader.result as ArrayBuffer)
-        // Convert Uint8Array to base64 string
-        let binary = ''
-        for (let i = 0; i < audioData.byteLength; i++) {
-          binary += String.fromCharCode(audioData[i])
-        }
-        const base64Audio = btoa(binary)
-        
-        console.log('🚀 Emitting send-audio event with data length:', base64Audio.length)
-        socket.emit('send-audio', {
-          audioData: base64Audio
-        })
-      }
-      reader.readAsArrayBuffer(audioBlob)
-    } else {
-      console.log('❌ Socket not connected or not available')
-    }
-  }
-
-  // Audio level monitoring function
-  const monitorAudioLevel = () => {
-    if (analyserRef.current) {
-      const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount)
-      analyserRef.current.getByteFrequencyData(dataArray)
-      
-      // Calculate average volume with higher sensitivity
-      const average = dataArray.reduce((a, b) => a + b) / dataArray.length
-      // Amplify the sensitivity and apply exponential scaling for more dramatic effect
-      const amplified = (average / 64) * 2 // Increased from 128 to 64, doubled multiplier
-      const exponential = Math.pow(amplified, 0.7) // Exponential curve for more dramatic response
-      const normalizedLevel = Math.min(exponential * 1.5, 2) // Allow values up to 2 for stronger effect
-      setAudioLevel(normalizedLevel)
-      
-      if (isRecording) {
-        animationFrameRef.current = requestAnimationFrame(monitorAudioLevel)
-      }
-    }
-  }
-
-  // Handle microphone recording and ElevenLabs integration
+  // Handle demo click - purely visual demo without backend
   const handleDemoClick = async () => {
-    if (!isRecording && !isConnected) {
-      try {
-        // First, start conversation with backend
-        const conversationData = await startConversationWithBackend()
-        if (!conversationData) {
-          return // Error already handled in startConversationWithBackend
-        }
-
-        // Add timeout for microphone access
-        const micTimeout = new Promise((_, reject) => {
-          setTimeout(() => reject(new Error('Microphone access timeout')), 5000) // 5 second timeout
-        })
-
-        const micPromise = navigator.mediaDevices.getUserMedia({ audio: true })
-        
-        setConversationStatus('Solicitare acces microfon...')
-        const stream = await Promise.race([micPromise, micTimeout])
-        
-        if (!(stream instanceof MediaStream)) {
-          throw new Error('Invalid stream')
-        }
-        
-        streamRef.current = stream
-        
-        // Set up audio analysis and real-time streaming
-        if (typeof window !== 'undefined') {
-          audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
-          analyserRef.current = audioContextRef.current.createAnalyser()
-          const source = audioContextRef.current.createMediaStreamSource(stream)
-          source.connect(analyserRef.current)
-          analyserRef.current.fftSize = 512 // Increased from 256 for better frequency resolution
-          analyserRef.current.smoothingTimeConstant = 0.3 // Reduced from default 0.8 for faster response
-        }
-        
-        // Set up MediaRecorder for real-time streaming to AI
-        mediaRecorderRef.current = new MediaRecorder(stream, {
-          mimeType: 'audio/webm;codecs=opus',
-          audioBitsPerSecond: 16000
-        })
-        
-        // Send audio chunks to AI in real-time
-        mediaRecorderRef.current.ondataavailable = (event) => {
-          if (event.data.size > 0 && socket) {
-            sendAudioToBackend(event.data)
-          }
-        }
-        
-        // Start recording with frequent data events (every 100ms)
-        mediaRecorderRef.current.start(100)
-        setIsRecording(true)
-        setConversationStatus(`Conversație în curs cu ${voiceOptions[selectedVoice].name}...`)
-        
-        // Start monitoring audio levels
-        monitorAudioLevel()
-
-        console.log('Recording started with Kalina AI integration')
-      } catch (err: any) {
-        console.error('Demo start error:', err)
-        
-        // Reset states on error
-        setIsConnecting(false)
-        setIsConnected(false)
-        setIsRecording(false)
-        conversationIdRef.current = null
-        
-        if (err.message.includes('timeout')) {
-          setError('Timeout - Aplicația nu răspunde. Încearcă din nou.')
-        } else if (err.message.includes('microphone') || err.message.includes('getUserMedia')) {
-          setError('Eroare la accesarea microfonului. Verifică permisiunile.')
-        } else {
-          setError('Eroare la conectarea cu Kalina AI. Încearcă din nou.')
-        }
-        setConversationStatus('')
-      }
+    if (!isRecording) {
+      // Visual demo mode only
+      setIsRecording(true)
+      setConversationStatus(`Demo vizual cu ${voiceOptions[selectedVoice].name}...`)
+      
+      // Simulate demo conversation
+      setTimeout(() => {
+        setConversationStatus('Simulare ascultare...')
+      }, 1000)
+      
+      setTimeout(() => {
+        setConversationStatus('Simulare răspuns AI...')
+      }, 3000)
+      
+      setTimeout(() => {
+        setConversationStatus('Demo complet!')
+        setTimeout(() => {
+          setIsRecording(false)
+          setConversationStatus('')
+        }, 2000)
+      }, 5000)
+      
     } else {
-      // Stop everything
-      if (mediaRecorderRef.current) {
-        mediaRecorderRef.current.stop()
-      }
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach(track => track.stop())
-      }
-      if (audioContextRef.current) {
-        audioContextRef.current.close()
-      }
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
-      
-      // Stop conversation and Socket.IO
-      await stopConversation()
-      
+      // Stop demo
       setIsRecording(false)
       setAudioLevel(0)
       setError('')
-      setIsAudioPlaying(false)
-      console.log('Recording and Kalina AI conversation stopped')
+      setConversationStatus('')
     }
   }
 
@@ -755,7 +381,7 @@ export function ProductDemoSection() {
     updateVoiceCurve()
     window.addEventListener('resize', updateVoiceCurve)
     return () => window.removeEventListener('resize', updateVoiceCurve)
-  }, [selectedVoiceRight, isRecording, isConnected])
+  }, [selectedVoiceRight, isRecording])
 
   return (
     <section id="demo" ref={sectionRef} className="bg-white py-6 md:py-8">
@@ -781,6 +407,16 @@ export function ProductDemoSection() {
         >
           Calendar AI
         </button>
+        <button
+          className={`px-6 py-2 rounded-full font-semibold border-2 transition-all duration-200 ${
+            activeTab === 'magicbutton'
+              ? 'bg-black text-white border-black'
+              : 'bg-white text-black border-gray-300 hover:border-gray-400'
+          }`}
+          onClick={() => setActiveTab('magicbutton')}
+        >
+          Magic Button
+        </button>
       </div>
       
       {/* Content Container with smooth transitions */}
@@ -793,6 +429,15 @@ export function ProductDemoSection() {
               : 'opacity-0 -translate-x-full absolute inset-0 pointer-events-none'
           }`}
         >
+        <div className="relative bg-gray-100 py-8 md:py-10">
+          {/* Top white to gray fade overlay */}
+          <div className="absolute left-0 top-0 w-full h-24 pointer-events-none z-0 border-none" style={{
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.99) 0%, rgba(243,244,246,1) 100%)',
+          }} />
+          {/* Bottom blur/fade overlay */}
+          <div className="absolute left-0 bottom-0 w-full h-24 pointer-events-none z-0 border-none" style={{
+            background: 'linear-gradient(to top, rgba(255,255,255,0.99) 0%, rgba(243,244,246,1) 100%)',
+          }} />
           <div ref={ref} style={{ position: 'relative' }}>
         {/* SVG lines moved below content to avoid interfering with text */}
         <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 5 }}>
@@ -868,6 +513,8 @@ export function ProductDemoSection() {
             </svg>
           )}
         </div>
+      {/* Close the previously opened <div ref={ref} ...> */}
+      </div>
         <div className={`transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <div
@@ -885,21 +532,21 @@ export function ProductDemoSection() {
             {/* Header Section */}
             <div className="text-center mb-10 mt-8 sm:mb-16 sm:mt-11 px-2">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-black mb-3 sm:mb-4">
-                Try Kalina AI
+                {t('demoSection.title')}
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-                Experience AI-powered voice conversations with natural, human-like responses
+                {t('demoSection.description')}
               </p>
             </div>
 
             {/* Voice Selection */}
-            {!isRecording && !isConnected && (
+            {!isRecording && (
               <div className="mb-8 sm:mb-12 flex flex-col sm:flex-row items-center justify-between gap-8 sm:gap-0 px-2 sm:px-6 w-full">
                 {/* Companies on the left */}
                 <div className="flex flex-row sm:flex-col gap-2 sm:gap-4 items-start sm:pr-6 w-full sm:w-auto justify-center" style={{zIndex: 10, position: 'relative'}}>
                   {Companies.map((company, idx) => (
                     <button
-                      key={company.id}
+                      key={idx}
                       ref={selectedCompanyLeft === idx ? selectedCompanyRef : undefined}
                       onClick={() => setSelectedCompanyLeft(idx)}
                       className={`px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full border-2 transition-all duration-200 font-medium text-xs sm:text-sm md:text-base ${
@@ -918,19 +565,12 @@ export function ProductDemoSection() {
                   <button
                     ref={micRef}
                     onClick={handleDemoClick}
-                    disabled={isConnecting}
-                    className={`relative rounded-full bg-black text-white transition-all duration-300 hover:scale-105 ${
-                      isConnecting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-800'
-                    } w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 xl:w-64 xl:h-64`}
+                    className={`relative rounded-full bg-black text-white transition-all duration-300 hover:scale-105 hover:bg-gray-800 w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 xl:w-64 xl:h-64`}
                     style={{ margin: '0 0.5rem' }}
                   >
-                    {isConnecting ? (
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 border-2 border-white/30 border-t-white rounded-full animate-spin mx-auto"></div>
-                    ) : (
-                      <svg className="w-10 h-10 sm:w-14 sm:h-14 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
-                      </svg>
-                    )}
+                    <svg className="w-10 h-10 sm:w-14 sm:h-14 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
+                    </svg>
                   </button>
                   {/* Removed text below microphone button for cleaner UI */}
                 </div>
@@ -938,7 +578,7 @@ export function ProductDemoSection() {
                 <div className="flex flex-row sm:flex-col gap-2 sm:gap-4 items-end sm:pl-6 w-full sm:w-auto justify-center" style={{zIndex: 10, position: 'relative'}}>
                   {[0,1,2,3].map((index) => (
                     <button
-                      key={voiceOptions[index].id}
+                      key={index}
                       ref={selectedVoiceRight === index ? selectedVoiceRightRef : undefined}
                       onClick={() => setSelectedVoiceRight(index)}
                       className={`px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full border-2 transition-all duration-200 font-medium text-xs sm:text-sm md:text-base ${
@@ -980,38 +620,28 @@ export function ProductDemoSection() {
                   </div>
                 )}
 
-                {(isRecording || isConnected) && (
+                {isRecording && (
                   <div className="flex items-center justify-center space-x-2">
-                    <div className={`w-2 h-2 sm:w-2 sm:h-2 rounded-full ${
-                      isAudioPlaying 
-                        ? 'bg-blue-500 animate-pulse' 
-                        : isConnected 
-                        ? 'bg-green-500 animate-pulse' 
-                        : 'bg-yellow-500'
-                    }`}></div>
+                    <div className={`w-2 h-2 sm:w-2 sm:h-2 rounded-full bg-green-500 animate-pulse`}></div>
                     <span className="text-gray-700 text-xs sm:text-sm">
-                      {isAudioPlaying 
-                        ? `${voiceOptions[selectedVoice].name} is speaking...`
-                        : isConnected 
-                        ? `Connected to ${voiceOptions[selectedVoice].name} - Speak now` 
-                        : 'Connecting...'}
+                      Demo în curs cu {voiceOptions[selectedVoice].name}
                     </span>
                   </div>
                 )}
               </div>
             </div>
             {/* Features List */}
-              {!isRecording && !isConnected && (
+              {!isRecording && (
                 <div className="mt-10 sm:mt-16 w-full px-1 sm:px-4">
                   <div className="overflow-x-auto custom-scrollbar">
                     <div className="flex gap-4 sm:gap-20 pb-4 min-w-max lg:justify-center px-2 sm:px-4 lg:px-0">
-                      {[
-                        { title: 'Natural Conversations', desc: 'AI that understands context and emotions' },
-                        { title: 'Realistic Voice', desc: 'High-quality voice cloning technology' },
-                        { title: 'Instant Response', desc: 'Minimal latency for smooth interactions' },
-                        { title: 'Multilingual', desc: 'Support for multiple languages and accents' },
-                        { title: 'Adaptive', desc: 'Learns and adapts to your communication style' },
-                        { title: 'Secure', desc: 'Your data remains private and protected' }
+                      {[ 
+                        { title: t('conversationAIFeatures.naturalConversations'), desc: t('conversationAIFeatures.naturalConversationsDesc') },
+                        { title: t('conversationAIFeatures.realisticVoice'), desc: t('conversationAIFeatures.realisticVoiceDesc') },
+                        { title: t('conversationAIFeatures.instantResponse'), desc: t('conversationAIFeatures.instantResponseDesc') },
+                        { title: t('conversationAIFeatures.multilingual'), desc: t('conversationAIFeatures.multilingualDesc') },
+                        { title: t('conversationAIFeatures.adaptive'), desc: t('conversationAIFeatures.adaptiveDesc') },
+                        { title: t('conversationAIFeatures.secure'), desc: t('conversationAIFeatures.secureDesc') }
                       ].map((feature, idx) => (
                         <div
                           key={idx}
@@ -1027,7 +657,7 @@ export function ProductDemoSection() {
               )}
           </div>
           </div>
-        </div>
+          </div>
         </div>
         
         {/* Calendar AI Content */}
@@ -1038,34 +668,22 @@ export function ProductDemoSection() {
               : 'opacity-0 translate-x-full absolute inset-0 pointer-events-none'
           }`}
         >
-          <div className="relative py-8 md:py-10">
-            {/* Animated grid background with white vignette overlay */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-              <svg width="100%" height="100%" className="w-full h-full animate-pulse" style={{opacity:0.08}}>
-                <defs>
-                  <pattern id="calendar-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#000" strokeWidth="1" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#calendar-grid)" />
-              </svg>
-              {/* White vignette overlay for soft fade at corners */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                pointerEvents: 'none',
-                zIndex: 1,
-                background: 'radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%)'
-              }} />
-            </div>
-            
+          <div className="relative bg-blue-100 py-8 md:py-10">
+          {/* Top white fade overlay */}
+          <div className="absolute left-0 top-0 w-full h-24 pointer-events-none z-0 border-none" style={{
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.99) 0%, rgba(255,255,255,0.0) 100%)',
+          }} />
+          {/* Bottom blur/fade overlay */}
+          <div className="absolute left-0 bottom-0 w-full h-24 pointer-events-none z-0 border-none" style={{
+            background: 'linear-gradient(to top, rgba(255,255,255,0.99) 0%, rgba(255,255,255,0.0) 100%)',
+          }} />
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               {/* Header */}
               <div className={`text-center mb-8 transition-all duration-1000 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
               }`}>
                 <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-                  Calendar AI Revolution
+                  Revoluția Calendarului AI
                 </h2>
                 <p className="text-gray-600 text-lg max-w-2xl mx-auto">
                   Calendarul care gândește și acționează pentru tine cu AI avansat. Programează întâlniri doar vorbind cu asistentul tău digital.
@@ -1095,8 +713,8 @@ export function ProductDemoSection() {
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="text-xl font-semibold text-black">Iulie 2025</h3>
                     <div className="space-x-2">
-                      <button className="bg-black text-white px-3 py-1 rounded hover:bg-gray-800 transition-colors duration-200">Prev</button>
-                      <button className="bg-black text-white px-3 py-1 rounded hover:bg-gray-800 transition-colors duration-200">Next</button>
+                      <button className="bg-black text-white px-3 py-1 rounded hover:bg-gray-800 transition-colors duration-200">←</button>
+                      <button className="bg-black text-white px-3 py-1 rounded hover:bg-gray-800 transition-colors duration-200">→</button>
                     </div>
                   </div>
                   <div className="grid grid-cols-7 gap-2 text-center">
@@ -1137,9 +755,216 @@ export function ProductDemoSection() {
                   href="/calendar-ai"
                   className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
                 >
-                  Programează cu AI
+                  Află mai multe
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Magic Button Content */}
+        <div 
+          className={`transition-all duration-500 ease-in-out ${
+            activeTab === 'magicbutton' 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 translate-x-full absolute inset-0 pointer-events-none'
+          }`}
+        >
+          <div className="relative py-8 md:py-12 bg-gradient-to-br from-purple-50 to-pink-50">
+          {/* Top white fade overlay for Magic Button */}
+          <div className="absolute left-0 top-0 w-full h-24 pointer-events-none z-0 border-none" style={{
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.0) 100%)',
+          }} />
+          {/* Bottom blur/fade overlay for Magic Button */}
+          <div className="absolute left-0 bottom-0 w-full h-24 pointer-events-none z-0 border-none" style={{
+            background: 'linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.0) 100%)',
+          }} />
+            {/* Animated background pattern */}
+            {/* <div className="absolute inset-0 z-0 pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-100/30 to-pink-100/30"></div>
+              <div className="absolute inset-0" style={{
+                backgroundImage: `radial-gradient(circle at 25% 25%, #8B5CF6 0.5px, transparent 0.5px), 
+                                 radial-gradient(circle at 75% 75%, #EC4899 0.5px, transparent 0.5px)`,
+                backgroundSize: '30px 30px',
+                opacity: 0.1
+              }}></div>
+            </div> */}
+            
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              {/* Header */}
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                  </svg>
+                  Buton Fermecat
+                </div>
+                <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
+                  Creator Inteligent de Campanii
+                </h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Funcția unică care analizează toate datele tale pentru a crea campanii personalizate și optimizate automat.
+                </p>
+              </div>
+
+              {/* Features Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold text-black">Analiză AI Avansată</h3>
+                  </div>
+                  <p className="text-gray-600">Procesez istoric conversații, patternuri de comportament și preferințe cliente</p>
+                </div>
+
+                <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold text-black">RAG & MCP Integration</h3>
+                  </div>
+                  <p className="text-gray-600">Folosesc toate sursele de date conectate pentru context complet</p>
+                </div>
+
+                <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 00-2 2v2m0 0V9a2 2 0 012-2m0 0V7a2 2 0 012-2h10a2 2 0 012 2v2M7 7V5a2 2 0 012-2h6a2 2 0 012 2v2" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold text-black">Segmentare Inteligentă</h3>
+                  </div>
+                  <p className="text-gray-600">Împart contactele în segmente pentru campanii ultra-personalizate</p>
+                </div>
+
+                <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold text-black">Optimizare Automată</h3>
+                  </div>
+                  <p className="text-gray-600">Aleg cel mai bun timing, agent și mesaj pentru fiecare contact</p>
+                </div>
+              </div>
+
+              {/* Magic Button Action */}
+              <div className="text-center mb-8">
+                <button
+                  onClick={handleMagicButtonClick}
+                  disabled={isAnalyzing}
+                  className={`inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 ${
+                    isAnalyzing ? 'opacity-75 cursor-not-allowed' : 'hover:scale-105'
+                  }`}
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                  </svg>
+                  {isAnalyzing ? 'Activează Magia AI' : 'Activează Magia AI'}
+                </button>
+                <p className="text-gray-600 mt-4">
+                  {isAnalyzing ? `Procesul va dura ${Math.ceil((100 - analysisProgress) / 20)} secunde pentru analiză completă` : 'Procesul va dura 10-15 secunde pentru analiză completă'}
+                </p>
+              </div>
+
+              {/* Analysis Progress */}
+              {(isAnalyzing || analysisProgress > 0) && (
+                <div className="max-w-2xl mx-auto">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-lg font-semibold text-black">🔍 Analiză AI în progres...</h3>
+                      <span className="text-sm text-gray-500">{Math.round(analysisProgress)}%</span>
+                    </div>
+                    
+                    {/* Progress Bar */}
+                    <div className="w-full bg-gray-200 rounded-full h-3 mb-6">
+                      <div 
+                        className="bg-gradient-to-r from-purple-600 to-pink-600 h-3 rounded-full transition-all duration-300 ease-out"
+                        style={{ width: `${analysisProgress}%` }}
+                      ></div>
+                    </div>
+
+                    {/* Analysis Steps */}
+                    <div className="space-y-3">
+                      {analysisSteps.map((step) => (
+                        <div key={step.id} className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-300 ${
+                          step.current ? 'bg-purple-50 border border-purple-200' : 
+                          step.completed ? 'bg-green-50 border border-green-200' : 
+                          'bg-gray-50 border border-gray-200'
+                        }`}>
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                            step.completed ? 'bg-green-500 text-white' :
+                            step.current ? 'bg-purple-500 text-white' :
+                            'bg-gray-300 text-gray-600'
+                          }`}>
+                            {step.completed ? (
+                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            ) : step.current ? (
+                              <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                            ) : (
+                              <span className="text-xs">{step.id}</span>
+                            )}
+                          </div>
+                          <span className={`text-sm font-medium ${
+                            step.current ? 'text-purple-700' :
+                            step.completed ? 'text-green-700' :
+                            'text-gray-600'
+                          }`}>
+                            {step.text}
+                          </span>
+                          {step.current && (
+                            <div className="ml-auto">
+                              <div className="flex gap-1">
+                                <div className="w-1 h-1 bg-purple-500 rounded-full animate-bounce"></div>
+                                <div className="w-1 h-1 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                                <div className="w-1 h-1 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {analysisProgress === 100 && !isAnalyzing && (
+                    <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6 text-center">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-bold text-green-800 mb-2">🎉 Analiza completă!</h3>
+                      <p className="text-green-700 mb-4">
+                        Am generat 3 campanii personalizate și optimizate pentru audiența ta. Gata de lansare!
+                      </p>
+                      <button 
+                        onClick={() => {
+                          setAnalysisProgress(0);
+                          setAnalysisSteps(steps => steps.map(step => ({ ...step, completed: false, current: false })));
+                        }}
+                        className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
+                      >
+                        Resetează Demo
+                      </button>
+                      <a href="/magic-button" className="ml-3 bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-purple-700 transition-colors inline-block">
+                        Află mai multe
+                      </a>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>

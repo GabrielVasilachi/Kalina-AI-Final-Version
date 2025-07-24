@@ -116,7 +116,7 @@ export function CalendarDemoSection() {
             href="/calendar-ai"
             className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
           >
-            Programează cu AI
+            Află mai multe
           </a>
         </div>
       </div>

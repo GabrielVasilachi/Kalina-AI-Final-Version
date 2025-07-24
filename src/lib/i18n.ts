@@ -5,7 +5,33 @@ import { persist } from 'zustand/middleware'
 import { useEffect, useState } from 'react'
 
 export interface Translations {
+  mainFeaturesDynamic: string[];
+  mainFeaturesStatic: string[];
+  demoSection: {
+    title: string;
+    description: string;
+  }
+  companies: {
+    restaurant: string
+    clinic: string
+    autoService: string
+    travelAgency: string
+  }
   // Navigation
+  conversationAIFeatures: {
+    naturalConversations: string
+    naturalConversationsDesc: string
+    realisticVoice: string
+    realisticVoiceDesc: string
+    instantResponse: string
+    instantResponseDesc: string
+    multilingual: string
+    multilingualDesc: string
+    adaptive: string
+    adaptiveDesc: string
+    secure: string
+    secureDesc: string
+  }
   nav: {
     products: string
     solutions: string
@@ -92,6 +118,23 @@ export interface Translations {
     capability3Title: string
     capability3Desc: string
   }
+  // Advanced Capabilities Section
+  advancedCapabilitiesSection: {
+    title: string;
+    subtitle: string;
+    features: Array<{
+      title: string;
+      items: string[];
+    }>;
+    business: {
+      title: string;
+      subtitle: string;
+      orchestrationTitle: string;
+      orchestrationItems: string[];
+      predictiveTitle: string;
+      predictiveItems: string[];
+    };
+  };
   // How It Works section
   howItWorks: {
     title: string
@@ -278,6 +321,92 @@ export interface Translations {
 }
 
 const romanianTranslations: Translations = {
+  mainFeaturesDynamic: [
+    'Revoluționează Comunicarea cu Clienții Prin Tehnologia AI Avansată',
+    'Prezență Globală, Servicii Locale',
+    'Securitate de Nivel Enterprise pentru Comunicările Tale',
+    'Inteligență Artificială Care Înțelege și Răspunde Perfect'
+  ],
+  advancedCapabilitiesSection: {
+    title: 'Funcționalități Avansate AI',
+    subtitle: 'Bazat pe cercetarea detaliată a 20+ platforme voice AI din iulie 2025',
+    features: [
+      {
+        title: 'Generare Documente în Timp Real',
+        items: [
+          'Creare facturi cu calcul automat TVA',
+          'Generare contracte cu termeni auto-completați',
+          'Generare oferte cu prețuri în timp real',
+          'Pregătire documente legale cu verificare conformitate',
+        ],
+      },
+      {
+        title: 'Inteligență Multi-Agent',
+        items: [
+          'Protocoale de comunicare agent-agent',
+          'Păstrarea contextului între transferuri',
+          'Implementare agenți specializați',
+          'Capacități de rezolvare colectivă a problemelor',
+        ],
+      },
+      {
+        title: 'Distribuție Omnicanal',
+        items: [
+          'Integrare WhatsApp Business',
+          'Coordonare multiplatformă',
+          'Livrare instantanee de documente',
+          'Păstrarea contextului cross-channel',
+        ],
+      },
+    ],
+    business: {
+      title: 'Operațiuni Autonome de Business',
+      subtitle: 'Procesare tranzacții end-to-end cu supraveghere umană minimă',
+      orchestrationTitle: 'Orchestrare Inteligentă a Sarcinilor',
+      orchestrationItems: [
+        'Inițiere workflow multi-pas',
+        'Coordonare resurse între sisteme',
+        'Managementul timeline-ului cu notificări',
+        'Puncte de control pentru asigurarea calității',
+      ],
+      predictiveTitle: 'Inteligență Predictivă',
+      predictiveItems: [
+        'Analiză a tiparelor comportamentale',
+        'Predicție de nevoi & auto-îndeplinire',
+        'Servicii proactive',
+        'Evaluare și reducere a riscurilor',
+      ],
+    },
+  },
+  mainFeaturesStatic: [
+    'Scalabilitate și Flexibilitate Pentru Nevoile Afacerii Tale',
+    '24/7 Suport Global',
+    '99.9% Garanție Uptime'
+  ],
+  demoSection: {
+    title: 'Încearcă Kalina AI',
+    description: 'Experimentează conversații cu voce alimentate de AI, cu răspunsuri naturale, asemănătoare celor umane.'
+  },
+  companies: {
+    restaurant: 'Restaurante',
+    clinic: 'Clinică',
+    autoService: 'Service Auto',
+    travelAgency: 'Agenție de Turism',
+  },
+  conversationAIFeatures: {
+    naturalConversations: 'Conversații naturale',
+    naturalConversationsDesc: 'AI care înțelege contextul și emoțiile',
+    realisticVoice: 'Voce realistă',
+    realisticVoiceDesc: 'Tehnologie de clonare vocală de înaltă calitate',
+    instantResponse: 'Răspuns instantaneu',
+    instantResponseDesc: 'Latentă minimă pentru interacțiuni fluide',
+    multilingual: 'Multilingv',
+    multilingualDesc: 'Suport pentru multiple limbi și accente',
+    adaptive: 'Adaptiv',
+    adaptiveDesc: 'Învăță și se adaptează la stilul tău de comunicare',
+    secure: 'Sigur',
+    secureDesc: 'Datele tale rămân private și protejate',
+  },
   nav: {
     products: 'Produse',
     solutions: 'Soluții',
@@ -529,6 +658,92 @@ const romanianTranslations: Translations = {
 }
 
 const englishTranslations: Translations = {
+  mainFeaturesDynamic: [
+    'Revolutionize Customer Communication With Advanced AI Technology',
+    'Global Presence, Local Services',
+    'Enterprise-Level Security for Your Communications',
+    'Artificial Intelligence That Understands and Responds Perfectly'
+  ],
+  advancedCapabilitiesSection: {
+    title: 'Advanced AI Capabilities',
+    subtitle: 'Based on detailed research of 20+ voice AI platforms as of July 2025',
+    features: [
+      {
+        title: 'Real-Time Document Generation',
+        items: [
+          'Invoice creation with automatic VAT calculation',
+          'Contract generation with auto-populated terms',
+          'Quote generation with real-time pricing',
+          'Legal document preparation with compliance verification',
+        ],
+      },
+      {
+        title: 'Multi-Agent Intelligence',
+        items: [
+          'Agent-to-Agent communication protocols',
+          'Context preservation across transfers',
+          'Specialized agent deployment',
+          'Collective problem-solving capabilities',
+        ],
+      },
+      {
+        title: 'Omnichannel Distribution',
+        items: [
+          'WhatsApp Business integration',
+          'Multi-platform coordination',
+          'Instant document delivery',
+          'Cross-channel context preservation',
+        ],
+      },
+    ],
+    business: {
+      title: 'Autonomous Business Operations',
+      subtitle: 'End-to-end transaction processing with minimal human oversight',
+      orchestrationTitle: 'Intelligent Task Orchestration',
+      orchestrationItems: [
+        'Multi-step workflow initiation',
+        'Resource coordination across systems',
+        'Timeline management with notifications',
+        'Quality assurance checkpoints',
+      ],
+      predictiveTitle: 'Predictive Intelligence',
+      predictiveItems: [
+        'Behavioral pattern analysis',
+        'Need prediction & auto-fulfillment',
+        'Proactive service delivery',
+        'Risk assessment & mitigation',
+      ],
+    },
+  },
+  mainFeaturesStatic: [
+    'Scalability and Flexibility For Your Business Needs',
+    '24/7 Global Support',
+    '99.9% Uptime Guarantee'
+  ],
+  demoSection: {
+    title: 'Try Kalina AI',
+    description: 'Experience AI-powered voice conversations with natural, human-like responses.'
+  },
+  companies: {
+    restaurant: 'Restaurant',
+    clinic: 'Clinic',
+    autoService: 'Auto Service',
+    travelAgency: 'Travel Agency',
+  },
+  conversationAIFeatures: {
+    naturalConversations: 'Natural Conversations',
+    naturalConversationsDesc: 'AI that understands context and emotions',
+    realisticVoice: 'Realistic Voice',
+    realisticVoiceDesc: 'High-quality voice cloning technology',
+    instantResponse: 'Instant Response',
+    instantResponseDesc: 'Minimal latency for smooth interactions',
+    multilingual: 'Multilingual',
+    multilingualDesc: 'Support for multiple languages and accents',
+    adaptive: 'Adaptive',
+    adaptiveDesc: 'Learns and adapts to your communication style',
+    secure: 'Secure',
+    secureDesc: 'Your data remains private and protected',
+  },
   nav: {
     products: 'Products',
     solutions: 'Solutions',

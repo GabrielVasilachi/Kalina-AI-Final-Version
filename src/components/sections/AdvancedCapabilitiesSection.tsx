@@ -1,4 +1,9 @@
+"use client";
+import { useLanguage } from '../../lib/i18n'
+import { useStore } from 'zustand'
 export function AdvancedCapabilitiesSection() {
+  const translations = useStore(useLanguage, state => state.translations)
+  const adv = translations.advancedCapabilitiesSection
   return (
     <>
       {/* Advanced Capabilities Section */}
@@ -6,84 +11,51 @@ export function AdvancedCapabilitiesSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black mb-4">
-              Funcționalități Avansate AI
+              {adv.title}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Bazat pe cercetarea detaliată a 20+ platforme voice AI din iulie 2025
+              {adv.subtitle}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-gray-50 rounded-xl p-8">
-              <div className="flex items-center mb-4">
-                <svg className="w-8 h-8 text-black mr-3" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                </svg>
-                <h3 className="text-xl font-bold text-black">Real-Time Document Generation</h3>
+            {adv.features.map((feature: { title: string; items: string[] }, idx: number) => (
+              <div className="bg-gray-50 rounded-xl p-8" key={idx}>
+                <div className="flex items-center mb-4">
+                  {/* You can add icons here if needed */}
+                  <h3 className="text-xl font-bold text-black">{feature.title}</h3>
+                </div>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  {feature.items.map((item: string, i: number) => (
+                    <li key={i}>• {item}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="text-gray-700 space-y-2 text-sm">
-                <li>• Invoice creation cu automatic VAT calculation</li>
-                <li>• Contract generation cu auto-populated terms</li>
-                <li>• Quote generation cu real-time pricing</li>
-                <li>• Legal document preparation cu compliance verification</li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-8">
-              <div className="flex items-center mb-4">
-                <svg className="w-8 h-8 text-black mr-3" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                <h3 className="text-xl font-bold text-black">Multi-Agent Intelligence</h3>
-              </div>
-              <ul className="text-gray-700 space-y-2 text-sm">
-                <li>• Agent-to-Agent communication protocols</li>
-                <li>• Context preservation across transfers</li>
-                <li>• Specialized agent deployment</li>
-                <li>• Collective problem-solving capabilities</li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-8">
-              <div className="flex items-center mb-4">
-                <svg className="w-8 h-8 text-black mr-3" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                </svg>
-                <h3 className="text-xl font-bold text-black">Omnichannel Distribution</h3>
-              </div>
-              <ul className="text-gray-700 space-y-2 text-sm">
-                <li>• WhatsApp Business integration</li>
-                <li>• Multi-platform coordination</li>
-                <li>• Instant document delivery</li>
-                <li>• Cross-channel context preservation</li>
-              </ul>
-            </div>
+            ))}
           </div>
 
           <div className="bg-black text-white rounded-2xl p-12">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-4">Autonomous Business Operations</h3>
+              <h3 className="text-2xl font-bold mb-4">{adv.business.title}</h3>
               <p className="text-gray-300 text-lg">
-                End-to-end transaction processing cu minimal human oversight
+                {adv.business.subtitle}
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-lg font-semibold mb-3 text-white">Intelligent Task Orchestration</h4>
+                <h4 className="text-lg font-semibold mb-3 text-white">{adv.business.orchestrationTitle}</h4>
                 <ul className="text-gray-300 space-y-2 text-sm">
-                  <li>• Multi-step workflow initiation</li>
-                  <li>• Resource coordination across systems</li>
-                  <li>• Timeline management cu notifications</li>
-                  <li>• Quality assurance checkpoints</li>
+                  {adv.business.orchestrationItems.map((item: string, i: number) => (
+                    <li key={i}>• {item}</li>
+                  ))}
                 </ul>
               </div>
               <div>
-                <h4 className="text-lg font-semibold mb-3 text-white">Predictive Intelligence</h4>
+                <h4 className="text-lg font-semibold mb-3 text-white">{adv.business.predictiveTitle}</h4>
                 <ul className="text-gray-300 space-y-2 text-sm">
-                  <li>• Behavioral pattern analysis</li>
-                  <li>• Need prediction & auto-fulfillment</li>
-                  <li>• Proactive service delivery</li>
-                  <li>• Risk assessment & mitigation</li>
+                  {adv.business.predictiveItems.map((item: string, i: number) => (
+                    <li key={i}>• {item}</li>
+                  ))}
                 </ul>
               </div>
             </div>
