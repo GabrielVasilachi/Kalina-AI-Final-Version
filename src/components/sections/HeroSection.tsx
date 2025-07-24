@@ -59,18 +59,19 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section id="hero" className="relative py-10 pt-24 overflow-hidden">
+    <section id="hero" className="relative py-10 pt-24 overflow-hidden bg-white">
       {/* Dynamic background elements */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-60 hidden sm:block"
         style={{
+          background: 'white',
           transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`,
           transition: 'transform 0.3s ease-out'
         }}
       >
-        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-brand-300/30 text-black rounded-full morphing-shape animate-float"></div>
-        <div className="absolute top-60 right-32 w-24 h-24 bg-gradient-to-br text-black to-brand-400/40 rounded-full morphing-shape animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-40 left-32 w-20 h-20 bg-gradient-to-br text-black to-brand-400/20 rounded-full morphing-shape animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-20 w-40 h-40 bg-gradient-to-br from-brand-300/70 to-brand-400/60 text-black rounded-full morphing-shape animate-float"></div>
+        <div className="absolute top-60 right-32 w-32 h-32 bg-gradient-to-br from-brand-400/80 to-brand-500/70 text-black rounded-full morphing-shape animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-10 left-32 w-28 h-28 bg-gradient-to-br from-brand-400/60 to-brand-300/50 text-black rounded-full morphing-shape animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="container-width relative z-10">
@@ -102,7 +103,7 @@ export function HeroSection() {
             </div>
             <motion.div 
               ref={buttonsReveal.ref}
-              className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center stagger-4"
+              className="flex flex-row gap-2 md:gap-6 justify-center stagger-4"
               variants={containerVariants}
               initial="hidden"
               animate={buttonsReveal.isVisible ? "visible" : "hidden"}
@@ -110,7 +111,7 @@ export function HeroSection() {
               <motion.div variants={childVariants}>
                 <a
                   href="/getting-started"
-                  className="btn-primary btn-magnetic flex items-center justify-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4 animate-pulse-glow w-full sm:w-auto whitespace-nowrap"
+                  className="btn-primary btn-magnetic flex items-center justify-center gap-1 group text-[10px] md:text-lg px-1.5 md:px-8 py-1 md:py-4 animate-pulse-glow w-24 h-7 sm:w-auto sm:h-auto whitespace-nowrap border border-gray-300 rounded-lg mx-auto"
                 >
                   {t('hero.ctaButton')}
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,7 +122,7 @@ export function HeroSection() {
               <motion.div variants={childVariants}>
                 <a
                   href="https://preview--kallina.lovable.app/auth"
-                  className="btn-secondary btn-magnetic flex items-center justify-center gap-2 group text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto whitespace-nowrap"
+                  className="btn-secondary btn-magnetic flex items-center justify-center gap-1 group text-[10px] md:text-lg px-1.5 md:px-8 py-1 md:py-4 w-24 h-7 sm:w-auto sm:h-auto whitespace-nowrap border border-gray-300 rounded-lg mx-auto"
                 >
                   <svg className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
