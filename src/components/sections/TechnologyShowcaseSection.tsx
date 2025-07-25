@@ -169,7 +169,7 @@ export function TechnologyShowcaseSection() {
   }
 
   return (
-    <section className="py-24 bg-black text-white">
+    <section className="py-24 bg-black text-white rounded-3xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -188,10 +188,10 @@ export function TechnologyShowcaseSection() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-4 rounded-xl font-medium transition-all duration-200 flex items-center space-x-3 ${
+              className={`px-6 py-4 rounded-xl font-medium transition-all duration-200 flex items-center space-x-3 border border-white/20 backdrop-blur-lg ${
                 activeTab === tab.id
-                  ? 'bg-white text-black'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  ? 'bg-white/60 text-black'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
               }`}
             >
               <span className="text-xl">{tab.icon}</span>
@@ -215,7 +215,7 @@ export function TechnologyShowcaseSection() {
           {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-8">
             {(technologyDetails as any)[activeTab].features.map((feature: any, index: number) => (
-              <div key={index} className="bg-gray-900 rounded-xl p-6">
+              <div key={index} className="rounded-xl p-6 border border-white/20 backdrop-blur-lg bg-white/10">
                 <div className="text-3xl mb-4">{feature.icon}</div>
                 <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
                 <p className="text-gray-300 mb-4">{feature.description}</p>
@@ -232,7 +232,7 @@ export function TechnologyShowcaseSection() {
           </div>
 
           {/* Demo Section */}
-          <div className="bg-gray-900 rounded-2xl p-8">
+          <div className="bg-gray-900 rounded-2xl p-8 border border-white/20 backdrop-blur-lg bg-white/10">
             <h4 className="text-2xl font-bold mb-4">
               {(technologyDetails as any)[activeTab].demo.title}
             </h4>
@@ -244,12 +244,12 @@ export function TechnologyShowcaseSection() {
             {activeTab === 'voice' && (
               <div className="grid md:grid-cols-3 gap-6">
                 {technologyDetails.voice.demo.samples.map((sample, index) => (
-                  <div key={index} className="bg-black rounded-lg p-6 text-center">
+                  <div key={index} className="bg-black rounded-lg p-6 text-center border border-white/20 backdrop-blur-lg bg-white/10">
                     <h5 className="font-semibold mb-2">{sample.name}</h5>
                     <div className="text-2xl font-bold text-green-400 mb-4">
                       {sample.quality}
                     </div>
-                    <button className="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm">
+                    <button className="bg-white/60 text-black px-4 py-2 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors text-sm">
                       ▶ Ascultă Sample
                     </button>
                   </div>
@@ -261,7 +261,7 @@ export function TechnologyShowcaseSection() {
             {activeTab === 'ai' && (
               <div className="space-y-4">
                 {technologyDetails.ai.demo.samples.map((sample, index) => (
-                  <div key={index} className="bg-black rounded-lg p-4 flex justify-between items-center">
+                  <div key={index} className="bg-black rounded-lg p-4 flex justify-between items-center border border-white/20 backdrop-blur-lg bg-white/10">
                     <div className="flex-1">
                       <span className="text-gray-300">"{sample.question}"</span>
                     </div>
@@ -273,7 +273,7 @@ export function TechnologyShowcaseSection() {
                       }`}>
                         {sample.complexity}
                       </span>
-                      <button className="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm">
+                      <button className="bg-white/60 text-black px-4 py-2 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors text-sm">
                         Testează
                       </button>
                     </div>
@@ -286,12 +286,12 @@ export function TechnologyShowcaseSection() {
             {activeTab === 'integration' && (
               <div className="grid md:grid-cols-3 gap-4">
                 {technologyDetails.integration.demo.integrations.map((integration, index) => (
-                  <div key={index} className="bg-black rounded-lg p-4 flex items-center justify-between">
+                  <div key={index} className="bg-black rounded-lg p-4 flex items-center justify-between border border-white/20 backdrop-blur-lg bg-white/10">
                     <div>
                       <div className="font-semibold">{integration.name}</div>
                       <div className="text-sm text-gray-400">{integration.category}</div>
                     </div>
-                    <span className="bg-green-900 text-green-300 px-2 py-1 rounded-full text-xs">
+                    <span className="bg-green-900/80 text-green-300 px-2 py-1 rounded-full text-xs border border-white/20 backdrop-blur-lg">
                       {integration.status}
                     </span>
                   </div>
@@ -303,7 +303,7 @@ export function TechnologyShowcaseSection() {
             {activeTab === 'analytics' && (
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {technologyDetails.analytics.demo.metrics.map((metric, index) => (
-                  <div key={index} className="bg-black rounded-lg p-6 text-center">
+                  <div key={index} className="bg-black rounded-lg p-6 text-center border border-white/20 backdrop-blur-lg bg-white/10">
                     <div className="text-sm text-gray-400 mb-2">{metric.name}</div>
                     <div className="text-2xl font-bold mb-2">{metric.value}</div>
                     <div className={`text-sm flex items-center justify-center ${
@@ -332,13 +332,13 @@ export function TechnologyShowcaseSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/demo"
-              className="bg-white text-black px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
+              className="bg-white/60 text-black px-8 py-4 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors font-semibold text-lg"
             >
               Demo Interactiv →
             </Link>
             <Link
               href="/technical-specs"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-black transition-all duration-200 font-semibold text-lg"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-black transition-all duration-200 font-semibold text-lg border-white/20 backdrop-blur-lg bg-white/10"
             >
               Specificații Tehnice
             </Link>

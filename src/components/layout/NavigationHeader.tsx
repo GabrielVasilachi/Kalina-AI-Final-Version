@@ -341,12 +341,12 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
           </div>
           
           {/* Desktop CTA & Sign in Buttons */}
-          <div className="hidden xl:flex items-center gap-x-4 ml-auto">
+          <div className="hidden xl:flex items-center gap-x-3 ml-auto">
             <LanguageSelector />
-            <Link href="https://preview--kallina.lovable.app/auth" className="btn-secondary btn-responsive whitespace-nowrap">
+            <Link href="https://preview--kallina.lovable.app/auth" className="whitespace-nowrap px-5 py-2 text-sm rounded-lg border border-gray-300 bg-white text-black font-semibold hover:bg-gray-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-200" style={{minWidth:'90px', height:'36px'}}>
               {t('nav.signIn')}
             </Link>
-            <Link href="/getting-started" className="btn-primary btn-magnetic btn-responsive animate-pulse-glow whitespace-nowrap">
+            <Link href="/getting-started" className="whitespace-nowrap px-5 py-2 text-sm rounded-lg bg-black text-white font-semibold hover:bg-gray-800 transition-colors animate-pulse-glow" style={{minWidth:'90px', height:'36px'}}>
               {t('nav.getStarted')}
             </Link>
           </div>
