@@ -87,16 +87,12 @@ export default function ComparisonPage() {
   ]
 
   return (
-    <BasicPageLayout 
-      title="Platform Comparison"
-      description="Compare Kalina AI with other voice automation platforms - see why we're the superior choice"
-    >
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="section-padding bg-gradient-to-br from-white via-blue-50/30 to-brand-100/10">
+        <section className="section-padding bg-white">
           <div className="container-width">
             <div className={`max-w-4xl mx-auto text-center transition-all duration-700 ${classes}`} ref={ref}>
-              <h1 className="text-4xl md:text-6xl font-bold text-brand-300 mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-950 mb-6">
                 Platform Comparison
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -111,7 +107,7 @@ export default function ComparisonPage() {
         <section className="section-padding bg-white">
           <div className="container-width">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold text-brand-300 text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-950 text-center mb-8">
                 Compare Kalina AI vs
               </h2>
               
@@ -122,7 +118,7 @@ export default function ComparisonPage() {
                     onClick={() => setSelectedPlatform(key)}
                     className={`px-6 py-3 rounded-lg font-medium transition-all ${
                       selectedPlatform === key
-                        ? 'bg-brand-500 text-white'
+                        ? 'bg-gray-500 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -132,11 +128,11 @@ export default function ComparisonPage() {
               </div>
 
               {/* Head-to-Head Metrics */}
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="grid md:grid-cols-2 bg-gray-50 gap-8 mb-12 rounded-2xl">
                 {/* Kalina Card */}
-                <div className="bg-gradient-to-br from-brand-500 to-blue-600 text-white p-8 rounded-2xl">
+                <div className="bg-gradient-to-br from-brand-500 to-blue-600 text-black p-8 rounded-2xl">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 bg-white text-brand-500 rounded-full flex items-center justify-center font-bold">
+                    <div className="w-12 h-12 bg-gray-200 text-brand-500 rounded-full flex items-center justify-center font-bold">
                       K
                     </div>
                     <h3 className="text-2xl font-bold">Kalina AI</h3>
@@ -323,7 +319,7 @@ export default function ComparisonPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-brand-500 text-white">
+        <section className="section-padding bg-brand-500 text-black">
           <div className="container-width">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -337,7 +333,7 @@ export default function ComparisonPage() {
                 <a href="/getting-started" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">
                   Start Free Trial
                 </a>
-                <a href="/migration" className="btn-outline border-white text-white hover:bg-white hover:text-brand-500">
+                <a href="/migration" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">
                   Plan Migration
                 </a>
               </div>
@@ -345,6 +341,5 @@ export default function ComparisonPage() {
           </div>
         </section>
       </div>
-    </BasicPageLayout>
   )
 }

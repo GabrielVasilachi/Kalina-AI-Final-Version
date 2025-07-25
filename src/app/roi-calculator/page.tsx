@@ -49,16 +49,16 @@ export default function ROICalculatorPage() {
   }
 
   return (
-    <BasicPageLayout 
-      title="ROI Calculator"
-      description="Calculate your potential savings and ROI with Kalina AI voice automation"
-    >
+    // <BasicPageLayout 
+    //   title="ROI Calculator"
+    //   description="Calculate your potential savings and ROI with Kalina AI voice automation"
+    // >
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-white via-blue-50/30 to-brand-100/10">
           <div className="container-width">
             <div className={`max-w-4xl mx-auto text-center transition-all duration-700 ${classes}`} ref={ref}>
-              <h1 className="text-4xl md:text-6xl font-bold text-brand-300 mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-black mb-6">
                 ROI Calculator
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -174,7 +174,7 @@ export default function ROICalculatorPage() {
                       <span className="text-3xl font-bold text-brand-500">${yearlySavings.toFixed(0)}</span>
                     </div>
                     
-                    <div className="text-center p-4 bg-gradient-to-r from-brand-500 to-blue-600 text-white rounded-lg">
+                    <div className="text-center p-4 bg-gradient-to-r from-brand-500 to-blue-600 text-black rounded-lg">
                       <div className="text-sm opacity-90">ROI Percentage</div>
                       <div className="text-4xl font-bold">{roiPercentage.toFixed(0)}%</div>
                     </div>
@@ -201,7 +201,7 @@ export default function ROICalculatorPage() {
                       onClick={() => setIndustry(key)}
                       className={`p-4 rounded-lg text-left transition-all ${
                         industry === key
-                          ? 'bg-brand-500 text-white'
+                          ? 'bg-gray-500 text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -233,7 +233,7 @@ export default function ROICalculatorPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-brand-500 text-white">
+        <section className="section-padding bg-brand-500 text-black">
           <div className="container-width">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -244,10 +244,10 @@ export default function ROICalculatorPage() {
                 Get started with Kalina AI today and start seeing results immediately.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/getting-started" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">
+                <a href="/getting-started" className="btn-secondary bg-white text-gray-500 hover:bg-gray-100">
                   Start Free Trial
                 </a>
-                <a href="/demo" className="btn-outline border-white text-white hover:bg-white hover:text-brand-500">
+                <a href="/demo" className="btn-secondary bg-white text-gray-500 hover:bg-gray-100">
                   Book Demo
                 </a>
               </div>
@@ -255,6 +255,6 @@ export default function ROICalculatorPage() {
           </div>
         </section>
       </div>
-    </BasicPageLayout>
+    // </BasicPageLayout>
   )
 }

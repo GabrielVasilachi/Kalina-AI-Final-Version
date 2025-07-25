@@ -115,16 +115,12 @@ export default function CaseStudiesPage() {
     : caseStudies.filter(study => study.industry === selectedIndustry)
 
   return (
-    <BasicPageLayout 
-      title="Case Studies"
-      description="Real customer success stories and results from businesses using Kalina AI voice automation"
-    >
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="section-padding bg-gradient-to-br from-white via-blue-50/30 to-brand-100/10">
+        <section className="section-padding bg-white">
           <div className="container-width">
             <div className={`max-w-4xl mx-auto text-center transition-all duration-700 ${classes}`} ref={ref}>
-              <h1 className="text-4xl md:text-6xl font-bold text-brand-300 mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-950 mb-6">
                 Customer Success Stories
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -146,7 +142,7 @@ export default function CaseStudiesPage() {
                     onClick={() => setSelectedIndustry(industry.key)}
                     className={`px-6 py-3 rounded-lg font-medium transition-all ${
                       selectedIndustry === industry.key
-                        ? 'bg-brand-500 text-white'
+                        ? 'bg-gray-500 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -310,7 +306,7 @@ export default function CaseStudiesPage() {
         <section className="section-padding bg-gray-50">
           <div className="container-width">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-brand-300 mb-6">
+              <h2 className="text-3xl font-bold text-gray-950 mb-6">
                 Get Detailed Case Studies
               </h2>
               <p className="text-xl text-gray-600 mb-8">
@@ -321,7 +317,7 @@ export default function CaseStudiesPage() {
                 <a href="/getting-started" className="btn-primary btn-magnetic">
                   Download Case Studies
                 </a>
-                <a href="/demo" className="btn-outline">
+                <a href="/demo" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">
                   Schedule Consultation
                 </a>
               </div>
@@ -330,7 +326,7 @@ export default function CaseStudiesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-brand-500 text-white">
+        <section className="section-padding bg-brand-500 text-black">
           <div className="container-width">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -344,7 +340,7 @@ export default function CaseStudiesPage() {
                 <a href="/getting-started" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">
                   Start Free Trial
                 </a>
-                <a href="/demo" className="btn-outline border-white text-white hover:bg-white hover:text-brand-500">
+                <a href="/demo" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">
                   Book Demo
                 </a>
               </div>
@@ -352,6 +348,5 @@ export default function CaseStudiesPage() {
           </div>
         </section>
       </div>
-    </BasicPageLayout>
   )
 }

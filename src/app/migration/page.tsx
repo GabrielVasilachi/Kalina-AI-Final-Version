@@ -78,16 +78,12 @@ export default function MigrationPage() {
   ]
 
   return (
-    <BasicPageLayout 
-      title="Platform Migration"
-      description="Seamlessly migrate from other AI platforms to Kalina with zero downtime and enhanced capabilities"
-    >
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-white via-blue-50/30 to-brand-100/10">
           <div className="container-width">
             <div className={`max-w-4xl mx-auto text-center transition-all duration-700 ${classes}`} ref={ref}>
-              <h1 className="text-4xl md:text-6xl font-bold text-brand-300 mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-950 mb-6">
                 Seamless Platform Migration
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -233,7 +229,7 @@ export default function MigrationPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-brand-500 text-white">
+        <section className="section-padding bg-brand-500 text-black">
           <div className="container-width">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -247,7 +243,7 @@ export default function MigrationPage() {
                 <a href="/getting-started" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">
                   Get Migration Quote
                 </a>
-                <a href="/support" className="btn-outline border-white text-white hover:bg-white hover:text-brand-500">
+                <a href="/support" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">
                   Talk to Expert
                 </a>
               </div>
@@ -255,6 +251,5 @@ export default function MigrationPage() {
           </div>
         </section>
       </div>
-    </BasicPageLayout>
   )
 }

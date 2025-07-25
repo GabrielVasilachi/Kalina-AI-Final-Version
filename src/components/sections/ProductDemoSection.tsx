@@ -45,6 +45,33 @@ import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 
 
 export function ProductDemoSection() {
+  // Utility function to get button size classes based on screen width
+  function getSwitcherButtonClasses() {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width < 400) {
+        return 'px-2 py-1 text-[9px]';
+      } else if (width < 600) {
+        return 'px-3 py-1 text-[10px]';
+      } else if (width < 900) {
+        return 'px-4 py-2 text-sm';
+      } else {
+        return 'px-6 py-2 text-base';
+      }
+    }
+    // Default for SSR
+    return 'px-4 py-2 text-sm';
+  }
+
+  // State to trigger re-render on resize
+  const [screenWidth, setScreenWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const [activeTab, setActiveTab] = useState<'conversation' | 'calendar' | 'magicbutton'>('conversation');
   const { t } = useLanguage();
   
@@ -401,31 +428,31 @@ export function ProductDemoSection() {
       {/* Switcher buttons */}
       <div className="flex justify-center gap-4 mb-8">
         <button
-          className={`px-6 py-2 rounded-full font-semibold border-2 transition-all duration-200 ${
+          className={`rounded-full font-semibold border-2 transition-all duration-200 ${
             activeTab === 'conversation'
               ? 'bg-black text-white border-black'
               : 'bg-white text-black border-gray-300 hover:border-gray-400'
-          }`}
+          } ${getSwitcherButtonClasses()}`}
           onClick={() => setActiveTab('conversation')}
         >
           Conversation AI
         </button>
         <button
-          className={`px-6 py-2 rounded-full font-semibold border-2 transition-all duration-200 ${
+          className={`rounded-full font-semibold border-2 transition-all duration-200 ${
             activeTab === 'calendar'
               ? 'bg-black text-white border-black'
               : 'bg-white text-black border-gray-300 hover:border-gray-400'
-          }`}
+          } ${getSwitcherButtonClasses()}`}
           onClick={() => setActiveTab('calendar')}
         >
           Calendar AI
         </button>
         <button
-          className={`px-6 py-2 rounded-full font-semibold border-2 transition-all duration-200 ${
+          className={`rounded-full font-semibold border-2 transition-all duration-200 ${
             activeTab === 'magicbutton'
               ? 'bg-black text-white border-black'
               : 'bg-white text-black border-gray-300 hover:border-gray-400'
-          }`}
+          } ${getSwitcherButtonClasses()}`}
           onClick={() => setActiveTab('magicbutton')}
         >
           Magic Button
