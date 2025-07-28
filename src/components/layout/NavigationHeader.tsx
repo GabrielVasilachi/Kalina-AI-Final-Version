@@ -70,12 +70,93 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
     }
   }, [isMobileMenuOpen])
 
+  // Sponsors ticker line - perfect seamless scrolling
+  const sponsorsTexts = [
+    'Kalina AI - Sevan Startup Summit 2025 Award Winning',
+    'Award Winning AI Solutions',
+    'Real-time AI assistance',
+    'Seamless integration'
+  ];
+  
+  // Create seamless scrolling by tripling the sponsor list for continuous flow
+  const duplicatedSponsors = [...sponsorsTexts, ...sponsorsTexts, ...sponsorsTexts];
+  
+  // Ticker styles with improved smoothness
+  const tickerStyles = {
+    position: 'fixed' as const,
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '32px',
+    background: 'linear-gradient(90deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
+    overflow: 'hidden',
+    zIndex: 10000,
+    borderBottom: '1px solid rgba(255,255,255,0.1)',
+    display: 'flex',
+    alignItems: 'center',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+  };
+  
+  const tickerTrackStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '120px', // Perfect spacing between sponsors
+    whiteSpace: 'nowrap' as const,
+    animation: 'ticker-smooth-roll 120s linear infinite',
+    willChange: 'transform', // Optimize for smooth animation
+  };
+  
+  const tickerItemStyles = {
+    color: '#ffffff',
+    fontWeight: 600,
+    fontSize: '14px',
+    letterSpacing: '0.5px',
+    display: 'inline-block',
+    textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+    minWidth: 'max-content',
+    opacity: 0.95,
+  };
+  
+  // Add improved ticker keyframes with smoother animation
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !document.getElementById('ticker-keyframes')) {
+      const style = document.createElement('style');
+      style.id = 'ticker-keyframes';
+      style.innerHTML = `
+        @keyframes ticker-smooth-roll { 
+          0% { 
+            transform: translateX(0%); 
+          } 
+          100% { 
+            transform: translateX(-33.333%); 
+          } 
+        }
+        
+        /* Pause animation on hover for better UX */
+        .ticker-track:hover {
+          animation-play-state: paused;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }, []);
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 backdrop-blur-xl bg-white/30` +
-      (isScrolled 
-        ? ' glass border-b border-neutral-200/20' 
-        : ' bg-transparent border-b border-transparent')
-    } style={{overflow: 'visible'}}>
+    <>
+      {/* Perfect sponsors ticker line - smooth and seamless */}
+      <div style={tickerStyles}>
+        <div style={tickerTrackStyles} className="ticker-track">
+          {duplicatedSponsors.map((text: string, idx: number) => (
+            <span style={tickerItemStyles} key={`sponsor-${idx}`}>
+              {text}
+            </span>
+          ))}
+        </div>
+      </div>
+      <header className={`fixed left-0 right-0 z-[9999] transition-all duration-500 backdrop-blur-xl bg-white/30` +
+        (isScrolled 
+          ? ' glass border-b border-neutral-200/20' 
+          : ' bg-transparent border-b border-transparent')
+      } style={{overflow: 'visible', top: '32px'}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-50">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
@@ -615,5 +696,6 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
         )}
       </div>
     </header>
+    </>
   )
 }

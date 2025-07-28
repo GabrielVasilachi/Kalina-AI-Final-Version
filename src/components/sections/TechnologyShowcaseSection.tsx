@@ -1,10 +1,53 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 
 export function TechnologyShowcaseSection() {
   const [activeTab, setActiveTab] = useState('voice')
+  // Header color change logic
+  const sectionRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const ref = sectionRef.current;
+    if (!ref) return;
+    let lastState = false;
+    // IntersectionObserver for initial detection
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        const isAtTop = entry.isIntersecting && entry.boundingClientRect.top <= 0;
+        if (isAtTop && !lastState) {
+          window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: true } }));
+          lastState = true;
+        } else if ((!isAtTop) && lastState) {
+          window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: false } }));
+          lastState = false;
+        }
+      },
+      { threshold: 0, rootMargin: '0px 0px 0px 0px' }
+    );
+    observer.observe(ref);
+
+    // Scroll fallback for robust detection
+    const handleScroll = () => {
+      if (!ref) return;
+      const rect = ref.getBoundingClientRect();
+      const isAtTop = rect.top <= 0 && rect.bottom > 0;
+      if (isAtTop && !lastState) {
+        window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: true } }));
+        lastState = true;
+      } else if (!isAtTop && lastState) {
+        window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: false } }));
+        lastState = false;
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+      window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: false } }));
+    };
+  }, []);
 
   const technologyTabs = [
     {
@@ -169,7 +212,7 @@ export function TechnologyShowcaseSection() {
   }
 
   return (
-    <section className="py-24 bg-black text-white rounded-3xl">
+    <section ref={sectionRef} className="py-24 bg-black text-white rounded-3xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

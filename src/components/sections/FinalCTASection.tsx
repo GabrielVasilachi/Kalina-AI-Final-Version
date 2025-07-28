@@ -1,8 +1,40 @@
-'use client'
 
+'use client'
+import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 
 export function FinalCTASection() {
+  // --- HEADER COLOR CHANGE LOGIC START ---
+  // Ref for the section
+  const sectionRef = useRef<HTMLDivElement>(null)
+  // State to track if header is overlapping this section
+  const [isHeaderOverFAQ, setIsHeaderOverFAQ] = useState(false)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return
+      const rect = sectionRef.current.getBoundingClientRect()
+      const headerHeight = 80 // Header height
+      // Check if header is overlapping with this section
+      const isOverlapping = rect.top <= headerHeight && rect.bottom >= headerHeight
+      setIsHeaderOverFAQ(isOverlapping)
+    }
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  // Dispatch custom event to trigger header color change
+  useEffect(() => {
+    if (isHeaderOverFAQ) {
+      window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: true } }))
+    } else {
+      window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: false } }))
+    }
+  }, [isHeaderOverFAQ])
+  // --- HEADER COLOR CHANGE LOGIC END ---
+
   const benefits = [
     {
       icon: 'ϟ',
@@ -34,7 +66,7 @@ export function FinalCTASection() {
   ]
 
   return (
-    <section className="py-24 bg-black text-white relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-black text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-black"></div>
       
@@ -106,12 +138,12 @@ export function FinalCTASection() {
         {/* Urgency Section */}
         <div className="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-500/30 rounded-2xl p-8 mb-16">
           <h3 className="text-2xl font-bold mb-6 text-center text-red-400">
-            ⚠ DE CE TREBUIE SĂ ACȚIONEZI ACUM
+            DE CE TREBUIE SĂ ACȚIONEZI ACUM
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {urgencyFactors.map((factor, index) => (
               <div key={index} className="flex items-start space-x-3">
-                <div className="text-red-400 text-xl mt-1">▲</div>
+                <div className="text-red-400 text-xl mt-1"></div>
                 <div className="text-gray-200">{factor}</div>
               </div>
             ))}
@@ -121,25 +153,25 @@ export function FinalCTASection() {
         {/* Risk Reversal */}
         <div className="bg-green-900/20 border border-green-500/30 rounded-2xl p-8 mb-16">
           <h3 className="text-2xl font-bold mb-6 text-center text-green-400">
-            $ GARANȚIE 100% RISK-FREE
+            GARANȚIE 100% RISK-FREE
           </h3>
           <div className="grid md:grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-3xl mb-3">◎</div>
+              <div className="text-3xl mb-3"></div>
               <h4 className="font-bold mb-2">Garanție ROI</h4>
               <p className="text-gray-300 text-sm">
                 Dacă nu economisești măcar 2x costul abonamentului în prima lună, îți returnăm banii
               </p>
             </div>
             <div>
-              <div className="text-3xl mb-3">ϟ</div>
+              <div className="text-3xl mb-3"></div>
               <h4 className="font-bold mb-2">Setup Garantat</h4>
               <p className="text-gray-300 text-sm">
                 Dacă nu reușești să-ți configurezi agentul în 3 minute, îl configurăm noi GRATUIT
               </p>
             </div>
             <div>
-              <div className="text-3xl mb-3">✘</div>
+              <div className="text-3xl mb-3"></div>
               <h4 className="font-bold mb-2">Anulare Instant</h4>
               <p className="text-gray-300 text-sm">
                 Poți anula oricând cu un click. Fără întrebări, fără penalități, fără contracte

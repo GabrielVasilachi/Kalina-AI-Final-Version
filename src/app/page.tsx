@@ -1,4 +1,5 @@
 import { HeroSection } from '@/components/sections/HeroSection'
+import { SemiCircleSection } from '@/components/sections/SemiCircleSection'
 import { MainFeaturesSection } from '@/components/sections/MainFeaturesSection'
 import { InteractiveFeatureCards } from '@/components/InteractiveFeatureCards'
 import { ProductDemoSection } from '@/components/sections/ProductDemoSection'

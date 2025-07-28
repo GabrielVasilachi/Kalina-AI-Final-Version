@@ -10,13 +10,15 @@ export function FrequentlyAskedQuestions() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const sectionRef = ref
   const [isHeaderOverFAQ, setIsHeaderOverFAQ] = useState(false)
-  // Header overlap detection
+  // --- HEADER COLOR CHANGE LOGIC START ---
+  // Detect if the header is overlapping with the FAQ section
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef?.current) return
       const rect = sectionRef.current.getBoundingClientRect()
       const headerHeight = 80 // Header height
       // Check if header is overlapping with FAQ section
+      // If true, header should change color
       const isOverlapping = rect.top <= headerHeight && rect.bottom >= headerHeight
       setIsHeaderOverFAQ(isOverlapping)
     }
@@ -26,13 +28,17 @@ export function FrequentlyAskedQuestions() {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [sectionRef])
+
+  // Dispatch custom event to trigger header color change
   useEffect(() => {
+    // If FAQ section is overlapped by header, tell header to change color
     if (isHeaderOverFAQ) {
       window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: true } }))
     } else {
       window.dispatchEvent(new CustomEvent('headerOverDemo', { detail: { isOver: false } }))
     }
   }, [isHeaderOverFAQ])
+  // --- HEADER COLOR CHANGE LOGIC END ---
   const faqs = [
     {
       question: t('faq.question1'),
