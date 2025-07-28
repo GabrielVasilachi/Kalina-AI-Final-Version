@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+import Silk from '../../../BackgroundSilk/Silk/Silk';
 import { useLanguage } from '@/lib/i18n'
 
 type AnimatedPathProps = {
@@ -45,6 +46,24 @@ import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 
 
 export function ProductDemoSection() {
+  // Map agent voices to Silk colors
+  const silkColors = [
+    '#EF4444', // Lili - Red
+    '#F59E42', // Eric - Orange
+    '#7B7481', // Kalina - Gray
+    '#EC4899', // Alexandra - Pink
+  ];
+
+  function getSilkColor() {
+    // Use selectedVoiceRight to pick the color from silkColors
+    if (selectedVoiceRight === null) {
+      return '#7B7481'; // Default Gray when no agent selected
+    }
+    if (selectedVoiceRight >= 0 && selectedVoiceRight < silkColors.length) {
+      return silkColors[selectedVoiceRight];
+    }
+    return '#7B7481'; // Fallback
+  }
   // Utility function to get button size classes based on screen width
   function getSwitcherButtonClasses() {
     if (typeof window !== 'undefined') {
@@ -195,13 +214,11 @@ export function ProductDemoSection() {
         const sectionRect = sectionRef.current.getBoundingClientRect();
         const isMobile = window.innerWidth < 640;
         if (isMobile) {
-          // Mobile: Companies start from bottom center
-          // Start from bottom center of company button, offset by +3
-          const x1 = companyRect.left + companyRect.width * 0.5 - sectionRect.left - 7;
-          const y1 = companyRect.bottom - sectionRect.top - 160;
-          // End at center of microphone, offset by +3, move up by 30px, then even more up by 100px, then 30px more up
-          const x2 = micRect.left + micRect.width * 0.5 - sectionRect.left - 7;
-          const y2 = micRect.top + micRect.height * 0.5 - sectionRect.top - 190;
+          // Mobile: Companies start from center of selected item to center of microphone
+          const x1 = companyRect.left + companyRect.width * 0.5 - sectionRect.left;
+          const y1 = companyRect.top + companyRect.height * 0.5 - sectionRect.top - 100; // Increased Y start position for mobile
+          const x2 = micRect.left + micRect.width * 0.5 - sectionRect.left;
+          const y2 = micRect.top + micRect.height * 0.5 - sectionRect.top - 100;
           setCurve({
             x1,
             y1,
@@ -244,7 +261,7 @@ export function ProductDemoSection() {
             y2,
             width: sectionRect.width,
             height: sectionRect.height,
-            curveOffset: 50
+            curveOffset: 120 // Increased curve for desktop mode
           });
         }
       } else {
@@ -362,13 +379,11 @@ export function ProductDemoSection() {
         const isMobile = window.innerWidth < 640;
         
         if (isMobile) {
-          // Mobile: Agents start from top center
-          // Start from top center of agent voice button, offset by +3
-          const x1 = voiceRect.left + voiceRect.width * 0.5 - sectionRect.left - 7;
-          const y1 = voiceRect.top - sectionRect.top - 150;
-          // End at center of microphone, offset by +3, move up by 30px, then even more up by 100px, then 30px more up
-          const x2 = micRect.left + micRect.width * 0.5 - sectionRect.left - 7;
-          const y2 = micRect.top + micRect.height * 0.5 - sectionRect.top - 140;
+          // Mobile: Agents start from top center of button to center of microphone
+          const x1 = voiceRect.left + voiceRect.width * 0.5 - sectionRect.left;
+          const y1 = voiceRect.top - sectionRect.top - 100; // Top edge of button minus offset
+          const x2 = micRect.left + micRect.width * 0.5 - sectionRect.left;
+          const y2 = micRect.top + micRect.height * 0.5 - sectionRect.top - 100;
           setVoiceCurve({
             x1,
             y1,
@@ -480,7 +495,7 @@ export function ProductDemoSection() {
           }} />
           <div ref={ref} style={{ position: 'relative' }}>
         {/* SVG lines moved below content to avoid interfering with text */}
-        <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 5 }}>
+        <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0 }}>
           {curve && selectedCompanyLeft !== null && (
             <svg
               style={{
@@ -507,7 +522,7 @@ export function ProductDemoSection() {
               ) : (
                 // Desktop: original horizontal curve
                 <AnimatedPath
-                  d={`M ${curve.x1} ${curve.y1} C ${curve.x1 + (curve.curveOffset ?? 80)} ${curve.y1}, ${curve.x2 - (curve.curveOffset ?? 80)} ${curve.y2}, ${curve.x2} ${curve.y2}`}
+                  d={`M ${curve.x1} ${curve.y1} C ${curve.x1 + (curve.curveOffset ?? 120)} ${curve.y1}, ${curve.x2 - (curve.curveOffset ?? 120)} ${curve.y2}, ${curve.x2} ${curve.y2}`}
                   stroke="black"
                   strokeWidth={3}
                   fill="none"
@@ -558,7 +573,7 @@ export function ProductDemoSection() {
         <div className={`transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <div
-            className="border border-gray-900 rounded-lg overflow-hidden bg-white"
+            className="border border-transparent rounded-lg overflow-hidden bg-transparent"
             style={{
               marginLeft: 'auto',
               marginRight: 'auto',
@@ -603,14 +618,18 @@ export function ProductDemoSection() {
                   ))}
                 </div>
                 {/* Centered microphone */}
-                <div className="flex flex-col items-center justify-center flex-1 w-full sm:w-auto" style={{zIndex: 10, position: 'relative'}}>
+                <div className="flex flex-col items-center justify-center flex-1 w-full sm:w-auto" style={{position: 'relative'}}>
                   <button
                     ref={micRef}
                     onClick={handleDemoClick}
-                    className={`relative rounded-full bg-black text-white transition-all duration-300 hover:scale-105 hover:bg-gray-800 w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 xl:w-64 xl:h-64`}
-                    style={{ margin: '0 0.5rem' }}
+                    className={`relative rounded-full text-white transition-all duration-300 hover:scale-105 w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 lg:w-56 lg:h-56 xl:w-64 xl:h-64 bg-transparent`}
+                    style={{ margin: '0 0.5rem', overflow: 'hidden', padding: 0 }}
                   >
-                    <svg className="w-10 h-10 sm:w-14 sm:h-14 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                    <div style={{position: 'absolute', inset: 0, borderRadius: '50%', overflow: 'hidden', zIndex: 100}}>
+                      {/* Force Silk to re-mount when color changes to restart animation */}
+                      <Silk key={selectedVoiceRight ?? 'default'} speed={5} scale={1.2} color={getSilkColor()} noiseIntensity={1.5} rotation={0.2} />
+                    </div>
+                    <svg className="w-10 h-10 sm:w-14 sm:h-14 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 mx-auto" style={{position: 'relative', zIndex: 200}} fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
                     </svg>
                   </button>
@@ -622,7 +641,10 @@ export function ProductDemoSection() {
                     <button
                       key={index}
                       ref={selectedVoiceRight === index ? selectedVoiceRightRef : undefined}
-                      onClick={() => setSelectedVoiceRight(index)}
+                      onClick={() => {
+                        setSelectedVoiceRight(index);
+                        setSelectedVoice(index); // Sync Silk color with selected agent
+                      }}
                       className={`px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-full border-2 transition-all duration-200 font-medium text-xs sm:text-sm md:text-base ${
                         selectedVoiceRight === index 
                           ? 'bg-black text-white border-black' 
@@ -726,7 +748,7 @@ export function ProductDemoSection() {
               <div className={`text-center mb-8 transition-all duration-1000 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
               }`}>
-                <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 mt-9">
                   Revoluția Calendarului AI
                 </h2>
                 <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -857,7 +879,7 @@ export function ProductDemoSection() {
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
                       <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold text-black">Analiză AI Avansată</h3>
