@@ -5,7 +5,7 @@ import Link from 'next/link'
 export function FinalCTASection() {
   const benefits = [
     {
-      icon: '⚡',
+      icon: 'ϟ',
       title: 'Setup în 3 Minute',
       description: 'De la înregistrare la primul agent funcțional'
     },
@@ -36,9 +36,7 @@ export function FinalCTASection() {
   return (
     <section className="py-24 bg-black text-white relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black"></div>
-      <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-gray-800/20 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 bg-black"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main CTA */}
@@ -57,7 +55,7 @@ export function FinalCTASection() {
           
           {/* Urgency Timer */}
           <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-6 max-w-2xl mx-auto mb-8">
-            <div className="text-red-400 font-semibold mb-2">⏰ OFERTA LIMITATĂ</div>
+            <div className="text-red-400 font-semibold mb-2">⏱︎ OFERTA LIMITATĂ</div>
             <div className="text-white text-lg">
               Primul agent AI gratuit pentru primii 100 de clienți din Ianuarie
             </div>
@@ -134,14 +132,14 @@ export function FinalCTASection() {
               </p>
             </div>
             <div>
-              <div className="text-3xl mb-3">⚡</div>
+              <div className="text-3xl mb-3">ϟ</div>
               <h4 className="font-bold mb-2">Setup Garantat</h4>
               <p className="text-gray-300 text-sm">
                 Dacă nu reușești să-ți configurezi agentul în 3 minute, îl configurăm noi GRATUIT
               </p>
             </div>
             <div>
-              <div className="text-3xl mb-3">▪</div>
+              <div className="text-3xl mb-3">✘</div>
               <h4 className="font-bold mb-2">Anulare Instant</h4>
               <p className="text-gray-300 text-sm">
                 Poți anula oricând cu un click. Fără întrebări, fără penalități, fără contracte
@@ -169,7 +167,7 @@ export function FinalCTASection() {
           </Link>
           
           <div className="text-gray-500 text-sm mt-6">
-            ▪ Fără card de credit necesar pentru testare • ⚡ Activare instantanee
+            ▪ Fără card de credit necesar pentru testare • Activare instantanee
           </div>
         </div>
       </div>

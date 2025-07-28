@@ -51,7 +51,7 @@ export function HowItWorksSection() {
   return (
     <motion.section 
       id="how-it-works" 
-      className="section-padding py-6 pt-7 relative overflow-hidden"
+      className="section-padding py-6 pt-7 relative overflow-hidden bg-white"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

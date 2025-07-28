@@ -44,7 +44,7 @@ export function TechnologyShowcaseSection() {
           title: 'Latență Sub-100ms',
           description: 'De la vorbire la răspuns mai rapid decât orice competitor',
           stats: ['~80ms timp răspuns', '99.9% uptime', '40+ limbi native'],
-          icon: '⚡'
+          icon: 'ϟ'
         },
         {
           title: 'Voice Cloning Perfect',

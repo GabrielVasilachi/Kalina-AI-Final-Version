@@ -87,7 +87,7 @@ export function SiteFooter() {
 
   return (
     <footer ref={sectionRef} className="px-8 py-10 bg-black relative overflow-hidden shadow-lg"
-      style={{ borderRadius: '0 0 90px 90px' }}>
+      style={{ borderRadius: '0 0 40px 40px' }}>
       {/* Subtle background animation */}
       <div className="absolute inset-0 bg-gradient-to-t from-brand-500/5 via-transparent to-transparent"></div>
       <div className="morph-shape-2 absolute top-10 right-20 opacity-10"></div>

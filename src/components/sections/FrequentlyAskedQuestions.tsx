@@ -54,7 +54,7 @@ export function FrequentlyAskedQuestions() {
 
   return (
     <section 
-      className="section-padding relative overflow-hidden bg-gradient-to-b from-black to-black"
+      className="section-padding relative overflow-hidden bg-black"
       style={{ clipPath: 'polygon(0 130px, 100% 0, 100% 100%, 0% 100%)', border: 'none', borderBottom: 'none', paddingTop: '230px' }}
     >
       {/* Morphing background elements */}

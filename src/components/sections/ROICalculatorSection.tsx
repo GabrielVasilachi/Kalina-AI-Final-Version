@@ -20,7 +20,7 @@ export function ROICalculatorSection() {
       label: 'Timp de Răspuns',
       value: '<100ms',
       description: 'Răspunsuri instant față de minutele de așteptare',
-      icon: '⚡'
+      icon: 'ϟ'
     },
     {
       label: 'Disponibilitate',
@@ -80,7 +80,7 @@ export function ROICalculatorSection() {
   ]
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">

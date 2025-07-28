@@ -10,7 +10,7 @@ export function CompetitiveAdvantageSection() {
     {
       id: 'voiceflow',
       name: 'Voiceflow',
-      logo: '🌊',
+      logo: '༄ ',
       weaknesses: [
         'Complexitate tehnică ridicată',
         'Fără suport pentru română',
@@ -46,7 +46,7 @@ export function CompetitiveAdvantageSection() {
     {
       title: 'Implementare în 3 Minute',
       description: 'De la zero la primul agent funcțional mai rapid decât să bei o cafea',
-      icon: '⚡',
+      icon: 'ϟ',
       details: ['Setup ghidat pas-cu-pas', 'Template-uri predefinite', 'Training automat', 'Deploy instant']
     },
     {

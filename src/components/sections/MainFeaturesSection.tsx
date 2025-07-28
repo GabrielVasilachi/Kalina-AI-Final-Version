@@ -77,7 +77,7 @@ export function MainFeaturesSection() {
   // Removed feature card scaling/fading animation on scroll
 
   return (
-    <section id="features" className="section-padding">
+    <section id="features" className="section-padding bg-white">
       <div className="container-width">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Side - Title and Description */}

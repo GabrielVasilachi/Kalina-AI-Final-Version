@@ -12,7 +12,7 @@ import { FinalCTASection } from '@/components/sections/FinalCTASection'
 import { HowItWorksSection } from '@/components/sections/HowItWorksSection'
 import { TrustedBySection } from '@/components/sections/TrustedBySection'
 import { FrequentlyAskedQuestions } from '@/components/sections/FrequentlyAskedQuestions'
-import { CallToActionSection } from '@/components/sections/CallToActionSection'
+// import { CallToActionSection } from '@/components/sections/CallToActionSection'
 import { NavigationHeader } from '@/components/layout/NavigationHeader'
 import { SmoothScrollContextProvider } from '@/components/providers/SmoothScrollContextProvider'
 
@@ -48,7 +48,7 @@ export default function HomePage() {
           <HowItWorksSection />
           <FrequentlyAskedQuestions />
           <FinalCTASection />
-          <CallToActionSection />
+          {/* <CallToActionSection /> */}
         </main>
       </div>
     </SmoothScrollContextProvider>
