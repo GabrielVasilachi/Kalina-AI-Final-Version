@@ -1,5 +1,5 @@
 import { HeroSection } from '@/components/sections/HeroSection'
-import { SemiCircleSection } from '@/components/sections/SemiCircleSection'
+
 import { MainFeaturesSection } from '@/components/sections/MainFeaturesSection'
 import { InteractiveFeatureCards } from '@/components/InteractiveFeatureCards'
 import { ProductDemoSection } from '@/components/sections/ProductDemoSection'
@@ -13,7 +13,7 @@ import { FinalCTASection } from '@/components/sections/FinalCTASection'
 import { HowItWorksSection } from '@/components/sections/HowItWorksSection'
 import { TrustedBySection } from '@/components/sections/TrustedBySection'
 import { FrequentlyAskedQuestions } from '@/components/sections/FrequentlyAskedQuestions'
-// import { CallToActionSection } from '@/components/sections/CallToActionSection'
+
 import { NavigationHeader } from '@/components/layout/NavigationHeader'
 import { SmoothScrollContextProvider } from '@/components/providers/SmoothScrollContextProvider'
 
