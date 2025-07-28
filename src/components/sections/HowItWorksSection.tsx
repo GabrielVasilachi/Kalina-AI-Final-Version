@@ -2,6 +2,7 @@
 
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { motion } from 'framer-motion'
+import { easeInOut } from 'framer-motion'
 
 export function HowItWorksSection() {
   const steps = [
@@ -43,7 +44,7 @@ export function HowItWorksSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.2, 0.65, 0.3, 0.9]
+        ease: easeInOut
       }
     }
   }

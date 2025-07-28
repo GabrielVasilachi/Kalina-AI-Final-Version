@@ -20,7 +20,7 @@ export function AdvancedCapabilitiesSection() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {adv.features.map((feature: { title: string; items: string[] }, idx: number) => (
-              <div className="bg-gray-50 rounded-xl p-8" key={idx}>
+              <div className="bg-gray-100 rounded-xl p-8 border border-gray-300" key={idx}>
                 <div className="flex items-center mb-4">
                   {/* You can add icons here if needed */}
                   <h3 className="text-xl font-bold text-black">{feature.title}</h3>
@@ -75,7 +75,7 @@ export function AdvancedCapabilitiesSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 border border-blue-100">
+          <div className="bg-blue-100 rounded-2xl p-8 border border-blue-300">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -98,7 +98,7 @@ export function AdvancedCapabilitiesSection() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-8 border border-purple-100">
+          <div className="bg-purple-100 rounded-2xl p-8 border border-purple-300">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -164,7 +164,7 @@ export function AdvancedCapabilitiesSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-gray-50 rounded-2xl p-6">
+          <div className="bg-gray-100 rounded-2xl p-6 border border-gray-300">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
               <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
@@ -187,7 +187,7 @@ export function AdvancedCapabilitiesSection() {
             </ul>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-6">
+          <div className="bg-gray-100 rounded-2xl p-6 border border-gray-300">
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
               <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { motion } from 'framer-motion'
+import { easeInOut } from 'framer-motion'
 import { useLanguage } from '@/lib/i18n'
 
 export function HeroSection() {
@@ -32,7 +33,7 @@ export function HeroSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.2, 0.65, 0.3, 0.9]
+        ease: easeInOut
       }
     }
   }

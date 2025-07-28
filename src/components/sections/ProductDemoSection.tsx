@@ -698,7 +698,10 @@ export function ProductDemoSection() {
             </div>
             {/* Features List */}
               {!isRecording && (
-                <div className="mt-10 sm:mt-16 w-full px-1 sm:px-4">
+                <div className="mt-10 sm:mt-16 w-full px-1 sm:px-4 relative">
+                  {/* Fade overlays for left/right edges */}
+                  <div className="pointer-events-none absolute left-0 top-0 h-full w-8 sm:w-16 z-10" style={{background: 'linear-gradient(to right, rgba(243,244,246,0.7) 60%, rgba(243,244,246,0) 100%)'}} />
+                  <div className="pointer-events-none absolute right-0 top-0 h-full w-8 sm:w-16 z-10" style={{background: 'linear-gradient(to left, rgba(243,244,246,0.7) 60%, rgba(243,244,246,0) 100%)'}} />
                   <div className="overflow-x-auto custom-scrollbar">
                     <div className="flex gap-4 sm:gap-20 pb-4 min-w-max lg:justify-center px-2 sm:px-4 lg:px-0">
                       {[ 

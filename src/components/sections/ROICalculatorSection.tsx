@@ -96,7 +96,7 @@ export function ROICalculatorSection() {
         {/* Metrics Grid */}
         <div className="grid md:grid-cols-4 gap-8 mb-16">
           {metrics.map((metric, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 text-center shadow-sm">
+            <div key={index} className="bg-gray-100 rounded-xl p-6 text-center shadow-sm border border-gray-200">
               <div className="text-3xl mb-4">{metric.icon}</div>
               <div className="text-3xl font-bold text-black mb-2">{metric.value}</div>
               <div className="text-sm font-medium text-black mb-2">{metric.label}</div>
@@ -108,7 +108,7 @@ export function ROICalculatorSection() {
         {/* ROI Calculations */}
         <div className="space-y-12">
           {calculations.map((calc, index) => (
-            <div key={index} className="bg-white rounded-2xl p-8 shadow-sm">
+            <div key={index} className="bg-gray-100 rounded-2xl p-8 shadow-sm border border-gray-200">
               <h3 className="text-2xl font-bold text-black mb-8 text-center">
                 {calc.scenario}
               </h3>

@@ -118,7 +118,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Main Testimonial */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-12">
+        <div className="bg-gray-50 rounded-2xl shadow-lg p-8 mb-12 border border-gray-300">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Testimonial Content */}
             <div className="lg:col-span-2">
@@ -196,7 +196,7 @@ export function TestimonialsSection() {
               className={`p-4 rounded-lg transition-all duration-200 ${
                 activeTestimonial === index
                   ? 'bg-black text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                  : 'bg-white text-gray-950 hover:bg-gray-100 border border-gray-300 glass-card .glass-card-hover'
               }`}
             >
               <div className="text-2xl mb-2">{testimonial.avatar}</div>
@@ -213,7 +213,7 @@ export function TestimonialsSection() {
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {industryStats.map((stat, index) => (
-              <div key={index} className="text-center p-6 bg-gray-50 rounded-xl">
+              <div key={index} className="text-center p-6 bg-gray-100 border border-gray-300 rounded-xl">
                 <h4 className="font-bold text-black mb-4">{stat.industry}</h4>
                 <div className="space-y-3">
                   <div>

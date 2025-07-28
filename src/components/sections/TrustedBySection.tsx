@@ -1,7 +1,46 @@
 'use client'
 
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+// CountUp component for animated numbers
+interface CountUpProps {
+  end: number | string;
+  duration?: number;
+  suffix?: string;
+  resetKey?: string;
+}
+
+function CountUp({ end, duration = 1.2, suffix = '', resetKey }: CountUpProps) {
+  const [value, setValue] = useState<string | number>(0);
+  const startTimestamp = useRef<number | null>(null);
+  useEffect(() => {
+    startTimestamp.current = null;
+    let rafId: number;
+    function animate(ts: number) {
+      if (!startTimestamp.current) startTimestamp.current = ts;
+      const progress = Math.min((ts - startTimestamp.current) / (duration * 1000), 1);
+      let displayValue = end;
+      if (typeof end === 'number') {
+        displayValue = Math.floor(progress * end);
+      } else if (typeof end === 'string') {
+        // Extract number from string (e.g. "1M+", "99.9%")
+        const match = end.match(/([\d\.]+)([A-Za-z%+]*)/);
+        if (match) {
+          const num = parseFloat(match[1]);
+          const unit = match[2] || '';
+          displayValue = progress < 1 ? `${Math.floor(progress * num)}${unit}` : end;
+        }
+      }
+      setValue(displayValue);
+      if (progress < 1) {
+        rafId = requestAnimationFrame(animate);
+      }
+    }
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
+  }, [end, duration, resetKey]);
+  return <span>{value}{suffix}</span>;
+}
 import AnimatedThreadsBackground from '../AnimatedThreadsBackground'
 import { useLanguage } from '@/lib/i18n'
 
@@ -92,7 +131,7 @@ export function TrustedBySection() {
               }}
             >
               <div className="text-3xl md:text-4xl font-bold text-black mb-2 group-hover:scale-105 transition-transform duration-300">
-                {metric.value}
+                <CountUp end={metric.value} duration={1.2} resetKey={isVisible ? 'visible' : 'hidden'} />
               </div>
               <div className="text-gray-600 text-sm md:text-base">
                 {metric.label}

@@ -144,7 +144,7 @@ export function CompetitiveAdvantageSection() {
         {/* Comparison Grid */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Competitor Weaknesses */}
-          <div className="bg-red-50 rounded-2xl p-8">
+          <div className="bg-red-100 rounded-2xl p-8 border border-red-300">
             <h3 className="text-2xl font-bold text-red-700 mb-6 flex items-center">
               <span className="mr-3">
                 {competitors.find(c => c.id === activeComparison)?.logo}
@@ -162,7 +162,7 @@ export function CompetitiveAdvantageSection() {
           </div>
 
           {/* Kallina Advantages */}
-          <div className="bg-green-50 rounded-2xl p-8">
+          <div className="bg-green-100 rounded-2xl p-8 border border-green-300">
             <h3 className="text-2xl font-bold text-green-700 mb-6 flex items-center">
               <span className="mr-3">→</span>
               Kallina.ai Avantaje
@@ -184,7 +184,7 @@ export function CompetitiveAdvantageSection() {
         {/* Detailed Advantages */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {kallinaAdvantages.map((advantage, index) => (
-            <div key={index} className="bg-gray-50 rounded-xl p-6">
+            <div key={index} className="bg-gray-100 rounded-xl p-6 border border-gray-200">
               <div className="text-3xl mb-4">{advantage.icon}</div>
               <h4 className="text-lg font-bold text-black mb-3">{advantage.title}</h4>
               <p className="text-gray-600 text-sm mb-4">{advantage.description}</p>
@@ -201,7 +201,7 @@ export function CompetitiveAdvantageSection() {
         </div>
 
         {/* Comparison Matrix */}
-        <div className="bg-gray-50 rounded-2xl p-8 mb-16">
+        <div className="bg-gray-100 rounded-2xl p-8 mb-16 border border-gray-300">
           <h3 className="text-2xl font-bold text-black mb-8 text-center">
             Comparație Detaliată
           </h3>
