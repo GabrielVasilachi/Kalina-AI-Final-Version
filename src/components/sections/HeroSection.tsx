@@ -60,7 +60,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section id="hero" className="relative py-24 pt-40 overflow-hidden bg-white min-h-[80vh]">
+    <section id="hero" className="relative py-30 pt-24 overflow-hidden bg-white min-h-[60vh] flex items-center justify-center">
       {/* Dynamic background elements */}
       <div 
         className="absolute inset-0 opacity-60 hidden sm:block"
@@ -75,13 +75,11 @@ export function HeroSection() {
         <div className="absolute bottom-10 left-32 w-28 h-28 bg-gradient-to-br from-brand-400/60 to-brand-300/50 text-black rounded-full morphing-shape animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container-width relative z-10">
+      <div className="container-width relative z-10 flex flex-col items-center justify-center w-full">
         {/* Centered Content */}
-        <div className="flex flex-col items-center text-center max-w-7xl mx-auto">
+        <div className="flex flex-col items-center text-center max-w-7xl mx-auto justify-center w-full">
           <div className="space-y-6">
             <div className="space-y-6">
-              
-              
               <motion.h1 
                 ref={titleReveal.ref}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black leading-tight stagger-2"
@@ -91,7 +89,6 @@ export function HeroSection() {
               >
                 <motion.span variants={childVariants}>{t('hero.title')}</motion.span>
               </motion.h1>
-              
               <motion.p 
                 ref={descReveal.ref}
                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-300 max-w-4xl mx-auto leading-relaxed stagger-3"

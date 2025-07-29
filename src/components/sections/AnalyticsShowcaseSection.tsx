@@ -609,64 +609,24 @@ export function AnalyticsShowcaseSection() {
             </div>
           </div>
 
-          {/* Enhanced integration section */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 hover:border-purple-500/30 hover:bg-purple-600/30 transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
-            <div className="text-purple-400 text-sm font-semibold mb-3 uppercase tracking-wide">EMBED</div>
-            <h3 className=" text-white text-2xl font-bold mb-4 leading-tight">
-              A window
-              <br />
-              <span className="text-gray-400">into your work.</span>
-            </h3>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Simply paste a link to any of the hundreds of tools you use and Kalina AI will seamlessly package your outputs.
-            </p>
-            
-            {/* Premium integration grid */}
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="group">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.84-.179-.96-.6-.12-.421.18-.841.6-.961 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.78.301 1.141zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
-                  </svg>
-                </div>
-              </div>
-              <div className="group">
-                <div className="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-white font-bold text-xl">N</span>
-                </div>
-              </div>
-              <div className="group">
-                <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-yellow-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M13.5 2C13.5 2 15 3.5 15 6.5C15 9.5 13.5 11 13.5 11C13.5 11 15 12.5 15 15.5C15 18.5 13.5 20 13.5 20C13.5 20 12 18.5 12 15.5C12 12.5 13.5 11 13.5 11C13.5 11 12 9.5 12 6.5C12 3.5 13.5 2 13.5 2Z"/>
-                  </svg>
-                </div>
-              </div>
-              <div className="group">
-                <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1L13.5 2.5L18.5 7.5H9.5L14.5 2.5L13 1L7 7V9H10V11H14V9H21Z"/>
-                  </svg>
-                </div>
-              </div>
-              <div className="group">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L13.09 8.26L22 9L16 14L18 22L12 18L6 22L8 14L2 9L10.91 8.26L12 2Z"/>
-                  </svg>
-                </div>
-              </div>
-              <div className="group">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.643 4.937C22.808 5.313 21.911 5.575 20.968 5.708C21.941 5.141 22.669 4.259 23.016 3.204C22.116 3.724 21.119 4.100 20.058 4.307C19.208 3.432 17.998 2.888 16.658 2.888C14.086 2.888 12 4.974 12 7.547C12 7.917 12.042 8.278 12.125 8.626C8.246 8.436 4.817 6.606 2.542 3.747C2.143 4.371 1.917 5.141 1.917 5.974C1.917 7.563 2.731 8.967 3.959 9.766C3.199 9.740 2.488 9.533 1.875 9.191V9.251C1.875 11.513 3.479 13.396 5.608 13.828C5.222 13.937 4.814 13.996 4.392 13.996C4.093 13.996 3.803 13.966 3.521 13.909C4.109 15.760 5.818 17.123 7.865 17.162C6.271 18.423 4.259 19.178 2.077 19.178C1.694 19.178 1.317 19.157 0.948 19.116C2.019 20.428 4.475 21.178 7.144 21.178C16.647 21.178 21.779 14.079 21.779 7.769C21.779 7.565 21.775 7.363 21.766 7.162C22.679 6.520 23.465 5.715 24.078 4.791L23.643 4.937Z"/>
-                  </svg>
-                </div>
-              </div>
+          {/* Redesigned integration/video section */}
+          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 flex flex-col items-center justify-center min-h-[420px] hover:border-purple-500/30 hover:bg-purple-600/30 transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
+            <div className="w-full flex flex-col items-center justify-center mb-8">
+              <div className="text-purple-400 text-sm font-semibold mb-3 uppercase tracking-wide">INTEGRATION & DEMO</div>
+              <h3 className="text-white text-3xl md:text-4xl font-bold mb-4 leading-tight text-center">
+                See Kalina AI in Action
+              </h3>
+              <p className="text-gray-300 mb-6 leading-relaxed max-w-lg text-center">
+                Instantly embed, preview, or interact with your favorite tools and dashboards. Add a video demo or live preview here to showcase seamless integration and real results.
+              </p>
             </div>
-            
-            <div className="text-center">
-              <div className="text-gray-400 text-sm">Connect with 100+ apps and services</div>
+            {/* Video/demo placeholder */}
+            <div className="w-full flex flex-col items-center justify-center">
+              <div className="w-full aspect-video max-w-2xl bg-black/60 border-2 border-dashed border-purple-500 rounded-2xl flex items-center justify-center text-purple-400 text-lg font-semibold">
+                {/* TODO: Embed your video or interactive demo here */}
+                Video Demo Placeholder
+              </div>
+              <div className="text-gray-400 text-xs mt-3">Upload or embed a product video, YouTube, or Loom link here.</div>
             </div>
           </div>
         </div>

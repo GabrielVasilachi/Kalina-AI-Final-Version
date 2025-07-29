@@ -72,10 +72,12 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
 
   // Sponsors ticker line - perfect seamless scrolling
   const sponsorsTexts = [
-    'Kalina AI - Sevan Startup Summit 2025 Award Winning',
-    'Award Winning AI Solutions',
-    'Real-time AI assistance',
-    'Seamless integration'
+    'We won 1st Place at ElevenLabs Hackathon – $20,000 for our AI Agents',
+    'EBRD selected Aichat.md for the prestigious Star Venture Program',
+    '2nd Place at Sevan Startup Summit – $6,000 award for Aichat.md',
+    'Winner of the YoHealth Challenge at Sevan – $6,000 for Aichat.md',
+    'Backed by Google Cloud – $25K grant to scale our AI infrastructure',
+    'Part of UpNext Accelerator by Dreamups – with $10K funding to grow Aichat.md',
   ];
   
   // Create seamless scrolling by tripling the sponsor list for continuous flow

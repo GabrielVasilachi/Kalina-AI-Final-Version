@@ -1,8 +1,8 @@
 "use client";
 import { useLanguage } from '../../lib/i18n'
-import { useStore } from 'zustand'
+
 export function AdvancedCapabilitiesSection() {
-  const translations = useStore(useLanguage, state => state.translations)
+  const { translations } = useLanguage()
   const adv = translations.advancedCapabilitiesSection
   return (
     <>
