@@ -60,7 +60,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section id="hero" className="relative py-10 pt-32 overflow-hidden bg-white">
+    <section id="hero" className="relative py-24 pt-40 overflow-hidden bg-white min-h-[80vh]">
       {/* Dynamic background elements */}
       <div 
         className="absolute inset-0 opacity-60 hidden sm:block"
@@ -77,7 +77,7 @@ export function HeroSection() {
 
       <div className="container-width relative z-10">
         {/* Centered Content */}
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
+        <div className="flex flex-col items-center text-center max-w-7xl mx-auto">
           <div className="space-y-6">
             <div className="space-y-6">
               

@@ -132,11 +132,11 @@ export function MainFeaturesSection() {
                 <div
                   key={index}
                   ref={el => { cardRefs.current[index] = el || null; }}
-                  className="glass-card rounded-2xl p-8 magnetic-hover"
+                  className="glass-card rounded-2xl p-8 magnetic-hover group transition-all duration-500 hover:shadow-2xl hover:shadow-brand-400/20 hover:scale-105 hover:bg-gradient-to-br hover:from-white hover:to-brand-50 hover:border-brand-300"
                 >
                   <div className="flex flex-col gap-4">
-                    <h3 className="text-2xl font-bold text-black mb-2">{feature.title}</h3>
-                    <p className="text-base text-black leading-relaxed">{feature.description}</p>
+                    <h3 className="text-2xl font-bold text-black mb-2 group-hover:text-brand-500 transition-colors duration-300">{feature.title}</h3>
+                    <p className="text-base text-black leading-relaxed group-hover:text-brand-400 transition-colors duration-300">{feature.description}</p>
                   </div>
                 </div>
               ))}

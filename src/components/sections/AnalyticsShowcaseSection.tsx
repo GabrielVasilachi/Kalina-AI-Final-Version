@@ -550,9 +550,9 @@ export function AnalyticsShowcaseSection() {
                 <div className="w-20 h-12">
                   <canvas
                     ref={sparklineRef}
-                    width={80}
-                    height={40}
-                    className="w-full h-full"
+                    width={100}
+                    height={60}
+                    className="w-full h-full ml-[-50px]"
                   />
                 </div>
               </div>

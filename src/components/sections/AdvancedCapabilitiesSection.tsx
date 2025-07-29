@@ -20,24 +20,24 @@ export function AdvancedCapabilitiesSection() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {adv.features.map((feature: { title: string; items: string[] }, idx: number) => (
-              <div className="bg-gray-100 rounded-xl p-8 border border-gray-300" key={idx}>
+              <div className="bg-gray-100 rounded-xl p-8 border border-gray-300 hover:shadow-2xl hover:shadow-brand-400/20 hover:scale-105 hover:bg-gradient-to-br hover:from-gray-100 hover:to-brand-50 hover:border-brand-300 transition-all duration-500 group" key={idx}>
                 <div className="flex items-center mb-4">
                   {/* You can add icons here if needed */}
-                  <h3 className="text-xl font-bold text-black">{feature.title}</h3>
+                  <h3 className="text-xl font-bold text-black group-hover:text-brand-500 transition-colors duration-300">{feature.title}</h3>
                 </div>
-                <ul className="text-gray-700 space-y-2 text-sm">
+                <ul className="text-gray-700 space-y-2 text-sm group-hover:text-brand-600 transition-colors duration-300">
                   {feature.items.map((item: string, i: number) => (
-                    <li key={i}>• {item}</li>
+                    <li key={i} className="hover:text-brand-700 transition-colors duration-200">• {item}</li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
 
-          <div className="bg-black text-white rounded-2xl p-12">
+          <div className="bg-black text-white rounded-2xl p-12 hover:bg-gradient-to-br hover:from-black hover:to-brand-700 hover:shadow-2xl hover:shadow-brand-400/30 hover:scale-[1.02] transition-all duration-500 group">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-4">{adv.business.title}</h3>
-              <p className="text-gray-300 text-lg">
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-brand-200 transition-colors duration-300">{adv.business.title}</h3>
+              <p className="text-gray-300 text-lg group-hover:text-brand-100 transition-colors duration-300">
                 {adv.business.subtitle}
               </p>
             </div>

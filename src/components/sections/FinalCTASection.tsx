@@ -86,7 +86,7 @@ export function FinalCTASection() {
           </p>
           
           {/* Urgency Timer */}
-          <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-6 max-w-2xl mx-auto mb-8">
+          <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-6 max-w-2xl mx-auto mb-8 hover:bg-red-900/30 hover:border-red-400/50 hover:shadow-xl hover:shadow-red-500/20 hover:scale-105 transition-all duration-300">
             <div className="text-red-400 font-semibold mb-2">⏱︎ OFERTA LIMITATĂ</div>
             <div className="text-white text-lg">
               Primul agent AI gratuit pentru primii 100 de clienți din Ianuarie
@@ -99,10 +99,10 @@ export function FinalCTASection() {
           {/* Benefits Grid */}
           <div className="grid md:grid-cols-4 gap-6 mb-12">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white/5 rounded-xl p-6 text-center">
-                <div className="text-3xl mb-3">{benefit.icon}</div>
-                <h3 className="font-bold mb-2">{benefit.title}</h3>
-                <p className="text-gray-400 text-sm">{benefit.description}</p>
+              <div key={index} className="bg-white/5 rounded-xl p-6 text-center hover:bg-white/10 hover:shadow-xl hover:shadow-white/20 hover:scale-105 hover:border hover:border-white/20 transition-all duration-300 group">
+                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{benefit.icon}</div>
+                <h3 className="font-bold mb-2 group-hover:text-gray-200 transition-colors duration-300">{benefit.title}</h3>
+                <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -111,14 +111,14 @@ export function FinalCTASection() {
           <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-12">
             <Link
               href="/getting-started"
-              className="bg-white text-black px-12 py-6 rounded-xl hover:bg-gray-100 transition-all duration-200 font-bold text-xl shadow-2xl transform hover:scale-105 min-w-[280px]"
+              className="bg-white text-black px-12 py-6 rounded-xl hover:bg-gray-100 hover:shadow-2xl hover:shadow-white/30 transition-all duration-300 font-bold text-xl shadow-2xl transform hover:scale-110 min-w-[280px] group"
             >
-              → Începe GRATUIT Acum
+              <span className="group-hover:animate-pulse">→</span> Începe GRATUIT Acum
             </Link>
-            <div className="text-gray-400 text-lg lg:mx-6">sau</div>
+            <div className="text-gray-400 text-lg lg:mx-6 hover:text-gray-300 transition-colors duration-300">sau</div>
             <Link
               href="/demo"
-              className="border-2 border-white text-white px-12 py-6 rounded-xl hover:bg-white hover:text-black transition-all duration-200 font-bold text-xl min-w-[280px]"
+              className="border-2 border-white text-white px-12 py-6 rounded-xl hover:bg-white hover:text-black hover:shadow-2xl hover:shadow-white/30 transition-all duration-300 font-bold text-xl min-w-[280px] hover:scale-110"
             >
               ◉ Demo Live în 30 Sec
             </Link>

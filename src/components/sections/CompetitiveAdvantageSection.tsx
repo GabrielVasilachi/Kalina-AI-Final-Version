@@ -128,10 +128,10 @@ export function CompetitiveAdvantageSection() {
               <button
                 key={comp.id}
                 onClick={() => setActiveComparison(comp.id)}
-                className={`px-6 py-3 rounded-md font-medium transition-all duration-200 flex items-center space-x-2 ${
+                className={`px-6 py-3 rounded-md font-medium transition-all duration-300 flex items-center space-x-2 hover:scale-105 hover:shadow-lg ${
                   activeComparison === comp.id
-                    ? 'bg-black text-white'
-                    : 'text-gray-600 hover:text-black'
+                    ? 'bg-black text-white shadow-xl'
+                    : 'text-gray-600 hover:text-brand-500 hover:bg-brand-50'
                 }`}
               >
                 <span>{comp.logo}</span>
@@ -144,9 +144,9 @@ export function CompetitiveAdvantageSection() {
         {/* Comparison Grid */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Competitor Weaknesses */}
-          <div className="bg-red-100 rounded-2xl p-8 border border-red-300">
-            <h3 className="text-2xl font-bold text-red-700 mb-6 flex items-center">
-              <span className="mr-3">
+          <div className="bg-red-100 rounded-2xl p-8 border border-red-300 hover:shadow-xl hover:shadow-red-200/50 hover:scale-[1.02] transition-all duration-500 group">
+            <h3 className="text-2xl font-bold text-red-700 mb-6 flex items-center group-hover:text-red-800 transition-colors duration-300">
+              <span className="mr-3 group-hover:scale-110 transition-transform duration-300">
                 {competitors.find(c => c.id === activeComparison)?.logo}
               </span>
               {competitors.find(c => c.id === activeComparison)?.name} Limitări
@@ -162,18 +162,18 @@ export function CompetitiveAdvantageSection() {
           </div>
 
           {/* Kallina Advantages */}
-          <div className="bg-green-100 rounded-2xl p-8 border border-green-300">
-            <h3 className="text-2xl font-bold text-green-700 mb-6 flex items-center">
-              <span className="mr-3">→</span>
+          <div className="bg-green-100 rounded-2xl p-8 border border-green-300 hover:shadow-2xl hover:shadow-green-200/50 hover:scale-[1.02] transition-all duration-500 group">
+            <h3 className="text-2xl font-bold text-green-700 mb-6 flex items-center group-hover:text-green-800 transition-colors duration-300">
+              <span className="mr-3 group-hover:scale-110 transition-transform duration-300">→</span>
               Kallina.ai Avantaje
             </h3>
             <div className="space-y-4">
               {kallinaAdvantages.map((advantage, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <div className="text-green-500 mt-1">✓</div>
+                <div key={index} className="flex items-start space-x-3 hover:bg-green-50 hover:rounded-lg hover:p-2 transition-all duration-300">
+                  <div className="text-green-500 mt-1 hover:scale-110 transition-transform duration-300">✓</div>
                   <div>
-                    <div className="font-semibold text-green-800">{advantage.title}</div>
-                    <div className="text-green-700 text-sm">{advantage.description}</div>
+                    <div className="font-semibold text-green-800 group-hover:text-green-900 transition-colors duration-300">{advantage.title}</div>
+                    <div className="text-green-700 text-sm group-hover:text-green-800 transition-colors duration-300">{advantage.description}</div>
                   </div>
                 </div>
               ))}

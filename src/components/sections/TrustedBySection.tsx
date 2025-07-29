@@ -106,12 +106,12 @@ export function TrustedBySection() {
           {companies.map((company, index) => (
             <div 
               key={company} 
-              className="group transition-all duration-300 hover:scale-105"
+              className="group transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-brand-400/20 hover:bg-white/80 hover:backdrop-blur-sm rounded-lg px-3 py-2"
               style={{
                 transitionDelay: `${index * 100}ms`
               }}
             >
-              <div className="px-6 py-3 text-gray-400 font-semibold text-lg group-hover:text-black transition-colors duration-300">
+              <div className="px-6 py-3 text-gray-400 font-semibold text-lg group-hover:text-brand-500 group-hover:font-bold transition-all duration-300">
                 {company}
               </div>
             </div>
@@ -125,15 +125,15 @@ export function TrustedBySection() {
           {metrics.map((metric, index) => (
             <div 
               key={metric.label}
-              className="group"
+              className="group hover:bg-white/90 hover:shadow-xl hover:shadow-brand-300/20 hover:scale-105 rounded-lg p-4 transition-all duration-300"
               style={{
                 transitionDelay: `${index * 150}ms`
               }}
             >
-              <div className="text-3xl md:text-4xl font-bold text-black mb-2 group-hover:scale-105 transition-transform duration-300">
+              <div className="text-3xl md:text-4xl font-bold text-black mb-2 group-hover:scale-105 group-hover:text-brand-500 transition-all duration-300">
                 <CountUp end={metric.value} duration={1.2} resetKey={isVisible ? 'visible' : 'hidden'} />
               </div>
-              <div className="text-gray-600 text-sm md:text-base">
+              <div className="text-gray-600 text-sm md:text-base group-hover:text-brand-400 transition-colors duration-300">
                 {metric.label}
               </div>
             </div>
@@ -149,7 +149,7 @@ export function TrustedBySection() {
           </p>
           <a
             href="/getting-started"
-            className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
+            className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gradient-to-r hover:from-brand-400 hover:to-brand-500 hover:scale-105 hover:shadow-lg hover:shadow-brand-400/30 transition-all duration-300"
           >
             {t('common.getStarted')}
           </a>

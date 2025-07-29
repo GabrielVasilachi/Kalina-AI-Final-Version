@@ -118,40 +118,40 @@ export function TestimonialsSection() {
         </div>
 
         {/* Main Testimonial */}
-        <div className="bg-gray-50 rounded-2xl shadow-lg p-8 mb-12 border border-gray-300">
+        <div className="bg-gray-50 rounded-2xl shadow-lg p-8 mb-12 border border-gray-300 hover:shadow-2xl hover:shadow-brand-400/20 hover:scale-[1.02] transition-all duration-500 group">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Testimonial Content */}
             <div className="lg:col-span-2">
               <div className="flex items-center mb-6">
-                <div className="text-4xl mr-4">
+                <div className="text-4xl mr-4 group-hover:scale-110 transition-transform duration-300">
                   {testimonials[activeTestimonial].avatar}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-black">
+                  <h3 className="text-xl font-bold text-black group-hover:text-brand-500 transition-colors duration-300">
                     {testimonials[activeTestimonial].name}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 group-hover:text-brand-400 transition-colors duration-300">
                     {testimonials[activeTestimonial].position}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 group-hover:text-brand-300 transition-colors duration-300">
                     {testimonials[activeTestimonial].company} • {testimonials[activeTestimonial].industry}
                   </p>
                 </div>
               </div>
               
-              <blockquote className="text-lg text-gray-800 mb-6 italic">
+              <blockquote className="text-lg text-gray-800 mb-6 italic group-hover:text-brand-600 transition-colors duration-300">
                 "{testimonials[activeTestimonial].quote}"
               </blockquote>
 
               {/* Before/After */}
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-red-50 rounded-lg p-4">
+                <div className="bg-red-50 rounded-lg p-4 hover:bg-red-100 hover:shadow-lg transition-all duration-300">
                   <h4 className="font-semibold text-red-700 mb-2">✗ Înainte</h4>
                   <p className="text-red-600 text-sm">
                     {testimonials[activeTestimonial].beforeAfter.before}
                   </p>
                 </div>
-                <div className="bg-green-50 rounded-lg p-4">
+                <div className="bg-green-50 rounded-lg p-4 hover:bg-green-100 hover:shadow-lg transition-all duration-300">
                   <h4 className="font-semibold text-green-700 mb-2">✓ Acum</h4>
                   <p className="text-green-600 text-sm">
                     {testimonials[activeTestimonial].beforeAfter.after}
@@ -161,22 +161,22 @@ export function TestimonialsSection() {
             </div>
 
             {/* Metrics */}
-            <div className="bg-black text-white rounded-xl p-6">
+            <div className="bg-black text-white rounded-xl p-6 hover:bg-gradient-to-br hover:from-black hover:to-brand-700 hover:scale-105 transition-all duration-300">
               <h4 className="text-lg font-bold mb-6">Rezultate Măsurabile</h4>
               <div className="space-y-4">
-                <div className="text-center">
+                <div className="text-center hover:scale-110 transition-transform duration-300">
                   <div className="text-3xl font-bold text-green-400 mb-1">
                     {testimonials[activeTestimonial].metrics.increase}
                   </div>
                   <div className="text-sm text-gray-300">Creștere Business</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center hover:scale-110 transition-transform duration-300">
                   <div className="text-2xl font-bold text-blue-400 mb-1">
                     {testimonials[activeTestimonial].metrics.savings}
                   </div>
                   <div className="text-sm text-gray-300">Economii Lunare</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center hover:scale-110 transition-transform duration-300">
                   <div className="text-2xl font-bold text-yellow-400 mb-1">
                     {testimonials[activeTestimonial].metrics.rating}
                   </div>
@@ -193,10 +193,10 @@ export function TestimonialsSection() {
             <button
               key={index}
               onClick={() => setActiveTestimonial(index)}
-              className={`p-4 rounded-lg transition-all duration-200 ${
+              className={`p-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg ${
                 activeTestimonial === index
-                  ? 'bg-black text-white'
-                  : 'bg-white text-gray-950 hover:bg-gray-100 border border-gray-300 glass-card .glass-card-hover'
+                  ? 'bg-black text-white shadow-xl'
+                  : 'bg-white text-gray-950 hover:bg-brand-50 hover:border-brand-300 hover:text-brand-600 border border-gray-300 glass-card'
               }`}
             >
               <div className="text-2xl mb-2">{testimonial.avatar}</div>
