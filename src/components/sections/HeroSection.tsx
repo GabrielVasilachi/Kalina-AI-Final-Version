@@ -60,7 +60,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section id="hero" className="relative py-10 pt-24 overflow-hidden bg-white">
+    <section id="hero" className="relative py-10 pt-32 overflow-hidden bg-white">
       {/* Dynamic background elements */}
       <div 
         className="absolute inset-0 opacity-60 hidden sm:block"

@@ -1,53 +1,633 @@
 'use client'
 
-import React from 'react';
-import Silk from '../../../BackgroundSilk/Silk/Silk';
-import { useLanguage } from '@/lib/i18n'
-
-type AnimatedPathProps = {
-  d: string;
-  stroke?: string;
-  strokeWidth?: number;
-  fill?: string;
-  opacity?: number;
-  duration?: number;
-};
-
-const AnimatedPath: React.FC<AnimatedPathProps> = ({ d, stroke, strokeWidth, fill, opacity, duration = 800 }) => {
-  const pathRef = React.useRef<SVGPathElement | null>(null);
-  React.useEffect(() => {
-    const path = pathRef.current;
-    if (!path) return;
-    const length = path.getTotalLength();
-    path.style.transition = 'none';
-    path.style.strokeDasharray = `${length}`;
-    path.style.strokeDashoffset = `${length}`;
-    // Force reflow
-    void path.getBoundingClientRect();
-    path.style.transition = `stroke-dashoffset ${duration}ms cubic-bezier(0.4,0,0.2,1)`;
-    path.style.strokeDashoffset = '0';
-  }, [d, duration]);
-  return (
-    <path
-      ref={pathRef}
-      d={d}
-      stroke={stroke}
-      strokeWidth={strokeWidth}
-      fill={fill}
-      opacity={opacity}
-      style={{}}
-    />
-  );
-};
-
-import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
-
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
-
+import React, { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 export function ProductDemoSection() {
-  // Map agent voices to Silk colors
-  const silkColors = [
+  const [activeDemo, setActiveDemo] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0])
+
+  const { ref: inViewRef, inView } = useInView({
+    threshold: 0.2,
+    triggerOnce: false
+  })
+
+  // Premium demo data
+  const demoFeatures = [
+    {
+      id: 'ai-chat',
+      title: 'Intelligent Conversations',
+      subtitle: 'AI that understands context',
+      description: 'Experience natural, contextual conversations with our advanced AI that learns and adapts to your communication style.',
+      accent: '#3B82F6', // Blue
+      icon: '🤖',
+      preview: 'chat'
+    },
+    {
+      id: 'automation',
+      title: 'Smart Automation',
+      subtitle: 'Workflow optimization',
+      description: 'Automate complex workflows with intelligent decision-making that saves time and reduces errors.',
+      accent: '#10B981', // Green
+      icon: '⚡',
+      preview: 'automation'
+    },
+    {
+      id: 'analytics',
+      title: 'Deep Analytics',
+      subtitle: 'Actionable insights',
+      description: 'Get powerful insights from your data with AI-powered analytics that reveal hidden patterns and opportunities.',
+      accent: '#F59E0B', // Amber
+      icon: '📊',
+      preview: 'analytics'
+    },
+    {
+      id: 'integration',
+      title: 'Seamless Integration',
+      subtitle: 'Connect everything',
+      description: 'Integrate with your existing tools and workflows seamlessly with our universal API and pre-built connectors.',
+      accent: '#EF4444', // Red
+      icon: '🔗',
+      preview: 'integration'
+    }
+  ]
+
+  // Animated chat messages
+  const chatMessages = [
+    { sender: 'user', text: 'Analyze our Q4 sales performance', time: '14:32' },
+    { sender: 'ai', text: 'I\'ve analyzed your Q4 data. Revenue increased 24% with the highest growth in the enterprise segment.', time: '14:32' },
+    { sender: 'ai', text: 'Key insights: 📈 Enterprise sales up 45%\n💡 Customer retention at 94%\n🎯 Top performing product: AI Analytics Suite', time: '14:33' },
+    { sender: 'user', text: 'Create a presentation for the board meeting', time: '14:34' },
+    { sender: 'ai', text: 'I\'ve created a comprehensive board presentation with your Q4 metrics, growth projections, and strategic recommendations. Would you like me to schedule the meeting?', time: '14:34' }
+  ]
+
+  // Mouse tracking for premium effects
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect()
+        setMousePosition({
+          x: (e.clientX - rect.left) / rect.width,
+          y: (e.clientY - rect.top) / rect.height
+        })
+      }
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  // Auto-play chat messages
+  useEffect(() => {
+    if (isPlaying && activeDemo === 0) {
+      const interval = setInterval(() => {
+        setCurrentMessageIndex(prev => {
+          if (prev < chatMessages.length - 1) {
+            return prev + 1
+          } else {
+            setIsPlaying(false)
+            return 0
+          }
+        })
+      }, 2000)
+      return () => clearInterval(interval)
+    }
+  }, [isPlaying, activeDemo, chatMessages.length])
+
+  // Premium particle system
+  useEffect(() => {
+    if (!canvasRef.current) return
+
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const resizeCanvas = () => {
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
+    }
+
+    resizeCanvas()
+    window.addEventListener('resize', resizeCanvas)
+
+    const particles: any[] = []
+    const particleCount = 50
+
+    class Particle {
+      x: number
+      y: number
+      size: number
+      speedX: number
+      speedY: number
+      opacity: number
+      color: string
+
+      constructor() {
+        this.x = Math.random() * canvas.offsetWidth
+        this.y = Math.random() * canvas.offsetHeight
+        this.size = Math.random() * 2 + 0.5
+        this.speedX = (Math.random() - 0.5) * 0.5
+        this.speedY = (Math.random() - 0.5) * 0.5
+        this.opacity = Math.random() * 0.3 + 0.1
+        this.color = demoFeatures[activeDemo]?.accent || '#3B82F6'
+      }
+
+      update() {
+        this.x += this.speedX
+        this.y += this.speedY
+
+        if (this.x < 0 || this.x > canvas.offsetWidth) this.speedX *= -1
+        if (this.y < 0 || this.y > canvas.offsetHeight) this.speedY *= -1
+
+        // Mouse interaction
+        const dx = mousePosition.x * canvas.offsetWidth - this.x
+        const dy = mousePosition.y * canvas.offsetHeight - this.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance < 100) {
+          this.x -= dx * 0.01
+          this.y -= dy * 0.01
+        }
+      }
+
+      draw() {
+        if (!ctx) return
+        ctx.save()
+        ctx.globalAlpha = this.opacity
+        ctx.fillStyle = this.color
+        ctx.beginPath()
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+        ctx.fill()
+        ctx.restore()
+      }
+    }
+
+    // Initialize particles
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle())
+    }
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight)
+      
+      particles.forEach(particle => {
+        particle.update()
+        particle.draw()
+      })
+
+      requestAnimationFrame(animate)
+    }
+
+    animate()
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas)
+    }
+  }, [activeDemo, mousePosition])
+
+  const ChatPreview = () => (
+    <div className="h-full bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 p-6 overflow-hidden relative">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center space-x-3">
+          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+        </div>
+        <div className="text-gray-400 text-sm">Kalina AI Assistant</div>
+      </div>
+
+      <div className="space-y-4 h-80 overflow-y-auto scrollbar-hide">
+        <AnimatePresence>
+          {chatMessages.slice(0, currentMessageIndex + 1).map((message, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              <div className={`max-w-xs px-4 py-3 rounded-2xl ${
+                message.sender === 'user' 
+                  ? 'bg-blue-600 text-white' 
+                  : 'bg-gray-800 text-gray-100'
+              }`}>
+                <p className="text-sm whitespace-pre-line">{message.text}</p>
+                <p className="text-xs opacity-70 mt-1">{message.time}</p>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      <motion.button
+        onClick={() => {
+          setIsPlaying(!isPlaying)
+          if (!isPlaying) setCurrentMessageIndex(0)
+        }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="absolute bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-colors"
+      >
+        {isPlaying ? '⏸️' : '▶️'}
+      </motion.button>
+    </div>
+  )
+
+  const AutomationPreview = () => (
+    <div className="h-full bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 p-6 relative overflow-hidden">
+      <div className="text-center mb-8">
+        <h3 className="text-xl font-bold text-white mb-2">Workflow Automation</h3>
+        <p className="text-gray-400">Processing 1,247 tasks automatically</p>
+      </div>
+
+      <div className="space-y-6">
+        {[
+          { name: 'Email Processing', progress: 85, color: '#10B981' },
+          { name: 'Data Analysis', progress: 72, color: '#3B82F6' },
+          { name: 'Report Generation', progress: 94, color: '#F59E0B' },
+          { name: 'Client Outreach', progress: 67, color: '#EF4444' }
+        ].map((task, index) => (
+          <motion.div
+            key={task.name}
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="bg-gray-800/50 rounded-xl p-4"
+          >
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-white font-medium">{task.name}</span>
+              <span className="text-gray-400 text-sm">{task.progress}%</span>
+            </div>
+            <div className="w-full bg-gray-700 rounded-full h-2">
+              <motion.div
+                className="h-2 rounded-full"
+                style={{ backgroundColor: task.color }}
+                initial={{ width: 0 }}
+                animate={inView ? { width: `${task.progress}%` } : {}}
+                transition={{ duration: 1.5, delay: index * 0.2 }}
+              />
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="absolute top-4 right-4">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          className="w-8 h-8 border-2 border-green-500 border-t-transparent rounded-full"
+        />
+      </div>
+    </div>
+  )
+
+  const AnalyticsPreview = () => (
+    <div className="h-full bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 p-6 relative overflow-hidden">
+      <div className="grid grid-cols-2 gap-4 h-full">
+        <div className="space-y-4">
+          <div className="bg-gray-800/50 rounded-xl p-4">
+            <h4 className="text-white font-semibold mb-2">Revenue Growth</h4>
+            <div className="text-3xl font-bold text-green-400">+24.5%</div>
+            <p className="text-gray-400 text-sm">vs last quarter</p>
+          </div>
+          <div className="bg-gray-800/50 rounded-xl p-4">
+            <h4 className="text-white font-semibold mb-2">Active Users</h4>
+            <div className="text-3xl font-bold text-blue-400">12.8k</div>
+            <p className="text-gray-400 text-sm">+8.3% this month</p>
+          </div>
+        </div>
+
+        <div className="bg-gray-800/50 rounded-xl p-4">
+          <h4 className="text-white font-semibold mb-4">Performance Metrics</h4>
+          <div className="space-y-3">
+            {['CPU Usage', 'Memory', 'Network', 'Storage'].map((metric, index) => (
+              <div key={metric} className="flex items-center justify-between">
+                <span className="text-gray-300 text-sm">{metric}</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-16 bg-gray-700 rounded-full h-2">
+                    <motion.div
+                      className="h-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500"
+                      initial={{ width: 0 }}
+                      animate={inView ? { width: `${Math.random() * 60 + 30}%` } : {}}
+                      transition={{ duration: 1, delay: index * 0.1 }}
+                    />
+                  </div>
+                  <span className="text-gray-400 text-xs">{Math.floor(Math.random() * 40 + 40)}%</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
+  const IntegrationPreview = () => (
+    <div className="h-full bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 p-6 relative overflow-hidden">
+      <div className="text-center mb-6">
+        <h3 className="text-xl font-bold text-white mb-2">Connected Services</h3>
+        <p className="text-gray-400">24 integrations active</p>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        {[
+          { name: 'Slack', color: '#4A154B', status: 'active' },
+          { name: 'Gmail', color: '#EA4335', status: 'active' },
+          { name: 'Notion', color: '#000000', status: 'active' },
+          { name: 'Zoom', color: '#2D8CFF', status: 'syncing' },
+          { name: 'Spotify', color: '#1DB954', status: 'active' },
+          { name: 'GitHub', color: '#181717', status: 'active' }
+        ].map((service, index) => (
+          <motion.div
+            key={service.name}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.1, y: -5 }}
+            className="bg-gray-800/50 rounded-xl p-4 text-center relative cursor-pointer"
+          >
+            <div
+              className="w-8 h-8 rounded-lg mx-auto mb-2"
+              style={{ backgroundColor: service.color }}
+            />
+            <p className="text-white text-sm font-medium">{service.name}</p>
+            <div className={`absolute top-2 right-2 w-2 h-2 rounded-full ${
+              service.status === 'active' ? 'bg-green-400' : 'bg-yellow-400 animate-pulse'
+            }`} />
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  )
+
+  const renderPreview = () => {
+    switch (demoFeatures[activeDemo]?.preview) {
+      case 'chat': return <ChatPreview />
+      case 'automation': return <AutomationPreview />
+      case 'analytics': return <AnalyticsPreview />
+      case 'integration': return <IntegrationPreview />
+      default: return <ChatPreview />
+    }
+  }
+
+  return (
+    <section ref={sectionRef} className="relative py-32 bg-white overflow-hidden">
+      {/* Animated background canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 pointer-events-none"
+        style={{ width: '100%', height: '100%' }}
+      />
+
+      {/* Premium background effects */}
+      <div className="absolute inset-0">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-blue-500/10 to-transparent rounded-full blur-3xl"
+          style={{ x: y }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-3xl"
+          style={{ x: useTransform(y, [0, 1], [0, -50]) }}
+        />
+      </div>
+
+      <div ref={inViewRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Premium header */}
+        <motion.div 
+          className="text-center mb-20"
+          style={{ opacity }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full text-gray-700 text-sm font-semibold mb-8 shadow-lg"
+          >
+            <span className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></span>
+            PRODUCT DEMONSTRATION
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight"
+          >
+            <span className="text-black">See it in</span>
+            <br />
+            <span className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent">
+              action
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+          >
+            Experience the power of our AI platform through interactive demonstrations
+            that showcase real-world applications and results.
+          </motion.p>
+        </motion.div>
+
+        {/* Premium demo interface */}
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          {/* Feature selector */}
+          <motion.div 
+            className="lg:col-span-5 space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.6 }}
+          >
+            {demoFeatures.map((feature, index) => (
+              <motion.div
+                key={feature.id}
+                onClick={() => setActiveDemo(index)}
+                whileHover={{ scale: 1.02, x: 10 }}
+                whileTap={{ scale: 0.98 }}
+                className={`p-6 rounded-3xl cursor-pointer transition-all duration-500 relative overflow-hidden group ${
+                  activeDemo === index 
+                    ? 'bg-black text-white shadow-2xl' 
+                    : 'bg-gray-50 hover:bg-gray-100 text-gray-900'
+                }`}
+                style={{
+                  borderLeft: activeDemo === index ? `4px solid ${feature.accent}` : '4px solid transparent'
+                }}
+              >
+                {/* Premium glow effect */}
+                {activeDemo === index && (
+                  <motion.div
+                    className="absolute inset-0 rounded-3xl opacity-20"
+                    style={{ 
+                      background: `linear-gradient(135deg, ${feature.accent}20, transparent)`,
+                      filter: 'blur(20px)'
+                    }}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 0.2 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                )}
+
+                <div className="relative z-10">
+                  <div className="flex items-center space-x-4 mb-4">
+                    <motion.div
+                      className="text-4xl"
+                      animate={activeDemo === index ? { scale: [1, 1.2, 1] } : {}}
+                      transition={{ duration: 0.5 }}
+                    >
+                      {feature.icon}
+                    </motion.div>
+                    <div>
+                      <h3 className="text-2xl font-bold">{feature.title}</h3>
+                      <p className={`text-sm ${
+                        activeDemo === index ? 'text-gray-300' : 'text-gray-500'
+                      }`}>
+                        {feature.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <motion.p
+                    className={`leading-relaxed ${
+                      activeDemo === index ? 'text-gray-200' : 'text-gray-600'
+                    }`}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={activeDemo === index ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {activeDemo === index && feature.description}
+                  </motion.p>
+
+                  {/* Premium accent line */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-1 rounded-full"
+                    style={{ backgroundColor: feature.accent }}
+                    initial={{ width: 0 }}
+                    animate={{ width: activeDemo === index ? '100%' : '0%' }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Interactive preview */}
+          <motion.div 
+            className="lg:col-span-7"
+            initial={{ opacity: 0, x: 50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.8 }}
+          >
+            <div className="relative">
+              {/* Premium device frame */}
+              <div className="relative bg-gradient-to-br from-gray-200 to-gray-300 p-8 rounded-3xl shadow-2xl">
+                <div className="h-96 relative">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeDemo}
+                      initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+                      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, rotateY: -10 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="absolute inset-0"
+                    >
+                      {renderPreview()}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                {/* Premium reflection effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent rounded-3xl pointer-events-none" />
+              </div>
+
+              {/* Floating accent elements */}
+              <motion.div
+                className="absolute -top-4 -right-4 w-8 h-8 rounded-full shadow-lg"
+                style={{ backgroundColor: demoFeatures[activeDemo]?.accent }}
+                animate={{ 
+                  y: [0, -10, 0],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              />
+              
+              <motion.div
+                className="absolute -bottom-6 -left-6 w-6 h-6 rounded-full shadow-lg"
+                style={{ backgroundColor: demoFeatures[activeDemo]?.accent, opacity: 0.7 }}
+                animate={{ 
+                  y: [0, 15, 0],
+                  scale: [1, 0.9, 1]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Premium feature indicators */}
+        <motion.div
+          className="flex justify-center mt-16 space-x-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          {demoFeatures.map((feature, index) => (
+            <motion.button
+              key={feature.id}
+              onClick={() => setActiveDemo(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                activeDemo === index ? 'scale-125' : 'scale-100 opacity-50'
+              }`}
+              style={{ backgroundColor: feature.accent }}
+              whileHover={{ scale: 1.4 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Custom styles for premium effects */}
+      <style jsx>{`
+        .bg-gradient-radial {
+          background: radial-gradient(circle, var(--tw-gradient-stops));
+        }
+        
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+    </section>
+  )
+}
     '#EF4444', // Lili - Red
     '#F59E42', // Eric - Orange
     '#7B7481', // Kalina - Gray
@@ -1041,3 +1621,4 @@ export function ProductDemoSection() {
     </section>
   )
 }
+

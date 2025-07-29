@@ -212,7 +212,7 @@ export function TechnologyShowcaseSection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-24 bg-black text-white rounded-3xl">
+    <section ref={sectionRef} className="py-24 bg-black text-white rounded-b-3xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -258,43 +258,54 @@ export function TechnologyShowcaseSection() {
           {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-8">
             {(technologyDetails as any)[activeTab].features.map((feature: any, index: number) => (
-              <div key={index} className="rounded-xl p-6 border border-white/20 backdrop-blur-lg bg-white/10">
-                <div className="text-3xl mb-4">{feature.icon}</div>
-                <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
-                <p className="text-gray-300 mb-4">{feature.description}</p>
-                <ul className="space-y-2">
-                  {feature.stats.map((stat: string, i: number) => (
-                    <li key={i} className="text-sm text-gray-400 flex items-center">
-                      <span className="w-1 h-1 bg-white rounded-full mr-2"></span>
-                      {stat}
-                    </li>
-                  ))}
-                </ul>
+              <div key={index} className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-xl p-6 hover:border-purple-500/30 transition-all duration-700">
+                {/* Hover gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-pink-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-xl pointer-events-none"></div>
+                <div className="relative z-10">
+                  <div className="text-3xl mb-4">{feature.icon}</div>
+                  <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
+                  <p className="text-gray-300 mb-4">{feature.description}</p>
+                  <ul className="space-y-2">
+                    {feature.stats.map((stat: string, i: number) => (
+                      <li key={i} className="text-sm text-gray-400 flex items-center">
+                        <span className="w-1 h-1 bg-white rounded-full mr-2"></span>
+                        {stat}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
 
           {/* Demo Section */}
-          <div className="bg-gray-900 rounded-2xl p-8 border border-white/20 backdrop-blur-lg bg-white/10">
-            <h4 className="text-2xl font-bold mb-4">
-              {(technologyDetails as any)[activeTab].demo.title}
-            </h4>
-            <p className="text-gray-300 mb-8">
-              {(technologyDetails as any)[activeTab].demo.description}
-            </p>
+          <div className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-700">
+            {/* Hover gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/5 via-teal-600/5 to-cyan-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl pointer-events-none"></div>
+            <div className="relative z-10">
+              <h4 className="text-2xl font-bold mb-4">
+                {(technologyDetails as any)[activeTab].demo.title}
+              </h4>
+              <p className="text-gray-300 mb-8">
+                {(technologyDetails as any)[activeTab].demo.description}
+              </p>
 
             {/* Voice Demo */}
             {activeTab === 'voice' && (
               <div className="grid md:grid-cols-3 gap-6">
                 {technologyDetails.voice.demo.samples.map((sample, index) => (
-                  <div key={index} className="bg-black rounded-lg p-6 text-center border border-white/20 backdrop-blur-lg bg-white/10">
-                    <h5 className="font-semibold mb-2">{sample.name}</h5>
-                    <div className="text-2xl font-bold text-green-400 mb-4">
-                      {sample.quality}
+                  <div key={index} className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-lg p-6 text-center hover:border-green-500/30 transition-all duration-700">
+                    {/* Hover gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-600/5 via-yellow-600/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg pointer-events-none"></div>
+                    <div className="relative z-10">
+                      <h5 className="font-semibold mb-2">{sample.name}</h5>
+                      <div className="text-2xl font-bold text-green-400 mb-4">
+                        {sample.quality}
+                      </div>
+                      <button className="bg-white/60 text-black px-4 py-2 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors text-sm">
+                        ▶ Ascultă Sample
+                      </button>
                     </div>
-                    <button className="bg-white/60 text-black px-4 py-2 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors text-sm">
-                      ▶ Ascultă Sample
-                    </button>
                   </div>
                 ))}
               </div>
@@ -304,11 +315,13 @@ export function TechnologyShowcaseSection() {
             {activeTab === 'ai' && (
               <div className="space-y-4">
                 {technologyDetails.ai.demo.samples.map((sample, index) => (
-                  <div key={index} className="bg-black rounded-lg p-4 flex justify-between items-center border border-white/20 backdrop-blur-lg bg-white/10">
-                    <div className="flex-1">
+                  <div key={index} className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-lg p-4 flex justify-between items-center hover:border-blue-500/30 transition-all duration-700">
+                    {/* Hover gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-indigo-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg pointer-events-none"></div>
+                    <div className="relative z-10 flex-1">
                       <span className="text-gray-300">"{sample.question}"</span>
                     </div>
-                    <div className="flex items-center space-x-4">
+                    <div className="relative z-10 flex items-center space-x-4">
                       <span className={`px-3 py-1 rounded-full text-xs ${
                         sample.complexity === 'Foarte Înaltă' ? 'bg-red-900 text-red-300' :
                         sample.complexity === 'Înaltă' ? 'bg-orange-900 text-orange-300' :
@@ -329,12 +342,14 @@ export function TechnologyShowcaseSection() {
             {activeTab === 'integration' && (
               <div className="grid md:grid-cols-3 gap-4">
                 {technologyDetails.integration.demo.integrations.map((integration, index) => (
-                  <div key={index} className="bg-black rounded-lg p-4 flex items-center justify-between border border-white/20 backdrop-blur-lg bg-white/10">
-                    <div>
+                  <div key={index} className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-lg p-4 flex items-center justify-between hover:border-orange-500/30 transition-all duration-700">
+                    {/* Hover gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-600/5 via-red-600/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg pointer-events-none"></div>
+                    <div className="relative z-10">
                       <div className="font-semibold">{integration.name}</div>
                       <div className="text-sm text-gray-400">{integration.category}</div>
                     </div>
-                    <span className="bg-green-900/80 text-green-300 px-2 py-1 rounded-full text-xs border border-white/20 backdrop-blur-lg">
+                    <span className="relative z-10 bg-green-900/80 text-green-300 px-2 py-1 rounded-full text-xs border border-white/20 backdrop-blur-lg">
                       {integration.status}
                     </span>
                   </div>
@@ -346,21 +361,26 @@ export function TechnologyShowcaseSection() {
             {activeTab === 'analytics' && (
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {technologyDetails.analytics.demo.metrics.map((metric, index) => (
-                  <div key={index} className="bg-black rounded-lg p-6 text-center border border-white/20 backdrop-blur-lg bg-white/10">
-                    <div className="text-sm text-gray-400 mb-2">{metric.name}</div>
-                    <div className="text-2xl font-bold mb-2">{metric.value}</div>
-                    <div className={`text-sm flex items-center justify-center ${
-                      metric.trend === 'up' ? 'text-green-400' : 'text-blue-400'
-                    }`}>
-                      <span className="mr-1">
-                        {metric.trend === 'up' ? '↑' : '↓'}
-                      </span>
-                      {metric.change}
+                  <div key={index} className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-lg p-6 text-center hover:border-cyan-500/30 transition-all duration-700">
+                    {/* Hover gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/5 via-teal-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg pointer-events-none"></div>
+                    <div className="relative z-10">
+                      <div className="text-sm text-gray-400 mb-2">{metric.name}</div>
+                      <div className="text-2xl font-bold mb-2">{metric.value}</div>
+                      <div className={`text-sm flex items-center justify-center ${
+                        metric.trend === 'up' ? 'text-green-400' : 'text-blue-400'
+                      }`}>
+                        <span className="mr-1">
+                          {metric.trend === 'up' ? '↑' : '↓'}
+                        </span>
+                        {metric.change}
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             )}
+            </div>
           </div>
         </div>
 
