@@ -150,7 +150,222 @@ export default function Blog() {
           </div>
         )}
 
-        
+        {/* Premium Featured Articles */}
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Articole Premium</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Cele mai importante insights despre AI, automatizare și transformarea digitală pentru business-ul tău
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Article 1 - ElevenLabs Hackathon */}
+            <div className="group relative bg-white border-4 border-black overflow-hidden hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:-translate-y-1 transform hover:rotate-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="relative p-8">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="bg-black text-white px-4 py-2 border-2 border-black font-black text-xs transform -rotate-2">🏆 1ST PLACE</span>
+                  <span className="text-black text-sm font-bold border-2 border-black px-2 py-1 bg-gray-100">5 min citire</span>
+                </div>
+                <div className="w-16 h-16 bg-black border-4 border-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 transform rotate-3">
+                  <span className="text-white text-2xl transform -rotate-3">🏆</span>
+                </div>
+                <h3 className="text-xl font-black text-black mb-3 group-hover:transform group-hover:rotate-1 transition-transform" style={{textShadow: '2px 2px 0px rgba(255,255,255,1), 4px 4px 0px rgba(0,0,0,1)'}}>
+                  Câștigătorii ElevenLabs Hackathon: $20,000 pentru Agenții AI
+                </h3>
+                <p className="text-black mb-6 leading-relaxed font-bold border-l-4 border-black pl-4 bg-gray-100 p-3">
+                  Cum am câștigat primul loc la ElevenLabs Hackathon cu tehnologia noastră de agenți AI vocali și ce înseamnă asta pentru viitorul industriei.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-black border-2 border-black flex items-center justify-center transform rotate-6">
+                      <span className="text-white font-black text-sm transform -rotate-6">K</span>
+                    </div>
+                    <span className="text-sm text-black font-black">Echipa Kallina</span>
+                  </div>
+                  <Link href="/blog/elevenlabs-hackathon-winner" className="text-black bg-white hover:bg-black hover:text-white font-black text-sm flex items-center gap-1 group-hover:gap-2 transition-all border-2 border-black px-3 py-2 transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    Citește <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Article 2 - EBRD Star Venture */}
+            <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+              {/* Image Placeholder */}
+              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
+                <div className="text-center text-gray-400">
+                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <span className="text-2xl">�</span>
+                  </div>
+                  <p className="text-sm font-medium">EBRD Program Image</p>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-4">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 text-xs font-semibold">SELECTED</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  EBRD ne Selectează pentru Programul Star Venture
+                </h3>
+                
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Aichat.md este selectat pentru prestigiosul program Star Venture de la EBRD. Ce înseamnă această recunoaștere pentru dezvoltarea AI în Moldova.
+                </p>
+                
+                <div className="text-xs text-gray-500 mb-4">
+                  Gabriel Vasilachi, Partnerships • Jul 16, 2025
+                </div>
+                
+                <Link href="/blog/ebrd-star-venture-program" className="text-blue-600 hover:text-blue-800 font-medium text-sm">
+                  Citește articolul →
+                </Link>
+              </div>
+            </div>
+
+            {/* Article 3 - Sevan Startup Summit */}
+            <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+              {/* Image Placeholder */}
+              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
+                <div className="text-center text-gray-400">
+                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <span className="text-2xl">🏆</span>
+                  </div>
+                  <p className="text-sm font-medium">Summit Achievement Image</p>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-4">
+                  <span className="bg-gray-100 text-gray-800 px-3 py-1 text-xs font-semibold">2ND PLACE</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Locul 2 la Sevan Startup Summit: $6,000 pentru Aichat.md
+                </h3>
+                
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Performanța excepțională la Sevan Startup Summit ne aduce recunoașterea internațională și finanțarea pentru dezvoltarea ulterioară.
+                </p>
+                
+                <div className="text-xs text-gray-500 mb-4">
+                  Echipa Aichat, Competitions • Jul 16, 2025
+                </div>
+                
+                <Link href="/blog/sevan-startup-summit-second-place" className="text-gray-600 hover:text-gray-800 font-medium text-sm">
+                  Citește articolul →
+                </Link>
+              </div>
+            </div>
+
+            {/* Article 4 - YoHealth Challenge */}
+            <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+              {/* Image Placeholder */}
+              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
+                <div className="text-center text-gray-400">
+                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <span className="text-2xl">�</span>
+                  </div>
+                  <p className="text-sm font-medium">Healthcare Innovation Image</p>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-4">
+                  <span className="bg-green-100 text-green-800 px-3 py-1 text-xs font-semibold">WINNER</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Câștigători YoHealth Challenge: $6,000 pentru Inovația în Sănătate
+                </h3>
+                
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Cum tehnologia noastră AI revoluționează sectorul medical și de ce am fost aleși câștigători la YoHealth Challenge Sevan.
+                </p>
+                
+                <div className="text-xs text-gray-500 mb-4">
+                  Dr. Maria Health, Healthcare • Jul 16, 2025
+                </div>
+                
+                <Link href="/blog/yohealth-challenge-winner" className="text-green-600 hover:text-green-800 font-medium text-sm">
+                  Citește articolul →
+                </Link>
+              </div>
+            </div>
+
+            {/* Article 5 - Google Cloud */}
+            <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+              {/* Image Placeholder */}
+              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
+                <div className="text-center text-gray-400">
+                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <span className="text-2xl">☁️</span>
+                  </div>
+                  <p className="text-sm font-medium">Google Cloud Partnership Image</p>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-4">
+                  <span className="bg-red-100 text-red-800 px-3 py-1 text-xs font-semibold">BACKED</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Google Cloud ne Susține: $25K Grant pentru Infrastructura AI
+                </h3>
+                
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Parteneriatul strategic cu Google Cloud ne permite să scalăm infrastructura AI la nivel global. Detalii despre grant-ul de $25,000.
+                </p>
+                
+                <div className="text-xs text-gray-500 mb-4">
+                  Alex Cloud, Partnerships • Jul 16, 2025
+                </div>
+                
+                <Link href="/blog/google-cloud-partnership-grant" className="text-red-600 hover:text-red-800 font-medium text-sm">
+                  Citește articolul →
+                </Link>
+              </div>
+            </div>
+
+            {/* Article 6 - UpNext Accelerator */}
+            <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+              {/* Image Placeholder */}
+              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
+                <div className="text-center text-gray-400">
+                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <span className="text-2xl">�</span>
+                  </div>
+                  <p className="text-sm font-medium">Accelerator Program Image</p>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="mb-4">
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 text-xs font-semibold">ACCELERATED</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  Parteneri cu UpNext Accelerator: $10K Start Funding
+                </h3>
+                
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  Alăturarea programului UpNext Accelerator by Dreamups marchează o nouă etapă în dezvoltarea Aichat.md cu finanțare de $10,000.
+                </p>
+                
+                <div className="text-xs text-gray-500 mb-4">
+                  Team Dreamups, Funding • Jul 16, 2025
+                </div>
+                
+                <Link href="/blog/upnext-accelerator-partnership" className="text-purple-600 hover:text-purple-800 font-medium text-sm">
+                  Citește articolul →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Tags Filter */}
         {tags.length > 1 && (

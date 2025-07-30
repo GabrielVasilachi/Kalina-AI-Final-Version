@@ -366,8 +366,31 @@ export interface Translations {
   finalCta: {
     title: string
     subtitle: string
+    urgencyTitle: string
+    urgencyDescription: string
+    urgencyRemaining: string
+    benefits: Array<{
+      icon: string
+      title: string
+      description: string
+    }>
+    urgencyFactors: string[]
+    urgencyHeading: string
+    guaranteeTitle: string
+    guarantees: Array<{
+      icon: string
+      title: string
+      description: string
+    }>
+    finalTitle: string
+    finalSubtitle: string
     ctaButton: string
     secondaryButton: string
+    finalCtaButton: string
+    disclaimer: string
+    socialProof: string
+    rating: string
+    joinText: string
   }
   // Advanced Capabilities section
   advanced: {
@@ -822,8 +845,8 @@ const romanianTranslations: Translations = {
     watchDemo: 'Vizionează Demo',
     aiAssistantCall: 'Apel Asistent AI',
     incomingCall: 'Apel inteligent primit',
-    phoneNumber: 'Numărul de telefon',
-    companyName: 'Numele companiei',
+    phoneNumber: 'Numărul tău de telefon',
+    companyName: 'Link-ul Companiei',
     yourCompany: 'Compania ta',
     startAiCall: 'Începe Apelul AI'
   },
@@ -1335,10 +1358,67 @@ const romanianTranslations: Translations = {
   },
 
   finalCta: {
-    title: 'Începe Transformarea Astăzi',
-    subtitle: 'Alătură-te miilor de business-uri care și-au dublat eficiența cu Kallina.ai',
-    ctaButton: 'Începe Gratuit',
-    secondaryButton: 'Programează Demo'
+    title: 'Ultima Șansă Pentru Avantajul Competitiv',
+    subtitle: 'În următorii 3 ani, fiecare business va avea agenți AI. Întrebarea e: vei fi pionier sau vei alerga din urmă?',
+    urgencyTitle: 'OFERTA LIMITATĂ',
+    urgencyDescription: 'Primul agent AI gratuit pentru primii 100 de clienți din Ianuarie',
+    urgencyRemaining: 'Doar 23 de locuri rămase',
+    benefits: [
+      {
+        icon: 'ϟ',
+        title: 'Setup în 3 Minute',
+        description: 'De la înregistrare la primul agent funcțional'
+      },
+      {
+        icon: '◎',
+        title: 'ROI în Prima Lună',
+        description: 'Investiția se plătește singură rapid'
+      },
+      {
+        icon: '◆',
+        title: 'Română Perfectă',
+        description: 'Înțelege perfect clientii români'
+      },
+      {
+        icon: '▪',
+        title: 'Fără Risc',
+        description: 'Anulează oricând, fără penalități'
+      }
+    ],
+    urgencyFactors: [
+      'Concurența ta poate implementa acum',
+      'Fiecare zi înseamnă clienți pierduți',
+      'Prețurile cresc de la 1 Februarie',
+      'Bonusul de early adopter expiră curând'
+    ],
+    urgencyHeading: 'DE CE TREBUIE SĂ ACȚIONEZI ACUM',
+    guaranteeTitle: 'GARANȚIE 100% RISK-FREE',
+    guarantees: [
+      {
+        icon: '',
+        title: 'Garanție ROI',
+        description: 'Dacă nu economisești măcar 2x costul abonamentului în prima lună, îți returnăm banii'
+      },
+      {
+        icon: '',
+        title: 'Setup Garantat',
+        description: 'Dacă nu reușești să-ți configurezi agentul în 3 minute, îl configurăm noi GRATUIT'
+      },
+      {
+        icon: '',
+        title: 'Anulare Instant',
+        description: 'Poți anula oricând cu un click. Fără întrebări, fără penalități, fără contracte'
+      }
+    ],
+    finalTitle: 'Următorii 30 de Secondi Pot Să-ți Schimbe Business-ul',
+    finalSubtitle: 'Un click. O decizie. O transformare completă.',
+    ctaButton: 'Începe GRATUIT Acum',
+    secondaryButton: 'Demo Live în 30 Sec',
+    finalCtaButton: 'DA, VREAU AVANTAJUL COMPETITIV',
+    disclaimer: 'Fără card de credit necesar pentru testare • Activare instantanee',
+    socialProof: 'Alătură-te la 655+ antreprenori care au făcut deja schimbarea',
+    rating: '4.8/5 din 1,200+ review-uri',
+    joinText: 'Alătură-te la 655+ antreprenori care au făcut deja schimbarea'
   },
   mainFeatures: {
     title: 'Funcționalități Principale',
@@ -1364,13 +1444,13 @@ const romanianTranslations: Translations = {
   },
   howItWorks: {
     title: 'Cum Funcționează',
-    subtitle: 'Trei pași simpli pentru a începe',
-    step1Title: 'Înregistrează-te',
-    step1Desc: 'Creează contul tău gratuit în mai puțin de 2 minute',
-    step2Title: 'Configurează',
-    step2Desc: 'Integrează API-ul nostru în aplicația ta',
-    step3Title: 'Lansează',
-    step3Desc: 'Începe să folosești apeluri AI de înaltă calitate'
+    subtitle: 'Simplu, rapid și de încredere – începe în câteva minute',
+    step1Title: 'Conectează-te',
+    step1Desc: 'Începe un apel cu infrastructura noastră cu latență ultra-redusă',
+    step2Title: 'Procesare inteligentă',
+    step2Desc: 'AI-ul nostru analizează și optimizează calitatea audio în timp real, pentru o experiență impecabilă.',
+    step3Title: 'Conversează natural',
+    step3Desc: 'Bucură-te de conversații fluide și clare, oriunde în lume, asistate de inteligență artificială.'
   },
   faq: {
     title: 'Întrebări Frecvente',
@@ -1720,8 +1800,8 @@ const englishTranslations: Translations = {
     watchDemo: 'Watch Demo',
     aiAssistantCall: 'AI Assistant Call',
     incomingCall: 'Incoming intelligent call',
-    phoneNumber: 'Phone Number',
-    companyName: 'Company Name',
+    phoneNumber: 'Your Phone Number',
+    companyName: 'Link to your Company',
     yourCompany: 'Your Company',
     startAiCall: 'Start AI Call'
   },
@@ -1963,115 +2043,115 @@ const englishTranslations: Translations = {
     title: 'Why Kallina.ai Beats Any Competitor',
     subtitle: 'Honest analysis about what makes kallina.ai superior to all alternatives. Spoiler: it all comes down to simplicity and results.',
     vsText: 'vs',
-    kallinaAdvantagesTitle: 'Kallina.ai Avantaje',
+    kallinaAdvantagesTitle: 'Kallina.ai Advantages',
     competitors: [
       {
         id: 'voiceflow',
         name: 'Voiceflow',
         logo: '༄ ',
-        weaknessesTitle: 'Voiceflow Limitări',
+        weaknessesTitle: 'Voiceflow Limitations',
         weaknesses: [
-          'Complexitate tehnică ridicată',
-          'Fără suport pentru română',
-          'Implementare în săptămâni',
-          'Costuri ascunse pentru funcții avansate'
+          'High technical complexity',
+          'No support for Romanian language',
+          'Implementation takes weeks',
+          'Hidden costs for advanced features'
         ]
       },
       {
         id: 'MistralAI',
         name: 'MistralAI',
         logo: '♪',
-        weaknessesTitle: 'MistralAI Limitări',
+        weaknessesTitle: 'MistralAI Limitations',
         weaknesses: [
-          'Doar sinteză vocală, nu conversații',
-          'Fără integrări business',
-          'Lipsă management conversații',
-          'Nu e soluție completă'
+          'Only voice synthesis, no conversations',
+          'No business integrations',
+          'Lack of conversation management',
+          'Not a complete solution'
         ]
       },
       {
         id: 'vapi',
         name: 'VAPI',
         logo: '◎',
-        weaknessesTitle: 'VAPI Limitări',
+        weaknessesTitle: 'VAPI Limitations',
         weaknesses: [
-          'Interfață complicată pentru non-tehnici',
-          'Documentație insuficientă',
-          'Suport limitat pentru piața europeană',
-          'Prețuri neprevizibile'
+          'Complex interface for non-technical users',
+          'Insufficient documentation',
+          'Limited support for European market',
+          'Unpredictable pricing'
         ]
       }
     ],
     advantages: [
       {
-        title: 'Implementare în 3 Minute',
-        description: 'De la zero la primul agent funcțional mai rapid decât să bei o cafea',
+        title: '3-Minute Implementation',
+        description: 'From zero to first functional agent faster than making coffee',
         icon: 'ϟ',
-        details: ['Setup ghidat pas-cu-pas', 'Template-uri predefinite', 'Training automat', 'Deploy instant']
+        details: ['Step-by-step guided setup', 'Pre-built templates', 'Automatic training', 'Instant deployment']
       },
       {
-        title: 'Română Nativă Perfectă',
-        description: 'Înțelege perfect accentul, slang-ul și contextul cultural românesc',
-        icon: 'RO',
-        details: ['Dialect și accent românesc', 'Expresii și idiomuri locale', 'Context cultural', 'Compliance local']
+        title: 'Perfect Native English',
+        description: 'Understands accents, slang, and cultural context perfectly',
+        icon: 'EN',
+        details: ['Dialect and accent recognition', 'Local expressions and idioms', 'Cultural context', 'Local compliance']
       },
       {
-        title: 'Soluție Completă End-to-End',
-        description: 'Tot ce ai nevoie într-o singură platformă, fără integrări complicate',
+        title: 'Complete End-to-End Solution',
+        description: 'Everything you need in a single platform, without complex integrations',
         icon: '●',
-        details: ['Conversații + CRM', 'Analytics integrat', 'Billing automat', 'Support 24/7']
+        details: ['Conversations + CRM', 'Integrated analytics', 'Automatic billing', '24/7 support']
       },
       {
-        title: 'Transparență Totală Prețuri',
-        description: 'Fără costuri ascunse, fără surprize, fără upgrade-uri forțate',
+        title: 'Total Price Transparency',
+        description: 'No hidden costs, no surprises, no forced upgrades',
         icon: '◆',
-        details: ['Preț fix lunar', 'Toate funcțiile incluse', 'Fără limite artificiale', 'ROI garantat']
+        details: ['Fixed monthly price', 'All features included', 'No artificial limits', 'Guaranteed ROI']
       }
     ],
-    comparisonTitle: 'Comparație Detaliată',
+    comparisonTitle: 'Detailed Comparison',
     comparisonMatrix: [
       {
-        feature: 'Timp implementare',
-        kallina: '3 minute',
-        voiceflow: '2-4 săptămâni',
+        feature: 'Implementation time',
+        kallina: '3 minutes',
+        voiceflow: '2-4 weeks',
         MistralAI: 'N/A',
-        vapi: '1-2 săptămâni'
+        vapi: '1-2 weeks'
       },
       {
-        feature: 'Suport română nativă',
+        feature: 'Native English support',
         kallina: '✓ Perfect',
-        voiceflow: '✗ Nu',
-        MistralAI: '△ Limitat',
-        vapi: '✗ Nu'
+        voiceflow: '✓ Yes',
+        MistralAI: '△ Limited',
+        vapi: '✓ Yes'
       },
       {
-        feature: 'Soluție completă',
-        kallina: '✓ Da',
-        voiceflow: '△ Parțial',
-        MistralAI: '✗ Nu',
-        vapi: '△ Parțial'
+        feature: 'Complete solution',
+        kallina: '✓ Yes',
+        voiceflow: '△ Partial',
+        MistralAI: '✗ No',
+        vapi: '△ Partial'
       },
       {
-        feature: 'Prețuri transparente',
-        kallina: '✓ Da',
-        voiceflow: '✗ Costuri ascunse',
+        feature: 'Transparent pricing',
+        kallina: '✓ Yes',
+        voiceflow: '✗ Hidden costs',
         MistralAI: '△ Per-usage',
-        vapi: '✗ Variabile'
+        vapi: '✗ Variable'
       },
       {
-        feature: 'Suport 24/7',
-        kallina: '✓ Inclus',
+        feature: '24/7 Support',
+        kallina: '✓ Included',
         voiceflow: '$ Extra',
-        MistralAI: '✗ Limitat',
+        MistralAI: '✗ Limited',
         vapi: '$ Enterprise only'
       }
     ],
     migrationCta: {
-      title: 'Migrezi de la Alt Provider?',
-      subtitle: 'Te ajutăm cu migrarea completă GRATUIT. Zero downtime, zero dureri de cap.',
-      freeMigration: 'Migrare Gratuită',
-      detailedComparison: 'Comparație Detaliată',
-      migrationNote: '★ 95% dintre cei care migrează nu se mai întorc la soluția veche'
+      title: 'Migrating from Another Provider?',
+      subtitle: 'We help you with complete migration FOR FREE. Zero downtime, zero headaches.',
+      freeMigration: 'Free Migration',
+      detailedComparison: 'Detailed Comparison',
+      migrationNote: '★ 95% of those who migrate never go back to their old solution'
     }
   },
   testimonials: {
@@ -2224,10 +2304,67 @@ const englishTranslations: Translations = {
   },
 
   finalCta: {
-    title: 'Start the Transformation Today',
-    subtitle: 'Join thousands of businesses that have doubled their efficiency with Kallina.ai',
-    ctaButton: 'Get Started Free',
-    secondaryButton: 'Schedule Demo'
+    title: 'Last Chance for Competitive Advantage',
+    subtitle: 'In the next 3 years, every business will have AI agents. The question is: will you be a pioneer or will you play catch-up?',
+    urgencyTitle: 'LIMITED OFFER',
+    urgencyDescription: 'First AI agent free for the first 100 clients in January',
+    urgencyRemaining: 'Only 23 spots remaining',
+    benefits: [
+      {
+        icon: 'ϟ',
+        title: '3-Minute Setup',
+        description: 'From registration to first functional agent'
+      },
+      {
+        icon: '◎',
+        title: 'ROI in First Month',
+        description: 'Investment pays for itself quickly'
+      },
+      {
+        icon: '◆',
+        title: 'Perfect English',
+        description: 'Understands English clients perfectly'
+      },
+      {
+        icon: '▪',
+        title: 'No Risk',
+        description: 'Cancel anytime, no penalties'
+      }
+    ],
+    urgencyFactors: [
+      'Your competition can implement now',
+      'Every day means lost clients',
+      'Prices increase from February 1st',
+      'Early adopter bonus expires soon'
+    ],
+    urgencyHeading: 'WHY YOU MUST ACT NOW',
+    guaranteeTitle: '100% RISK-FREE GUARANTEE',
+    guarantees: [
+      {
+        icon: '',
+        title: 'ROI Guarantee',
+        description: 'If you don\'t save at least 2x the subscription cost in the first month, we\'ll refund your money'
+      },
+      {
+        icon: '',
+        title: 'Setup Guaranteed',
+        description: 'If you can\'t configure your agent in 3 minutes, we\'ll do it for FREE'
+      },
+      {
+        icon: '',
+        title: 'Instant Cancellation',
+        description: 'You can cancel anytime with one click. No questions, no penalties, no contracts'
+      }
+    ],
+    finalTitle: 'The Next 30 Seconds Could Change Your Business',
+    finalSubtitle: 'One click. One decision. One complete transformation.',
+    ctaButton: 'Start FREE Now',
+    secondaryButton: 'Live Demo in 30 Sec',
+    finalCtaButton: 'YES, I WANT THE COMPETITIVE ADVANTAGE',
+    disclaimer: 'No credit card required for testing • Instant activation',
+    socialProof: 'Join 655+ entrepreneurs who have already made the change',
+    rating: '4.8/5 from 1,200+ reviews',
+    joinText: 'Join 655+ entrepreneurs who have already made the change'
   },
   mainFeatures: {
     title: 'Main Features',
@@ -2253,13 +2390,13 @@ const englishTranslations: Translations = {
   },
   howItWorks: {
     title: 'How It Works',
-    subtitle: 'Three simple steps to get started',
-    step1Title: 'Sign Up',
-    step1Desc: 'Create your free account in less than 2 minutes',
-    step2Title: 'Configure',
-    step2Desc: 'Integrate our API into your application',
-    step3Title: 'Launch',
-    step3Desc: 'Start using high-quality AI calls'
+    subtitle: 'Simple, fast and reliable – get started in minutes',
+    step1Title: 'Connect',
+    step1Desc: 'Start a call with our ultra-low latency infrastructure',
+    step2Title: 'Intelligent Processing',
+    step2Desc: 'Our AI analyzes and optimizes audio quality in real-time for a flawless experience.',
+    step3Title: 'Converse Naturally',
+    step3Desc: 'Enjoy smooth and clear conversations anywhere in the world, assisted by artificial intelligence.'
   },
   faq: {
     title: 'Frequently Asked Questions',

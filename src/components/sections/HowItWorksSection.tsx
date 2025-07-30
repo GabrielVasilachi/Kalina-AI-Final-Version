@@ -1,27 +1,30 @@
 'use client'
 
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
+import { useLanguage } from '@/lib/i18n'
 import { motion } from 'framer-motion'
 import { easeInOut } from 'framer-motion'
 
 export function HowItWorksSection() {
+  const { translations } = useLanguage()
+
   const steps = [
     {
       number: "01",
-      title: "Conectează-te",
-      description: "Începe un apel cu infrastructura noastră cu latență ultra-redusă",
+      title: translations?.howItWorks?.step1Title || "Conectează-te",
+      description: translations?.howItWorks?.step1Desc || "Începe un apel cu infrastructura noastră cu latență ultra-redusă",
       icon: "◉"
     },
     {
       number: "02", 
-      title: "Procesare inteligentă",
-      description: "AI-ul nostru analizează și optimizează calitatea audio în timp real, pentru o experiență impecabilă.",
+      title: translations?.howItWorks?.step2Title || "Procesare inteligentă",
+      description: translations?.howItWorks?.step2Desc || "AI-ul nostru analizează și optimizează calitatea audio în timp real, pentru o experiență impecabilă.",
       icon: "◎"
     },
     {
       number: "03",
-      title: "Conversează natural", 
-      description: "Bucură-te de conversații fluide și clare, oriunde în lume, asistate de inteligență artificială.",
+      title: translations?.howItWorks?.step3Title || "Conversează natural", 
+      description: translations?.howItWorks?.step3Desc || "Bucură-te de conversații fluide și clare, oriunde în lume, asistate de inteligență artificială.",
       icon: "◈"
     }
   ]
@@ -65,10 +68,10 @@ export function HowItWorksSection() {
       <div className="container-width">
         <motion.div className="text-center mb-16" variants={stepVariants}>
           <h2 className="text-4xl lg:text-5xl font-bold text-brand-400 mb-6 text-shimmer">
-            Cum Funcționează
+            {translations?.howItWorks?.title || "Cum Funcționează"}
           </h2>
           <p className="text-xl text-brand-300 max-w-3xl mx-auto">
-            Simplu, rapid și de încredere – începe în câteva minute
+            {translations?.howItWorks?.subtitle || "Simplu, rapid și de încredere – începe în câteva minute"}
           </p>
         </motion.div>
         
