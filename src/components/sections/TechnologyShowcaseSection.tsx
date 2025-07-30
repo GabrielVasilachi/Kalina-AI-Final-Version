@@ -2,8 +2,10 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { useLanguage } from '@/lib/i18n'
 
 export function TechnologyShowcaseSection() {
+  const { t } = useLanguage()
   const [activeTab, setActiveTab] = useState('voice')
   // Header color change logic
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -52,31 +54,31 @@ export function TechnologyShowcaseSection() {
   const technologyTabs = [
     {
       id: 'voice',
-      name: 'Voice Tech',
+      name: t('technology.tabs.voice'),
       icon: '♪',
-      title: 'Tehnologia Vocală Sub-100ms',
-      subtitle: 'Sinteză și recunoaștere vocală mai rapidă decât gândirea umană'
+      title: t('technology.voiceTitle'),
+      subtitle: t('technology.voiceSubtitle')
     },
     {
       id: 'ai',
-      name: 'Conversational AI',
+      name: t('technology.tabs.ai'),
       icon: '◉',
-      title: 'AI Conversațional Avansat',
-      subtitle: 'Înțelege contextul și răspunde ca un expert uman'
+      title: t('technology.aiTitle'),
+      subtitle: t('technology.aiSubtitle')
     },
     {
       id: 'integration',
-      name: 'Integrări',
+      name: t('technology.tabs.integration'),
       icon: '⚹',
-      title: 'Ecosistem de Integrări',
-      subtitle: 'Se conectează cu orice sistem folosești deja'
+      title: t('technology.integrationTitle'),
+      subtitle: t('technology.integrationSubtitle')
     },
     {
       id: 'analytics',
-      name: 'Analytics',
+      name: t('technology.tabs.analytics'),
       icon: '□',
-      title: 'Intelligence Business',
-      subtitle: 'Insights și predicții pentru optimizarea continuă'
+      title: t('technology.analyticsTitle'),
+      subtitle: t('technology.analyticsSubtitle')
     }
   ]
 
@@ -84,128 +86,128 @@ export function TechnologyShowcaseSection() {
     voice: {
       features: [
         {
-          title: 'Latență Sub-100ms',
-          description: 'De la vorbire la răspuns mai rapid decât orice competitor',
-          stats: ['~80ms timp răspuns', '99.9% uptime', '40+ limbi native'],
+          title: t('technology.latencyTitle'),
+          description: t('technology.latencyDesc'),
+          stats: t('technology.latencyStats'),
           icon: 'ϟ'
         },
         {
-          title: 'Voice Cloning Perfect',
-          description: 'Clonează vocea ta cu doar 3 minute de înregistrare',
-          stats: ['96% acuratețe', '3 min training', 'Identitate vocală unică'],
+          title: t('technology.voiceCloneTitle'),
+          description: t('technology.voiceCloneDesc'),
+          stats: t('technology.voiceCloneStats'),
           icon: '♪'
         },
         {
-          title: 'Anulare Zgomot AI',
-          description: 'Conversații clare chiar și în medii zgomotoase',
-          stats: ['-40dB reducere zgomot', 'Filtrare adaptivă', 'Claritate cristalină'],
+          title: t('technology.noiseTitle'),
+          description: t('technology.noiseDesc'),
+          stats: t('technology.noiseStats'),
           icon: '◌'
         }
       ],
       demo: {
-        title: 'Ascultă Diferența',
-        description: 'Compară calitatea vocală kallina.ai cu concurența',
+        title: t('technology.voiceDemoTitle'),
+        description: t('technology.voiceDemoDesc'),
         samples: [
-          { name: 'Kallina.ai', quality: '100%', file: 'kallina-sample.mp3' },
-          { name: 'Competitor A', quality: '72%', file: 'comp-a-sample.mp3' },
-          { name: 'Competitor B', quality: '68%', file: 'comp-b-sample.mp3' }
+          { name: t('technology.sampleNames')[0], quality: '100%', file: 'kallina-sample.mp3' },
+          { name: t('technology.sampleNames')[1], quality: '72%', file: 'comp-a-sample.mp3' },
+          { name: t('technology.sampleNames')[2], quality: '68%', file: 'comp-b-sample.mp3' }
         ]
       }
     },
     ai: {
       features: [
         {
-          title: 'Memorie Contextuală',
-          description: 'Își amintește totul din toate conversațiile pe toate canalele',
-          stats: ['Memorie infinită', 'Context cross-channel', 'Personalizare adaptivă'],
+          title: t('technology.memoryTitle'),
+          description: t('technology.memoryDesc'),
+          stats: t('technology.memoryStats'),
           icon: '◉'
         },
         {
-          title: 'Întreruperi Naturale',
-          description: 'Gestionează întreruperile ca în conversațiile umane reale',
-          stats: ['Detecție instant', 'Context preservat', 'Flow natural'],
+          title: t('technology.interruptTitle'),
+          description: t('technology.interruptDesc'),
+          stats: t('technology.interruptStats'),
           icon: '◑'
         },
         {
-          title: 'Empatie AI',
-          description: 'Detectează și răspunde la emoțiile clientului în timp real',
-          stats: ['8 emoții detectate', 'Răspuns empatic', 'De-escalare automată'],
+          title: t('technology.empathyTitle'),
+          description: t('technology.empathyDesc'),
+          stats: t('technology.empathyStats'),
           icon: '♡'
         }
       ],
       demo: {
-        title: 'Test de Inteligență',
-        description: 'Pune întrebări complexe și vezi răspunsurile inteligente',
+        title: t('technology.aiDemoTitle'),
+        description: t('technology.aiDemoDesc'),
         samples: [
-          { question: 'Cum gestionezi o reclamație?', complexity: 'Înaltă' },
-          { question: 'Ce faci când clientul e supărat?', complexity: 'Foarte Înaltă' },
-          { question: 'Explică-mi diferențele între planuri', complexity: 'Medie' }
+          { question: t('technology.questions')[0], complexity: t('technology.complexities')[1] },
+          { question: t('technology.questions')[1], complexity: t('technology.complexities')[2] },
+          { question: t('technology.questions')[2], complexity: t('technology.complexities')[0] }
         ]
       }
     },
     integration: {
       features: [
         {
-          title: 'CRM Native',
-          description: 'Sincronizare perfectă cu toate CRM-urile majore',
-          stats: ['50+ CRM-uri', 'Sync timp real', 'Zero config'],
+          title: t('technology.crmTitle'),
+          description: t('technology.crmDesc'),
+          stats: t('technology.crmStats'),
           icon: '◊'
         },
         {
-          title: 'Calendar Magic',
-          description: 'Programări inteligente cu evitarea conflictelor',
-          stats: ['Calendar orchestration', 'Conflict detection', 'Auto-rescheduling'],
+          title: t('technology.calendarTitle'),
+          description: t('technology.calendarDesc'),
+          stats: t('technology.calendarStats'),
           icon: '◈'
         },
         {
-          title: 'Webhooks Robuste',
-          description: 'Evenimente în timp real pentru orice sistem extern',
-          stats: ['Real-time events', 'Retry logic', '99.9% delivery'],
+          title: t('technology.webhooksTitle'),
+          description: t('technology.webhooksDesc'),
+          stats: t('technology.webhooksStats'),
           icon: '◉'
         }
       ],
       demo: {
-        title: 'Integrări Disponibile',
-        description: 'Vezi toate sistemele cu care se conectează',
+        title: t('technology.integrationDemoTitle'),
+        description: t('technology.integrationDemoDesc'),
         integrations: [
-          { name: 'HubSpot', category: 'CRM', status: 'Native' },
-          { name: 'Salesforce', category: 'CRM', status: 'Native' },
-          { name: 'Google Calendar', category: 'Calendar', status: 'Native' },
-          { name: 'Zoom', category: 'Video', status: 'Native' },
-          { name: 'WhatsApp', category: 'Messaging', status: 'Native' },
-          { name: 'Facebook', category: 'Social', status: 'Native' }
+          { name: t('technology.integrationNames')[0], category: t('technology.integrationCategories')[0], status: t('technology.integrationStatus') },
+          { name: t('technology.integrationNames')[1], category: t('technology.integrationCategories')[0], status: t('technology.integrationStatus') },
+          { name: t('technology.integrationNames')[2], category: t('technology.integrationCategories')[1], status: t('technology.integrationStatus') },
+          { name: t('technology.integrationNames')[3], category: t('technology.integrationCategories')[2], status: t('technology.integrationStatus') },
+          { name: t('technology.integrationNames')[4], category: t('technology.integrationCategories')[3], status: t('technology.integrationStatus') },
+          { name: t('technology.integrationNames')[5], category: t('technology.integrationCategories')[4], status: t('technology.integrationStatus') }
         ]
       }
     },
     analytics: {
       features: [
         {
-          title: 'Real-time Monitoring',
-          description: 'Dashboard live cu toate metricile importante',
-          stats: ['Live metrics', 'Custom KPIs', 'Alertă automată'],
+          title: t('technology.monitoringTitle'),
+          description: t('technology.monitoringDesc'),
+          stats: t('technology.monitoringStats'),
           icon: '◎'
         },
         {
-          title: 'Predictive Analytics',
-          description: 'Predicții AI pentru optimizarea business-ului',
-          stats: ['90% acuratețe', 'Trend forecasting', 'Opportunity alerts'],
+          title: t('technology.predictiveTitle'),
+          description: t('technology.predictiveDesc'),
+          stats: t('technology.predictiveStats'),
           icon: '◐'
         },
         {
-          title: 'ROI Tracking',
-          description: 'Măsoară exact impactul și economiile generate',
-          stats: ['ROI în timp real', 'Cost per lead', 'Efficiency gains'],
+          title: t('technology.roiTrackingTitle'),
+          description: t('technology.roiTrackingDesc'),
+          stats: t('technology.roiTrackingStats'),
           icon: '$'
         }
       ],
       demo: {
-        title: 'Dashboard Preview',
-        description: 'Vezi cum arată analytics-ul în acțiune',
+        title: t('technology.analyticsDemoTitle'),
+        description: t('technology.analyticsDemoDesc'),
         metrics: [
-          { name: 'Conversii Lunare', value: '342', change: '+23%', trend: 'up' },
-          { name: 'Timp Răspuns', value: '87ms', change: '-12ms', trend: 'down' },
-          { name: 'Satisfacție Clienți', value: '4.8/5', change: '+0.3', trend: 'up' },
-          { name: 'Cost per Lead', value: '12 lei', change: '-8 lei', trend: 'down' }
+          { name: t('technology.analyticsMetrics.conversions'), value: '342', change: '+23%', trend: 'up' },
+          { name: t('technology.analyticsMetrics.responseTime'), value: '87ms', change: '-12ms', trend: 'down' },
+          { name: t('technology.analyticsMetrics.satisfaction'), value: '4.8/5', change: '+0.3', trend: 'up' },
+          { name: t('technology.analyticsMetrics.costPerLead'), value: '12 lei', change: '-8 lei', trend: 'down' }
         ]
       }
     }
@@ -217,11 +219,10 @@ export function TechnologyShowcaseSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-6">
-            Tehnologia Cea Mai Avansată Din Industrie
+            {t('technology.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Nu e doar un alt chatbot. E o revoluție tehnologică care redefinește 
-            comunicarea business cu AI de ultimă generație.
+            {t('technology.subtitle')}
           </p>
         </div>
 
@@ -231,14 +232,18 @@ export function TechnologyShowcaseSection() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-4 rounded-xl font-medium transition-all duration-200 flex items-center space-x-3 border border-white/20 backdrop-blur-lg ${
+              className={`group relative overflow-hidden px-6 py-4 rounded-xl font-medium transition-all duration-200 flex items-center space-x-3 border border-white/20 backdrop-blur-lg ${
                 activeTab === tab.id
-                  ? 'bg-white/60 text-black'
-                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                  ? 'bg-white text-black'
+                  : 'bg-gradient-to-br from-gray-900/80 to-gray-800/40 text-gray-300 hover:bg-white/20'
               }`}
             >
-              <span className="text-xl">{tab.icon}</span>
-              <span>{tab.name}</span>
+              {/* Light sweep effect */}
+              <span className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl">
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </span>
+              <span className="text-xl relative z-10">{tab.icon}</span>
+              <span className="relative z-10">{tab.name}</span>
             </button>
           ))}
         </div>
@@ -266,7 +271,7 @@ export function TechnologyShowcaseSection() {
                   <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
                   <p className="text-gray-300 mb-4">{feature.description}</p>
                   <ul className="space-y-2">
-                    {feature.stats.map((stat: string, i: number) => (
+                    {feature.stats && Array.isArray(feature.stats) && feature.stats.length > 0 && feature.stats.map((stat: string, i: number) => (
                       <li key={i} className="text-sm text-gray-400 flex items-center">
                         <span className="w-1 h-1 bg-white rounded-full mr-2"></span>
                         {stat}
@@ -302,8 +307,12 @@ export function TechnologyShowcaseSection() {
                       <div className="text-2xl font-bold text-green-400 mb-4">
                         {sample.quality}
                       </div>
-                      <button className="bg-white/60 text-black px-4 py-2 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors text-sm">
-                        ▶ Ascultă Sample
+                      <button className="group relative overflow-hidden bg-white/60 text-black px-4 py-2 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors text-sm">
+                        {/* Light sweep effect */}
+                        <span className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg">
+                          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                        </span>
+                        ▶ {t('technology.listenSample')}
                       </button>
                     </div>
                   </div>
@@ -329,8 +338,12 @@ export function TechnologyShowcaseSection() {
                       }`}>
                         {sample.complexity}
                       </span>
-                      <button className="bg-white/60 text-black px-4 py-2 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors text-sm">
-                        Testează
+                      <button className="group relative overflow-hidden bg-white/60 text-black px-4 py-2 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors text-sm">
+                        {/* Light sweep effect */}
+                        <span className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg">
+                          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                        </span>
+                        {t('technology.testNow')}
                       </button>
                     </div>
                   </div>
@@ -387,23 +400,31 @@ export function TechnologyShowcaseSection() {
         {/* CTA Section */}
         <div className="text-center mt-16">
           <h3 className="text-2xl font-bold mb-4">
-            Gata să Experimentezi Tehnologia Viitorului?
+            {t('technology.ctaTitle')}
           </h3>
           <p className="text-gray-300 mb-8">
-            Testează toate funcționalitățile avansate în demo-ul nostru interactiv
+            {t('technology.ctaSubtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/demo"
-              className="bg-white/60 text-black px-8 py-4 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors font-semibold text-lg"
+              className="group relative overflow-hidden bg-white/60 text-black px-8 py-4 rounded-lg border border-white/20 backdrop-blur-lg hover:bg-white transition-colors font-semibold text-lg"
             >
-              Demo Interactiv →
+              {/* Light sweep effect */}
+              <span className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg">
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </span>
+              <span className="relative z-10">{t('technology.interactiveDemo')}</span>
             </Link>
             <Link
               href="/technical-specs"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-black transition-all duration-200 font-semibold text-lg border-white/20 backdrop-blur-lg bg-white/10"
+              className="group relative overflow-hidden border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-black transition-all duration-200 font-semibold text-lg border-white/20 backdrop-blur-lg bg-white/10"
             >
-              Specificații Tehnice
+              {/* Light sweep effect */}
+              <span className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg">
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </span>
+              <span className="relative z-10">{t('technology.technicalSpecs')}</span>
             </Link>
           </div>
         </div>

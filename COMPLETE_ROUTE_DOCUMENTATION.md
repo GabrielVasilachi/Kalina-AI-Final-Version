@@ -82,7 +82,7 @@
   - **Accessible From:**
     - Homepage Competitive Advantage section "Migration Guide" button
     - Competitive comparison pages
-  - **Description:** Step-by-step migration guides from Voiceflow, ElevenLabs, VAPI, and other competitors
+  - **Description:** Step-by-step migration guides from Voiceflow, MistralAI, VAPI, and other competitors
 
 - **`/comparison`** - Competitor Comparison Tool
   - **Accessible From:**

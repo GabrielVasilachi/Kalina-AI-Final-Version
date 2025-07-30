@@ -39,7 +39,7 @@
 - **Node.js** - JavaScript runtime environment
 - **Express.js** - Fast, unopinionated web framework
 - **Socket.io** - Real-time communication server
-- **ElevenLabs API** - Advanced voice AI integration
+- **MistralAI API** - Advanced voice AI integration
 
 ### Development & Build
 - **TypeScript** - Static type checking
@@ -155,7 +155,7 @@ Interactive landing section with animated text, gradient backgrounds, and call-t
 ### Demo Section
 Real-time voice AI demonstration featuring:
 - WebSocket connection to backend
-- ElevenLabs API integration
+- MistralAI API integration
 - Live audio streaming and processing
 - Interactive UI controls
 
@@ -217,9 +217,9 @@ Custom WebGL-based wave animation using OGL library:
 Create a `.env.local` file in the root directory:
 
 ```env
-# ElevenLabs API Configuration
-NEXT_PUBLIC_ELEVENLABS_API_KEY=your_api_key_here
-NEXT_PUBLIC_ELEVENLABS_AGENT_ID=your_agent_id_here
+# MistralAI API Configuration
+NEXT_PUBLIC_MistralAI_API_KEY=your_api_key_here
+NEXT_PUBLIC_MistralAI_AGENT_ID=your_agent_id_here
 
 # Backend Configuration
 NEXT_PUBLIC_BACKEND_URL=http://localhost:8081
@@ -268,7 +268,7 @@ If you have any questions or need assistance:
 
 - [Next.js Team](https://nextjs.org/) for the incredible React framework
 - [Vercel](https://vercel.com/) for seamless deployment platform
-- [ElevenLabs](https://elevenlabs.io/) for cutting-edge voice AI technology
+- [MistralAI](https://MistralAI.io/) for cutting-edge voice AI technology
 - [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
 - [OGL](https://github.com/oframe/ogl) for lightweight WebGL library
 

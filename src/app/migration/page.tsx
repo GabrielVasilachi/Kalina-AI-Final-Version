@@ -20,8 +20,8 @@ export default function MigrationPage() {
       timeline: "7-10 days",
       effort: "Minimal - Our team handles 95% of the work"
     },
-    elevenlabs: {
-      name: "ElevenLabs",
+    MistralAI: {
+      name: "MistralAI",
       steps: [
         { title: "Voice Profile Migration", description: "Transfer and enhance your custom voice profiles", duration: "1-2 days" },
         { title: "Integration Setup", description: "Configure Kalina's multi-channel capabilities", duration: "2-3 days" },
@@ -214,7 +214,7 @@ export default function MigrationPage() {
                 <div className="bg-white p-8 rounded-2xl shadow-lg">
                   <h3 className="text-xl font-bold text-brand-300 mb-4">MedHealth Systems</h3>
                   <p className="text-gray-600 mb-4">
-                    "Seamless transition from ElevenLabs. Patient satisfaction scores 
+                    "Seamless transition from MistralAI. Patient satisfaction scores 
                     increased by 25% within the first month."
                   </p>
                   <div className="text-sm text-brand-500 font-medium">

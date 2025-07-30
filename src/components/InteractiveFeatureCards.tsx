@@ -2,6 +2,8 @@
 
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { useState, useEffect, useRef } from 'react'
+import { useLanguage } from '@/lib/i18n'
+import Image from 'next/image'
 
 interface FeatureCardProps {
   title: string
@@ -13,6 +15,7 @@ interface FeatureCardProps {
 }
 
 function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCardProps) {
+  const { t, translations } = useLanguage()
   const cardReveal = useScrollAnimationReveal('up', 0.2)
   const [isHovered, setIsHovered] = useState(false)
   const featureVideoRef = useRef<HTMLVideoElement>(null)
@@ -47,7 +50,7 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-2 bg-brand-100 px-4 py-2 rounded-full animate-pulse-glow">
                     <div className="w-2 h-2 bg-brand-100 rounded-full animate-pulse loading-dots"></div>
-                    <span className="text-sm font-medium text-gray-950">Caracteristica {index + 1}</span>
+                    <span className="text-sm font-medium text-gray-950">{translations.interactiveFeatureCards.labels.featureNumber} {index + 1}</span>
                   </div>
                   
                   <h3 className="text-3xl lg:text-4xl font-bold text-brand-100 leading-tight text-glow">
@@ -62,7 +65,7 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
                     href="/features"
                     className="btn-secondary btn-magnetic group inline-flex items-center gap-2"
                   >
-                    Află mai multe
+                    {translations.interactiveFeatureCards.labels.learnMore}
                     <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -125,9 +128,11 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
             >
               <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-200/20 to-brand-400/20 p-1 group">
                 <div className="relative overflow-hidden rounded-xl bg-white/5 group-hover:bg-white/10 transition-all duration-500">
-                  <img 
+                  <Image 
                     src={imgSrc}
                     alt={imgAlt}
+                    width={400}
+                    height={300}
                     className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-400/30 to-transparent group-hover:from-brand-400/20 transition-all duration-500"></div>
@@ -149,7 +154,7 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
             >
               <div className="inline-flex items-center gap-2 bg-brand-300/20 px-4 py-2 rounded-full animate-pulse-glow">
                 <div className="w-2 h-2 bg-brand-300 rounded-full animate-pulse loading-dots"></div>
-                <span className="text-sm font-medium text-brand-300">Caracteristica {index + 1}</span>
+                <span className="text-sm font-medium text-brand-300">{translations.interactiveFeatureCards.labels.featureNumber} {index + 1}</span>
               </div>
               
               <h3 className="text-3xl lg:text-4xl font-bold text-brand-400 leading-tight text-glow">
@@ -164,7 +169,7 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
                 href="/features"
                 className="btn-secondary btn-magnetic group inline-flex items-center gap-2"
               >
-                Află mai multe
+                {translations.interactiveFeatureCards.labels.learnMore}
                 <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -178,6 +183,7 @@ function FeatureCard({ title, body, imgSrc, imgAlt, index, videoSrc }: FeatureCa
 }
 
 export function InteractiveFeatureCards() {
+  const { t, translations } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
   const [isHeaderOverSection, setIsHeaderOverSection] = useState(false)
 
@@ -211,30 +217,12 @@ export function InteractiveFeatureCards() {
       }
     }
   }, [isHeaderOverSection])
-  
-  const features = [
-    {
-      title: "Disponibil Pentru Orice Tip de Companie",
-      body: "De la startup-uri la corporații mari, oferim tehnologii personalizate care se potrivesc perfect nevoilor oricărei companii.",
-      imgSrc: "/assets/voice-clone.png",
-      imgAlt: "Ilustrație a tehnologiei de clonare a vocii",
-      videoSrc: "/List-of-companies.mp4"
-    },
-    {
-      title: "Structura Simplu De Implementat",
-      body: "Construiește rapid și eficient fluxuri de conversație cu logică decizională, fără a necesita cunoștințe tehnice avansate.",
-      imgSrc: "/assets/multimodal-search.png",
-      imgAlt: "Interfață de căutare multimodală",
-      videoSrc: "/Reference-video.mp4"
-    },
-    {
-      title: "Analizează Interacțiunile în Detaliu",
-      body: "Vezi în timp real toate conversațiile, deciziile luate și datele esențiale pentru a înțelege mai bine interacțiunile și a îmbunătăți experiența utilizatorilor.",
-      imgSrc: "/assets/edge-deploy.png",
-      imgAlt: "Diagramă a arhitecturii de implementare edge",
-      videoSrc: "/Video-interaction-with-clients.mp4"
-    },
-  ]
+
+  // Prevent rendering if features are not loaded
+  const features = translations?.interactiveFeatureCards?.features
+  if (!Array.isArray(features) || features.length === 0) {
+    return null // or a loading spinner if you want
+  }
 
   return (
     <section
@@ -267,7 +255,7 @@ export function InteractiveFeatureCards() {
         <div className="max-w-none">
           {/* Feature Cards */}
           <div className="space-y-16 lg:space-y-24">
-            {features.map((feature, index) => (
+            {features.map((feature: any, index: number) => (
               <FeatureCard
                 key={index}
                 index={index}

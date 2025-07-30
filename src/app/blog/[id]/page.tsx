@@ -151,7 +151,7 @@ export default function ArticlePage() {
             {/* Article Header */}
             <article className="bg-white rounded-2xl shadow-xl overflow-hidden">
               {/* Hero Image Placeholder */}
-              <div className="h-64 md:h-80 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+              <div className="h-64 md:h-80 bg-blue-600 flex items-center justify-center">
                 <div className="text-center text-white">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-6">
                     {article.title}

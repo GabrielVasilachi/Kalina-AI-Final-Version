@@ -1,6 +1,7 @@
 'use client'
 
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
+import Image from 'next/image'
 
 interface FeatureSectionProps {
   title: string
@@ -35,9 +36,11 @@ export function FeatureSection({ title, body, imgSrc, imgAlt }: FeatureSectionPr
             ref={imageReveal.ref}
             className={`lg:col-span-6 order-1 lg:order-2 delay-150 ${imageReveal.classes}`}
           >
-            <img 
+            <Image 
               src={imgSrc}
               alt={imgAlt}
+              width={600}
+              height={400}
               className="w-full h-auto object-contain rounded-xl drop-shadow-lg"
             />
           </div>

@@ -273,7 +273,7 @@ export function ProductDemoSection() {
     return () => window.removeEventListener('resize', updateCurve)
   }, [selectedCompanyLeft, isRecording])
 
-    // Voice options with exact ElevenLabs voice IDs provided by user
+    // Voice options with exact MistralAI voice IDs provided by user
   const voiceOptions = [
     { name: 'Lili'},
     { name: 'Eric'},

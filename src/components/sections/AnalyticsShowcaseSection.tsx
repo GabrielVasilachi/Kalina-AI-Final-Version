@@ -1,7 +1,9 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '@/lib/i18n'
 
 export function AnalyticsShowcaseSection() {
+  const { t } = useLanguage()
   // Header color change logic (robust: always colors header when section is at top)
   // sectionRef is declared at the top, only declare once
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -441,17 +443,17 @@ export function AnalyticsShowcaseSection() {
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 backdrop-blur-sm rounded-full border border-indigo-500/20 text-indigo-300 text-sm font-semibold mb-8 animate-fade-in">
             <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 animate-ping"></span>
-            VISUALISE INFO
+            {t('analytics.visualiseInfo')}
           </div>
-          <h2 className="text-6xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Built for business.
+          <h2 className="text-6xl text-white md:text-7xl font-bold mb-8 leading-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            {t('analytics.title')}
             <br />
             <span className="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-              Feels like play.
+              {t('analytics.subtitle')}
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            Widgets are carefully crafted to help you distill powerful messages from your information and data.
+            {t('analytics.description')}
           </p>
         </div>
 
@@ -461,7 +463,10 @@ export function AnalyticsShowcaseSection() {
           <div className="lg:col-span-8 bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 relative overflow-hidden group hover:border-indigo-500/30 hover:bg-indigo-600/30 transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             {/* Card glow effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"></div>
-            
+            {/* Light sweep effect */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            </div>
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-4">
@@ -470,11 +475,11 @@ export function AnalyticsShowcaseSection() {
                   </div>
                   <div>
                     <div className="text-gray-400 text-sm">JAN 2025</div>
-                    <div className="text-white font-semibold">Daily active users</div>
+                    <div className="text-white font-semibold">{t('analytics.dailyActiveUsers')}</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-gray-400">
-                  <span>Last 28 days</span>
+                  <span>{t('analytics.lastDays')}</span>
                   <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -493,7 +498,7 @@ export function AnalyticsShowcaseSection() {
                       </svg>
                       <span className="font-semibold">25%</span>
                     </div>
-                    <span className="text-gray-400 text-sm">vs last month</span>
+                    <span className="text-gray-400 text-sm">{t('analytics.vsLastMonth')}</span>
                   </div>
                 </div>
               </div>
@@ -523,9 +528,13 @@ export function AnalyticsShowcaseSection() {
           {/* Side panel - spans 4 columns */}
           <div className="lg:col-span-4 space-y-6">
             {/* Circular progress card */}
-            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 hover:bg-purple-600/30 hover:border-purple-500/30 transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 hover:bg-purple-600/30 hover:border-purple-500/30 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '0.8s' }}>
+              {/* Light sweep effect */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </div>
               <div className="text-center">
-                <div className="text-gray-400 text-sm mb-4">Completion Rate</div>
+                <div className="text-gray-400 text-sm mb-4">{t('analytics.completionRate')}</div>
                 <div className="flex justify-center mb-4">
                   <canvas
                     ref={circleChartRef}
@@ -535,17 +544,21 @@ export function AnalyticsShowcaseSection() {
                   />
                 </div>
                 <div className="text-2xl font-bold text-white mb-1">75%</div>
-                <div className="text-gray-400 text-sm">Above target</div>
+                <div className="text-gray-400 text-sm">{t('analytics.aboveTarget')}</div>
               </div>
             </div>
 
             {/* Quick stats card */}
-            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 hover:bg-emerald-600/30 hover:border-emerald-500/30 transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-              <div className="text-gray-400 text-sm mb-4">Revenue Growth</div>
+            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 hover:bg-emerald-600/30 hover:border-emerald-500/30 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1s' }}>
+              {/* Light sweep effect */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </div>
+              <div className="text-gray-400 text-sm mb-4">{t('analytics.revenueGrowth')}</div>
               <div className="flex items-end justify-between mb-4">
                 <div>
                   <div className="text-3xl font-bold text-white">$24.5k</div>
-                  <div className="text-emerald-400 text-sm">+12.5% this month</div>
+                  <div className="text-emerald-400 text-sm">+12.5% {t('analytics.thisMonth')}</div>
                 </div>
                 <div className="w-20 h-12">
                   <canvas
@@ -563,11 +576,15 @@ export function AnalyticsShowcaseSection() {
         {/* Bottom section with bar chart and features */}
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Enhanced bar chart section */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 hover:border-indigo-500/30 hover:bg-indigo-600/30 transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
+          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 hover:border-indigo-500/30 hover:bg-indigo-600/30 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1.2s' }}>
+            {/* Light sweep effect */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            </div>
             <div className="mb-6">
               <div className="flex items-center justify-between mb-6">
-                <div className="text-gray-400 text-sm">App Users</div>
-                <div className="text-gray-400 text-sm">Last 7 months</div>
+                <div className="text-gray-400 text-sm">{t('analytics.appUsers')}</div>
+                <div className="text-gray-400 text-sm">{t('analytics.lastMonths')}</div>
               </div>
               
               {/* Premium bar chart */}
@@ -583,50 +600,54 @@ export function AnalyticsShowcaseSection() {
               <div className="grid grid-cols-3 gap-6 text-center">
                 <div className="bg-black/20 rounded-xl p-4">
                   <div className="text-2xl font-bold text-white mb-1">5.24k</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wide">Monthly Active</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">{t('analytics.monthlyActive')}</div>
                 </div>
                 <div className="bg-black/20 rounded-xl p-4">
                   <div className="text-2xl font-bold text-white mb-1">194</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wide">Daily Active</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">{t('analytics.dailyActive')}</div>
                 </div>
                 <div className="bg-black/20 rounded-xl p-4">
                   <div className="text-2xl font-bold text-emerald-400 mb-1">+24%</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wide">Growth Rate</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">{t('analytics.growthRate')}</div>
                 </div>
               </div>
             </div>
             
             <div className="border-t border-gray-700/50 pt-6">
-              <div className="text-indigo-400 text-sm font-semibold mb-3 uppercase tracking-wide">CUSTOMISE</div>
+              <div className="text-indigo-400 text-sm font-semibold mb-3 uppercase tracking-wide">{t('analytics.customise')}</div>
               <h3 className="text-white text-2xl font-bold mb-4 leading-tight">
-                Easy to customise.
+                {t('analytics.customiseTitle')}
                 <br />
-                <span className="text-gray-400">Hard to get wrong.</span>
+                <span className="text-gray-400">{t('analytics.customiseSubtitle')}</span>
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Widgets are designed to be customized easily. They always look stunning, no matter how you edit.
+                {t('analytics.customiseDescription')}
               </p>
             </div>
           </div>
 
           {/* Redesigned integration/video section */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 flex flex-col items-center justify-center min-h-[420px] hover:border-purple-500/30 hover:bg-purple-600/30 transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
+          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 flex flex-col items-center justify-center min-h-[420px] hover:border-purple-500/30 hover:bg-purple-600/30 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1.4s' }}>
+            {/* Light sweep effect */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            </div>
             <div className="w-full flex flex-col items-center justify-center mb-8">
               <div className="text-purple-400 text-sm font-semibold mb-3 uppercase tracking-wide">INTEGRATION & DEMO</div>
               <h3 className="text-white text-3xl md:text-4xl font-bold mb-4 leading-tight text-center">
-                See Kalina AI in Action
+                {t('analytics.integrationTitle')}
               </h3>
               <p className="text-gray-300 mb-6 leading-relaxed max-w-lg text-center">
-                Instantly embed, preview, or interact with your favorite tools and dashboards. Add a video demo or live preview here to showcase seamless integration and real results.
+                {t('analytics.integrationDescription')}
               </p>
             </div>
             {/* Video/demo placeholder */}
             <div className="w-full flex flex-col items-center justify-center">
               <div className="w-full aspect-video max-w-2xl bg-black/60 border-2 border-dashed border-purple-500 rounded-2xl flex items-center justify-center text-purple-400 text-lg font-semibold">
                 {/* TODO: Embed your video or interactive demo here */}
-                Video Demo Placeholder
+                {t('analytics.videoDemoPlaceholder')}
               </div>
-              <div className="text-gray-400 text-xs mt-3">Upload or embed a product video, YouTube, or Loom link here.</div>
+              <div className="text-gray-400 text-xs mt-3">{t('analytics.videoUploadText')}</div>
             </div>
           </div>
         </div>

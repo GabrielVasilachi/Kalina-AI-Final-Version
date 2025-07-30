@@ -14,8 +14,8 @@ export default function ComparisonPage() {
       logo: "VF",
       color: "blue"
     },
-    elevenlabs: {
-      name: "ElevenLabs", 
+    MistralAI: {
+      name: "MistralAI", 
       logo: "EL",
       color: "orange"
     },
@@ -36,7 +36,7 @@ export default function ComparisonPage() {
       languages: { kalina: "100+", competitor: "25+" },
       support: { kalina: "24/7 Expert", competitor: "Business Hours" }
     },
-    elevenlabs: {
+    MistralAI: {
       pricing: { kalina: "$0.12/call", competitor: "$0.30/call" },
       accuracy: { kalina: "99.2%", competitor: "96.3%" },
       latency: { kalina: "150ms", competitor: "250ms" },
@@ -223,10 +223,10 @@ export default function ComparisonPage() {
                     {platforms[selectedPlatform as keyof typeof platforms].name} Cost
                   </h3>
                   <div className="text-3xl font-bold text-red-600 mb-2">
-                    ${selectedPlatform === 'voiceflow' ? '2,500' : selectedPlatform === 'elevenlabs' ? '3,000' : '2,000'}
+                    ${selectedPlatform === 'voiceflow' ? '2,500' : selectedPlatform === 'MistralAI' ? '3,000' : '2,000'}
                   </div>
                   <p className="text-red-700 font-medium">
-                    {selectedPlatform === 'voiceflow' ? '108% more' : selectedPlatform === 'elevenlabs' ? '150% more' : '67% more'}
+                    {selectedPlatform === 'voiceflow' ? '108% more' : selectedPlatform === 'MistralAI' ? '150% more' : '67% more'}
                   </p>
                 </div>
               </div>
@@ -234,7 +234,7 @@ export default function ComparisonPage() {
               <div className="text-center mt-8 p-6 bg-brand-50 rounded-xl">
                 <h4 className="text-lg font-bold text-brand-500 mb-2">Annual Savings with Kalina</h4>
                 <div className="text-2xl font-bold text-brand-600">
-                  ${selectedPlatform === 'voiceflow' ? '15,600' : selectedPlatform === 'elevenlabs' ? '21,600' : '9,600'}
+                  ${selectedPlatform === 'voiceflow' ? '15,600' : selectedPlatform === 'MistralAI' ? '21,600' : '9,600'}
                 </div>
               </div>
             </div>

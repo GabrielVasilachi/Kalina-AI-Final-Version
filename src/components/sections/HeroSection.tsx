@@ -1,19 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { motion } from 'framer-motion'
 import { easeInOut } from 'framer-motion'
+
 import { useLanguage } from '@/lib/i18n'
+import LiquidChrome from '@/../LiquidChromeBackground/LiquidChrome/LiquidChrome'
 
 export function HeroSection() {
   const { t } = useLanguage()
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  // Removed mousePosition state and mousemove effect
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [companyName, setCompanyName] = useState('')
   const badgeReveal = useScrollAnimationReveal('up', 0.1)
   const titleReveal = useScrollAnimationReveal('up', 0.2)
   const descReveal = useScrollAnimationReveal('up', 0.3)
   const buttonsReveal = useScrollAnimationReveal('up', 0.4)
   const featuresReveal = useScrollAnimationReveal('up', 0.5)
+  const phoneReveal = useScrollAnimationReveal('up', 0.6)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,99 +43,132 @@ export function HeroSection() {
     }
   }
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (typeof window !== 'undefined') {
-        setMousePosition({
-          x: e.clientX / window.innerWidth - 0.5,
-          y: e.clientY / window.innerHeight - 0.5,
-        })
-      }
-    }
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('mousemove', handleMouseMove)
-    }
-    
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('mousemove', handleMouseMove)
-      }
-    }
-  }, [])
 
   return (
-    <section id="hero" className="relative py-30 pt-24 overflow-hidden bg-white min-h-[60vh] flex items-center justify-center">
-      {/* Dynamic background elements */}
-      <div 
-        className="absolute inset-0 opacity-60 hidden sm:block"
-        style={{
-          background: 'white',
-          transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * 20}px)`,
-          transition: 'transform 0.3s ease-out'
-        }}
-      >
-        <div className="absolute top-20 left-20 w-40 h-40 bg-gradient-to-br from-brand-300/70 to-brand-400/60 text-black rounded-full morphing-shape animate-float"></div>
-        <div className="absolute top-60 right-32 w-32 h-32 bg-gradient-to-br from-brand-400/80 to-brand-500/70 text-black rounded-full morphing-shape animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-10 left-32 w-28 h-28 bg-gradient-to-br from-brand-400/60 to-brand-300/50 text-black rounded-full morphing-shape animate-float" style={{ animationDelay: '2s' }}></div>
+    <section id="hero" className="relative py-0 overflow-hidden bg-white min-h-[90vh] flex flex-col items-center justify-center">
+      {/* Liquid Chrome Background */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <LiquidChrome baseColor={[0.5,0.5,0.5]} speed={0.1} amplitude={0.4} frequencyX={3} frequencyY={2} interactive={false} style={{width:'100%',height:'100%'}} />
       </div>
 
-      <div className="container-width relative z-10 flex flex-col items-center justify-center w-full">
-        {/* Centered Content */}
-        <div className="flex flex-col items-center text-center max-w-7xl mx-auto justify-center w-full">
-          <div className="space-y-6">
-            <div className="space-y-6">
-              <motion.h1 
-                ref={titleReveal.ref}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black leading-tight stagger-2"
-                variants={containerVariants}
-                initial="hidden"
-                animate={titleReveal.isVisible ? "visible" : "hidden"}
-              >
-                <motion.span variants={childVariants}>{t('hero.title')}</motion.span>
-              </motion.h1>
-              <motion.p 
-                ref={descReveal.ref}
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand-300 max-w-4xl mx-auto leading-relaxed stagger-3"
-                variants={childVariants}
-                initial="hidden"
-                animate={descReveal.isVisible ? "visible" : "hidden"}
-              >
-                {t('hero.subtitle')}
-              </motion.p>
-            </div>
-            <motion.div 
-              ref={buttonsReveal.ref}
-              className="flex flex-row gap-2 md:gap-6 justify-center stagger-4"
-              variants={containerVariants}
-              initial="hidden"
-              animate={buttonsReveal.isVisible ? "visible" : "hidden"}
+      {/* 200px border at the bottom, overlays all elements with fading top */}
+      <div className="pointer-events-none absolute left-0 bottom-0 w-full h-[200px] z-30" style={{
+        background: 'linear-gradient(to top, #fff 0%, rgba(255,255,255,0.85) 10%, rgba(255,255,255,0.5) 18%, rgba(255,255,255,0.15) 26%, rgba(255,255,255,0.0) 32%)',
+        borderBottom: '0px solid #fff'
+      }} />
+
+      <div className="container-width relative z-10 flex flex-col items-center justify-center flex-grow w-full">
+        {/* Title Centered */}
+        <motion.h1 
+          ref={titleReveal.ref}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight text-center mt-0 mb-0 p-0 relative tracking-wide"
+          style={{ 
+            top: '150px', 
+            fontFamily: `'Satisfy', 'Segoe UI', 'Arial', cursive`
+          }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={titleReveal.isVisible ? "visible" : "hidden"}
+        >
+          <motion.span variants={childVariants}>{t('hero.title')}</motion.span>
+        </motion.h1>
+
+        {/* iPhone and Notification Centered Below Title */}
+        <motion.div 
+          ref={phoneReveal.ref}
+          className="flex flex-col items-center justify-center relative"
+          variants={childVariants}
+          initial="hidden"
+          animate={phoneReveal.isVisible ? "visible" : "hidden"}
+        >
+          <div className="relative flex flex-col items-center justify-center">
+            <motion.img
+              src="/iphone_image.png"
+              alt="iPhone with AI Assistant"
+              className="w-80 md:w-96 lg:w-[400px] object-contain drop-shadow-2xl m-0 p-0 relative lg:top-[150px] mb-8 mt-48 sm:mt-0"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: 'easeInOut', delay: 3.2 }}
+            />
+            <motion.div
+              className="flex flex-col items-center justify-center w-56 sm:w-64 md:w-80 mt-[-400px] sm:mt-[-350px] md:mt-[-430px] lg:mt-[-360px] z-20 relative"
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+              }}
+              transition={{
+                opacity: { delay: 1, duration: 0.6 },
+                y: { delay: 1, duration: 0.6 },
+                scale: { delay: 1, duration: 0.6 }
+              }}
             >
-              <motion.div variants={childVariants}>
-                <a
-                  href="/getting-started"
-                  className="btn-primary btn-magnetic flex items-center justify-center gap-1 group text-[10px] md:text-lg px-1.5 md:px-8 py-1 md:py-4 animate-pulse-glow w-24 h-7 sm:w-auto sm:h-auto whitespace-nowrap border border-gray-300 rounded-lg mx-auto"
-                >
-                  {t('hero.ctaButton')}
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
+              {/* Notification Header */}
+              <motion.div
+                className="mb-6 w-full rounded-2xl shadow-2xl p-3 sm:p-4 md:p-6 flex items-center gap-2 sm:gap-3"
+                style={{ background: 'rgba(0, 0, 0, 0.2)' }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.8, ease: 'easeInOut', delay: 3.9 }}
+              >
+                <div>
+                  <h4 className="font-semibold text-black">{t('hero.aiAssistantCall')}</h4>
+                  <p className="text-sm text-gray-800">{t('hero.incomingCall')}</p>
+                </div>
               </motion.div>
-              <motion.div variants={childVariants}>
-                <a
-                  href="https://preview--kallina.lovable.app/auth"
-                  className="btn-secondary btn-magnetic flex items-center justify-center gap-1 group text-[10px] md:text-lg px-1.5 md:px-8 py-1 md:py-4 w-24 h-7 sm:w-auto sm:h-auto whitespace-nowrap border border-gray-300 rounded-lg mx-auto"
-                >
-                  <svg className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  {t('nav.signIn')}
-                </a>
+
+              {/* Input Fields */}
+              <motion.div
+                className="mb-6 w-full flex flex-col items-center"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.8, ease: 'easeInOut', delay: 4.3 }}
+              >
+                <div className="space-y-2 sm:space-y-4 w-full">
+                  <div>
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                      {t('hero.phoneNumber')}
+                    </label>
+                    <input
+                      type="tel"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      placeholder="+373 XX XXX XXX"
+                      className="w-full px-2 py-1.5 sm:px-4 sm:py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-xs sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                      {t('hero.companyName')}
+                    </label>
+                    <input
+                      type="text"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      placeholder={t('hero.yourCompany')}
+                      className="w-full px-2 py-1.5 sm:px-4 sm:py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-xs sm:text-sm"
+                    />
+                  </div>
+                </div>
               </motion.div>
+
+              {/* Call Button */}
+              <div className="mb-6 w-full flex flex-col items-center">
+                <button
+                  className="w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 px-4 rounded-lg font-medium hover:border hover:border-gray-950 hover:text-black hover:from-gray-200 hover:to-gray-300 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                  disabled={!phoneNumber || !companyName}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  {t('hero.startAiCall')}
+                </button>
+              </div>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

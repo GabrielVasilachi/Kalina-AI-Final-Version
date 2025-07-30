@@ -2,8 +2,10 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
+import { useLanguage } from '@/lib/i18n'
 
 export function FinalCTASection() {
+  const { t } = useLanguage()
   // --- HEADER COLOR CHANGE LOGIC START ---
   // Ref for the section
   const sectionRef = useRef<HTMLDivElement>(null)
