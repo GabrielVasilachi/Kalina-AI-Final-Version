@@ -12,7 +12,7 @@ export default function TechnicalSpecsPage() {
     architecture: {
       title: "System Architecture",
       content: {
-        overview: "Kalina AI is built on a cloud-native, microservices architecture designed for maximum scalability, reliability, and performance.",
+        overview: "Kallina AI is built on a cloud-native, microservices architecture designed for maximum scalability, reliability, and performance.",
         specs: [
           { label: "Infrastructure", value: "Multi-cloud with AWS, Azure, GCP" },
           { label: "Architecture", value: "Microservices with Kubernetes orchestration" },
@@ -77,10 +77,10 @@ export default function TechnicalSpecsPage() {
   ]
 
   const benchmarks = [
-    { metric: "Response Time", kalina: "150ms", industry: "300ms", improvement: "50% faster" },
-    { metric: "Accuracy Rate", kalina: "99.2%", industry: "94.1%", improvement: "5.1% better" },
-    { metric: "Uptime", kalina: "99.99%", industry: "99.5%", improvement: "5x more reliable" },
-    { metric: "Setup Time", kalina: "< 24 hours", industry: "3-7 days", improvement: "10x faster" }
+    { metric: "Response Time", Kallina: "150ms", industry: "300ms", improvement: "50% faster" },
+    { metric: "Accuracy Rate", Kallina: "99.2%", industry: "94.1%", improvement: "5.1% better" },
+    { metric: "Uptime", Kallina: "99.99%", industry: "99.5%", improvement: "5x more reliable" },
+    { metric: "Setup Time", Kallina: "< 24 hours", industry: "3-7 days", improvement: "10x faster" }
   ]
 
   return (
@@ -160,7 +160,7 @@ export default function TechnicalSpecsPage() {
                     <thead>
                       <tr className="border-b border-gray-200">
                         <th className="text-left py-4 px-6 font-semibold text-gray-800">Metric</th>
-                        <th className="text-center py-4 px-6 font-semibold text-brand-500">Kalina AI</th>
+                        <th className="text-center py-4 px-6 font-semibold text-brand-500">Kallina AI</th>
                         <th className="text-center py-4 px-6 font-semibold text-gray-600">Industry Average</th>
                         <th className="text-center py-4 px-6 font-semibold text-green-600">Improvement</th>
                       </tr>
@@ -169,7 +169,7 @@ export default function TechnicalSpecsPage() {
                       {benchmarks.map((benchmark, index) => (
                         <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
                           <td className="py-4 px-6 font-medium text-gray-800">{benchmark.metric}</td>
-                          <td className="py-4 px-6 text-center font-bold text-brand-500">{benchmark.kalina}</td>
+                          <td className="py-4 px-6 text-center font-bold text-brand-500">{benchmark.Kallina}</td>
                           <td className="py-4 px-6 text-center text-gray-600">{benchmark.industry}</td>
                           <td className="py-4 px-6 text-center font-bold text-green-600">{benchmark.improvement}</td>
                         </tr>
@@ -326,7 +326,7 @@ export default function TechnicalSpecsPage() {
           <div className="container-width">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Build with Kalina?
+                Ready to Build with Kallina?
               </h2>
               <p className="text-xl opacity-90 mb-8">
                 Access our comprehensive APIs, SDKs, and technical documentation. 

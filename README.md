@@ -1,8 +1,8 @@
-# Kalina AI - Crystal-Clear AI Voice Platform
+# Kallina AI - Crystal-Clear AI Voice Platform
 
 <div align="center">
 
-![Kalina AI](public/favicon.svg)
+![Kallina AI](public/favicon.svg)
 
 **Experience ultra-low latency voice calls with AI-enhanced quality, end-to-end encryption, and global coverage for seamless communication.**
 
@@ -58,8 +58,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/kalina-ai.git
-   cd kalina-ai
+   git clone https://github.com/YOUR_USERNAME/Kallina-ai.git
+   cd Kallina-ai
    ```
 
 2. **Install frontend dependencies**
@@ -261,7 +261,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you have any questions or need assistance:
 
 - � **Email**: [gabriel.vasilachi@example.com](mailto:gabriel.vasilachi@example.com)
-- 💬 **Issues**: [Create an issue on GitHub](https://github.com/YOUR_USERNAME/kalina-ai/issues)
+- 💬 **Issues**: [Create an issue on GitHub](https://github.com/YOUR_USERNAME/Kallina-ai/issues)
 - 📖 **Documentation**: Check this README for detailed setup instructions
 
 ## �🙏 Acknowledgments
@@ -276,7 +276,7 @@ If you have any questions or need assistance:
 
 <div align="center">
 
-**[🌐 Live Demo](https://kalina-ai.vercel.app)** | **[📖 Documentation](docs/)** | **[🐛 Report Bug](https://github.com/YOUR_USERNAME/kalina-ai/issues)**
+**[🌐 Live Demo](https://Kallina-ai.vercel.app)** | **[📖 Documentation](docs/)** | **[🐛 Report Bug](https://github.com/YOUR_USERNAME/Kallina-ai/issues)**
 
 Made with ❤️ by [Gabriel Vasilachi](https://github.com/GabrielVasilachi)
 

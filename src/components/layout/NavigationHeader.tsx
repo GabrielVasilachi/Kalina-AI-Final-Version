@@ -168,7 +168,7 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 isOverDemo ? 'text-white' : 'text-brand-400'
               }`}
             >
-              Kalina AI
+              Kallina AI
             </Link>
             <nav className="hidden xl:flex items-center gap-x-8 z-[100] whitespace-nowrap">
             {/* PRODUCTS DROPDOWN */}

@@ -13,7 +13,7 @@ export default function MigrationPage() {
       name: "Voiceflow",
       steps: [
         { title: "Export Conversations", description: "Download your existing conversation flows and training data", duration: "1 day" },
-        { title: "Data Mapping", description: "Our team maps your flows to Kalina's advanced architecture", duration: "2-3 days" },
+        { title: "Data Mapping", description: "Our team maps your flows to Kallina's advanced architecture", duration: "2-3 days" },
         { title: "Testing & Validation", description: "Comprehensive testing to ensure accuracy and performance", duration: "3-5 days" },
         { title: "Go Live", description: "Seamless transition with zero downtime", duration: "1 day" }
       ],
@@ -24,7 +24,7 @@ export default function MigrationPage() {
       name: "MistralAI",
       steps: [
         { title: "Voice Profile Migration", description: "Transfer and enhance your custom voice profiles", duration: "1-2 days" },
-        { title: "Integration Setup", description: "Configure Kalina's multi-channel capabilities", duration: "2-3 days" },
+        { title: "Integration Setup", description: "Configure Kallina's multi-channel capabilities", duration: "2-3 days" },
         { title: "Performance Optimization", description: "Fine-tune for better latency and quality", duration: "2-3 days" },
         { title: "Launch", description: "Deploy with improved performance metrics", duration: "1 day" }
       ],
@@ -35,7 +35,7 @@ export default function MigrationPage() {
       name: "VAPI",
       steps: [
         { title: "API Integration Analysis", description: "Analyze current API usage patterns", duration: "1 day" },
-        { title: "Endpoint Migration", description: "Migrate to Kalina's more robust API infrastructure", duration: "2-4 days" },
+        { title: "Endpoint Migration", description: "Migrate to Kallina's more robust API infrastructure", duration: "2-4 days" },
         { title: "Enhanced Features Setup", description: "Configure advanced features not available in VAPI", duration: "3-4 days" },
         { title: "Production Deployment", description: "Switch to production with improved reliability", duration: "1 day" }
       ],
@@ -87,7 +87,7 @@ export default function MigrationPage() {
                 Seamless Platform Migration
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Switch to Kalina AI from any platform with zero downtime, preserved data, 
+                Switch to Kallina AI from any platform with zero downtime, preserved data, 
                 and immediate performance improvements. Our expert team handles everything.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -173,7 +173,7 @@ export default function MigrationPage() {
           <div className="container-width">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-brand-300 text-center mb-12">
-                Why Migrate to Kalina?
+                Why Migrate to Kallina?
               </h2>
               
               <div className="grid md:grid-cols-3 gap-8">
@@ -201,7 +201,7 @@ export default function MigrationPage() {
                 <div className="bg-white p-8 rounded-2xl shadow-lg">
                   <h3 className="text-xl font-bold text-brand-300 mb-4">TechCorp Migration</h3>
                   <p className="text-gray-600 mb-4">
-                    "Migrated from Voiceflow to Kalina in just 8 days. Zero downtime and 
+                    "Migrated from Voiceflow to Kallina in just 8 days. Zero downtime and 
                     immediate 40% improvement in response accuracy."
                   </p>
                   <div className="text-sm text-brand-500 font-medium">
@@ -236,7 +236,7 @@ export default function MigrationPage() {
                 Ready to Make the Switch?
               </h2>
               <p className="text-xl opacity-90 mb-8">
-                Join hundreds of businesses that have successfully migrated to Kalina AI. 
+                Join hundreds of businesses that have successfully migrated to Kallina AI. 
                 Get started with our free migration assessment.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

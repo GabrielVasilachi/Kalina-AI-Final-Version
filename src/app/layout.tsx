@@ -6,10 +6,10 @@ import { Providers } from './providers'
 // import { inter } from './fonts'
 
 export const metadata = {
-  title: 'Kalina AI',
+  title: 'Kallina AI',
   description: 'Experience ultra-low latency voice calls with AI-enhanced quality, end-to-end encryption, and global coverage for seamless communication.',
   keywords: 'AI calls, voice communication, low latency, encryption, global coverage',
-  authors: [{ name: 'Kalina AI Team' }],
+  authors: [{ name: 'Kallina AI Team' }],
 }
 
 export const viewport = {

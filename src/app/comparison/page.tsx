@@ -28,31 +28,31 @@ export default function ComparisonPage() {
 
   const comparisonData = {
     voiceflow: {
-      pricing: { kalina: "$0.12/call", competitor: "$0.25/call" },
-      accuracy: { kalina: "99.2%", competitor: "94.1%" },
-      latency: { kalina: "150ms", competitor: "300ms" },
-      uptime: { kalina: "99.99%", competitor: "99.5%" },
-      integrations: { kalina: "200+", competitor: "50+" },
-      languages: { kalina: "100+", competitor: "25+" },
-      support: { kalina: "24/7 Expert", competitor: "Business Hours" }
+      pricing: { Kallina: "$0.12/call", competitor: "$0.25/call" },
+      accuracy: { Kallina: "99.2%", competitor: "94.1%" },
+      latency: { Kallina: "150ms", competitor: "300ms" },
+      uptime: { Kallina: "99.99%", competitor: "99.5%" },
+      integrations: { Kallina: "200+", competitor: "50+" },
+      languages: { Kallina: "100+", competitor: "25+" },
+      support: { Kallina: "24/7 Expert", competitor: "Business Hours" }
     },
     MistralAI: {
-      pricing: { kalina: "$0.12/call", competitor: "$0.30/call" },
-      accuracy: { kalina: "99.2%", competitor: "96.3%" },
-      latency: { kalina: "150ms", competitor: "250ms" },
-      uptime: { kalina: "99.99%", competitor: "99.2%" },
-      integrations: { kalina: "200+", competitor: "30+" },
-      languages: { kalina: "100+", competitor: "29+" },
-      support: { kalina: "24/7 Expert", competitor: "Email Only" }
+      pricing: { Kallina: "$0.12/call", competitor: "$0.30/call" },
+      accuracy: { Kallina: "99.2%", competitor: "96.3%" },
+      latency: { Kallina: "150ms", competitor: "250ms" },
+      uptime: { Kallina: "99.99%", competitor: "99.2%" },
+      integrations: { Kallina: "200+", competitor: "30+" },
+      languages: { Kallina: "100+", competitor: "29+" },
+      support: { Kallina: "24/7 Expert", competitor: "Email Only" }
     },
     vapi: {
-      pricing: { kalina: "$0.12/call", competitor: "$0.20/call" },
-      accuracy: { kalina: "99.2%", competitor: "92.8%" },
-      latency: { kalina: "150ms", competitor: "400ms" },
-      uptime: { kalina: "99.99%", competitor: "98.9%" },
-      integrations: { kalina: "200+", competitor: "40+" },
-      languages: { kalina: "100+", competitor: "20+" },
-      support: { kalina: "24/7 Expert", competitor: "Community" }
+      pricing: { Kallina: "$0.12/call", competitor: "$0.20/call" },
+      accuracy: { Kallina: "99.2%", competitor: "92.8%" },
+      latency: { Kallina: "150ms", competitor: "400ms" },
+      uptime: { Kallina: "99.99%", competitor: "98.9%" },
+      integrations: { Kallina: "200+", competitor: "40+" },
+      languages: { Kallina: "100+", competitor: "20+" },
+      support: { Kallina: "24/7 Expert", competitor: "Community" }
     }
   }
 
@@ -60,28 +60,28 @@ export default function ComparisonPage() {
     {
       category: "Core Features",
       items: [
-        { feature: "Voice Recognition Accuracy", kalina: "✓ 99.2%", competitors: "✗ 92-96%" },
-        { feature: "Natural Language Processing", kalina: "✓ Advanced GPT-4", competitors: "✗ Basic Models" },
-        { feature: "Multi-language Support", kalina: "✓ 100+ Languages", competitors: "✗ 20-29 Languages" },
-        { feature: "Real-time Analytics", kalina: "✓ Advanced Dashboard", competitors: "✗ Basic Reports" }
+        { feature: "Voice Recognition Accuracy", Kallina: "✓ 99.2%", competitors: "✗ 92-96%" },
+        { feature: "Natural Language Processing", Kallina: "✓ Advanced GPT-4", competitors: "✗ Basic Models" },
+        { feature: "Multi-language Support", Kallina: "✓ 100+ Languages", competitors: "✗ 20-29 Languages" },
+        { feature: "Real-time Analytics", Kallina: "✓ Advanced Dashboard", competitors: "✗ Basic Reports" }
       ]
     },
     {
       category: "Integration & Deployment",
       items: [
-        { feature: "API Endpoints", kalina: "✓ 200+ Integrations", competitors: "✗ 30-50 Integrations" },
-        { feature: "Deployment Time", kalina: "✓ < 24 hours", competitors: "✗ 3-7 days" },
-        { feature: "Custom Workflows", kalina: "✓ Unlimited", competitors: "✗ Limited" },
-        { feature: "White-label Options", kalina: "✓ Full Customization", competitors: "✗ Not Available" }
+        { feature: "API Endpoints", Kallina: "✓ 200+ Integrations", competitors: "✗ 30-50 Integrations" },
+        { feature: "Deployment Time", Kallina: "✓ < 24 hours", competitors: "✗ 3-7 days" },
+        { feature: "Custom Workflows", Kallina: "✓ Unlimited", competitors: "✗ Limited" },
+        { feature: "White-label Options", Kallina: "✓ Full Customization", competitors: "✗ Not Available" }
       ]
     },
     {
       category: "Enterprise Features",
       items: [
-        { feature: "HIPAA Compliance", kalina: "✓ Certified", competitors: "✗ Not Certified" },
-        { feature: "SOC 2 Type II", kalina: "✓ Compliant", competitors: "✗ Not Compliant" },
-        { feature: "Dedicated Infrastructure", kalina: "✓ Available", competitors: "✗ Shared Only" },
-        { feature: "SLA Guarantee", kalina: "✓ 99.99% Uptime", competitors: "✗ 98-99.5%" }
+        { feature: "HIPAA Compliance", Kallina: "✓ Certified", competitors: "✗ Not Certified" },
+        { feature: "SOC 2 Type II", Kallina: "✓ Compliant", competitors: "✗ Not Compliant" },
+        { feature: "Dedicated Infrastructure", Kallina: "✓ Available", competitors: "✗ Shared Only" },
+        { feature: "SLA Guarantee", Kallina: "✓ 99.99% Uptime", competitors: "✗ 98-99.5%" }
       ]
     }
   ]
@@ -96,7 +96,7 @@ export default function ComparisonPage() {
                 Platform Comparison
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                See how Kalina AI outperforms other voice automation platforms in accuracy, 
+                See how Kallina AI outperforms other voice automation platforms in accuracy, 
                 speed, features, and cost-effectiveness.
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function ComparisonPage() {
           <div className="container-width">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-950 text-center mb-8">
-                Compare Kalina AI vs
+                Compare Kallina AI vs
               </h2>
               
               <div className="flex justify-center gap-4 mb-12">
@@ -129,19 +129,19 @@ export default function ComparisonPage() {
 
               {/* Head-to-Head Metrics */}
               <div className="grid md:grid-cols-2 bg-gray-50 gap-8 mb-12 rounded-2xl">
-                {/* Kalina Card */}
+                {/* Kallina Card */}
                 <div className="bg-gradient-to-br from-brand-500 to-blue-600 text-black p-8 rounded-2xl">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 bg-gray-200 text-brand-500 rounded-full flex items-center justify-center font-bold">
                       K
                     </div>
-                    <h3 className="text-2xl font-bold">Kalina AI</h3>
+                    <h3 className="text-2xl font-bold">Kallina AI</h3>
                   </div>
                   <div className="space-y-4">
                     {Object.entries(comparisonData[selectedPlatform as keyof typeof comparisonData]).map(([metric, values]) => (
                       <div key={metric} className="flex justify-between items-center">
                         <span className="capitalize opacity-90">{metric.replace(/([A-Z])/g, ' $1')}</span>
-                        <span className="font-bold text-lg">{values.kalina}</span>
+                        <span className="font-bold text-lg">{values.Kallina}</span>
                       </div>
                     ))}
                   </div>
@@ -185,7 +185,7 @@ export default function ComparisonPage() {
                       {category.items.map((item, itemIndex) => (
                         <div key={itemIndex} className="grid md:grid-cols-3 gap-4 py-4 border-b border-gray-100 last:border-b-0">
                           <div className="font-medium text-gray-800">{item.feature}</div>
-                          <div className="text-green-600 font-medium">{item.kalina}</div>
+                          <div className="text-green-600 font-medium">{item.Kallina}</div>
                           <div className="text-red-500 font-medium">{item.competitors}</div>
                         </div>
                       ))}
@@ -213,7 +213,7 @@ export default function ComparisonPage() {
                 </div>
                 
                 <div className="text-center p-8 bg-green-50 rounded-2xl border-2 border-green-200">
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">Kalina AI Cost</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4">Kallina AI Cost</h3>
                   <div className="text-3xl font-bold text-green-600 mb-2">$1,200</div>
                   <p className="text-green-700 font-medium">Best value</p>
                 </div>
@@ -232,7 +232,7 @@ export default function ComparisonPage() {
               </div>
               
               <div className="text-center mt-8 p-6 bg-brand-50 rounded-xl">
-                <h4 className="text-lg font-bold text-brand-500 mb-2">Annual Savings with Kalina</h4>
+                <h4 className="text-lg font-bold text-brand-500 mb-2">Annual Savings with Kallina</h4>
                 <div className="text-2xl font-bold text-brand-600">
                   ${selectedPlatform === 'voiceflow' ? '15,600' : selectedPlatform === 'MistralAI' ? '21,600' : '9,600'}
                 </div>
@@ -241,12 +241,12 @@ export default function ComparisonPage() {
           </div>
         </section>
 
-        {/* Why Choose Kalina */}
+        {/* Why Choose Kallina */}
         <section className="section-padding bg-gray-50">
           <div className="container-width">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-bold text-brand-300 text-center mb-12">
-                Why Businesses Choose Kalina
+                Why Businesses Choose Kallina
               </h2>
               
               <div className="grid md:grid-cols-2 gap-8">
@@ -327,7 +327,7 @@ export default function ComparisonPage() {
               </h2>
               <p className="text-xl opacity-90 mb-8">
                 Join thousands of businesses that have made the smart choice. 
-                Experience the Kalina difference with our free trial.
+                Experience the Kallina difference with our free trial.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="/getting-started" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">

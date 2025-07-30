@@ -13,7 +13,7 @@ export default function ResourcesPage() {
       items: [
         {
           title: "Ghid de Implementare",
-          description: "Ghid complet pentru integrarea API-ului Kalina AI",
+          description: "Ghid complet pentru integrarea API-ului Kallina AI",
           type: "PDF",
           size: "2.5 MB"
         },
@@ -48,7 +48,7 @@ export default function ResourcesPage() {
         },
         {
           title: "Integrare Enterprise",
-          description: "Cum să integrezi Kalina AI în sistemele enterprise",
+          description: "Cum să integrezi Kallina AI în sistemele enterprise",
           type: "Webinar",
           size: "45 min"
         }
@@ -96,7 +96,7 @@ export default function ResourcesPage() {
                   Resurse pentru Dezvoltatori
                 </h1>
                 <p className="text-xl text-brand-300 max-w-3xl mx-auto animate-fade-in-up delay-200">
-                  Tot ce ai nevoie pentru a implementa și optimiza Kalina AI
+                  Tot ce ai nevoie pentru a implementa și optimiza Kallina AI
                 </p>
               </div>
 

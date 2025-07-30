@@ -75,10 +75,10 @@ export function SiteFooter() {
   ]
 
   const socialLinks = [
-    { name: "Twitter", url: "https://twitter.com/kalina_ai" },
-    { name: "LinkedIn", url: "https://linkedin.com/company/kalina-ai" },
-    { name: "GitHub", url: "https://github.com/kalina-ai" },
-    { name: "Discord", url: "https://discord.gg/kalina-ai" }
+    { name: "Twitter", url: "https://twitter.com/Kallina_ai" },
+    { name: "LinkedIn", url: "https://linkedin.com/company/Kallina-ai" },
+    { name: "GitHub", url: "https://github.com/Kallina-ai" },
+    { name: "Discord", url: "https://discord.gg/Kallina-ai" }
   ]
       // id="demo" 
       // ref={sectionRef}
@@ -97,7 +97,7 @@ export function SiteFooter() {
           {/* Brand section */}
           <div className={`space-y-4 transition-all duration-700 ${classes} md:col-span-1 col-span-1`}>
             <div className="text-xl md:text-2xl font-bold text-brand-100 text-shimmer magnetic-hover">
-              Kalina AI
+              Kallina AI
             </div>
             <p className="text-sm md:text-base text-brand-100 leading-relaxed">
               Crystal-clear AI calls, anywhere in the world. Revolutionizing global communications.
@@ -167,7 +167,7 @@ export function SiteFooter() {
         }`}>
           <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
             <p className="text-xs md:text-sm text-brand-100">
-              &copy; 2024 Kalina AI. All rights reserved.
+              &copy; 2024 Kallina AI. All rights reserved.
             </p>
             <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 md:space-x-6 text-xs">
               <a href="/legal-services-ai" className="text-brand-100 hover:text-white transition-colors magnetic-hover">

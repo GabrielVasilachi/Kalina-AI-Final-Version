@@ -1,8 +1,8 @@
-# Kalina AI Final Version - Project Structure
+# Kallina AI Final Version - Project Structure
 
 ## Root Directory
 ```
-Kalina-AI-Final-Version/
+Kallina-AI-Final-Version/
 ├── deploy-instructions.sh          # Deployment script for production
 ├── next-env.d.ts                   # Next.js TypeScript declarations
 ├── next.config.js                  # Next.js configuration file

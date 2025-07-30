@@ -207,7 +207,7 @@ export function ProductDemoSection() {
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-        <div className="text-gray-400 text-sm">Kalina AI Assistant</div>
+        <div className="text-gray-400 text-sm">Kallina AI Assistant</div>
       </div>
 
       <div className="space-y-4 h-80 overflow-y-auto scrollbar-hide">
@@ -630,7 +630,7 @@ export function ProductDemoSection() {
 }
     '#EF4444', // Lili - Red
     '#F59E42', // Eric - Orange
-    '#7B7481', // Kalina - Gray
+    '#7B7481', // Kallina - Gray
     '#EC4899', // Alexandra - Pink
   ];
 
@@ -857,7 +857,7 @@ export function ProductDemoSection() {
   const voiceOptions = [
     { name: 'Lili'},
     { name: 'Eric'},
-    { name: 'Kalina'},
+    { name: 'Kallina'},
     { name: 'Alexandra'},
   ] as const
   

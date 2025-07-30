@@ -759,7 +759,7 @@ const romanianTranslations: Translations = {
     '99.9% Garanție Uptime'
   ],
   demoSection: {
-    title: 'Încearcă Kalina AI',
+    title: 'Încearcă Kallina AI',
     description: 'Experimentează conversații cu voce alimentate de AI, cu răspunsuri naturale, asemănătoare celor umane.'
   },
   companies: {
@@ -837,7 +837,7 @@ const romanianTranslations: Translations = {
   },
   trustedBy: {
     title: 'Încrederea companiilor de top',
-    subtitle: 'Peste 1000+ companii folosesc Kalina AI pentru comunicare',
+    subtitle: 'Peste 1000+ companii folosesc Kallina AI pentru comunicare',
     developers: 'Dezvoltatori',
     charactersGenerated: 'Caractere generate', 
     languagesSupported: 'Limbi suportate',
@@ -864,7 +864,7 @@ const romanianTranslations: Translations = {
     customiseTitle: 'Ușor de personalizat.',
     customiseSubtitle: 'Greu de greșit.',
     customiseDescription: 'Widget-urile sunt proiectate să fie personalizate cu ușurință. Arată întotdeauna uimitor, indiferent cum le editezi.',
-    integrationTitle: 'Kalina AI în Acțiune',
+    integrationTitle: 'Kallina AI în Acțiune',
     integrationDescription: 'Încorporează instant, previzualizează sau interacționează cu instrumentele și dashboard-urile tale preferate. Adaugă aici o demonstrație video sau o previzualizare live pentru a prezenta integrarea perfectă și rezultatele reale.',
     videoDemoPlaceholder: 'Placeholder Demo Video',
     videoUploadText: 'Încarcă sau încorporează un video de produs, YouTube sau un link Loom aici.'
@@ -1342,7 +1342,7 @@ const romanianTranslations: Translations = {
   },
   mainFeatures: {
     title: 'Funcționalități Principale',
-    subtitle: 'Descoperă ce face Kalina AI să fie diferit',
+    subtitle: 'Descoperă ce face Kallina AI să fie diferit',
     feature1Title: 'Calitate Audio Superioară',
     feature1Desc: 'Tehnologie AI avansată pentru claritate cristalină',
     feature2Title: 'Securitate Maximă',
@@ -1375,20 +1375,20 @@ const romanianTranslations: Translations = {
   faq: {
     title: 'Întrebări Frecvente',
     subtitle: 'Răspunsuri la întrebările tale',
-    question1: 'Ce este Kalina AI?',
-    answer1: 'Kalina AI este o platformă de comunicare vocală alimentată de inteligența artificială, care oferă apeluri de înaltă calitate cu latență ultra-scăzută.',
+    question1: 'Ce este Kallina AI?',
+    answer1: 'Kallina AI este o platformă de comunicare vocală alimentată de inteligența artificială, care oferă apeluri de înaltă calitate cu latență ultra-scăzută.',
     question2: 'Cum funcționează tehnologia AI?',
     answer2: 'Folosim algoritmi avansați de machine learning pentru a optimiza calitatea vocii, reduce zgomotul de fundal și îmbunătăți claritatea conversațiilor.',
-    question3: 'Este sigur să folosesc Kalina AI?',
+    question3: 'Este sigur să folosesc Kallina AI?',
     answer3: 'Da, toate conversațiile sunt protejate cu criptare end-to-end și respectăm cele mai înalte standarde de securitate.',
-    question4: 'Pot integra Kalina AI în aplicația mea?',
+    question4: 'Pot integra Kallina AI în aplicația mea?',
     answer4: 'Absolut! Oferim API-uri simple și documentație completă pentru integrare rapidă în orice aplicație.',
     question5: 'Ce planuri de prețuri aveți?',
     answer5: 'Oferim planuri flexibile de la gratuit pentru testare până la soluții enterprise personalizate.'
   },
   cta: {
     title: 'Gata să Începi?',
-    subtitle: 'Alătură-te miilor de companii care folosesc deja Kalina AI',
+    subtitle: 'Alătură-te miilor de companii care folosesc deja Kallina AI',
     primaryButton: 'Începe Gratuit',
     secondaryButton: 'Programează Demo'
   },
@@ -1423,7 +1423,7 @@ const romanianTranslations: Translations = {
     legal: 'Legal',
     privacyPolicy: 'Politica de Confidențialitate',
     termsOfService: 'Termeni și Condiții',
-    copyright: '© 2025 Kalina AI. Toate drepturile rezervate.'
+    copyright: '© 2025 Kallina AI. Toate drepturile rezervate.'
   },
   pages: {
     pricing: {
@@ -1510,14 +1510,14 @@ const romanianTranslations: Translations = {
       speechSynthesisDesc: 'Generare de voci naturale și expresive pentru răspunsuri AI'
     },
     platform: {
-      title: 'Platforma Kalina AI',
+      title: 'Platforma Kallina AI',
       subtitle: 'Infrastructura completă pentru comunicare vocală modernă',
       overview: 'Prezentare Generală',
       capabilities: 'Capabilități',
       integration: 'Integrare'
     },
     company: {
-      title: 'Despre Kalina AI',
+      title: 'Despre Kallina AI',
       subtitle: 'Revoluționăm comunicarea vocală prin tehnologie AI',
       mission: 'Misiunea Noastră',
       vision: 'Viziunea Noastră',
@@ -1657,7 +1657,7 @@ const englishTranslations: Translations = {
     '99.9% Uptime Guarantee'
   ],
   demoSection: {
-    title: 'Try Kalina AI',
+    title: 'Try Kallina AI',
     description: 'Experience AI-powered voice conversations with natural, human-like responses.'
   },
   companies: {
@@ -1735,7 +1735,7 @@ const englishTranslations: Translations = {
   },
   trustedBy: {
     title: 'Trusted by top companies',
-    subtitle: 'Over 1000+ companies use Kalina AI for communication',
+    subtitle: 'Over 1000+ companies use Kallina AI for communication',
     developers: 'Developers',
     charactersGenerated: 'Characters generated',
     languagesSupported: 'Languages supported',
@@ -1762,7 +1762,7 @@ const englishTranslations: Translations = {
     customiseTitle: 'Easy to customise.',
     customiseSubtitle: 'Hard to get wrong.',
     customiseDescription: 'Widgets are designed to be customized easily. They always look stunning, no matter how you edit.',
-    integrationTitle: 'See Kalina AI in Action',
+    integrationTitle: 'See Kallina AI in Action',
     integrationDescription: 'Instantly embed, preview, or interact with your favorite tools and dashboards. Add a video demo or live preview here to showcase seamless integration and real results.',
     videoDemoPlaceholder: 'Video Demo Placeholder',
     videoUploadText: 'Upload or embed a product video, YouTube, or Loom link here.'
@@ -2231,7 +2231,7 @@ const englishTranslations: Translations = {
   },
   mainFeatures: {
     title: 'Main Features',
-    subtitle: 'Discover what makes Kalina AI different',
+    subtitle: 'Discover what makes Kallina AI different',
     feature1Title: 'Superior Audio Quality',
     feature1Desc: 'Advanced AI technology for crystal-clear clarity',
     feature2Title: 'Maximum Security',
@@ -2264,20 +2264,20 @@ const englishTranslations: Translations = {
   faq: {
     title: 'Frequently Asked Questions',
     subtitle: 'Answers to your questions',
-    question1: 'What is Kalina AI?',
-    answer1: 'Kalina AI is an artificial intelligence-powered voice communication platform that provides high-quality calls with ultra-low latency.',
+    question1: 'What is Kallina AI?',
+    answer1: 'Kallina AI is an artificial intelligence-powered voice communication platform that provides high-quality calls with ultra-low latency.',
     question2: 'How does AI technology work?',
     answer2: 'We use advanced machine learning algorithms to optimize voice quality, reduce background noise, and enhance conversation clarity.',
-    question3: 'Is it safe to use Kalina AI?',
+    question3: 'Is it safe to use Kallina AI?',
     answer3: 'Yes, all conversations are protected with end-to-end encryption and we follow the highest security standards.',
-    question4: 'Can I integrate Kalina AI into my app?',
+    question4: 'Can I integrate Kallina AI into my app?',
     answer4: 'Absolutely! We provide simple APIs and complete documentation for rapid integration into any application.',
     question5: 'What pricing plans do you have?',
     answer5: 'We offer flexible plans from free for testing to customized enterprise solutions.'
   },
   cta: {
     title: 'Ready to Get Started?',
-    subtitle: 'Join thousands of companies already using Kalina AI',
+    subtitle: 'Join thousands of companies already using Kallina AI',
     primaryButton: 'Get Started Free',
     secondaryButton: 'Schedule Demo'
   },
@@ -2312,7 +2312,7 @@ const englishTranslations: Translations = {
     legal: 'Legal',
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
-    copyright: '© 2025 Kalina AI. All rights reserved.'
+    copyright: '© 2025 Kallina AI. All rights reserved.'
   },
   pages: {
     pricing: {
@@ -2399,14 +2399,14 @@ const englishTranslations: Translations = {
       speechSynthesisDesc: 'Generate natural and expressive voices for AI responses'
     },
     platform: {
-      title: 'Kalina AI Platform',
+      title: 'Kallina AI Platform',
       subtitle: 'Complete infrastructure for modern voice communication',
       overview: 'Overview',
       capabilities: 'Capabilities',
       integration: 'Integration'
     },
     company: {
-      title: 'About Kalina AI',
+      title: 'About Kallina AI',
       subtitle: 'We\'re revolutionizing voice communication through AI technology',
       mission: 'Our Mission',
       vision: 'Our Vision',
@@ -2459,7 +2459,7 @@ export const useLanguage = create<LanguageStore>()(
       }
     }),
     {
-      name: 'kalina-language',
+      name: 'Kallina-language',
       skipHydration: true,
     }
   )

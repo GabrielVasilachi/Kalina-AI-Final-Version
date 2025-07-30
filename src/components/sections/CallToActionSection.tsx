@@ -72,7 +72,7 @@ export function CallToActionSection() {
             <p className={`text-base sm:text-lg md:text-xl text-brand-300 mb-6 md:mb-8 max-w-3xl mx-auto transition-all duration-700 delay-200 px-4 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
-              Join thousands of companies already using Kalina AI for crystal-clear, 
+              Join thousands of companies already using Kallina AI for crystal-clear, 
               secure, and ultra-fast voice communications.
             </p>
             

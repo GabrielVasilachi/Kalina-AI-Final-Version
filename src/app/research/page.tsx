@@ -36,7 +36,7 @@ export default function ResearchPage() {
       title: "AI-Enhanced Voice Communication: A New Era",
       journal: "International Journal of AI Communications",
       year: "2024",
-      authors: "Kalina AI Research Team"
+      authors: "Kallina AI Research Team"
     },
     {
       title: "Low-Latency Global Audio Transmission",

@@ -50,7 +50,7 @@ export function ProductDemoSection() {
   const silkColors = [
     '#EF4444', // Lili - Red
     '#F59E42', // Eric - Orange
-    '#7B7481', // Kalina - Gray
+    '#7B7481', // Kallina - Gray
     '#EC4899', // Alexandra - Pink
   ];
 
@@ -277,7 +277,7 @@ export function ProductDemoSection() {
   const voiceOptions = [
     { name: 'Lili'},
     { name: 'Eric'},
-    { name: 'Kalina'},
+    { name: 'Kallina'},
     { name: 'Alexandra'},
   ] as const
   

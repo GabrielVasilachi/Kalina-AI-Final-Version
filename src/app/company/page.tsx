@@ -37,7 +37,7 @@ export default function CompanyPage() {
   const timeline = [
     {
       year: "2021",
-      event: "Înființarea Kalina AI",
+      event: "Înființarea Kallina AI",
       description: "Doi ingineri cu viziunea unei comunicații AI perfecte"
     },
     {
@@ -71,7 +71,7 @@ export default function CompanyPage() {
             <div className="container-width" ref={ref}>
               <div className={`text-center mb-16 ${classes}`}>
                 <h1 className="text-6xl lg:text-7xl font-bold text-brand-400 mb-6 text-shimmer">
-                  Despre Kalina AI
+                  Despre Kallina AI
                 </h1>
                 <p className="text-xl text-brand-300 max-w-3xl mx-auto animate-fade-in-up delay-200">
                   Misiunea noastră este să revoluționăm comunicațiile globale prin inteligența artificială

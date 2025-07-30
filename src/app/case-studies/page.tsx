@@ -15,14 +15,14 @@ export default function CaseStudiesPage() {
       company: "Mario's Pizza Chain",
       size: "50+ locations",
       challenge: "Managing high call volumes during peak hours, reducing wait times, and improving order accuracy",
-      solution: "Implemented Kalina AI for automated order taking across all locations with custom menu integration",
+      solution: "Implemented Kallina AI for automated order taking across all locations with custom menu integration",
       results: [
         { metric: "Order Processing Time", improvement: "85% faster", from: "8 minutes", to: "72 seconds" },
         { metric: "Order Accuracy", improvement: "99.2%", from: "92%", to: "99.2%" },
         { metric: "Staff Productivity", improvement: "60% increase", from: "200 orders/day", to: "320 orders/day" },
         { metric: "Customer Satisfaction", improvement: "+23%", from: "3.2/5", to: "4.1/5" }
       ],
-      quote: "Kalina AI transformed our business. We went from losing customers due to busy phone lines to taking orders 24/7 with perfect accuracy.",
+      quote: "Kallina AI transformed our business. We went from losing customers due to busy phone lines to taking orders 24/7 with perfect accuracy.",
       author: "Maria Rodriguez, Operations Manager",
       timeline: "2 weeks implementation",
       roi: "340% ROI in 6 months"
@@ -33,7 +33,7 @@ export default function CaseStudiesPage() {
       company: "Central Medical Group",
       size: "12 clinics, 450+ patients/day",
       challenge: "Overwhelming appointment scheduling calls, patient inquiries, and after-hours emergency triage",
-      solution: "Deployed HIPAA-compliant Kalina AI for appointment scheduling, patient screening, and medical triage",
+      solution: "Deployed HIPAA-compliant Kallina AI for appointment scheduling, patient screening, and medical triage",
       results: [
         { metric: "Appointment Scheduling", improvement: "90% automated", from: "Manual", to: "AI-handled" },
         { metric: "Patient Wait Time", improvement: "70% reduction", from: "15 minutes", to: "4.5 minutes" },
@@ -51,7 +51,7 @@ export default function CaseStudiesPage() {
       company: "TechGear Online",
       size: "$10M annual revenue",
       challenge: "High volume of customer support calls, product inquiries, and order status requests",
-      solution: "Integrated Kalina AI with Shopify for automated customer support and order management",
+      solution: "Integrated Kallina AI with Shopify for automated customer support and order management",
       results: [
         { metric: "Support Response Time", improvement: "24/7 instant", from: "4-6 hours", to: "Immediate" },
         { metric: "Query Resolution", improvement: "89% first-call", from: "45%", to: "89%" },
@@ -69,14 +69,14 @@ export default function CaseStudiesPage() {
       company: "Premier Properties Group",
       size: "200+ agents, 5 offices",
       challenge: "Lead qualification, property inquiries, and showing coordination across multiple markets",
-      solution: "Kalina AI for lead qualification, property matching, and automated showing scheduling",
+      solution: "Kallina AI for lead qualification, property matching, and automated showing scheduling",
       results: [
         { metric: "Lead Response Time", improvement: "Instant", from: "2-4 hours", to: "Under 30 seconds" },
         { metric: "Qualified Leads", improvement: "180% increase", from: "150/month", to: "420/month" },
         { metric: "Agent Productivity", improvement: "75% increase", from: "12 showings/week", to: "21 showings/week" },
         { metric: "Conversion Rate", improvement: "+42%", from: "2.3%", to: "3.8%" }
       ],
-      quote: "We never miss a lead anymore. Kalina captures every inquiry and pre-qualifies them perfectly, so our agents focus on closing deals.",
+      quote: "We never miss a lead anymore. Kallina captures every inquiry and pre-qualifies them perfectly, so our agents focus on closing deals.",
       author: "Michael Torres, Sales Director",
       timeline: "1 week implementation",
       roi: "520% ROI in 3 months"
@@ -87,7 +87,7 @@ export default function CaseStudiesPage() {
       company: "Elite Auto Service",
       size: "8 locations, 200+ vehicles/day",
       challenge: "Service appointment scheduling, parts availability checks, and customer follow-ups",
-      solution: "Kalina AI integrated with service management system for complete automation",
+      solution: "Kallina AI integrated with service management system for complete automation",
       results: [
         { metric: "Appointment Booking", improvement: "95% automated", from: "Manual", to: "AI-scheduled" },
         { metric: "No-show Rate", improvement: "80% reduction", from: "25%", to: "5%" },
@@ -125,7 +125,7 @@ export default function CaseStudiesPage() {
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Discover how businesses across industries are achieving remarkable results 
-                with Kalina AI voice automation. Real stories, real numbers, real impact.
+                with Kallina AI voice automation. Real stories, real numbers, real impact.
               </p>
             </div>
           </div>
@@ -334,7 +334,7 @@ export default function CaseStudiesPage() {
               </h2>
               <p className="text-xl opacity-90 mb-8">
                 Join hundreds of successful businesses that have transformed their operations 
-                with Kalina AI. Start your journey today.
+                with Kallina AI. Start your journey today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="/getting-started" className="btn-secondary bg-white text-brand-500 hover:bg-gray-100">

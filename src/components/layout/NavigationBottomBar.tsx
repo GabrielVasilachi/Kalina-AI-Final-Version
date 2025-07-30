@@ -91,7 +91,7 @@ export default function NavigationBottomBar() {
           </div>
         </div>
         <div className="text-center mt-2 text-xs text-brand-300">
-          Made with ♡ by Kalina AI Team &mdash; 2025
+          Made with ♡ by Kallina AI Team &mdash; 2025
         </div>
       </div>
     </div>

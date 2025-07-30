@@ -51,7 +51,7 @@ export default function ROICalculatorPage() {
   return (
     // <BasicPageLayout 
     //   title="ROI Calculator"
-    //   description="Calculate your potential savings and ROI with Kalina AI voice automation"
+    //   description="Calculate your potential savings and ROI with Kallina AI voice automation"
     // >
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -62,7 +62,7 @@ export default function ROICalculatorPage() {
                 ROI Calculator
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Calculate your potential savings and return on investment with Kalina AI.
+                Calculate your potential savings and return on investment with Kallina AI.
                 See how much you could save on operational costs while improving customer experience.
               </p>
             </div>
@@ -160,7 +160,7 @@ export default function ROICalculatorPage() {
                     </div>
                     
                     <div className="flex justify-between items-center p-4 bg-white rounded-lg">
-                      <span className="text-gray-600">Kalina Monthly Cost</span>
+                      <span className="text-gray-600">Kallina Monthly Cost</span>
                       <span className="text-xl font-bold text-blue-600">${kallinaMonthlyCost.toFixed(0)}</span>
                     </div>
                     
@@ -241,7 +241,7 @@ export default function ROICalculatorPage() {
               </h2>
               <p className="text-xl opacity-90 mb-8">
                 Based on your calculations, you could save ${yearlySavings.toFixed(0)} annually. 
-                Get started with Kalina AI today and start seeing results immediately.
+                Get started with Kallina AI today and start seeing results immediately.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="/getting-started" className="btn-secondary bg-white text-gray-500 hover:bg-gray-100">

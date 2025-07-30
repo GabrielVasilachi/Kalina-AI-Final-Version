@@ -177,10 +177,10 @@
   - **Description:** User login, registration, and account management
 
 ### **11. SOCIAL MEDIA LINKS** (Footer)
-- **`https://twitter.com/kalina_ai`** - Twitter/X Profile
-- **`https://linkedin.com/company/kalina-ai`** - LinkedIn Company Page
-- **`https://github.com/kalina-ai`** - GitHub Organization
-- **`https://discord.gg/kalina-ai`** - Discord Community Server
+- **`https://twitter.com/Kallina_ai`** - Twitter/X Profile
+- **`https://linkedin.com/company/Kallina-ai`** - LinkedIn Company Page
+- **`https://github.com/Kallina-ai`** - GitHub Organization
+- **`https://discord.gg/Kallina-ai`** - Discord Community Server
 
 ### **12. FOOTER NAVIGATION MATRIX**
 
