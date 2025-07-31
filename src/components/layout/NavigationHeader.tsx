@@ -70,19 +70,37 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
     }
   }, [isMobileMenuOpen])
 
-  // Sponsors ticker line - perfect seamless scrolling
-  const sponsorsTexts = [
-    'We won 1st Place at ElevenLabs Hackathon – $20,000 for our AI Agents',
-    'EBRD selected Aichat.md for the prestigious Star Venture Program',
-    '2nd Place at Sevan Startup Summit – $6,000 award for Aichat.md',
-    'Winner of the YoHealth Challenge at Sevan – $6,000 for Aichat.md',
-    'Backed by Google Cloud – $25K grant to scale our AI infrastructure',
-    'Part of UpNext Accelerator by Dreamups – with $10K funding to grow Aichat.md',
+  // Sponsors ticker line - perfect seamless scrolling with links
+  const sponsorsData = [
+    {
+      text: 'We won 1st Place at ElevenLabs Hackathon – $20,000 for our AI Agents',
+      url: '/blog/elevenlabs-hackathon-winner',
+    },
+    {
+      text: 'EBRD selected Aichat.md for the prestigious Star Venture Program',
+      url: '/blog/ebrd-star-venture-program',
+    },
+    {
+      text: '2nd Place at Sevan Startup Summit – $6,000 award for Aichat.md',
+      url: '/blog/sevan-startup-summit-second-place',
+    },
+    {
+      text: 'Winner of the YoHealth Challenge at Sevan – $6,000 for Aichat.md',
+      url: '/blog/sevan-startup-summit-second-place',
+    },
+    {
+      text: 'Backed by Google Cloud – $25K grant to scale our AI infrastructure',
+      url: '/blog/google-cloud-partnership-grant',
+    },
+    {
+      text: 'Part of UpNext Accelerator by Dreamups – with $10K funding to grow Aichat.md',
+      url: '/blog/upnext-accelerator-partnership',
+    },
   ];
-  
+
   // Create seamless scrolling by tripling the sponsor list for continuous flow
-  const duplicatedSponsors = [...sponsorsTexts, ...sponsorsTexts, ...sponsorsTexts];
-  
+  const duplicatedSponsors = [...sponsorsData, ...sponsorsData, ...sponsorsData];
+
   // Ticker styles with improved smoothness
   const tickerStyles = {
     position: 'fixed' as const,
@@ -98,7 +116,7 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
     alignItems: 'center',
     boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
   };
-  
+
   const tickerTrackStyles = {
     display: 'flex',
     alignItems: 'center',
@@ -107,7 +125,7 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
     animation: 'ticker-smooth-roll 120s linear infinite',
     willChange: 'transform', // Optimize for smooth animation
   };
-  
+
   const tickerItemStyles = {
     color: '#ffffff',
     fontWeight: 600,
@@ -117,8 +135,14 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
     textShadow: '0 1px 2px rgba(0,0,0,0.3)',
     minWidth: 'max-content',
     opacity: 0.95,
+    cursor: 'pointer',
+    transition: 'text-decoration 0.2s, transform 0.18s cubic-bezier(0.4,0,0.2,1)',
+    textDecoration: 'none',
   };
-  
+
+  // Pause ticker on hover of any item
+  const [isTickerPaused, setIsTickerPaused] = useState(false);
+
   // Add improved ticker keyframes with smoother animation
   useEffect(() => {
     if (typeof window !== 'undefined' && !document.getElementById('ticker-keyframes')) {
@@ -133,10 +157,11 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
             transform: translateX(-33.333%); 
           } 
         }
-        
-        /* Pause animation on hover for better UX */
-        .ticker-track:hover {
-          animation-play-state: paused;
+        .ticker-track {
+          animation-play-state: running;
+        }
+        .ticker-track.ticker-paused {
+          animation-play-state: paused !important;
         }
       `;
       document.head.appendChild(style);
@@ -144,13 +169,38 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
   }, []);
   return (
     <>
-      {/* Perfect sponsors ticker line - smooth and seamless */}
+      {/* Perfect sponsors ticker line - smooth and seamless, now with links and pause on hover */}
       <div style={tickerStyles}>
-        <div style={tickerTrackStyles} className="ticker-track">
-          {duplicatedSponsors.map((text: string, idx: number) => (
-            <span style={tickerItemStyles} key={`sponsor-${idx}`}>
-              {text}
-            </span>
+        <div
+          style={{ ...tickerTrackStyles, animationPlayState: isTickerPaused ? 'paused' : 'running' }}
+          className={`ticker-track${isTickerPaused ? ' ticker-paused' : ''}`}
+        >
+          {duplicatedSponsors.map((item, idx) => (
+            <a
+              href={item.url}
+              key={`sponsor-${idx}`}
+              style={tickerItemStyles}
+              onMouseEnter={e => {
+                setIsTickerPaused(true);
+                e.currentTarget.style.transform = 'translateY(-3px)';
+              }}
+              onMouseLeave={e => {
+                setIsTickerPaused(false);
+                e.currentTarget.style.transform = 'none';
+              }}
+              tabIndex={0}
+              onFocus={e => {
+                setIsTickerPaused(true);
+                e.currentTarget.style.transform = 'translateY(-3px)';
+              }}
+              onBlur={e => {
+                setIsTickerPaused(false);
+                e.currentTarget.style.transform = 'none';
+              }}
+              className="hover:underline focus:underline"
+            >
+              {item.text}
+            </a>
           ))}
         </div>
       </div>
