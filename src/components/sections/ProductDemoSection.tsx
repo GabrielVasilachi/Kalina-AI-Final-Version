@@ -1,8 +1,9 @@
 'use client'
 
-import React from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import Silk from '../../../BackgroundSilk/Silk/Silk';
 import { useLanguage } from '@/lib/i18n'
+import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 
 type AnimatedPathProps = {
   d: string;
@@ -39,11 +40,6 @@ const AnimatedPath: React.FC<AnimatedPathProps> = ({ d, stroke, strokeWidth, fil
     />
   );
 };
-
-import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
-
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
-
 
 export function ProductDemoSection() {
   // Map agent voices to Silk colors
@@ -91,7 +87,65 @@ export function ProductDemoSection() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  const [activeTab, setActiveTab] = useState<'conversation' | 'calendar' | 'magicbutton'>('conversation');
+  const [activeTab, setActiveTab] = useState<'conversation' | 'calendar' | 'magicbutton' | 'issuetracking'>('issuetracking');
+  
+  // Issue Tracking specific state
+  const [issueTrackingView, setIssueTrackingView] = useState<'timeline' | 'table' | 'gallery' | 'feed'>('timeline');
+  const [selectedIssue, setSelectedIssue] = useState<number | null>(null);
+  
+  // Sample issues data matching the images
+  const issueData = [
+    { 
+      id: 1, 
+      title: 'Contactarea clienților pentru prezentarea ofertei curente.', 
+      status: 'Resolved', 
+      assignee: 'Agent Lili', 
+      startDate: 'July 20, 2025', 
+      endDate: 'July 22, 2025',
+      statusColor: 'bg-green-100 text-green-800 border-green-200',
+      category: 'Business'
+    },
+    { 
+      id: 2, 
+      title: 'Verificarea și actualizarea informațiilor clientului.', 
+      status: 'In review', 
+      assignee: 'Agent Alexandra', 
+      startDate: 'July 14, 2025', 
+      endDate: 'July 17, 2025',
+      statusColor: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+      category: 'Technical'
+    },
+    { 
+      id: 3, 
+      title: 'Reprogramarea apelului cu clientul.', 
+      status: "Waiting", 
+      assignee: 'Agent Alexandra', 
+      startDate: 'July 19, 2025', 
+      endDate: 'July 24, 2025',
+      statusColor: 'bg-red-100 text-red-800 border-red-200',
+      category: 'Finance'
+    },
+    { 
+      id: 4, 
+      title: 'Evaluarea nevoilor clientului pentru soluții personalizate.', 
+      status: 'In Progress', 
+      assignee: 'Agent Eric', 
+      startDate: 'July 2, 2025', 
+      endDate: 'July 5, 2025',
+      statusColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      category: 'Technical'
+    },
+    { 
+      id: 5, 
+      title: 'Rezolvarea solicitărilor primite de la client.', 
+      status: 'In progress', 
+      assignee: 'Agent Kallina', 
+      startDate: 'July 24, 2025', 
+      endDate: 'July 25, 2025',
+      statusColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      category: 'Operations'
+    }
+  ];
   const { t } = useLanguage();
   
   // Magic Button specific state
@@ -441,7 +495,17 @@ export function ProductDemoSection() {
   return (
     <section id="demo" ref={sectionRef} className="bg-white py-6 md:py-8">
       {/* Switcher buttons */}
-      <div className="flex justify-center gap-4 mb-8">
+      <div className="flex justify-center gap-2 md:gap-4 mb-8 flex-wrap">
+        <button
+          className={`rounded-full font-semibold border-2 transition-all duration-200 ${
+            activeTab === 'issuetracking'
+              ? 'bg-black text-white border-black'
+              : 'bg-white text-black border-gray-300 hover:border-gray-400'
+          } ${getSwitcherButtonClasses()}`}
+          onClick={() => setActiveTab('issuetracking')}
+        >
+          Issue Tracking
+        </button>
         <button
           className={`rounded-full font-semibold border-2 transition-all duration-200 ${
             activeTab === 'conversation'
@@ -476,6 +540,489 @@ export function ProductDemoSection() {
       
       {/* Content Container with smooth transitions */}
       <div className="relative overflow-hidden">
+        {/* Issue Tracking Content */}
+        <div 
+          className={`transition-all duration-500 ease-in-out ${
+            activeTab === 'issuetracking' 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-full absolute inset-0 pointer-events-none'
+          }`}
+        >
+          <div className="relative bg-gray-50 py-8 md:py-10">
+            {/* Top white fade overlay */}
+            <div className="absolute left-0 top-0 w-full h-24 pointer-events-none z-0 border-none" style={{
+              background: 'linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(249,250,251,1) 100%)',
+            }} />
+            {/* Bottom fade overlay */}
+            <div className="absolute left-0 bottom-0 w-full h-24 pointer-events-none z-0 border-none" style={{
+              background: 'linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(249,250,251,1) 100%)',
+            }} />
+            
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              {/* Header */}
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                  Issue Tracking
+                </h2>
+                <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                  Sistem inteligent de urmărire și gestionare a problemelor cu AI avansat
+                </p>
+              </div>
+
+              {/* Issue Tracking Interface */}
+              <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+                {/* Header with title and controls */}
+                <div className="bg-white border-b border-gray-200 p-3 sm:p-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                      <svg className="w-3 h-3 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <h1 className="text-lg sm:text-2xl font-bold text-black">Issue Tracking</h1>
+                  </div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <button className="text-gray-500 hover:text-gray-700 p-1 hidden sm:block">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                      </svg>
+                    </button>
+                    <button className="text-gray-500 hover:text-gray-700 p-1 hidden sm:block">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                      </svg>
+                    </button>
+                    <button className="bg-blue-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors">
+                      New
+                    </button>
+                  </div>
+                </div>
+
+                {/* View Tabs */}
+                <div className="bg-white border-b border-gray-200">
+                  <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1 p-2 sm:p-2 overflow-x-auto scrollbar-hide">
+                    {[
+                      { id: 'timeline', label: 'Timeline', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+                      { id: 'table', label: 'Table', icon: 'M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z' },
+                      { id: 'gallery', label: 'Gallery', icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z' },
+                      { id: 'feed', label: 'Feed', icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z' }
+                    ].map((view) => (
+                      <button
+                        key={view.id}
+                        onClick={() => setIssueTrackingView(view.id as any)}
+                        className={`flex-shrink-0 flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-colors ${
+                          issueTrackingView === view.id
+                            ? 'bg-gray-200 text-gray-900'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                        }`}
+                      >
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={view.icon} />
+                        </svg>
+                        <span className="text-xs sm:text-sm">{view.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Content based on selected view */}
+                <div className="p-3 sm:p-4 min-h-96">
+                  {/* Timeline View */}
+                  {issueTrackingView === 'timeline' && (
+                    <div className="space-y-4">
+                      {/* Timeline header with controls */}
+                      <div className="mb-4 sm:mb-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-3 sm:gap-0">
+                          <div className="flex items-center gap-2">
+                            <button className="text-gray-400 hover:text-gray-600">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            <span className="text-base sm:text-lg font-semibold">July 2025</span>
+                            <button className="text-gray-400 hover:text-gray-600">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="flex items-center gap-2 sm:gap-4 text-xs text-gray-500">
+                            <button className="hidden sm:flex items-center gap-1 px-3 py-1 rounded hover:bg-gray-100 border border-gray-300">
+                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              </svg>
+                              Manage in Calendar
+                            </button>
+                            <span className="hidden sm:inline">Bi-week</span>
+                            <button className="text-gray-400 hover:text-gray-600">
+                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            <span className="font-medium">Today</span>
+                            <button className="text-gray-400 hover:text-gray-600">
+                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        
+                        {/* Calendar with timeline view */}
+                        <div className="bg-white border border-gray-200 rounded-lg p-2 sm:p-4">
+                          {/* Week days header */}
+                          <div className="grid grid-cols-7 gap-1 mb-2">
+                            {['S', 'S', 'M', 'T', 'W', 'T', 'F'].map((day, idx) => (
+                              <div key={idx} className="text-xs font-medium text-gray-500 text-center py-1">{day}</div>
+                            ))}
+                          </div>
+                          
+                        {/* Calendar with timeline view */}
+                        <div className="bg-white border border-gray-200 rounded-lg p-2 sm:p-4">
+                          {/* Week days header */}
+                          <div className="grid grid-cols-7 gap-1 mb-2">
+                            {['S', 'S', 'M', 'T', 'W', 'T', 'F'].map((day, idx) => (
+                              <div key={idx} className="text-xs font-medium text-gray-500 text-center py-1">{day}</div>
+                            ))}
+                          </div>
+                          
+                          {/* Complete July 2025 calendar with overlaid containers */}
+                          <div className="relative">
+                            {/* Base calendar grid */}
+                            <div className="grid grid-cols-7 gap-1 mb-4">
+                              {/* Empty cells for July 1st starting on Tuesday */}
+                              <div></div>
+                              <div></div>
+                              {/* July days 1-31 */}
+                              {Array.from({length: 31}, (_, i) => {
+                                const day = i + 1;
+                                const isToday = day === 29; // Today is July 29, 2025
+                                const isInWeek = day >= 19 && day <= 25; // Week we're focusing on
+                                return (
+                                  <div key={day} className="text-xs text-center py-1 h-8">
+                                    <span className={`${
+                                      isToday 
+                                        ? 'bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center mx-auto' 
+                                        : isInWeek
+                                          ? 'text-gray-900'
+                                          : 'text-gray-900'
+                                    }`}>
+                                      {day}
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+
+                            {/* Red line under dates 6-7 for smaller screens */}
+                            <div className="absolute inset-0 pointer-events-none xl:hidden">
+                              {/* Red line under Saturday and Sunday (columns 1-2, first row) */}
+                              <div 
+                                className="absolute bg-red-500 rounded"
+                                style={{
+                                  left: '0%',
+                                  top: '60px', // Below the text numbers (increased from 32px)
+                                  width: '28.57%', // Two columns out of 7 (2/7 ≈ 28.57%)
+                                  height: '2px',
+                                  zIndex: 15
+                                }}
+                              />
+                            </div>
+
+                            {/* Task containers positioned exactly over calendar days - hidden on mobile and tablets */}
+                            <div className="absolute inset-0 pointer-events-none hidden xl:block">
+                              {/* Container 1: Collaborate with sales team (days 19-21) - row 4, columns 1-3 */}
+                              <div 
+                                className="absolute border border-green-200 rounded text-xs text-green-800 font-medium shadow-sm flex items-center justify-center px-1"
+                                style={{
+                                  background: 'linear-gradient(90deg, rgba(220,252,231,0.7) 0%, rgba(220,252,231,1) 35%, rgba(220,252,231,1) 65%, rgba(220,252,231,0.7) 100%)',
+                                  left: '50px',
+                                  top: '108px', // 3 rows down + header offset
+                                  width: '390px',
+                                  height: '1.5rem',
+                                  zIndex: 10
+                                }}
+                              >
+                                <span className="truncate text-center">Contactarea clienților pentru prezenta...</span>
+                              </div>
+
+                              {/* Container 2: Review CRM system (days 22-25) - row 4, columns 4-7 */}
+                              <div 
+                                className="absolute border border-yellow-200 rounded text-xs text-yellow-800 font-medium shadow-sm flex items-center justify-center px-1"
+                                style={{
+                                  background: 'linear-gradient(90deg, rgba(254,240,138,0.7) 0%, rgba(254,240,138,1) 35%, rgba(254,240,138,1) 65%, rgba(254,240,138,0.7) 100%)',
+                                  left: '190px',
+                                  top: '71px',
+                                  width: '570px',
+                                  height: '1.5rem',
+                                  zIndex: 10
+                                }}
+                              >
+                                <span className="truncate text-center">Verificarea și actualizarea informațiilor clientului.</span>
+                              </div>
+
+                              {/* Container 3: Financial forecasting (days 20-22) - positioned in row 4, overlapping */}
+                              <div 
+                                className="absolute border border-red-200 rounded text-xs text-red-800 font-medium shadow-sm flex items-center justify-center px-1"
+                                style={{
+                                  background: 'linear-gradient(90deg, rgba(254,226,226,0.7) 0%, rgba(254,226,226,1) 35%, rgba(254,226,226,1) 65%, rgba(254,226,226,0.7) 100%)',
+                                  left: '50px',
+                                  top: '34px',
+                                  width: '220px',
+                                  height: '1.5rem',
+                                  zIndex: 11
+                                }}
+                              >
+                                <span className="truncate text-center">Reprogramarea apel...</span>
+                              </div>
+
+                              {/* Container 4: Research solutions (days 23-24) */}
+                              <div 
+                                className="absolute border border-blue-200 rounded text-xs text-blue-800 font-medium shadow-sm flex items-center justify-center px-1"
+                                style={{
+                                  background: 'linear-gradient(90deg, rgba(219,234,254,0.7) 0%, rgba(219,234,254,1) 35%, rgba(219,234,254,1) 65%, rgba(219,234,254,0.7) 100%)',
+                                  left: '525px',
+                                  top: '0px',
+                                  width: '540px',
+                                  height: '1.5rem',
+                                  zIndex: 11
+                                }}
+                              >
+                                <span className="truncate text-center">Evaluarea nevoilor clientului pentru solu...</span>
+                              </div>
+
+                              {/* Container 5: Reorganize workspace (days 21-22) */}
+                              <div 
+                                className="absolute border border-blue-200 rounded text-xs text-blue-800 font-medium shadow-sm flex items-center justify-center px-1"
+                                style={{
+                                  background: 'linear-gradient(90deg, rgba(219,234,254,0.7) 0%, rgba(219,234,254,1) 35%, rgba(219,234,254,1) 65%, rgba(219,234,254,0.7) 100%)',
+                                  left: '680px',
+                                  top: '108px',
+                                  width: '240px',
+                                  height: '1.5rem',
+                                  zIndex: 12
+                                }}
+                              >
+                                <span className="truncate text-center">Rezolvarea solicit...</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                          
+                          {/* Remove the separate timeline container since tasks are now integrated into calendar */}
+                        </div>
+
+                        {/* Timeline items description - optimized for mobile */}
+                        <div className="space-y-2 sm:space-y-3 mt-4 sm:mt-6">
+                          {issueData.map((issue) => (
+                            <div key={issue.id} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors">
+                              <div className="flex items-center gap-2 sm:gap-3">
+                                <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center">
+                                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                  </svg>
+                                </div>
+                                <div className="flex-grow min-w-0">
+                                  <p className="text-xs sm:text-sm font-medium text-gray-900 truncate">{issue.title}</p>
+                                  <p className="text-xs text-gray-500 mt-1 sm:hidden">{issue.startDate} → {issue.endDate}</p>
+                                </div>
+                              </div>
+                              <div className="flex items-center justify-between sm:justify-end gap-2">
+                                <div className="hidden sm:block text-xs text-gray-500">
+                                  {issue.startDate} → {issue.endDate}
+                                </div>
+                                <div className={`px-2 py-1 rounded-full text-xs font-medium border ${issue.statusColor}`}>
+                                  {issue.status}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Table View */}
+                  {issueTrackingView === 'table' && (
+                    <>
+                      {/* Mobile Card Layout */}
+                      <div className="block sm:hidden space-y-3">
+                        {issueData.map((issue) => (
+                          <div key={issue.id} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between mb-3">
+                              <h3 className="text-sm font-medium text-gray-900 flex-1 pr-2">{issue.title}</h3>
+                              <div className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center">
+                                <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs text-gray-500 font-medium">Status:</span>
+                                <span className={`px-2 py-1 rounded-full text-xs font-medium border ${issue.statusColor}`}>
+                                  {issue.status}
+                                </span>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs text-gray-500 font-medium">Assignee:</span>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-5 h-5 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <span className="text-xs font-medium text-gray-600">A</span>
+                                  </div>
+                                  <span className="text-xs text-gray-700">{issue.assignee}</span>
+                                </div>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs text-gray-500 font-medium">Date Range:</span>
+                                <span className="text-xs text-gray-600">{issue.startDate} → {issue.endDate}</span>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Desktop Table Layout */}
+                      <div className="hidden sm:block overflow-x-auto">
+                        <table className="w-full">
+                          <thead className="border-b border-gray-200">
+                            <tr>
+                              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Title</th>
+                              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Status</th>
+                              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Assignee</th>
+                              <th className="text-left py-3 px-2 text-sm font-medium text-gray-600">Date Range</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-gray-100">
+                            {issueData.map((issue) => (
+                              <tr key={issue.id} className="hover:bg-gray-50 transition-colors">
+                                <td className="py-4 px-2">
+                                  <div className="flex items-center gap-3">
+                                    <div className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center">
+                                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                      </svg>
+                                    </div>
+                                    <span className="text-sm text-gray-900">{issue.title}</span>
+                                  </div>
+                                </td>
+                                <td className="py-4 px-2">
+                                  <span className={`px-2 py-1 rounded-full text-xs font-medium border ${issue.statusColor}`}>
+                                    {issue.status}
+                                  </span>
+                                </td>
+                                <td className="py-4 px-2">
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
+                                      <span className="text-xs font-medium text-gray-600">A</span>
+                                    </div>
+                                    <span className="text-sm text-gray-700">{issue.assignee}</span>
+                                  </div>
+                                </td>
+                                <td className="py-4 px-2">
+                                  <span className="text-sm text-gray-600">{issue.startDate} → {issue.endDate}</span>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </>
+                  )}
+
+                  {/* Gallery View */}
+                  {issueTrackingView === 'gallery' && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+                      {issueData.map((issue) => (
+                        <div key={issue.id} className="bg-white border border-gray-200 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow">
+                          <div className="flex items-start justify-between mb-3">
+                            <h3 className="text-sm font-medium text-gray-900 line-clamp-2 flex-1 pr-2">{issue.title}</h3>
+                            <div className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center">
+                              <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <div className={`px-2 py-1 rounded-full text-xs font-medium border inline-block ${issue.statusColor}`}>
+                              {issue.status}
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-gray-600">
+                              <div className="w-5 h-5 bg-gray-300 rounded-full flex items-center justify-center">
+                                <span className="text-xs font-medium text-gray-600">A</span>
+                              </div>
+                              <span className="truncate">{issue.assignee}</span>
+                            </div>
+                            <p className="text-xs text-gray-500">{issue.startDate} → {issue.endDate}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Feed View */}
+                  {issueTrackingView === 'feed' && (
+                    <div className="max-w-2xl mx-auto">
+                      {/* Selected issue details */}
+                      <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
+                        <div className="flex items-center gap-2 sm:gap-3 mb-4">
+                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Apeluri de vânzări cu noua ofertă.</h2>
+                        </div>
+                        
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">
+                          <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gray-300 rounded-full flex items-center justify-center">
+                            <span className="text-xs font-medium">A</span>
+                          </div>
+                          <span>Agent Kallina</span>
+                          <span>Jul 24 (edited)</span>
+                        </div>
+
+                        <div className="space-y-4 sm:space-y-6">
+                          <div>
+                            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Rezumat</h3>
+                            <p className="text-sm sm:text-base text-gray-600 bg-gray-50 p-3 sm:p-4 rounded-lg">
+                              Apeluri de vânzări cu noua ofertă. Summer 2025!
+                            </p>
+                          </div>
+
+                          <div>
+                            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Detalii</h3>
+                            <p className="text-sm sm:text-base text-gray-600 bg-gray-50 p-3 sm:p-4 rounded-lg">
+                              Propunere de colaborare cu echipa de vânzări pentru a discuta despre noua ofertă și strategii de vânzare.
+                            </p>
+                          </div>
+
+                          <div>
+                            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Impact</h3>
+                            <p className="text-sm sm:text-base text-gray-600 bg-gray-50 p-3 sm:p-4 rounded-lg">
+                              Convingerea clientului de a adopta noua ofertă.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Add new issue button at bottom */}
+                <div className="border-t border-gray-200 p-3 sm:p-4">
+                  <button className="text-gray-400 hover:text-gray-600 text-xs sm:text-sm font-medium flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    New issue
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Conversation AI Content */}
         <div 
           className={`transition-all duration-500 ease-in-out ${

@@ -630,4 +630,14 @@
     80% { transform: translateY(-100px) scale(1.25) rotate(0deg); opacity: 0.10; }
     100% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.18; }
   } */
+  
+  /* Scrollbar utilities */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
