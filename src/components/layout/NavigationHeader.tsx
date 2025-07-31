@@ -244,9 +244,17 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </button>
               <div
-                className={`absolute left-0 top-full w-64 rounded-xl bg-white shadow-lg z-[200] dropdown ${openDropdown === 'products' ? 'block' : 'hidden'}`}
+                className={`absolute left-0 top-full w-64 rounded-xl shadow-lg z-[200] dropdown ${openDropdown === 'products' ? 'block' : 'hidden'}`}
                 role="menu"
-                style={{ marginTop: '-1px' }}
+                style={{
+                  marginTop: '-1px',
+                  background: openDropdown === 'products' ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.72)',
+                  border: '1px solid rgba(255,255,255,0.22)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  boxShadow: openDropdown === 'products' ? '0 8px 36px rgba(0,0,0,0.10)' : '0 4px 24px rgba(0,0,0,0.08)',
+                  transition: 'background 0.3s, box-shadow 0.3s'
+                }}
               >
                 <Link href="/platform" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-t-xl">
                   <span className="flex items-center gap-3">
@@ -305,9 +313,17 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </button>
               <div
-                className={`absolute left-0 top-full w-64 rounded-xl bg-white shadow-lg z-[200] dropdown ${openDropdown === 'solutions' ? 'block' : 'hidden'}`}
+                className={`absolute left-0 top-full w-64 rounded-xl shadow-lg z-[200] dropdown ${openDropdown === 'solutions' ? 'block' : 'hidden'}`}
                 role="menu"
-                style={{ marginTop: '-1px' }}
+                style={{
+                  marginTop: '-1px',
+                  background: openDropdown === 'solutions' ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.72)',
+                  border: '1px solid rgba(255,255,255,0.22)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  boxShadow: openDropdown === 'solutions' ? '0 8px 36px rgba(0,0,0,0.10)' : '0 4px 24px rgba(0,0,0,0.08)',
+                  transition: 'background 0.3s, box-shadow 0.3s'
+                }}
               >
                 <Link href="/healthcare-ai" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-t-xl">
                   <span className="flex items-center gap-3">
@@ -358,9 +374,17 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </button>
               <div
-                className={`absolute left-0 top-full w-64 rounded-xl bg-white shadow-lg z-[200] dropdown ${openDropdown === 'research' ? 'block' : 'hidden'}`}
+                className={`absolute left-0 top-full w-64 rounded-xl shadow-lg z-[200] dropdown ${openDropdown === 'research' ? 'block' : 'hidden'}`}
                 role="menu"
-                style={{ marginTop: '-1px' }}
+                style={{
+                  marginTop: '-1px',
+                  background: openDropdown === 'research' ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.72)',
+                  border: '1px solid rgba(255,255,255,0.22)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  boxShadow: openDropdown === 'research' ? '0 8px 36px rgba(0,0,0,0.10)' : '0 4px 24px rgba(0,0,0,0.08)',
+                  transition: 'background 0.3s, box-shadow 0.3s'
+                }}
               >
                 <Link href="/developers" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-t-xl">
                   <span className="flex items-center gap-3">
@@ -419,9 +443,17 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </button>
               <div
-                className={`absolute left-0 top-full w-64 rounded-xl bg-white shadow-lg z-[200] dropdown ${openDropdown === 'resources' ? 'block' : 'hidden'}`}
+                className={`absolute left-0 top-full w-64 rounded-xl shadow-lg z-[200] dropdown ${openDropdown === 'resources' ? 'block' : 'hidden'}`}
                 role="menu"
-                style={{ marginTop: '-1px' }}
+                style={{
+                  marginTop: '-1px',
+                  background: openDropdown === 'resources' ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.72)',
+                  border: '1px solid rgba(255,255,255,0.22)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  boxShadow: openDropdown === 'resources' ? '0 8px 36px rgba(0,0,0,0.10)' : '0 4px 24px rgba(0,0,0,0.08)',
+                  transition: 'background 0.3s, box-shadow 0.3s'
+                }}
               >
                 <Link href="/blog" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-t-xl">
                   <span className="flex items-center gap-3">

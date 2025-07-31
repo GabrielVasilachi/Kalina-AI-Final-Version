@@ -157,8 +157,35 @@ export function HeroSection() {
               {/* Call Button */}
               <div className="mb-6 w-full flex flex-col items-center">
                 <button
-                  className="w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 px-4 rounded-lg font-medium hover:border hover:border-gray-950 hover:text-black hover:from-gray-200 hover:to-gray-300 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-                  disabled={!phoneNumber || !companyName}
+                  className="w-full text-black font-medium py-[10px] px-[10px] rounded-2xl flex items-center justify-center gap-2 shadow-lg focus:outline-none transition-all duration-300"
+                  style={{
+                    background: 'rgba(255,255,255,0.82)',
+                    border: '1px solid rgba(255,255,255,0.22)',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
+                    transition: 'background 0.3s, box-shadow 0.3s, transform 0.25s cubic-bezier(0.1,0,0.1,1), padding 0.25s cubic-bezier(0.1,0,0.1,1), min-width 0.25s cubic-bezier(0.1,0,0.1,1), max-width 0.25s cubic-bezier(0.1,0,0.1,1)',
+                    minWidth: '120px',
+                    maxWidth: '100%',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.95)';
+                    e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.14)';
+                    e.currentTarget.style.transform = 'scale(1.045)';
+                    e.currentTarget.style.paddingLeft = '8px';
+                    e.currentTarget.style.paddingRight = '8px';
+                    e.currentTarget.style.minWidth = '90px';
+                    e.currentTarget.style.maxWidth = '260px';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.82)';
+                    e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.10)';
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.paddingLeft = '10px';
+                    e.currentTarget.style.paddingRight = '10px';
+                    e.currentTarget.style.minWidth = '120px';
+                    e.currentTarget.style.maxWidth = '100%';
+                  }}
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

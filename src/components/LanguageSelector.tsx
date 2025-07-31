@@ -62,13 +62,13 @@ export function LanguageSelector() {
           transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
-          e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)' // when hovering over the button language selector
+          e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)' // shadow effect on hover
           e.currentTarget.style.transform = 'translateY(-1px)'
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
-          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.42)' // background color when not hovering
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)' // shadow effect when not hovering
           e.currentTarget.style.transform = 'translateY(0px)'
         }}
         aria-label="Selectează limba"
@@ -91,7 +91,7 @@ export function LanguageSelector() {
         <div 
           className="absolute top-full right-0 mt-2 min-w-[140px] z-50"
           style={{
-            background: 'rgba(255, 255, 255, 0.1)',
+            background: 'rgba(255, 255, 255, 0.6)',
             border: '1px solid rgba(255, 255, 255, 0.2)',
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)',
@@ -107,7 +107,7 @@ export function LanguageSelector() {
                 setIsOpen(false)
               }}
               className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all first:rounded-t-2xl last:rounded-b-2xl ${
-                lang.code === language ? 'text-black font-semibold' : 'text-gray-700'
+                lang.code === language ? 'text-black font-semibold' : 'text-gray-800'
               }`}
               style={{
                 background: lang.code === language ? 'rgba(255, 255, 255, 0.3)' : 'transparent',
