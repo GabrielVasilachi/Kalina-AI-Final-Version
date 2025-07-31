@@ -49,7 +49,7 @@ export function HeroSection() {
     <section id="hero" className="relative py-0 overflow-hidden bg-white min-h-[90vh] flex flex-col items-center justify-center">
       {/* Liquid Chrome Background */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <LiquidChrome baseColor={[0.8,0.5,0.5]} speed={0.1} amplitude={0.4} frequencyX={3} frequencyY={2} interactive={false} style={{width:'100%',height:'100%'}} />
+        <LiquidChrome baseColor={[0.5,0.5,0.5]} speed={0.1} amplitude={0.4} frequencyX={3} frequencyY={2} interactive={false} style={{width:'100%',height:'100%'}} />
       </div>
 
       {/* 200px border at the bottom, overlays all elements with fading top */}
