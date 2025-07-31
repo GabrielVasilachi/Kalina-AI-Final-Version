@@ -473,13 +473,69 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
             </nav>
           </div>
           
-          {/* Desktop CTA & Sign in Buttons */}
+          {/* Desktop CTA & Sign in Buttons - iPhone Notification Style */}
           <div className="hidden xl:flex items-center gap-x-3 ml-auto">
             <LanguageSelector />
-            <Link href="https://preview--kallina.lovable.app/auth" className="whitespace-nowrap px-5 py-2 text-sm rounded-lg border border-gray-300 bg-white text-black font-semibold hover:bg-gray-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-200" style={{minWidth:'90px', height:'36px'}}>
+            <Link 
+              href="https://app.kallina.info" 
+              className="whitespace-nowrap text-sm font-semibold text-black focus:outline-none"
+              style={{
+                minWidth: '90px',
+                height: '36px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                borderRadius: '16px',
+                padding: '8px 16px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
+                e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+                e.currentTarget.style.transform = 'translateY(0px)'
+              }}
+            >
               {t('nav.signIn')}
             </Link>
-            <Link href="/getting-started" className="whitespace-nowrap px-5 py-2 text-sm rounded-lg bg-black text-white font-semibold hover:bg-gray-800 transition-colors animate-pulse-glow" style={{minWidth:'90px', height:'36px'}}>
+            <Link 
+              href="/getting-started" 
+              className="whitespace-nowrap text-sm font-semibold text-white focus:outline-none"
+              style={{
+                minWidth: '90px',
+                height: '36px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'rgba(0, 0, 0, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                borderRadius: '16px',
+                padding: '8px 16px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.3)'
+                e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.2)'
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+                e.currentTarget.style.transform = 'translateY(0px)'
+              }}
+            >
               {t('nav.getStarted')}
             </Link>
           </div>
@@ -725,18 +781,58 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   <LanguageSelector />
                 </div>
 
-                {/* CTA Buttons */}
+                {/* CTA Buttons - iPhone Notification Style */}
                 <div className="pt-4 space-y-3">
                   <Link 
                     href="https://preview--kallina.lovable.app/auth"
-                    className="w-full block text-center border-2 border-black text-black bg-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-200 mobile-nav-button"
+                    className="w-full block text-center font-semibold text-black focus:outline-none"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      backdropFilter: 'blur(10px)',
+                      WebkitBackdropFilter: 'blur(10px)',
+                      borderRadius: '16px',
+                      padding: '12px 20px',
+                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                      transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
+                      e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
+                      e.currentTarget.style.transform = 'translateY(-1px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
+                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+                      e.currentTarget.style.transform = 'translateY(0px)'
+                    }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {t('nav.signIn')}
                   </Link>
                   <Link 
                     href="/getting-started"
-                    className="w-full block text-center bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-800 transition-colors mobile-nav-button"
+                    className="w-full block text-center font-semibold text-white focus:outline-none"
+                    style={{
+                      background: 'rgba(0, 0, 0, 0.2)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      backdropFilter: 'blur(10px)',
+                      WebkitBackdropFilter: 'blur(10px)',
+                      borderRadius: '16px',
+                      padding: '12px 20px',
+                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                      transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(0, 0, 0, 0.3)'
+                      e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
+                      e.currentTarget.style.transform = 'translateY(-1px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(0, 0, 0, 0.2)'
+                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+                      e.currentTarget.style.transform = 'translateY(0px)'
+                    }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {t('nav.getStarted')}

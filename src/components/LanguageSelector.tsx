@@ -11,9 +11,25 @@ export function LanguageSelector() {
   // Don't render until hydrated to prevent hydration mismatch
   if (!hasHydrated) {
     return (
-      <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 backdrop-blur-sm border border-gray-400">
-        <span className="text-lg">RO</span>
-        <span className="text-sm font-medium text-white hidden sm:block">Loading...</span>
+      <div 
+        className="flex items-center gap-2 text-white"
+        style={{
+          minWidth: '80px',
+          height: '32px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          borderRadius: '16px',
+          padding: '8px 12px',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+        }}
+      >
+        <span className="text-sm">RO</span>
+        <span className="text-xs font-medium hidden sm:block">Loading...</span>
       </div>
     )
   }
@@ -29,8 +45,32 @@ export function LanguageSelector() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-1.5 rounded-md border border-gray-300 bg-white text-black font-semibold hover:bg-gray-50 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-200 text-sm"
-        style={{minWidth:'80px', height:'32px'}}
+        className="flex items-center gap-2 text-black font-semibold focus:outline-none text-sm"
+        style={{
+          minWidth: '80px',
+          height: '32px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          borderRadius: '16px',
+          padding: '8px 12px',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+          transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
+          e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
+          e.currentTarget.style.transform = 'translateY(-1px)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+          e.currentTarget.style.transform = 'translateY(0px)'
+        }}
         aria-label="Selectează limba"
       >
         <span className="text-sm">{currentLanguage?.flag}</span>
@@ -48,7 +88,17 @@ export function LanguageSelector() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-400 min-w-[140px] z-50">
+        <div 
+          className="absolute top-full right-0 mt-2 min-w-[140px] z-50"
+          style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '16px',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+          }}
+        >
           {languages.map((lang) => (
             <button
               key={lang.code}
@@ -56,11 +106,25 @@ export function LanguageSelector() {
                 setLanguage(lang.code)
                 setIsOpen(false)
               }}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg ${
-                lang.code === language ? 'bg-white/20 text-gray-950 border border-gray-400' : 'text-gray-700'
+              className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all first:rounded-t-2xl last:rounded-b-2xl ${
+                lang.code === language ? 'text-black font-semibold' : 'text-gray-700'
               }`}
+              style={{
+                background: lang.code === language ? 'rgba(255, 255, 255, 0.3)' : 'transparent',
+                transition: 'background 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                if (lang.code !== language) {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (lang.code !== language) {
+                  e.currentTarget.style.background = 'transparent'
+                }
+              }}
             >
-              <span className="text-lg">{lang.flag}</span>
+              <span className="text-sm">{lang.flag}</span>
               <span className="font-medium">{lang.name}</span>
               {lang.code === language && (
                 <svg className="w-4 h-4 ml-auto text-blue-600" fill="currentColor" viewBox="0 0 20 20">
