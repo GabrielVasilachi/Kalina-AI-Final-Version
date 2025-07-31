@@ -516,23 +516,23 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: 'rgba(0, 0, 0, 0.2)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                background: 'rgba(15, 15, 20, 0.75)', // darker glassmorphism
+                border: '1px solid rgba(255, 255, 255, 0.12)',
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)',
                 borderRadius: '16px',
                 padding: '8px 16px',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                boxShadow: '0 4px 24px rgba(0, 0, 0, 0.18)',
                 transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.3)'
-                e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
+                e.currentTarget.style.background = 'rgba(15, 15, 20, 0.92)'
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.22)'
                 e.currentTarget.style.transform = 'translateY(-1px)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 0, 0, 0.2)'
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+                e.currentTarget.style.background = 'rgba(15, 15, 20, 0.75)'
+                e.currentTarget.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.18)'
                 e.currentTarget.style.transform = 'translateY(0px)'
               }}
             >
@@ -814,23 +814,23 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                     href="/getting-started"
                     className="w-full block text-center font-semibold text-white focus:outline-none"
                     style={{
-                      background: 'rgba(0, 0, 0, 0.2)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      background: 'rgba(30, 30, 40, 0.55)', // slightly lighter than desktop dark
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
                       backdropFilter: 'blur(10px)',
                       WebkitBackdropFilter: 'blur(10px)',
                       borderRadius: '16px',
                       padding: '12px 20px',
-                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                      boxShadow: '0 4px 24px rgba(0, 0, 0, 0.15)',
                       transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(0, 0, 0, 0.3)'
-                      e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
+                      e.currentTarget.style.background = 'rgba(30, 30, 40, 0.75)'
+                      e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.22)'
                       e.currentTarget.style.transform = 'translateY(-1px)'
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(0, 0, 0, 0.2)'
-                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+                      e.currentTarget.style.background = 'rgba(30, 30, 40, 0.55)'
+                      e.currentTarget.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.15)'
                       e.currentTarget.style.transform = 'translateY(0px)'
                     }}
                     onClick={() => setIsMobileMenuOpen(false)}
