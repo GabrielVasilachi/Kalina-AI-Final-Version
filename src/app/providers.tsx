@@ -2,6 +2,7 @@
 
 import { ReactNode, useEffect } from 'react'
 import Lenis from 'lenis'
+import { GoogleAnalyticsProvider } from '@/components/GoogleAnalyticsProvider'
 
 export function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
@@ -23,8 +24,8 @@ export function Providers({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <>
+    <GoogleAnalyticsProvider>
       {children}
-    </>
+    </GoogleAnalyticsProvider>
   )
 }

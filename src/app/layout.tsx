@@ -2,6 +2,7 @@ import './globals.css'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import NavigationBottomBar from '@/components/layout/NavigationBottomBar'
 import { PageLoadingWrapper } from '@/components/PageLoadingWrapper'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { Providers } from './providers'
 // import { inter } from './fonts'
 
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en">
       {/* If you want to use a custom font, uncomment and fix the import for inter */}
       <body /* className={inter.className} */>
+        <GoogleAnalytics />
         <PageLoadingWrapper>
           <Providers>
             {children}
