@@ -1,24 +1,28 @@
 'use client'
 
+import { useState } from 'react'
+
 export default function SevanStartupSummitSecondPlace() {
+  const [showAllPhotos, setShowAllPhotos] = useState(false)
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-slate-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+      <header className="border-b border-gray-200 bg-white sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-gray-500 to-slate-600 rounded-xl flex items-center justify-center">
-                <span className="text-white text-lg">🥈</span>
+              <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+                <span className="text-white text-lg font-bold">K</span>
               </div>
               <div>
-                <h1 className="font-bold text-gray-900">Kallina AI Blog</h1>
+                <h1 className="font-bold text-black">Kallina AI Blog</h1>
                 <p className="text-sm text-gray-600">Sevan Startup Summit</p>
               </div>
             </div>
             <a 
               href="/blog" 
-              className="text-gray-600 hover:text-gray-900 text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="text-gray-600 hover:text-black text-sm font-medium px-4 py-2 hover:bg-gray-50 transition-colors"
             >
               ← Înapoi la Blog
             </a>
@@ -30,86 +34,305 @@ export default function SevanStartupSummitSecondPlace() {
       <main className="max-w-4xl mx-auto px-4 py-16">
         {/* Article Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gray-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            🥈 2ND PLACE
+          <div className="inline-flex items-center bg-black text-white px-4 py-2 text-sm font-semibold mb-6">
+            2ND PLACE
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Locul 2 la Sevan Startup Summit: 
-            <span className="text-gray-600"> $6,000</span> pentru Aichat.md
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
+            2nd Place at Sevan Startup Summit
+            <span className="block"> $6,000 award for Aichat.md</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Performanța excepțională la Sevan Startup Summit ne aduce recunoașterea internațională 
-            și finanțarea pentru dezvoltarea ulterioară.
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            From Campfires to Clients: Aichat.md at Sevan Startup Summit 2025. When your "office" is a tent 
+            pitched at 1,900m on the shores of Lake Sevan, inspiration comes easily.
           </p>
           
           {/* Meta Info */}
           <div className="flex items-center justify-center gap-6 mt-8 text-sm text-gray-500">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-gray-500 rounded-full"></span>
-              6 min citire
+              <span className="w-2 h-2 bg-black rounded-full"></span>
+              20-26 July 2025
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-gray-500 rounded-full"></span>
-              Echipa Aichat
+              <span className="w-2 h-2 bg-black rounded-full"></span>
+              Team Aichat
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-gray-500 rounded-full"></span>
-              Octombrie 2024
+              <span className="w-2 h-2 bg-black rounded-full"></span>
+              8 min read
             </div>
           </div>
         </div>
 
+        {/* Hero Image */}
+        <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-64 flex items-center justify-center mb-16">
+          <p className="text-gray-500 font-medium">Hero Image: Team at Sevan Startup Summit with Award</p>
+        </div>
+
         {/* Article Content */}
         <article className="prose prose-lg max-w-none">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Competiția de la Sevan</h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Sevan Startup Summit din Armenia a reunit peste 200 de startup-uri din toată regiunea. 
-              Să obții locul 2 într-o competiție atât de dură înseamnă validarea internațională a 
-              tehnologiei și a echipei noastre.
-            </p>
+          <div className="bg-white border border-gray-200 p-8 md:p-12">
+            
+            {/* Summit Overview */}
+            <section className="mb-12">
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                From 20 to 26 July 2025 hundreds of founders, investors and tech enthusiasts converged on Armenia 
+                for the open-air Sevan Startup Summit—a unique week-long blend of acceleration program, competition and festival life.
+              </p>
+            </section>
 
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Prezentarea Care a Convins Juriul</h3>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Pitch-ul nostru s-a concentrat pe trei aspecte cheie:
-            </p>
-            <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
-              <li>Demonstrația live a capabilităților AI în limba română</li>
-              <li>Metrici concrete de performanță și ROI pentru clienți</li>
-              <li>Planul de expansiune în piețele din Europa de Est</li>
-              <li>Echipa tehnică cu experiență dovedită în AI și business</li>
-            </ul>
+            {/* Summit in a Snapshot */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-6 border-b border-gray-200 pb-3">Summit in a Snapshot</h2>
+              <div className="space-y-4">
+                <div className="flex gap-3">
+                  <div className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-700"><span className="font-semibold">1700+ participants</span> living and working shoulder-to-shoulder in the lakeside camp</p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-700"><span className="font-semibold">400+ speakers and mentors</span> delivering daily clinics, fireside feedback and rapid-fire Q&A</p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-700">Dozens of workshops, pitch battles and side-events that ran from sunrise to midnight</p>
+                </div>
+              </div>
+              
+              <p className="text-gray-700 leading-relaxed mt-6">
+                The campground format flattened hierarchies: CEOs queued for breakfast next to junior devs, 
+                investors roasted marshmallows with first-time founders, and every critique happened face-to-face under the stars.
+              </p>
+            </section>
 
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Ce Înseamnă Premiul de $6,000</h3>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Finanțarea obținută va fi investită strategic în:
-            </p>
-            <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
-              <li>Dezvoltarea de noi funcționalități AI avansate</li>
-              <li>Extinderea echipei de development și suport</li>
-              <li>Marketing și expansiune în noi piețe</li>
-              <li>Îmbunătățirea infrastructurii pentru scalare</li>
-            </ul>
+            {/* What Aichat.md Achieved */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-6 border-b border-gray-200 pb-3">What Aichat.md Achieved</h2>
+              
+              {/* Achievement Table */}
+              <div className="overflow-x-auto mb-8">
+                <table className="w-full border border-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="border border-gray-200 px-4 py-3 text-left font-semibold text-black">Goal</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left font-semibold text-black">Result</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left font-semibold text-black">Why It Matters</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3 font-medium text-gray-900">Win customers</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">5 paying clients signed up for pilots (e-commerce, automotive, healthcare, services).</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Immediate revenue pipeline & live product validation.</td>
+                    </tr>
+                    <tr className="bg-gray-25">
+                      <td className="border border-gray-200 px-4 py-3 font-medium text-gray-900">Form partnerships</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">3 cross-startup deals – incl. ad-placement inside the indie game "Sumo Tatami."</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Extends reach into new user segments at near-zero CAC.</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3 font-medium text-gray-900">Grow investor funnel</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Multiple VCs & angels added; follow-ups booked for August.</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Positions us strongly for the upcoming pre-seed round.</td>
+                    </tr>
+                    <tr className="bg-gray-25">
+                      <td className="border border-gray-200 px-4 py-3 font-medium text-gray-900">Secure a white-label channel</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Retail-focused SaaS partner meets us in Chișinău next month.</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Opens scalable access to hundreds of CIS retailers.</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3 font-medium text-gray-900">Upgrade the pitch</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Deck rebuilt & three-minute story perfected through mentor drills.</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Ready for investor roadshows, demo days & sales calls.</td>
+                    </tr>
+                    <tr className="bg-gray-25">
+                      <td className="border border-gray-200 px-4 py-3 font-medium text-gray-900">Validate pricing</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Mentor consensus: raise prices ≈ 15%. A/B tests already live.</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Path to healthier MRR and gross margins.</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3 font-medium text-gray-900">Competition success</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">2nd place in the Booster finale ≈ $6,000 cash, instantly doubled by YoHealth to $12,000.</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Non-dilutive capital funds Q3 feature sprints & GTM.</td>
+                    </tr>
+                    <tr className="bg-gray-25">
+                      <td className="border border-gray-200 px-4 py-3 font-medium text-gray-900">Strengthen mentor network</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">All four lead mentors committed to quarterly check-ins & on-demand advice.</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-700">Ongoing senior guidance at zero extra cost.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
 
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Recunoașterea Internațională</h3>
-            <p className="text-gray-700 leading-relaxed mb-8">
-              Această performanță ne-a deschis ușile către noi oportunități de colaborare și investiții. 
-              Juriul internațional a apreciat în mod special inovația tehnologică și potențialul de impact 
-              în regiune. Pentru noi, aceasta este confirmarea că suntem pe drumul cel bun către 
-              transformarea comunicării business prin AI.
-            </p>
+            {/* Photo Gallery */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-6 border-b border-gray-200 pb-3">Summit Highlights</h2>
+              
+              {/* Main Photos Grid */}
+              <div className="grid md:grid-cols-2 gap-4 mb-6">
+                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-48 flex items-center justify-center">
+                  <p className="text-gray-500 font-medium text-center">Award Ceremony<br/>2nd Place Recognition</p>
+                </div>
+                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-48 flex items-center justify-center">
+                  <p className="text-gray-500 font-medium text-center">Team Presentation<br/>Pitch Competition</p>
+                </div>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center">
+                  <p className="text-gray-500 font-medium text-center text-sm">Lakeside Camp</p>
+                </div>
+                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center">
+                  <p className="text-gray-500 font-medium text-center text-sm">Networking Sessions</p>
+                </div>
+                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center">
+                  <p className="text-gray-500 font-medium text-center text-sm">Mentor Meetings</p>
+                </div>
+              </div>
+
+              {/* Hidden Gallery */}
+              {showAllPhotos && (
+                <div className="grid md:grid-cols-4 gap-3 mb-6 animate-in fade-in duration-300">
+                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
+                    <p className="text-gray-400 text-xs text-center">Team Building</p>
+                  </div>
+                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
+                    <p className="text-gray-400 text-xs text-center">Demo Setup</p>
+                  </div>
+                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
+                    <p className="text-gray-400 text-xs text-center">Workshop</p>
+                  </div>
+                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
+                    <p className="text-gray-400 text-xs text-center">Evening Social</p>
+                  </div>
+                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
+                    <p className="text-gray-400 text-xs text-center">Judging Panel</p>
+                  </div>
+                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
+                    <p className="text-gray-400 text-xs text-center">Camping Life</p>
+                  </div>
+                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
+                    <p className="text-gray-400 text-xs text-center">Tech Demo</p>
+                  </div>
+                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
+                    <p className="text-gray-400 text-xs text-center">Celebration</p>
+                  </div>
+                </div>
+              )}
+
+              {/* Gallery Toggle Button */}
+              <div className="text-center">
+                <button 
+                  onClick={() => setShowAllPhotos(!showAllPhotos)}
+                  className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors font-medium"
+                >
+                  {showAllPhotos ? (
+                    <>
+                      Show Less Photos
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      View All Photos
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
+            </section>
+
+            {/* A Moldovan Mini-Squad */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-6 border-b border-gray-200 pb-3">A Moldovan Mini-Squad</h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                We weren't the only Moldovan flags waving in the mountain wind. <span className="font-semibold">OneSyncs, Gems Around and EatingAI</span> camped 
+                beside us, pitched beside us and celebrated beside us — proof that Moldova's startup scene is growing louder and prouder every year.
+              </p>
+            </section>
+
+            {/* Life in the Tent City */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-6 border-b border-gray-200 pb-3">Life in the Tent City</h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Days started with sunrise stand-ups and ended with storytelling round campfires. Demo rehearsals echoed across 
+                the lake, while spontaneous white-boarding happened anywhere a picnic table met a good idea. The informal setup 
+                turned every meal line and yoga mat into a networking session — and that authenticity is exactly why deals got done.
+              </p>
+            </section>
+
+            {/* Gratitude */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-6 border-b border-gray-200 pb-3">Gratitude</h2>
+              <div className="space-y-4">
+                <div className="flex gap-3">
+                  <div className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-700"><span className="font-semibold">Startup Moldova</span> & <span className="font-semibold">EU4Innovation East</span> – your travel grant and continuous ecosystem support made this journey possible.</p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-700"><span className="font-semibold">Sevan Startup Summit organisers</span> – for crafting an unforgettable blend of acceleration and adventure.</p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-700"><span className="font-semibold">YoHealth</span> – for doubling our prize and doubling our momentum.</p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-2 h-2 bg-black rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-gray-700">The 50+ mentors, the jury and the new friends who challenged and championed us all week long.</p>
+                </div>
+              </div>
+            </section>
+
+            {/* What's Next */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-6 border-b border-gray-200 pb-3">What's Next?</h2>
+              <div className="space-y-4 mb-6">
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
+                  <div>
+                    <h4 className="font-semibold text-black">Integrations live</h4>
+                    <p className="text-gray-700 text-sm">Deploy pilots for the five new clients (August).</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
+                  <div>
+                    <h4 className="font-semibold text-black">White-label pilot</h4>
+                    <p className="text-gray-700 text-sm">Scope and sign with the retail SaaS partner.</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-4">
+                  <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">3</div>
+                  <div>
+                    <h4 className="font-semibold text-black">Close funding</h4>
+                    <p className="text-gray-700 text-sm">Convert at least one of the newly-met investors before Q4.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-gray-700 leading-relaxed">
+                Sevan 2025 proved that big ideas can grow around campfires. With fresh capital, new clients and a stronger network, 
+                Aichat.md returns to Chișinău ready to scale faster – and we can't wait to share the next milestones with you.
+              </p>
+            </section>
 
             {/* Call to Action */}
-            <div className="bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl p-6 border border-gray-200">
-              <h4 className="font-semibold text-gray-900 mb-2">Explorează tehnologia premiată</h4>
+            <div className="bg-gray-50 border border-gray-200 p-6">
+              <h4 className="font-semibold text-black mb-2">Experience our award-winning technology</h4>
               <p className="text-gray-600 mb-4">
-                Testează soluția care a impresionat juriul internațional la Sevan.
+                Test the AI solution that impressed international judges and secured 2nd place at Sevan Startup Summit.
               </p>
               <a 
-                href="/platform" 
-                className="inline-flex items-center bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium"
+                href="/getting-started" 
+                className="inline-flex items-center bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors font-medium"
               >
-                Descoperă Platforma →
+                Get Started →
               </a>
             </div>
           </div>

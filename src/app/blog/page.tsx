@@ -289,7 +289,7 @@ export default function Blog() {
                   Dr. Maria Health, Healthcare • Jul 16, 2025
                 </div>
                 
-                <Link href="/blog/yohealth-challenge-winner" className="text-green-600 hover:text-green-800 font-medium text-sm">
+                <Link href="/blog/sevan-startup-summit-second-place" className="text-green-600 hover:text-green-800 font-medium text-sm">
                   Citește articolul →
                 </Link>
               </div>
