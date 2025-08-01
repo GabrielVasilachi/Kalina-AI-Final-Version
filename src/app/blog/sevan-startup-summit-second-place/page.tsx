@@ -141,6 +141,11 @@ export default function SevanStartupSummitSecondPlace() {
                   <p className="text-gray-700">Dozens of workshops, pitch battles and side-events that ran from sunrise to midnight</p>
                 </div>
               </div>
+            {/* Video Placeholder for future upload */}
+            <div className="w-full aspect-video max-w-2xl bg-black/60 border-2 border-dashed border-purple-500 rounded-2xl flex items-center justify-center text-purple-400 text-lg font-semibold mx-auto mb-8">
+              Video Demo: Sevan Startup Summit (coming soon)
+            </div>
+            <div className="text-gray-400 text-xs text-center mb-8">The summit video will be added here once available and optimized for web.</div>
               
               <p className="text-gray-700 leading-relaxed mt-6">
                 The campground format flattened hierarchies: CEOs queued for breakfast next to junior devs, 
