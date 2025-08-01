@@ -605,12 +605,12 @@ export default function Blog() {
                 </div>
                 
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Câștigători YoHealth Challenge: $6,000 pentru Inovația în Sănătate
-                </h3>
-                
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                  Cum tehnologia noastră AI revoluționează sectorul medical și de ce am fost aleși câștigători la YoHealth Challenge Sevan.
-                </p>
+  YoHealth a dublat premiul câștigat la Sevan Startup Summit, ridicând valoarea acestuia la $12,000 pentru inovație în sănătate.
+</h3>
+
+<p className="text-gray-600 mb-4 text-sm leading-relaxed">
+  Tehnologia noastră AI revoluționează sectorul medical — iar inovația noastră a fost premiată la Sevan Startup Summit. Datorită aprecierii YoHealth, premiul câștigat a fost dublat, ajungând la $12,000.
+</p>
                 
                 <div className="text-xs text-gray-500 mb-4">
                   Dr. Maria Health, Healthcare • Jul 16, 2025
