@@ -480,7 +480,7 @@ export default function Blog() {
         {/* Premium Featured Articles */}
         <div className="mb-12">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Articole Premium</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Articole</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Cele mai importante insights despre AI, automatizare și transformarea digitală pentru business-ul tău
             </p>
