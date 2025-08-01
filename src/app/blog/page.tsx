@@ -175,7 +175,10 @@ export default function Blog() {
                     className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                      const next = e.currentTarget.nextElementSibling;
+                      if (next && 'style' in next && next.style) {
+                        (next as HTMLElement).style.display = 'flex';
+                      }
                     }}
                   />
                   <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
@@ -215,7 +218,10 @@ export default function Blog() {
                     className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                      const next = e.currentTarget.nextElementSibling;
+                      if (next && 'style' in next && next.style) {
+                        (next as HTMLElement).style.display = 'flex';
+                      }
                     }}
                   />
                   <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
@@ -255,7 +261,10 @@ export default function Blog() {
                     className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                      const next = e.currentTarget.nextElementSibling;
+                      if (next && 'style' in next && next.style) {
+                        (next as HTMLElement).style.display = 'flex';
+                      }
                     }}
                   />
                   <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
@@ -295,7 +304,10 @@ export default function Blog() {
                     className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                      const next = e.currentTarget.nextElementSibling;
+                      if (next && 'style' in next && next.style) {
+                        (next as HTMLElement).style.display = 'flex';
+                      }
                     }}
                   />
                   <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
@@ -335,7 +347,10 @@ export default function Blog() {
                     className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                      const next = e.currentTarget.nextElementSibling;
+                      if (next && 'style' in next && next.style) {
+                        (next as HTMLElement).style.display = 'flex';
+                      }
                     }}
                   />
                   <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
@@ -375,7 +390,10 @@ export default function Blog() {
                     className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                      const next = e.currentTarget.nextElementSibling;
+                      if (next && 'style' in next && next.style) {
+                        (next as HTMLElement).style.display = 'flex';
+                      }
                     }}
                   />
                   <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
@@ -415,7 +433,10 @@ export default function Blog() {
                     className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                      const next = e.currentTarget.nextElementSibling;
+                      if (next && 'style' in next && next.style) {
+                        (next as HTMLElement).style.display = 'flex';
+                      }
                     }}
                   />
                   <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
