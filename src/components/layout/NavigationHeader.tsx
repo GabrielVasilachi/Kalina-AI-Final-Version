@@ -73,27 +73,27 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
   // Sponsors ticker line - perfect seamless scrolling with links
   const sponsorsData = [
     {
-      text: 'We won 1st Place at ElevenLabs Hackathon – $20,000 for our AI Agents',
+      text: '🏆 We won 1st Place at ElevenLabs Hackathon – $20,000 for our AI Agents',
       url: '/blog/elevenlabs-hackathon-winner',
     },
     {
-      text: 'EBRD selected Aichat.md for the prestigious Star Venture Program',
+      text: '🚀 EBRD selected Aichat.md for the prestigious Star Venture Program',
       url: '/blog/ebrd-star-venture-program',
     },
     {
-      text: '2nd Place at Sevan Startup Summit – $6,000 award for Aichat.md',
+      text: '🥈 2nd Place at Sevan Startup Summit – $6,000 award for Aichat.md',
       url: '/blog/sevan-startup-summit-second-place',
     },
     {
-      text: 'Winner of the YoHealth Challenge at Sevan – $6,000 for Aichat.md',
+      text: '🏅 Winner of the YoHealth Challenge at Sevan',
       url: '/blog/sevan-startup-summit-second-place',
     },
     {
-      text: 'Backed by Google Cloud – $25K grant to scale our AI infrastructure',
+      text: '🚀 Backed by Google Cloud – $25K grant to scale our AI infrastructure',
       url: '/blog/google-cloud-partnership-grant',
     },
     {
-      text: 'Part of UpNext Accelerator by Dreamups – with $10K funding to grow Aichat.md',
+      text: '🔥 Part of UpNext Accelerator by Dreamups – with $10K start funding to grow Aichat.md',
       url: '/blog/upnext-accelerator-partnership',
     },
   ];
