@@ -228,13 +228,13 @@ export default function Blog() {
             {/* Article 3 - Sevan Startup Summit */}
             <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
               {/* Image Placeholder */}
-              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
-                <div className="text-center text-gray-400">
-                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <span className="text-2xl">🏆</span>
-                  </div>
-                  <p className="text-sm font-medium">Summit Achievement Image</p>
-                </div>
+              <div className="aspect-video bg-gray-100 border-b border-gray-200 relative overflow-hidden">
+                <img
+                  src="/gallerySevanStartUp/IMG_6544.jpg"
+                  alt="Summit Achievement"
+                  className="object-cover w-full h-full absolute inset-0"
+                />
+                <div className="absolute bottom-2 left-2 bg-white/80 rounded px-3 py-1 text-sm font-medium text-gray-800 shadow">Summit Achievement</div>
               </div>
               
               <div className="p-6">

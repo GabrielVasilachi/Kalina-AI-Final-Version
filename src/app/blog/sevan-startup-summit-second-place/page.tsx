@@ -1,9 +1,38 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function SevanStartupSummitSecondPlace() {
   const [showAllPhotos, setShowAllPhotos] = useState(false)
+  const [selectedMedia, setSelectedMedia] = useState<string | null>(null)
+  
+  // Lista completă cu toate media files din gallerySevanStartUp
+  const galleryMedia = [
+    { src: '/gallerySevanStartUp/7D452339-7F88-4321-BFF0-72E48E72DEAF.jpg', type: 'image', caption: 'Team arrival at Sevan Startup Summit' },
+    { src: '/gallerySevanStartUp/IMG_4661.jpg', type: 'image', caption: 'Setting up camp at Lake Sevan' },
+    { src: '/gallerySevanStartUp/IMG_4720.JPG', type: 'image', caption: 'Workshop sessions in progress' },
+    { src: '/gallerySevanStartUp/IMG_4724.JPG', type: 'image', caption: 'Networking with fellow startups' },
+    { src: '/gallerySevanStartUp/IMG_4730.mp4', type: 'video', caption: 'Behind the scenes preparation' },
+    { src: '/gallerySevanStartUp/IMG_4823.mp4', type: 'video', caption: 'Pitch practice sessions' },
+    { src: '/gallerySevanStartUp/IMG_4900.JPG', type: 'image', caption: 'Mentor meetings and feedback' },
+    { src: '/gallerySevanStartUp/IMG_4912.jpg', type: 'image', caption: 'Demo day preparations' },
+    { src: '/gallerySevanStartUp/IMG_4958.jpg', type: 'image', caption: 'Team collaboration moments' },
+    { src: '/gallerySevanStartUp/IMG_4959.mp4', type: 'video', caption: 'Live pitch presentation' },
+    { src: '/gallerySevanStartUp/IMG_4962.jpg', type: 'image', caption: 'Audience engagement during pitch' },
+    { src: '/gallerySevanStartUp/IMG_4973.PNG', type: 'image', caption: 'Technical demo showcase' },
+    { src: '/gallerySevanStartUp/IMG_5333.JPG', type: 'image', caption: 'Judges evaluation process' },
+    { src: '/gallerySevanStartUp/IMG_5476.JPG', type: 'image', caption: 'Award ceremony moment' },
+    { src: '/gallerySevanStartUp/IMG_6539.jpg', type: 'image', caption: '2nd place celebration' },
+    { src: '/gallerySevanStartUp/IMG_6544.jpg', type: 'image', caption: 'Victory with the trophy' },
+    { src: '/gallerySevanStartUp/IMG_6619.jpeg', type: 'image', caption: 'Team success photo' },
+    { src: '/gallerySevanStartUp/IMG_7576.jpeg', type: 'image', caption: 'Lakeside camp life' },
+    { src: '/gallerySevanStartUp/IMG_7704.jpeg', type: 'image', caption: 'Evening social gatherings' },
+    { src: '/gallerySevanStartUp/IMG_7710.jpg', type: 'image', caption: 'Memorable summit moments' }
+  ]
+  
+  const featuredMedia = galleryMedia.slice(0, 6)
+  const extraMedia = galleryMedia.slice(6)
 
   return (
     <div className="min-h-screen bg-white">
@@ -63,9 +92,24 @@ export default function SevanStartupSummitSecondPlace() {
           </div>
         </div>
 
-        {/* Hero Image */}
-        <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-64 flex items-center justify-center mb-16">
-          <p className="text-gray-500 font-medium">Hero Image: Team at Sevan Startup Summit with Award</p>
+        {/* Hero Visual Story */}
+        <div className="mb-16">
+          <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-700">
+            <Image
+              src="/gallerySevanStartUp/IMG_6544.jpg"
+              alt="Kallina AI team celebrating 2nd place at Sevan Startup Summit"
+              fill
+              className="object-cover opacity-90"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-8 left-8 right-8">
+              <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6">
+                <h2 className="text-2xl font-bold text-black mb-2">Victory at Lake Sevan</h2>
+                <p className="text-gray-700">From tent pitches to pitch victories - our journey to 2nd place</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Article Content */}
@@ -164,58 +208,154 @@ export default function SevanStartupSummitSecondPlace() {
               </div>
             </section>
 
-            {/* Photo Gallery */}
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-black mb-6 border-b border-gray-200 pb-3">Summit Highlights</h2>
+            {/* Visual Journey Gallery */}
+            <section className="mb-16">
+              <h2 className="text-3xl font-bold text-black mb-8 border-b border-gray-200 pb-4">Our Sevan Journey</h2>
               
-              {/* Main Photos Grid */}
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-48 flex items-center justify-center">
-                  <p className="text-gray-500 font-medium text-center">Award Ceremony<br/>2nd Place Recognition</p>
+              {/* Featured Media Grid - Creative Layout */}
+              <div className="grid grid-cols-12 gap-4 mb-8">
+                {/* Large hero image */}
+                <div className="col-span-12 md:col-span-8 relative group cursor-pointer" onClick={() => setSelectedMedia(featuredMedia[0].src)}>
+                  <div className="relative h-64 md:h-80 rounded-xl overflow-hidden">
+                    <Image
+                      src={featuredMedia[0].src}
+                      alt={featuredMedia[0].caption}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">{featuredMedia[0].caption}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-48 flex items-center justify-center">
-                  <p className="text-gray-500 font-medium text-center">Team Presentation<br/>Pitch Competition</p>
+                
+                {/* Two stacked images */}
+                <div className="col-span-12 md:col-span-4 space-y-4">
+                  <div className="relative group cursor-pointer h-[calc(50%-8px)]" onClick={() => setSelectedMedia(featuredMedia[1].src)}>
+                    <div className="relative h-full rounded-xl overflow-hidden">
+                      <Image
+                        src={featuredMedia[1].src}
+                        alt={featuredMedia[1].caption}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
+                  <div className="relative group cursor-pointer h-[calc(50%-8px)]" onClick={() => setSelectedMedia(featuredMedia[2].src)}>
+                    <div className="relative h-full rounded-xl overflow-hidden">
+                      <Image
+                        src={featuredMedia[2].src}
+                        alt={featuredMedia[2].caption}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="grid md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center">
-                  <p className="text-gray-500 font-medium text-center text-sm">Lakeside Camp</p>
-                </div>
-                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center">
-                  <p className="text-gray-500 font-medium text-center text-sm">Networking Sessions</p>
-                </div>
-                <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center">
-                  <p className="text-gray-500 font-medium text-center text-sm">Mentor Meetings</p>
-                </div>
+              {/* Medium grid layout */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                {featuredMedia.slice(3, 6).map((media, index) => (
+                  <div key={index} className="relative group cursor-pointer" onClick={() => setSelectedMedia(media.src)}>
+                    <div className="relative h-48 rounded-xl overflow-hidden">
+                      {media.type === 'video' ? (
+                        <video
+                          src={media.src}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          muted
+                          loop
+                          onMouseEnter={(e) => e.currentTarget.play()}
+                          onMouseLeave={(e) => e.currentTarget.pause()}
+                        />
+                      ) : (
+                        <Image
+                          src={media.src}
+                          alt={media.caption}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
+                      {media.type === 'video' && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                          <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                            <svg className="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M8 5v10l8-5-8-5z"/>
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">{media.caption}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              {/* Hidden Gallery */}
+              {/* Expandable Gallery */}
               {showAllPhotos && (
-                <div className="grid md:grid-cols-4 gap-3 mb-6 animate-in fade-in duration-300">
-                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
-                    <p className="text-gray-400 text-xs text-center">Team Building</p>
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  {/* Video Highlights Section */}
+                  <div>
+                    <h3 className="text-xl font-semibold text-black mb-4">Video Highlights</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {extraMedia.filter(media => media.type === 'video').map((media, index) => (
+                        <div key={index} className="relative group cursor-pointer" onClick={() => setSelectedMedia(media.src)}>
+                          <div className="relative h-48 rounded-xl overflow-hidden bg-black">
+                            <video
+                              src={media.src}
+                              className="w-full h-full object-cover"
+                              muted
+                              loop
+                              onMouseEnter={(e) => e.currentTarget.play()}
+                              onMouseLeave={(e) => e.currentTarget.pause()}
+                            />
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                              <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg className="w-8 h-8 text-black ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M8 5v10l8-5-8-5z"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="absolute bottom-4 left-4 right-4">
+                              <p className="text-white font-medium">{media.caption}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
-                    <p className="text-gray-400 text-xs text-center">Demo Setup</p>
-                  </div>
-                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
-                    <p className="text-gray-400 text-xs text-center">Workshop</p>
-                  </div>
-                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
-                    <p className="text-gray-400 text-xs text-center">Evening Social</p>
-                  </div>
-                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
-                    <p className="text-gray-400 text-xs text-center">Judging Panel</p>
-                  </div>
-                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
-                    <p className="text-gray-400 text-xs text-center">Camping Life</p>
-                  </div>
-                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
-                    <p className="text-gray-400 text-xs text-center">Tech Demo</p>
-                  </div>
-                  <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-24 flex items-center justify-center">
-                    <p className="text-gray-400 text-xs text-center">Celebration</p>
+
+                  {/* Masonry Photo Grid */}
+                  <div>
+                    <h3 className="text-xl font-semibold text-black mb-4">Photo Moments</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {extraMedia.filter(media => media.type === 'image').map((media, index) => (
+                        <div 
+                          key={index} 
+                          className={`relative group cursor-pointer ${index % 3 === 0 ? 'md:row-span-2' : ''}`}
+                          onClick={() => setSelectedMedia(media.src)}
+                        >
+                          <div className={`relative rounded-lg overflow-hidden ${index % 3 === 0 ? 'h-64 md:h-80' : 'h-32 md:h-36'}`}>
+                            <Image
+                              src={media.src}
+                              alt={media.caption}
+                              fill
+                              className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
+                            />
+                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-0 p-3 flex items-end">
+                              <p className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">{media.caption}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -224,21 +364,21 @@ export default function SevanStartupSummitSecondPlace() {
               <div className="text-center">
                 <button 
                   onClick={() => setShowAllPhotos(!showAllPhotos)}
-                  className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors font-medium"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-black to-gray-800 text-white px-8 py-4 rounded-full hover:from-gray-800 hover:to-black transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
                   {showAllPhotos ? (
                     <>
-                      Show Less Photos
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                       </svg>
+                      Show Less
                     </>
                   ) : (
                     <>
-                      View All Photos
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
+                      Explore Full Gallery ({extraMedia.length} more)
                     </>
                   )}
                 </button>
@@ -338,6 +478,51 @@ export default function SevanStartupSummitSecondPlace() {
           </div>
         </article>
       </main>
+
+      {/* Media Preview Modal */}
+      {selectedMedia && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setSelectedMedia(null)}
+        >
+          <div className="relative max-w-4xl max-h-full">
+            <button
+              onClick={() => setSelectedMedia(null)}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {selectedMedia.endsWith('.mp4') ? (
+              <video
+                src={selectedMedia}
+                controls
+                autoPlay
+                className="max-w-full max-h-full rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+              />
+            ) : (
+              <div className="relative" onClick={(e) => e.stopPropagation()}>
+                <Image
+                  src={selectedMedia}
+                  alt="Full size preview"
+                  width={1200}
+                  height={800}
+                  className="max-w-full max-h-full object-contain rounded-lg"
+                />
+              </div>
+            )}
+            
+            <div className="absolute bottom-4 left-4 right-4 text-center">
+              <p className="text-white text-sm bg-black/50 rounded-lg px-4 py-2 backdrop-blur-sm">
+                {galleryMedia.find(m => m.src === selectedMedia)?.caption}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
