@@ -6,10 +6,12 @@ import { motion } from 'framer-motion'
 import { easeInOut } from 'framer-motion'
 
 import { useLanguage } from '@/lib/i18n'
+import { useMetaPixel } from '@/hooks/useMetaPixel'
 import LiquidChrome from '@/../LiquidChromeBackground/LiquidChrome/LiquidChrome'
 
 export function HeroSection() {
   const { t } = useLanguage()
+  const { trackLead, trackContact } = useMetaPixel()
   // Removed mousePosition state and mousemove effect
   const [phoneNumber, setPhoneNumber] = useState('')
   const [companyName, setCompanyName] = useState('')
@@ -19,6 +21,18 @@ export function HeroSection() {
   const buttonsReveal = useScrollAnimationReveal('up', 0.4)
   const featuresReveal = useScrollAnimationReveal('up', 0.5)
   const phoneReveal = useScrollAnimationReveal('up', 0.6)
+
+  const handleCallButtonClick = () => {
+    // Track the lead/contact event in Meta Pixel
+    trackLead({
+      phone_number: phoneNumber,
+      company_name: companyName,
+      event_source: 'hero_section'
+    })
+    
+    // You can add more logic here for handling the actual call
+    console.log('Call initiated for:', { phoneNumber, companyName })
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -157,6 +171,7 @@ export function HeroSection() {
               {/* Call Button */}
               <div className="mb-6 w-full flex flex-col items-center">
                 <button
+                  onClick={handleCallButtonClick}
                   className="w-full text-black font-medium py-[10px] px-[10px] rounded-2xl flex items-center justify-center gap-2 shadow-lg focus:outline-none transition-all duration-300"
                   style={{
                     background: 'rgba(255,255,255,0.82)',
