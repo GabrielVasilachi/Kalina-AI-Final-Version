@@ -262,14 +262,14 @@ export default function Blog() {
 
             {/* Article 4 - YoHealth Challenge */}
             <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
-              {/* Image Placeholder */}
-              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
-                <div className="text-center text-gray-400">
-                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <span className="text-2xl">�</span>
-                  </div>
-                  <p className="text-sm font-medium">Healthcare Innovation Image</p>
-                </div>
+              <div className="aspect-video bg-gray-100 border-b border-gray-200 relative overflow-hidden flex items-center justify-center">
+                <img
+                  src="/gallerySevanStartUp/IMG_5333.JPG"
+                  alt="YoHealth Challenge Winners"
+                  className="object-cover w-full h-full rounded-lg"
+                  style={{ maxHeight: '100%', maxWidth: '100%' }}
+                />
+                <div className="absolute bottom-2 left-2 bg-white/80 rounded px-3 py-1 text-sm font-medium text-gray-800 shadow">YoHealth Challenge</div>
               </div>
               
               <div className="p-6">
@@ -297,14 +297,14 @@ export default function Blog() {
 
             {/* Article 5 - Google Cloud */}
             <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
-              {/* Image Placeholder */}
-              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
-                <div className="text-center text-gray-400">
-                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <span className="text-2xl">☁️</span>
-                  </div>
-                  <p className="text-sm font-medium">Google Cloud Partnership Image</p>
-                </div>
+              <div className="aspect-video bg-gray-100 border-b border-gray-200 relative overflow-hidden flex items-center justify-center">
+                <img
+                  src="/GoogleCloud/image.png"
+                  alt="Google Cloud Partnership"
+                  className="object-contain w-2/3 h-2/3"
+                  style={{ maxHeight: '220px', maxWidth: '320px' }}
+                />
+                <div className="absolute bottom-2 left-2 bg-white/80 rounded px-3 py-1 text-sm font-medium text-gray-800 shadow">Google Cloud Partnership</div>
               </div>
               
               <div className="p-6">
@@ -333,13 +333,14 @@ export default function Blog() {
             {/* Article 6 - UpNext Accelerator */}
             <div className="group relative bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
               {/* Image Placeholder */}
-              <div className="aspect-video bg-gray-100 flex items-center justify-center border-b border-gray-200">
-                <div className="text-center text-gray-400">
-                  <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <span className="text-2xl">�</span>
-                  </div>
-                  <p className="text-sm font-medium">Accelerator Program Image</p>
-                </div>
+              <div className="aspect-video bg-gray-100 border-b border-gray-200 relative overflow-hidden flex items-center justify-center">
+                <img
+                  src="/UpNext/image copy.png"
+                  alt="Accelerator Program"
+                  className="object-contain w-2/3 h-2/3"
+                  style={{ maxHeight: '220px', maxWidth: '320px' }}
+                />
+                <div className="absolute bottom-2 left-2 bg-white/80 rounded px-3 py-1 text-sm font-medium text-gray-800 shadow">Accelerator Program</div>
               </div>
               
               <div className="p-6">
