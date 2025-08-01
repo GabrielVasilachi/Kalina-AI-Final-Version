@@ -150,6 +150,312 @@ export default function Blog() {
           </div>
         )}
 
+        {/* Media Appearances Section */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Apariții în Media</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Kallina AI în atenția presei naționale și internaționale - recunoașterea succesului nostru în domeniul inteligenței artificiale
+            </p>
+          </div>
+          
+          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+            <div className="divide-y divide-gray-200">
+              {/* NewsMaker.md */}
+              <a 
+                href="https://newsmaker.md/ru/video-rabotaet-bez-sna-i-vyhodnyh-ii-pomoshnik-sozdannyi-v-moldove-zanyal-prizovoe-mesto-na-mejdunarodnom-startap-sammite"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center p-6 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 w-16 h-16 mr-4">
+                  <img
+                    src="https://newsmaker.md/favicon.ico"
+                    alt="NewsMaker.md"
+                    className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
+                    <span className="text-gray-500 text-xs font-medium">NEWS</span>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    NewsMaker.md
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    AI помощник, созданный в Молдове, занял призовое место на международном стартап саммите
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Presă Online</span>
+                    <span className="text-xs text-gray-400 ml-3">Featured Article</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 ml-4">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+
+              {/* YouTube Video 1 */}
+              <a 
+                href="https://www.youtube.com/watch?v=Xken4Qz0eHQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center p-6 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 w-16 h-16 mr-4">
+                  <img
+                    src="https://www.youtube.com/s/desktop/8b6ce55d/img/favicon_32x32.png"
+                    alt="YouTube"
+                    className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
+                    <span className="text-gray-500 text-xs font-medium">VIDEO</span>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    YouTube Feature
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Kallina AI în reportaj video despre succesul la competițiile internaționale
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Video</span>
+                    <span className="text-xs text-gray-400 ml-3">YouTube</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 ml-4">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+
+              {/* YouTube Video 2 */}
+              <a 
+                href="https://www.youtube.com/watch?v=QZz-G8WB2v0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center p-6 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 w-16 h-16 mr-4">
+                  <img
+                    src="https://www.youtube.com/s/desktop/8b6ce55d/img/favicon_32x32.png"
+                    alt="YouTube"
+                    className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
+                    <span className="text-gray-500 text-xs font-medium">VIDEO</span>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    YouTube Interview
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Interviu live despre tehnologia AI și viitorul automatizării în Moldova
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Video Live</span>
+                    <span className="text-xs text-gray-400 ml-3">YouTube</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 ml-4">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+
+              {/* Facebook Video */}
+              <a 
+                href="https://www.facebook.com/watch/?mibextid=wwXIfr&v=524671923439667&rdid=Kum9Z7oLZP7Morp8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center p-6 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 w-16 h-16 mr-4">
+                  <img
+                    src="https://www.facebook.com/favicon.ico"
+                    alt="Facebook"
+                    className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
+                    <span className="text-gray-500 text-xs font-medium">SOCIAL</span>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    Facebook Feature
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Reportaj special despre echipa Kallina AI și succesurile obținute
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Social Media</span>
+                    <span className="text-xs text-gray-400 ml-3">Facebook</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 ml-4">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+
+              {/* Radio Moldova */}
+              <a 
+                href="https://radiomoldova.md/tineret"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center p-6 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 w-16 h-16 mr-4">
+                  <img
+                    src="https://radiomoldova.md/favicon.ico"
+                    alt="Radio Moldova"
+                    className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
+                    <span className="text-gray-500 text-xs font-medium">RADIO</span>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    Radio Moldova
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Emisiunea despre tineret și inovație cu participarea echipei Kallina AI
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Radio</span>
+                    <span className="text-xs text-gray-400 ml-3">Emisiune Tineret</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 ml-4">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+
+              {/* EU4Innovation */}
+              <a 
+                href="https://eu4innovationeast.eu/moldovan-startups-expand-horizons-through-cross-border-engagement-at-startup-sevan-summit-2025/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center p-6 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 w-16 h-16 mr-4">
+                  <img
+                    src="https://eu4innovationeast.eu/favicon.ico"
+                    alt="EU4Innovation East"
+                    className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
+                    <span className="text-gray-500 text-xs font-medium">EU</span>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    EU4Innovation East
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Startup-urile moldovenești își extind orizonturile prin Sevan Summit 2025
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Organizație EU</span>
+                    <span className="text-xs text-gray-400 ml-3">Official Report</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 ml-4">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+
+              {/* Diez.md */}
+              <a 
+                href="https://diez.md/2025/07/30/un-start-up-din-moldova-premiat-cu-locul-ii-si-12-000-de-dolari-la-un-summit-din-armenia-unde-a-concurat-cu-peste-250-de-echipe/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center p-6 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="flex-shrink-0 w-16 h-16 mr-4">
+                  <img
+                    src="https://diez.md/favicon.ico"
+                    alt="Diez.md"
+                    className="w-full h-full object-contain bg-gray-100 rounded-lg p-2"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-gray-100 rounded-lg hidden items-center justify-center">
+                    <span className="text-gray-500 text-xs font-medium">NEWS</span>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    Diez.md
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Start-up din Moldova premiat cu locul II și $12,000 la summit din Armenia
+                  </p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Presă Online</span>
+                    <span className="text-xs text-gray-400 ml-3">Premium Article</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 ml-4">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+            
+            {/* Summary Footer */}
+            <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-gray-600">Total apariții în media:</span>
+                <span className="font-semibold text-gray-900">7 organizații</span>
+              </div>
+              <div className="flex items-center justify-between text-sm mt-1">
+                <span className="text-gray-600">Tipuri de media:</span>
+                <span className="text-gray-500">3 Video, 3 Presă Online, 1 Radio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Premium Featured Articles */}
         <div className="mb-12">
           <div className="text-center mb-8">
