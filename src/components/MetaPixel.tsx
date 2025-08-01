@@ -45,6 +45,7 @@ const MetaPixel = () => {
           style={{ display: 'none' }}
           src={`https://www.facebook.com/tr?id=${META_PIXEL_CONFIG.PIXEL_ID}&ev=PageView&noscript=1`}
           alt=""
+          loading="lazy"
         />
       </noscript>
     </>
