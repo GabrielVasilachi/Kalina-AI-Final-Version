@@ -7,7 +7,7 @@ import { easeInOut } from 'framer-motion'
 
 import { useLanguage } from '@/lib/i18n'
 import { useMetaPixel } from '@/hooks/useMetaPixel'
-import LiquidChrome from '@/../LiquidChromeBackground/LiquidChrome/LiquidChrome'
+
 
 export function HeroSectionDesktop() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -54,7 +54,7 @@ export function HeroSectionDesktop() {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 1.4
+        delayChildren: 0.4 // faster by 1s
       }
     }
   }
@@ -65,9 +65,9 @@ export function HeroSectionDesktop() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6, // faster by 0.2s
         ease: easeInOut,
-        delay: 1.4
+        delay: 0.4 // faster by 1s
       }
     }
   }
@@ -78,7 +78,7 @@ export function HeroSectionDesktop() {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 1,
+        duration: 0.5, // faster by 0.5s
         ease: easeInOut
       }
     }
@@ -91,7 +91,7 @@ export function HeroSectionDesktop() {
       x: 0,
       scale: 1,
       transition: {
-        duration: 1.2,
+        duration: 0.7, // faster by 0.5s
         ease: easeInOut
       }
     }
@@ -139,7 +139,7 @@ export function HeroSectionDesktop() {
             animate={titleReveal.isVisible ? "visible" : "hidden"}
           >
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-black leading-tight mb-8 tracking-wide">
-              <span style={{ fontFamily: `Bespoke Slab` }}>
+              <span>
                 {t('hero.title')}
               </span>
             </h1>
@@ -198,7 +198,7 @@ export function HeroSectionDesktop() {
                 transition: 'cubic-bezier(.4,0,.2,1)'
               }}
               variants={childVariants}
-              transition={{ duration: 0.8, ease: easeInOut }}
+              transition={{ duration: 0.6, ease: easeInOut }}
               whileHover={{
                 top: '-25px',
                 left: '80px',
@@ -241,9 +241,9 @@ export function HeroSectionDesktop() {
                   opacity: 1,
                   y: 0,
                   transition: {
-                    duration: 0.8,
+                    duration: 0.6,
                     ease: easeInOut,
-                    delay: 2.1 // input fields apar mai târziu
+                    delay: 1.1 // faster by 1s
                   }
                 }
               }}
@@ -310,9 +310,9 @@ export function HeroSectionDesktop() {
                   visible: {
                     opacity: 1,
                     transition: {
-                      duration: 0.8,
+                      duration: 0.6,
                       ease: easeInOut,
-                      delay: 2.1 // apare odată cu input fields
+                      delay: 1.1 // faster by 1s
                     }
                   }
                 }}

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
-import Silk from '../../../BackgroundSilk/Silk/Silk';
+import Silk from '../../../BackgroundSilk/Silk';
 import { useLanguage } from '@/lib/i18n'
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 
@@ -1193,7 +1193,7 @@ export function ProductDemoSection() {
             }}
           >
             {/* Header Section */}
-            <div className="text-center mb-10 mt-8 sm:mb-16 sm:mt-11 px-2">
+            <div className="text-center border-gray-300 mb-10 mt-8 sm:mb-16 sm:mt-11 px-2">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-black mb-3 sm:mb-4">
                 {t('demoSection.title')}
               </h2>

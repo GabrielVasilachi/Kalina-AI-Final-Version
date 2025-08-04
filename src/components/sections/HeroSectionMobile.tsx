@@ -7,7 +7,7 @@ import { easeInOut } from 'framer-motion'
 
 import { useLanguage } from '@/lib/i18n'
 import { useMetaPixel } from '@/hooks/useMetaPixel'
-import LiquidChrome from '@/../LiquidChromeBackground/LiquidChrome/LiquidChrome'
+
 
 export function HeroSectionMobile() {
   const videoRef = useRef<HTMLVideoElement>(null);
