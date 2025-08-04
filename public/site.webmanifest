@@ -1,0 +1,21 @@
+{
+  "name": "Kallina AI",
+  "short_name": "Kallina AI",
+  "description": "Experience ultra-low latency voice calls with AI-enhanced quality, end-to-end encryption, and global coverage for seamless communication.",
+  "icons": [
+    {
+      "src": "/GraphicsForSections/KallinaLogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/GraphicsForSections/KallinaLogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -12,6 +12,22 @@ export const metadata = {
   description: 'Experience ultra-low latency voice calls with AI-enhanced quality, end-to-end encryption, and global coverage for seamless communication.',
   keywords: 'AI calls, voice communication, low latency, encryption, global coverage',
   authors: [{ name: 'Kallina AI Team' }],
+  icons: {
+    icon: '/GraphicsForSections/KallinaLogo.png',
+    apple: '/GraphicsForSections/KallinaLogo.png',
+    shortcut: '/GraphicsForSections/KallinaLogo.png',
+  },
+  openGraph: {
+    title: 'Kallina AI',
+    description: 'Experience ultra-low latency voice calls with AI-enhanced quality, end-to-end encryption, and global coverage for seamless communication.',
+    images: ['/GraphicsForSections/KallinaLogo.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kallina AI',
+    description: 'Experience ultra-low latency voice calls with AI-enhanced quality, end-to-end encryption, and global coverage for seamless communication.',
+    images: ['/GraphicsForSections/KallinaLogo.png'],
+  },
 }
 
 export const viewport = {
@@ -30,6 +46,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/GraphicsForSections/KallinaLogo.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
       {/* If you want to use a custom font, uncomment and fix the import for inter */}
       <body /* className={inter.className} */>
         <GoogleAnalytics />

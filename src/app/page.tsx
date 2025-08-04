@@ -1,4 +1,4 @@
-import { HeroSection } from '@/components/sections/HeroSection'
+// import { HeroSection } from '@/components/sections/HeroSection'
 
 import { MainFeaturesSection } from '@/components/sections/MainFeaturesSection'
 import { InteractiveFeatureCards } from '@/components/InteractiveFeatureCards'
@@ -17,6 +17,7 @@ import { FrequentlyAskedQuestions } from '@/components/sections/FrequentlyAskedQ
 
 import { NavigationHeader } from '@/components/layout/NavigationHeader'
 import { SmoothScrollContextProvider } from '@/components/providers/SmoothScrollContextProvider'
+import { ResponsiveHeroSection } from '@/components/sections/ResponsiveHeroSection'
 
 export default function HomePage() {
   return (
@@ -27,7 +28,7 @@ export default function HomePage() {
         
         {/* Main Content */}
         <main className="relative z-10">
-          <HeroSection />
+          <ResponsiveHeroSection />
           <ProductDemoSection />
           <TrustedBySection />
           <AnalyticsShowcaseSection />
