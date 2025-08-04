@@ -104,7 +104,7 @@ export function HeroSectionDesktop() {
             animate={titleReveal.isVisible ? "visible" : "hidden"}
           >
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-black leading-tight mb-8 tracking-wide">
-              <span style={{ fontFamily: `'Satisfy', 'Segoe UI', 'Arial', cursive` }}>
+              <span style={{ fontFamily: `Bespoke Slab` }}>
                 {t('hero.title')}
               </span>
             </h1>

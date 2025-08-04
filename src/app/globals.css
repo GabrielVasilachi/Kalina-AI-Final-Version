@@ -23,7 +23,7 @@
   }
   
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inconsolata', system-ui, sans-serif;
     font-feature-settings: 'rlig' 1, 'calt' 1;
     overflow-x: hidden;
     background: #fff !important;

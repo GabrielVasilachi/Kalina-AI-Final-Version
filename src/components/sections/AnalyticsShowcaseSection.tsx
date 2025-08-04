@@ -460,7 +460,7 @@ export function AnalyticsShowcaseSection() {
         {/* Premium dashboard layout */}
         <div className="grid lg:grid-cols-12 gap-8 mb-16">
           {/* Main analytics card - spans 8 columns */}
-          <div className="lg:col-span-8 bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 relative overflow-hidden group hover:border-indigo-500/30 hover:bg-indigo-600/30 transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+          <div className="lg:col-span-8 bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 relative overflow-hidden group transition-all duration-700 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             {/* Card glow effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"></div>
             {/* Light sweep effect */}
@@ -528,7 +528,7 @@ export function AnalyticsShowcaseSection() {
           {/* Side panel - spans 4 columns */}
           <div className="lg:col-span-4 space-y-6">
             {/* Circular progress card */}
-            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 hover:bg-purple-600/30 hover:border-purple-500/30 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '0.8s' }}>
+            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '0.8s' }}>
               {/* Light sweep effect */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -549,7 +549,7 @@ export function AnalyticsShowcaseSection() {
             </div>
 
             {/* Quick stats card */}
-            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 hover:bg-emerald-600/30 hover:border-emerald-500/30 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1s' }}>
+            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1s' }}>
               {/* Light sweep effect */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -576,7 +576,7 @@ export function AnalyticsShowcaseSection() {
         {/* Bottom section with bar chart and features */}
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Enhanced bar chart section */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 hover:border-indigo-500/30 hover:bg-indigo-600/30 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1.2s' }}>
+          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1.2s' }}>
             {/* Light sweep effect */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -627,7 +627,7 @@ export function AnalyticsShowcaseSection() {
           </div>
 
           {/* Redesigned integration/video section */}
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 flex flex-col items-center justify-center min-h-[420px] hover:border-purple-500/30 hover:bg-purple-600/30 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1.4s' }}>
+          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 flex flex-col items-center justify-center min-h-[420px] transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1.4s' }}>
             {/* Light sweep effect */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />

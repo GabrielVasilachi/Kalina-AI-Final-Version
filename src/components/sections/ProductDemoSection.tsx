@@ -120,8 +120,8 @@ export function ProductDemoSection() {
       title: 'Reprogramarea apelului cu clientul.', 
       status: "Waiting", 
       assignee: 'Agent Alexandra', 
-      startDate: 'July 19, 2025', 
-      endDate: 'July 24, 2025',
+      startDate: 'July 6, 2025', 
+      endDate: 'July 7, 2025',
       statusColor: 'bg-red-100 text-red-800 border-red-200',
       category: 'Finance'
     },
@@ -574,10 +574,18 @@ export function ProductDemoSection() {
                 {/* Header with title and controls */}
                 <div className="bg-white border-b border-gray-200 p-3 sm:p-4 flex items-center justify-between">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-lg flex items-center justify-center">
-                      <svg className="w-3 h-3 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
+                    <div className="flex flex-col items-center justify-center">
+                      {/* 3 little circles above the red checkbox, raised up */}
+                      <div className="flex items-center justify-center" style={{ marginBottom: '8px', marginTop: '-6px', marginLeft: '-10px' }}>
+                        <span className="w-2 h-2 rounded-full bg-red-500 mx-0.5"></span>
+                        <span className="w-2 h-2 rounded-full bg-yellow-500 mx-0.5"></span>
+                        <span className="w-2 h-2 rounded-full bg-green-500 mx-0.5"></span>
+                      </div>
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                        <svg className="w-3 h-3 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
                     </div>
                     <h1 className="text-lg sm:text-2xl font-bold text-black">Issue Tracking</h1>
                   </div>
@@ -721,12 +729,56 @@ export function ProductDemoSection() {
                                 className="absolute bg-red-500 rounded"
                                 style={{
                                   left: '0%',
-                                  top: '60px', // Below the text numbers (increased from 32px)
+                                  top: '60px', // Below the text numbers (increased from 60px)
                                   width: '28.57%', // Two columns out of 7 (2/7 ≈ 28.57%)
                                   height: '2px',
                                   zIndex: 15
                                 }}
                               />
+                              {/* Green line under days 20, 21, 22 (columns 5, 6, 7 in row 3) */}
+                              <div
+                                className="absolute bg-green-500 rounded"
+                                style={{
+                                  left: '0%', // Start at column 5 (5/7 ≈ 71.43%, but for 3 columns, start at 57.14%)
+                                  top: '130px', // Row 3, below the numbers (adjust as needed)
+                                  width: '42.86%', // Three columns out of 7 (3/7 ≈ 42.86%)
+                                  height: '2px',
+                                  zIndex: 15
+                                }}
+                              />
+                             {/* Yellow line under days 14-17 (columns 6-2 in row 2) */}
+                             <div
+                               className="absolute bg-yellow-400 rounded"
+                               style={{
+                                 left: '14.29%', // Column 3 (3/7 ≈ 42.86%)
+                                 top: '95px', // Row 2, below the numbers
+                                 width: '57.14%', // Four columns out of 7 (4/7 ≈ 57.14%)
+                                 height: '2px',
+                                 zIndex: 15
+                               }}
+                             />
+                             {/* Blue line under days 2-5 (columns 2-5 in row 1) */}
+                             <div
+                               className="absolute bg-blue-400 rounded"
+                               style={{
+                                 left: '43%', // Column 2 (2/7 ≈ 14.29%)
+                                 top: '20px', // Row 1, below the numbers
+                                 width: '57.14%', // Four columns out of 7 (4/7 ≈ 57.14%)
+                                 height: '2px',
+                                 zIndex: 15
+                               }}
+                             />
+                             {/* Blue line under days 24-25 (columns 3-4 in row 4) */}
+                             <div
+                               className="absolute bg-blue-400 rounded"
+                               style={{
+                                 left: '57%', // Column 5 (5/7 ≈ 71.43%)
+                                 top: '130px', // Row 4, below the numbers
+                                 width: '28.57%', // Two columns out of 7 (2/7 ≈ 28.57%)
+                                 height: '2px',
+                                 zIndex: 15
+                               }}
+                             />
                             </div>
 
                             {/* Task containers positioned exactly over calendar days - hidden on mobile and tablets */}
@@ -815,8 +867,8 @@ export function ProductDemoSection() {
                         {/* Timeline items description - optimized for mobile */}
                         <div className="space-y-2 sm:space-y-3 mt-4 sm:mt-6">
                           {issueData.map((issue) => (
-                            <div key={issue.id} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors">
-                              <div className="flex items-center gap-2 sm:gap-3">
+                            <div key={issue.id} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 p-2 sm:p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors">
+                              <div className="flex items-center gap-2 sm:gap-6 flex-1 flex-wrap sm:flex-nowrap min-w-0">
                                 <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center">
                                   <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -824,16 +876,25 @@ export function ProductDemoSection() {
                                 </div>
                                 <div className="flex-grow min-w-0">
                                   <p className="text-xs sm:text-sm font-medium text-gray-900 truncate">{issue.title}</p>
-                                  <p className="text-xs text-gray-500 mt-1 sm:hidden">{issue.startDate} → {issue.endDate}</p>
+                                </div>
+                                <div className="hidden sm:flex items-center gap-4">
+                                  <span className="text-xs text-gray-500 whitespace-nowrap">{issue.startDate} → {issue.endDate}</span>
+                                  <span
+                                    className={`px-2 py-1 rounded-full text-xs font-medium border ${issue.statusColor} whitespace-nowrap`}
+                                    style={['In Progress', 'In Review'].includes(issue.status) ? { fontSize: '0.7rem' } : {}}
+                                  >
+                                    {issue.status}
+                                  </span>
                                 </div>
                               </div>
-                              <div className="flex items-center justify-between sm:justify-end gap-2">
-                                <div className="hidden sm:block text-xs text-gray-500">
-                                  {issue.startDate} → {issue.endDate}
-                                </div>
-                                <div className={`px-2 py-1 rounded-full text-xs font-medium border ${issue.statusColor}`}>
+                              <div className="flex items-center justify-between sm:justify-end gap-2 sm:hidden mt-2">
+                                <span className="text-xs text-gray-500">{issue.startDate} → {issue.endDate}</span>
+                                <span
+                                  className={`px-2 py-1 rounded-full text-xs font-medium border ${issue.statusColor}`}
+                                  style={['In Progress', 'In Review'].includes(issue.status) ? { fontSize: '0.7rem' } : {}}
+                                >
                                   {issue.status}
-                                </div>
+                                </span>
                               </div>
                             </div>
                           ))}
