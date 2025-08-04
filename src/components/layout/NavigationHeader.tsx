@@ -778,7 +778,7 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 {/* CTA Buttons - iPhone Notification Style */}
                 <div className="pt-4 space-y-3">
                   <Link 
-                    href="https://preview--kallina.lovable.app/auth"
+                    href="app.kallina.info/auth"
                     className="w-full block text-center font-semibold text-black focus:outline-none"
                     style={{
                       background: 'rgba(255, 255, 255, 0.1)',
