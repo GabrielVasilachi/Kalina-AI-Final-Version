@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useScrollAnimationReveal } from '@/hooks/useScrollAnimationReveal'
 import { motion } from 'framer-motion'
 import { easeInOut } from 'framer-motion'
@@ -10,6 +10,26 @@ import { useMetaPixel } from '@/hooks/useMetaPixel'
 import LiquidChrome from '@/../LiquidChromeBackground/LiquidChrome/LiquidChrome'
 
 export function HeroSectionDesktop() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  // Slow down video playback
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.7;
+    }
+  }, []);
+  const [fade, setFade] = useState(false);
+  const fadeDuration = 2200; // ms
+  const handleVideoTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const video = e.currentTarget;
+    // Fade out near end
+    if (video.duration - video.currentTime <= 1.2 && !fade) {
+      setFade(true);
+    }
+    // Fade in after restart
+    if (video.currentTime < 1.2 && fade) {
+      setFade(false);
+    }
+  };
   const { t } = useLanguage()
   const { trackLead, trackContact } = useMetaPixel()
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -79,18 +99,33 @@ export function HeroSectionDesktop() {
 
   return (
     <section id="hero-desktop" className="relative py-0 overflow-hidden bg-white min-h-screen flex items-center" style={{height: '950px', minHeight: '600px'}}>
-      {/* Liquid Chrome Background */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <LiquidChrome 
-          baseColor={[0.9,0.9,0.9]} 
-          speed={0.1} 
-          amplitude={0.4} 
-          frequencyX={3} 
-          frequencyY={2} 
-          interactive={true} 
-          style={{width:'100%',height:'100%'}} 
-        />
-      </div>
+      {/* Video Background with extra smooth loop fade */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity"
+        src="/Background-Video.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          objectFit: 'cover',
+          opacity: fade ? 0.04 : 1,
+          transition: `opacity ${fadeDuration}ms cubic-bezier(.4,0,.2,1)`
+        }}
+        onTimeUpdate={handleVideoTimeUpdate}
+      />
+      {/* Crossfade overlay for ultra smoothness */}
+      <div
+        className="absolute inset-0 w-full h-full z-10 pointer-events-none transition-opacity"
+        style={{
+          background: fade
+            ? 'radial-gradient(ellipse at center, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.32) 100%)'
+            : 'transparent',
+          opacity: fade ? 0.7 : 0,
+          transition: `opacity ${fadeDuration}ms cubic-bezier(.4,0,.2,1)`
+        }}
+      />
 
       {/* Main Content Container */}
       <div className="container-width relative z-10 flex items-center justify-between h-full py-16" style={{height: '100%', left: '20px', right: '20px'}}>

@@ -506,11 +506,25 @@ export function AnalyticsShowcaseSection() {
                 </div>
               </div>
 
-              {/* Premium line chart */}
-              <div className="relative h-64 bg-black/20 rounded-2xl p-4 border border-gray-800/50">
-                <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg font-semibold border-2 border-dashed border-indigo-500 rounded-xl bg-black/10">
-                  Placeholder: Add your video or graphic here
-                </div>
+              {/* Premium line chart (video zoomed in and contained) */}
+              <div className="w-full flex justify-center items-center overflow-hidden rounded-2xl border-2 border-indigo-500 my-8 mx-auto" style={{ height: 550 , width: 700 }}>
+                <video
+                  src="/AnalyticsShowcaseSection/Animated-Line-Chart_-Blue.mp4"
+                  width={1150}
+                  height={600}
+                  className="scale-[2.3]"
+                  style={{ objectFit: 'cover' }}
+                  muted
+                  playsInline
+                  autoPlay
+                  loop={false}
+                  onTimeUpdate={e => {
+                    const video = e.target as HTMLVideoElement;
+                    if (video.duration - video.currentTime <= 2 && !video.paused) {
+                      video.pause();
+                    }
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -529,8 +543,21 @@ export function AnalyticsShowcaseSection() {
               <div className="text-center">
                 <div className="text-gray-400 text-sm mb-4">{t('analytics.completionRate')}</div>
                 <div className="flex justify-center mb-4">
-                  <div className="w-34 h-34 flex items-center justify-center text-gray-400 text-lg font-semibold border-2 border-dashed border-indigo-500 rounded-xl bg-black/10">
-                    Placeholder: Add your video or graphic here
+                  <div className="w-34 h-34 flex items-center justify-center">
+                    <video
+                      src="/AnalyticsShowcaseSection/Donut-Chart_-3-Parts-[remix].mp4"
+                      className="w-full h-full rounded-xl border-2 border-indigo-500"
+                      muted
+                      playsInline
+                      autoPlay
+                      loop={false}
+                      onTimeUpdate={e => {
+                        const video = e.target as HTMLVideoElement;
+                        if (video.duration - video.currentTime <= 2 && !video.paused) {
+                          video.pause();
+                        }
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="text-2xl font-bold text-white mb-1">75%</div>
