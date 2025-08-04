@@ -465,7 +465,10 @@ export function AnalyticsShowcaseSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"></div>
             {/* Light sweep effect */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <div
+                  className="absolute inset-0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                  style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)' }}
+                />
             </div>
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-8">
@@ -505,21 +508,8 @@ export function AnalyticsShowcaseSection() {
 
               {/* Premium line chart */}
               <div className="relative h-64 bg-black/20 rounded-2xl p-4 border border-gray-800/50">
-                <canvas
-                  ref={lineChartRef}
-                  width={600}
-                  height={220}
-                  className="w-full h-full rounded-xl"
-                />
-                <div className="absolute top-4 right-4 flex space-x-2">
-                  <div className="flex items-center space-x-2 text-xs text-gray-400">
-                    <div className="w-3 h-3 bg-indigo-500 rounded-full"></div>
-                    <span>Current period</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-xs text-gray-400">
-                    <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                    <span>Previous period</span>
-                  </div>
+                <div className="w-full h-full flex items-center justify-center text-gray-400 text-lg font-semibold border-2 border-dashed border-indigo-500 rounded-xl bg-black/10">
+                  Placeholder: Add your video or graphic here
                 </div>
               </div>
             </div>
@@ -531,17 +521,17 @@ export function AnalyticsShowcaseSection() {
             <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '0.8s' }}>
               {/* Light sweep effect */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <div
+                  className="absolute inset-0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                  style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)' }}
+                />
               </div>
               <div className="text-center">
                 <div className="text-gray-400 text-sm mb-4">{t('analytics.completionRate')}</div>
                 <div className="flex justify-center mb-4">
-                  <canvas
-                    ref={circleChartRef}
-                    width={220}
-                    height={220}
-                    className="w-34 h-34"
-                  />
+                  <div className="w-34 h-34 flex items-center justify-center text-gray-400 text-lg font-semibold border-2 border-dashed border-indigo-500 rounded-xl bg-black/10">
+                    Placeholder: Add your video or graphic here
+                  </div>
                 </div>
                 <div className="text-2xl font-bold text-white mb-1">75%</div>
                 <div className="text-gray-400 text-sm">{t('analytics.aboveTarget')}</div>
@@ -552,7 +542,10 @@ export function AnalyticsShowcaseSection() {
             <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1s' }}>
               {/* Light sweep effect */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <div
+  className="absolute inset-0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+  style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)' }}
+/>
               </div>
               <div className="text-gray-400 text-sm mb-4">{t('analytics.revenueGrowth')}</div>
               <div className="flex items-end justify-between mb-4">
@@ -560,13 +553,8 @@ export function AnalyticsShowcaseSection() {
                   <div className="text-3xl font-bold text-white">$24.5k</div>
                   <div className="text-emerald-400 text-sm">+12.5% {t('analytics.thisMonth')}</div>
                 </div>
-                <div className="w-20 h-12">
-                  <canvas
-                    ref={sparklineRef}
-                    width={100}
-                    height={60}
-                    className="w-full h-full ml-[-50px]"
-                  />
+                <div className="w-20 h-12 flex items-center justify-center text-gray-400 text-sm font-semibold border-2 border-dashed border-emerald-400 rounded-xl bg-black/10">
+                  Placeholder
                 </div>
               </div>
             </div>
@@ -579,7 +567,10 @@ export function AnalyticsShowcaseSection() {
           <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1.2s' }}>
             {/* Light sweep effect */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <div
+  className="absolute inset-0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+  style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)' }}
+/>
             </div>
             <div className="mb-6">
               <div className="flex items-center justify-between mb-6">
@@ -588,13 +579,8 @@ export function AnalyticsShowcaseSection() {
               </div>
               
               {/* Premium bar chart */}
-              <div className="h-40 bg-black/20 rounded-2xl p-4 mb-6 border border-gray-800/50">
-                <canvas
-                  ref={barChartRef}
-                  width={400}
-                  height={140}
-                  className="w-full h-full"
-                />
+              <div className="h-40 bg-black/20 rounded-2xl p-4 mb-6 border-2 border-dashed border-indigo-500 flex items-center justify-center text-gray-400 text-lg font-semibold">
+                Placeholder: Add your video or graphic here
               </div>
               
               <div className="grid grid-cols-3 gap-6 text-center">
@@ -630,7 +616,10 @@ export function AnalyticsShowcaseSection() {
           <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 flex flex-col items-center justify-center min-h-[420px] transition-all duration-700 animate-fade-in-up group relative overflow-hidden" style={{ animationDelay: '1.4s' }}>
             {/* Light sweep effect */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <div
+  className="absolute inset-0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+  style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent)' }}
+/>
             </div>
             <div className="w-full flex flex-col items-center justify-center mb-8">
               <div className="text-purple-400 text-sm font-semibold mb-3 uppercase tracking-wide">INTEGRATION & DEMO</div>
