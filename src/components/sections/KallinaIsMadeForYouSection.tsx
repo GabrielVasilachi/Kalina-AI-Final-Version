@@ -113,13 +113,13 @@ export function KallinaIsMadeForYouSection() {
       name: 'Consulting',
       title: 'Kallina for Consulting',
       description: 'Qualify leads and automate client onboarding.',
-        image: '/KallinaIsMadeForYouSection/15thCategoryImage.png' // we dont have image yet
+        image: '/KallinaIsMadeForYouSection/15thCategoryImage.png'
     },
     {
       name: 'Retail',
       title: 'Kallina for Retail',
       description: 'Answer product questions and automate store support.',
-        image: '/KallinaIsMadeForYouSection/16thCategoryImage.png' // we dont have image yet
+        image: '/KallinaIsMadeForYouSection/16thCategoryImage.png'
     }
   ]
 
@@ -262,7 +262,7 @@ export function KallinaIsMadeForYouSection() {
                 <img
                   src={selectedCategory.image}
                   alt={selectedCategory.title}
-                  className="hidden lg:block absolute left-1/2 -translate-x-1/2 -top-[220px] w-[400px] h-[400px] object-contain z-20 drop-shadow-2xl pointer-events-none"
+                  className="hidden lg:block absolute left-1/2 -translate-x-1/2 -top-[260px] w-[400px] h-[400px] object-contain z-20 drop-shadow-2xl pointer-events-none"
                 />
               )}
               <motion.div
