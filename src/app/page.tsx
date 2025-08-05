@@ -10,6 +10,7 @@ import { CompetitiveAdvantageSection } from '@/components/sections/CompetitiveAd
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { FinalCTASection } from '@/components/sections/FinalCTASection'
 import { AnalyticsShowcaseSection } from '@/components/sections/AnalyticsShowcaseSection'
+import { KallinaIsMadeForYouSection } from '@/components/sections/KallinaIsMadeForYouSection'
 
 import { HowItWorksSection } from '@/components/sections/HowItWorksSection'
 import { TrustedBySection } from '@/components/sections/TrustedBySection'
@@ -32,6 +33,7 @@ export default function HomePage() {
           <ProductDemoSection />
           <TrustedBySection />
           <AnalyticsShowcaseSection />
+          <KallinaIsMadeForYouSection />
 
           <TechnologyShowcaseSection />
           <ROICalculatorSection />
