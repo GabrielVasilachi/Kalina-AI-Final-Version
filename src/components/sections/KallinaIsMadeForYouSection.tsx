@@ -191,8 +191,8 @@ export function KallinaIsMadeForYouSection() {
                   key={category.name}
                   className={`px-2 sm:px-3 lg:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium border transition-all duration-300 cursor-pointer select-none ${
                     selectedCategory.name === category.name
-                      ? 'bg-gray-100 text-gray-700 border-gray-400'
-                      : 'bg-white/80 text-gray-700 border-gray-200 hover:bg-gray-50'
+                      ? 'bg-black text-white border-black'
+                      : 'bg-white text-black border-gray-800 hover:bg-gray-200'
                   }`}
                   animate={selectedCategory.name === category.name ? { rotate: 4 } : { rotate: 0 }}
                   transition={{ type: 'spring', stiffness: 2200, damping: 2200 }}
@@ -267,8 +267,6 @@ export function KallinaIsMadeForYouSection() {
               )}
               <motion.div
                 className="bg-white rounded-2xl p-6 flex flex-col justify-start items-start relative z-10 -mt-8"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
                 key={selectedCategory.name}
               >
                 <div className="flex flex-col items-center w-full">
