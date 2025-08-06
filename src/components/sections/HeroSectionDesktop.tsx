@@ -162,11 +162,14 @@ export function HeroSectionDesktop() {
             <img
               src="/PNGiphone-mockup-full.png"
               alt="iPhone Mockup Full"
-              className="w-full max-w-lg object-contain drop-shadow-2xl"
+              className="object-contain drop-shadow-2xl"
               style={{
+                width: '650px',
+                minWidth: '650px',
+                maxWidth: '650px',
                 filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))',
                 marginLeft: '1px',
-                marginTop: '50px'
+                marginTop: '480px'
               }}
             />
           </motion.div>
@@ -174,7 +177,8 @@ export function HeroSectionDesktop() {
           {/* Form Section */}
           <motion.div 
             ref={formReveal.ref}
-            className="max-w-md w-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-2xl p-20"
+            className="max-w-md w-full absolute left-1/2 z-20 rounded-2xl p-[50px]"
+            style={{ top: '47%', transform: 'translateX(-50%)', position: 'absolute' }}
             variants={containerVariants}
             initial="hidden"
             animate={formReveal.isVisible ? "visible" : "hidden"}
@@ -182,57 +186,51 @@ export function HeroSectionDesktop() {
           >
             {/* Notification Header - moved higher and made smaller */}
             <motion.div
-              className="mb-4 rounded-xl shadow-lg p-3 flex items-center gap-2 group transition-all duration-500"
+              className="mb-4 rounded-2xl shadow-2xl p-5 flex items-center gap-5 group transition-all duration-500"
               style={{ 
                 background: 'rgba(0, 0, 0, 0.5)',
-                backdropFilter: 'blur(14px)',
-                WebkitBackdropFilter: 'blur(14px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(18px)',
+                WebkitBackdropFilter: 'blur(18px)',
+                border: '1.5px solid rgba(255, 255, 255, 0.12)',
                 position: 'absolute',
-                top: '-23px',
-                left: '85px',
+                top: '-49px',
+                left: '55px',
                 transform: 'none',
-                width: '277px',
-                maxWidth: '90%',
+                width: '340px',
+                maxWidth: '95%',
                 zIndex: 30,
                 transition: 'cubic-bezier(.4,0,.2,1)'
               }}
               variants={childVariants}
               transition={{ duration: 0.6, ease: easeInOut }}
-              whileHover={{
-                top: '-25px',
-                left: '80px',
-                width: '287px',
-                maxWidth: '90%',
-                zIndex: 30,
-                transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] }
-              }}
+              // Animation on hover removed as requested
             >
               <div className="w-full flex flex-row items-center gap-2 justify-between">
                 <div className="flex flex-row items-center gap-2">
                   {/* Left: White rounded square */}
-                  <div className="flex-shrink-0">
-                    <div className="bg-white flex items-center justify-center" style={{ width: '28px', height: '28px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
-                      <img
-                        src="/GraphicsForSections/KallinaLogo.png"
-                        alt="Kallina Logo"
-                        style={{ width: '18px', height: '18px', objectFit: 'contain' }}
-                      />
-                    </div>
+                <div className="flex-shrink-0">
+                  <div className="bg-white flex items-center justify-center" style={{ width: '48px', height: '48px', borderRadius: '14px', boxShadow: '0 4px 16px rgba(0,0,0,0.14)' }}>
+                    <img
+                      src="/GraphicsForSections/KallinaLogo.png"
+                      alt="Kallina Logo"
+                      style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+                    />
                   </div>
+                </div>
                   {/* Right: Text and subtext */}
                   <div className="flex flex-col justify-center items-start">
-                    <span className="font-semibold text-white text-xs leading-tight">{t('hero.aiAssistantCall')}</span>
-                    <span className="text-[10px] text-gray-300 leading-tight">{t('hero.incomingCall')}</span>
+                    <span className="font-semibold text-white text-lg leading-tight">{t('hero.aiAssistantCall')}</span>
+                    <span className="text-sm text-gray-300 leading-tight">{t('hero.incomingCall')}</span>
                   </div>
                 </div>
                 {/* Timestamp */}
-                <span className="text-[10px] text-gray-400 font-medium" style={{position: 'relative', top: '-10px'}}>3m ago</span>
+                <span className="text-base text-gray-400 font-medium" style={{position: 'relative', top: '-18px'}}>3m ago</span>
               </div>
             </motion.div>
             {/* Input Fields */}
             <motion.div
               className="mb-8 space-y-6"
+              style={{ marginTop: '38px' }}
               initial="hidden"
               animate="visible"
               variants={{
@@ -249,7 +247,7 @@ export function HeroSectionDesktop() {
               }}
             >
               <div style={{ position: 'relative',  top: '20px' }}>
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                <label className="block text-lg font-semibold text-gray-700 mb-3">
                   {t('hero.phoneNumber')}
                 </label>
                 <input
@@ -257,7 +255,7 @@ export function HeroSectionDesktop() {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   placeholder="+373 XX XXX XXX"
-                  className="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-base hover:border-gray-300 hover:shadow-lg"
+                  className="w-full px-5 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-base hover:border-gray-300 hover:shadow-lg"
                   style={{
                     backdropFilter: 'blur(10px)',
                     background: 'rgba(255, 255, 255, 0.9)'
@@ -265,7 +263,7 @@ export function HeroSectionDesktop() {
                 />
               </div>
               <div style={{ position: 'relative',  top: '20px' }}>
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                <label className="block text-lg font-semibold text-gray-700 mb-3">
                   {t('hero.companyName')}
                 </label>
                 <input
@@ -273,7 +271,7 @@ export function HeroSectionDesktop() {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder={t('hero.yourCompany')}
-                  className="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-base hover:border-gray-300 hover:shadow-lg"
+                  className="w-full px-5 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-base hover:border-gray-300 hover:shadow-lg"
                   style={{
                     backdropFilter: 'blur(10px)',
                     background: 'rgba(255, 255, 255, 0.9)'
@@ -283,44 +281,51 @@ export function HeroSectionDesktop() {
             </motion.div>
 
             {/* Call Button */}
-            <motion.div style={{ position: 'relative',  top: '70px' }}>
-              <motion.button
-                onClick={handleCallButtonClick}
-                className="w-full text-black font-bold py-3 px-8 rounded-2xl flex items-center justify-center gap-4 shadow-xl focus:outline-none transition-all duration-500 group hover:shadow-2xl"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))',
-                  border: '1px solid rgba(255,255,255,0.3)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  fontSize: '18px',
-                  height: '44px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)'
-                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255,255,255,1), rgba(255,255,255,0.95))'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)'
-                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))'
-                }}
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      duration: 0.6,
-                      ease: easeInOut,
-                      delay: 1.1 // faster by 1s
+            <motion.div style={{ position: 'relative',  top: '30px' }}>
+              <div className="w-full flex justify-center">
+                <motion.button
+                  onClick={handleCallButtonClick}
+                  className="flex items-center justify-center rounded-full shadow-xl focus:outline-none transition-all duration-300 group hover:shadow-2xl"
+                  style={{
+                    background: '#28a745',
+                    border: 'none',
+                    color: 'white',
+                    width: '64px',
+                    height: '64px',
+                    minWidth: '64px',
+                    minHeight: '64px',
+                    maxWidth: '64px',
+                    maxHeight: '64px',
+                    boxShadow: '0 4px 16px rgba(40,167,69,0.18)',
+                    padding: 0
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = '#218838';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = '#28a745';
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        duration: 0.6,
+                        ease: easeInOut,
+                        delay: 1.1
+                      }
                     }
-                  }
-                }}
-              >
-                <span className="group-hover:translate-x-1 transition-transform duration-300">
-                  {t('hero.startAiCall')}
-                </span>
-              </motion.button>
+                  }}
+                  aria-label="Call"
+                >
+                  {/* Phone icon SVG, no extra circle or gradient */}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none" viewBox="0 0 28 28">
+                    <path d="M19.5 17.5c-.7 0-1.38-.11-2.03-.32a1.5 1.5 0 0 0-1.47.36l-1.13 1.13a10.97 10.97 0 0 1-5.18-5.18l1.13-1.13a1.5 1.5 0 0 0 .36-1.47A7.5 7.5 0 0 1 10.5 8.5c0-.83-.67-1.5-1.5-1.5H7A1.5 1.5 0 0 0 5.5 8.5c0 7.18 5.82 13 13 13 .83 0 1.5-.67 1.5-1.5v-2a1.5 1.5 0 0 0-1.5-1.5z" fill="#fff"/>
+                  </svg>
+                </motion.button>
+              </div>
             </motion.div>
           </motion.div>
         </div>

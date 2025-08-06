@@ -23,7 +23,7 @@ export function CompetitiveAdvantageSection() {
 
         {/* Competitor Selector */}
         <div className="flex justify-center mb-12">
-          <div className="bg-gray-100 rounded-lg p-1 flex">
+          <div className="bg-gray-100 rounded-lg p-1 flex flex-col sm:flex-row">
             {translations.competitive?.competitors?.map((competitor: any) => (
               <button
                 key={competitor.id}

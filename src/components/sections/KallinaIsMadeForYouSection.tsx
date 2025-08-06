@@ -273,9 +273,9 @@ export function KallinaIsMadeForYouSection() {
               >
                 <div className="flex flex-col items-center w-full">
                   <div className="flex items-left w-full justify-start mt-0 lg:mt-32">
-                    <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mr-2 sm:mr-4 text-left ml-2 sm:ml-4 max-w-xs sm:max-w-lg break-words overflow-hidden">{selectedCategory.title}</div>
+                    <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mr-2 sm:mr-4 text-center sm:text-left ml-20 sm:ml-32 lg:ml-48 max-w-xs sm:max-w-lg break-words overflow-hidden">{selectedCategory.title}</div>
                   </div>
-                  <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 mt-4 sm:mt-6 lg:mt-7 ml-2 sm:ml-4 text-left max-w-xs sm:max-w-lg break-words overflow-hidden">{selectedCategory.description}</div>
+                  <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 mt-4 sm:mt-6 lg:mt-7 ml-20 sm:ml-32 lg:ml-48 text-center sm:text-left max-w-xs sm:max-w-lg break-words overflow-hidden">{selectedCategory.description}</div>
                 </div>
               </motion.div>
             </div>

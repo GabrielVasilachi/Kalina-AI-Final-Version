@@ -15,11 +15,17 @@ interface VideoContent {
   videoPath: string
 }
 
+interface FeaturePoint {
+  title: string;
+  description: string;
+}
+
 interface AnimationStep {
-  title: string
-  subtitle: string
-  description: string
-  video: VideoContent
+  title: string;
+  subtitle: string;
+  description: string;
+  video: VideoContent;
+  features: FeaturePoint[];
 }
 
 export function AnalyticsShowcaseSection() {
@@ -32,37 +38,103 @@ export function AnalyticsShowcaseSection() {
   const [currentStep, setCurrentStep] = useState(0)
   const isTransitioningRef = useRef(false)
 
-  // Animation steps with single video content
+  // Animation steps with images for first 2 sections, videos for others
   const animationSteps: AnimationStep[] = [
     {
-      title: 'Empower Your Agents',
-      subtitle: 'AI-Powered Agent Assistance',
-      description: 'Transform your communication agents into productivity powerhouses with real-time AI support, intelligent call routing, and automated workflows that boost performance and customer satisfaction.',
+      title: 'Stay on Top of Every Call',
+      subtitle: 'REAL-TIME DASHBOARD INSIGHTS',
+      description: 'Keep a pulse on your contact-center performance at a glance. See how many agents are online, track monthly call volumes, monitor average talk time, and spot sales trends—everything you need to coach faster, boost efficiency, and delight customers.',
       video: {
         title: 'Agent Performance Dashboard',
         description: 'Real-time agent metrics and AI assistance tools',
-        videoPath: '/AnalyticsShowcase/DashboardKallina.png'
-      }
+        videoPath: '/AnalyticsShowcase/DashboardImage.png'
+      },
+      features: [
+        {
+          title: 'Live Agent Overview',
+          description: 'Instantly view how many agents are active and ready to take calls.'
+        },
+        {
+          title: 'Call Volume & Talk Time',
+          description: 'Track total calls this month and average talk-time minutes to allocate resources and cut wait times.'
+        },
+        {
+          title: 'Performance & Sales Insights',
+          description: 'Gauge efficiency scores, review sales-trend charts, and scan order summaries to uncover growth opportunities.'
+        }
+      ]
     },
     {
-      title: 'Performance Analytics',
-      subtitle: 'Advanced Agent Metrics',
-      description: 'Track agent performance with comprehensive analytics. Monitor call quality, conversion rates, response times, and customer satisfaction to identify top performers and coaching opportunities.',
+      title: 'All Your Customers, One Click Away',
+      subtitle: 'SMART CLIENT MANAGEMENT',
+      description: 'Give agents a single source of truth for every caller. Instantly search, add, or edit client records—from anywhere in the world—so conversations stay personal and follow-ups stay effortless.',
+      video: {
+        title: 'Agent Performance Dashboard',
+        description: 'Real-time agent metrics and AI assistance tools',
+        videoPath: '/AnalyticsShowcase/ClientsImage.png'
+      },
+      features: [
+        {
+          title: 'Unified Client Directory',
+          description: 'Maintain a centralized list with names, emails, phone numbers, and addresses—no more scattered spreadsheets.'
+        },
+        {
+          title: 'Instant Search & Add',
+          description: 'Locate any contact in seconds or create a new profile with a single tap while still on the call.'
+        },
+        {
+          title: 'One-Tap Editing',
+          description: 'Update details in real time without leaving the screen, ensuring data is always fresh for the next interaction.'
+        }
+      ]
+    },
+    {
+      title: 'Turn Raw Metrics into Actionable Insights',
+      subtitle: 'ON-DEMAND PERFORMANCE REPORTING',
+      description: 'Generate custom reports in seconds. Pick any date range, visualize KPIs in bar, pie, and trend charts, then export a polished PDF—perfect for quick coaching sessions or executive updates      .',
       video: {
         title: 'Agent Analytics Suite',
         description: 'Detailed performance tracking and insights dashboard',
-        videoPath: '/AnalyticsShowcase/2testVideo.mp4'
-      }
+        videoPath: '/AnalyticsShowcase/AnalyticsImage.png'
+      },
+      features: [
+        {
+          title: 'Flexible Date Filters',
+          description: 'Select any start and end dates to focus on campaigns, seasons, or peak weeks.'
+        },
+        {
+          title: 'Multi-Chart Dashboards',
+          description: 'Compare key metrics side-by-side with bar, pie, and line visuals in one unified view.'
+        },
+        {
+          title: 'One-Click PDF Export',
+          description: 'Create presentation-ready reports instantly for managers, clients, or team reviews.'
+        }
+      ]
     },
     {
-      title: 'Customer Connection',
-      subtitle: 'Enhanced Agent Experience',
-      description: 'Equip your agents with advanced CRM integration, intelligent call scripting, and real-time customer data to deliver personalized experiences that drive results.',
+      title: 'Put Vital Details in Front of Every Rep',
+      subtitle: 'CONTEXT-RICH AGENT CARDS',
+      description: 'Instantly surface caller info—ID, status, contact details, and active offers—so agents can personalize the conversation and close faster.',
       video: {
         title: 'Agent CRM Integration',
         description: 'Customer interaction tools and agent workflow optimization',
-        videoPath: '/AnalyticsShowcase/3testVideo.mp4'
-      }
+        videoPath: '/AnalyticsShowcase/AgentsImage.png'
+      },
+      features: [
+        {
+          title: 'Instant Caller Snapshot',
+          description: 'See assigned ID, call status, and customer name the moment the line connects.'
+        },
+        {
+          title: 'Real-Time Contact Info',
+          description: 'Auto-pull the customer’s primary phone number so follow-ups and transfers happen seamlessly.'
+        },
+        {
+          title: 'Offer & Campaign Context',
+          description: 'Highlight current promotions (e.g., Spring Promotion 2025) to upsell at exactly the right moment.'
+        }
+      ]
     },
     {
       title: 'Team Collaboration',
@@ -71,10 +143,24 @@ export function AnalyticsShowcaseSection() {
       video: {
         title: 'Agent Collaboration Platform',
         description: 'Team coordination and communication management interface',
-        videoPath: '/AnalyticsShowcase/4testVideo.mp4'
-      }
+        videoPath: '/AnalyticsShowcase/CalendarImage.png'
+      },
+      features: [
+        {
+          title: 'Shared Knowledge Base',
+          description: 'Agents can access and contribute to a central knowledge repository.'
+        },
+        {
+          title: 'Internal Messaging',
+          description: 'Chat and coordinate with teammates in real time.'
+        },
+        {
+          title: 'Team Performance',
+          description: 'Managers track team goals and collaboration metrics.'
+        }
+      ]
     }
-  ]
+  ];
 
   // Header color change logic
   useEffect(() => {
@@ -104,9 +190,9 @@ export function AnalyticsShowcaseSection() {
     };
   }, []);
 
-  // GSAP ScrollTrigger for pinning right side and step transitions
+  // GSAP ScrollTrigger for pinning right side and step transitions (desktop only)
   useEffect(() => {
-    if (typeof window !== 'undefined' && rightSideRef.current && sectionRef.current) {
+    if (typeof window !== 'undefined' && rightSideRef.current && sectionRef.current && window.innerWidth >= 1024) {
       const rightSide = rightSideRef.current;
       const section = sectionRef.current;
 
@@ -154,83 +240,129 @@ export function AnalyticsShowcaseSection() {
   }, []); // Remove currentStep dependency to avoid recreation
 
   const transitionToStep = (stepIndex: number) => {
-    if (!videoRef.current || isTransitioningRef.current) {
+    if (isTransitioningRef.current) {
       return;
     }
     
     console.log(`Transitioning to step ${stepIndex}`); // Debug log
     isTransitioningRef.current = true;
     
-    const video = videoRef.current;
     const newStep = animationSteps[stepIndex];
     
-    // Always proceed with transition, don't check if it's the same step
-    // Check if video source is already the correct one
-    const currentSrc = video.src.split('/').pop(); // Get filename from full URL
-    const newSrc = newStep.video.videoPath.split('/').pop(); // Get filename from path
-    
-    if (currentSrc === newSrc) {
-      console.log(`Video already showing: ${newSrc}`);
-      isTransitioningRef.current = false;
-      return;
-    }
-    
-    console.log(`Changing from ${currentSrc} to ${newSrc}`);
-    
-    // Fade out current video
-    gsap.to(video, {
-      opacity: 0,
-      duration: 0.4,
-      ease: 'power2.out',
-      onComplete: () => {
-        // Change video source
-        video.src = newStep.video.videoPath;
-        
-        // Handle video load
-        const handleCanPlay = () => {
-          video.removeEventListener('canplay', handleCanPlay);
-          
-          // Fade in new video
-          gsap.to(video, {
-            opacity: 1,
-            duration: 0.4,
-            ease: 'power2.out',
-            onComplete: () => {
-              isTransitioningRef.current = false;
-            }
-          });
-        };
-        
-        const handleError = () => {
-          video.removeEventListener('error', handleError);
-          console.error(`Failed to load video: ${newStep.video.videoPath}`);
-          
-          // Still fade back in even if video fails to load
-          gsap.to(video, {
-            opacity: 1,
-            duration: 0.4,
-            ease: 'power2.out',
-            onComplete: () => {
-              isTransitioningRef.current = false;
-            }
-          });
-        };
-        
-        video.addEventListener('canplay', handleCanPlay, { once: true });
-        video.addEventListener('error', handleError, { once: true });
-        
-        // Load the new video
-        video.load();
+    // For steps 0 and 1 (images)
+    if (stepIndex === 0 || stepIndex === 1) {
+      if (!imageRef.current) {
+        isTransitioningRef.current = false;
+        return;
       }
-    });
+      
+      const image = imageRef.current;
+      const currentSrc = image.src.split('/').pop(); // Get filename from full URL
+      const newSrc = newStep.video.videoPath.split('/').pop(); // Get filename from path
+      
+      if (currentSrc === newSrc) {
+        console.log(`Image already showing: ${newSrc}`);
+        isTransitioningRef.current = false;
+        return;
+      }
+      
+      console.log(`Changing image from ${currentSrc} to ${newSrc}`);
+      
+      // Fade out current image
+      gsap.to(image, {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.out',
+        onComplete: () => {
+          // Change image source
+          image.src = newStep.video.videoPath;
+          
+          // Fade in new image
+          gsap.to(image, {
+            opacity: 1,
+            duration: 0.4,
+            ease: 'power2.out',
+            onComplete: () => {
+              isTransitioningRef.current = false;
+            }
+          });
+        }
+      });
+    } 
+    // For steps 2 and 3 (videos)
+    else {
+      if (!videoRef.current) {
+        isTransitioningRef.current = false;
+        return;
+      }
+      
+      const video = videoRef.current;
+      const currentSrc = video.src.split('/').pop(); // Get filename from full URL
+      const newSrc = newStep.video.videoPath.split('/').pop(); // Get filename from path
+      
+      if (currentSrc === newSrc) {
+        console.log(`Video already showing: ${newSrc}`);
+        isTransitioningRef.current = false;
+        return;
+      }
+      
+      console.log(`Changing video from ${currentSrc} to ${newSrc}`);
+      
+      // Fade out current video
+      gsap.to(video, {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.out',
+        onComplete: () => {
+          // Change video source
+          video.src = newStep.video.videoPath;
+          
+          // Handle video load
+          const handleCanPlay = () => {
+            video.removeEventListener('canplay', handleCanPlay);
+            
+            // Fade in new video
+            gsap.to(video, {
+              opacity: 1,
+              duration: 0.4,
+              ease: 'power2.out',
+              onComplete: () => {
+                isTransitioningRef.current = false;
+              }
+            });
+          };
+          
+          const handleError = () => {
+            video.removeEventListener('error', handleError);
+            console.error(`Failed to load video: ${newStep.video.videoPath}`);
+            
+            // Still fade back in even if video fails to load
+            gsap.to(video, {
+              opacity: 1,
+              duration: 0.4,
+              ease: 'power2.out',
+              onComplete: () => {
+                isTransitioningRef.current = false;
+              }
+            });
+          };
+          
+          video.addEventListener('canplay', handleCanPlay, { once: true });
+          video.addEventListener('error', handleError, { once: true });
+          
+          // Load the new video
+          video.load();
+        }
+      });
+    }
   };
 
   // Initialize first step
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (currentStep === 0 && imageRef.current) {
-        imageRef.current.src = animationSteps[0].video.videoPath;
-      } else if (currentStep !== 0 && videoRef.current) {
+      if ((currentStep === 0 || currentStep === 1) && imageRef.current) {
+        imageRef.current.src = animationSteps[currentStep].video.videoPath;
+      } else if (currentStep > 1 && videoRef.current) {
         videoRef.current.src = animationSteps[currentStep].video.videoPath;
         videoRef.current.load();
       }
@@ -241,28 +373,10 @@ export function AnalyticsShowcaseSection() {
 
   return (
     <section ref={sectionRef} className="bg-black text-white relative">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-0 sm:px-5">
         <div className="flex">
           {/* Left side - Scrolling content */}
-          <div className="w-1/2 pr-16">
-            {/* Hero Section */}
-            <div className="min-h-screen flex items-center justify-center py-20">
-              <div className="space-y-8">
-                <div className="text-sm font-medium text-gray-400 uppercase tracking-wider">
-                  Agent Solutions Platform
-                </div>
-                <h1 className="text-6xl font-bold text-white leading-tight">
-                  Supercharge your
-                  <br />
-                  <span className="text-gray-300">
-                    communication agents with AI
-                  </span>
-                </h1>
-                <p className="text-xl text-gray-400 leading-relaxed">
-                  Transform your agent productivity with intelligent automation, real-time performance insights, and seamless customer interaction tools designed for modern communication teams.
-                </p>
-              </div>
-            </div>
+          <div className="w-full lg:w-1/2 pr-4 lg:pr-16">
 
             {/* Steps Sections */}
             {animationSteps.map((step, index) => (
@@ -280,55 +394,52 @@ export function AnalyticsShowcaseSection() {
                     </p>
                   </div>
 
-                  {/* Feature points */}
+                  {/* Feature points - customizable per section */}
                   <div className="space-y-4 max-w-lg">
-                    <div className="border-l-2 border-gray-800 pl-6">
-                      <h3 className="text-lg font-semibold text-white mb-2">
-                        AI-Powered Assistance
-                      </h3>
-                      <p className="text-gray-400">
-                        Real-time AI support helps agents handle complex customer inquiries efficiently
-                      </p>
-                    </div>
-                    <div className="border-l-2 border-gray-800 pl-6">
-                      <h3 className="text-lg font-semibold text-white mb-2">
-                        Performance Optimization
-                      </h3>
-                      <p className="text-gray-400">
-                        Track and improve agent performance with detailed analytics and coaching tools
-                      </p>
-                    </div>
-                    <div className="border-l-2 border-gray-800 pl-6">
-                      <h3 className="text-lg font-semibold text-white mb-2">
-                        Customer Satisfaction
-                      </h3>
-                      <p className="text-gray-400">
-                        Deliver exceptional customer experiences with personalized interaction tools
-                      </p>
-                    </div>
+                    {step.features.map((feature, idx) => (
+                      <div key={idx} className="border-l-2 border-gray-800 pl-6">
+                        <h3 className="text-lg font-semibold text-white mb-2">
+                          {feature.title}
+                        </h3>
+                        <p className="text-gray-400">
+                          {feature.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Mobile-only images under each section */}
+                  <div className="block lg:hidden mt-8">
+                    <img
+                      src={step.video.videoPath}
+                      alt={step.video.title}
+                      className="w-full h-auto rounded-2xl shadow-2xl object-cover"
+                    />
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Right side - Fixed video container */}
-          <div ref={rightSideRef} className="w-1/2 pl-16">
+          {/* Right side - Fixed video container (hidden on mobile) */}
+          <div ref={rightSideRef} className="hidden lg:block w-1/2 pl-16">
             <div className="h-screen flex items-center justify-center">
               <div ref={videoContainerRef} className="w-full max-w-4xl">
-                {/* Video player with ref */}
                 {/* Video or image player with ref */}
-                {currentStep === 0 ? (
+                {animationSteps[currentStep].video.videoPath.match(/\.(png|jpg|jpeg|gif|svg)$/i) ? (
                   <img
                     ref={imageRef}
-                    src={animationSteps[0].video.videoPath}
-                    alt={animationSteps[0].video.title}
+                    src={animationSteps[currentStep].video.videoPath}
+                    alt={animationSteps[currentStep].video.title}
                     className="w-full h-auto rounded-2xl shadow-2xl object-cover"
+                    style={{ width: '120%', maxWidth: '120%' }}
                   />
                 ) : (
                   <video
                     ref={videoRef}
+                    src={animationSteps[currentStep].video.videoPath}
                     className="w-full h-auto rounded-2xl shadow-2xl"
+                    style={{ width: '120%', maxWidth: '120%' }}
                     autoPlay
                     muted
                     loop
@@ -339,17 +450,7 @@ export function AnalyticsShowcaseSection() {
                   </video>
                 )}
 
-                {/* Current step indicator */}
-                <div className="flex justify-center space-x-2 mt-6">
-                  {animationSteps.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`h-1 w-8 rounded-full transition-all duration-500 ${
-                        index === currentStep ? 'bg-white' : 'bg-gray-700'
-                      }`}
-                    />
-                  ))}
-                </div>
+                {/* Progress bar removed as requested */}
               </div>
             </div>
           </div>
@@ -363,6 +464,12 @@ export function AnalyticsShowcaseSection() {
       </div>
 
       <style jsx>{`
+        @media (max-width: 640px) {
+          .max-w-7xl {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+        }
         @media (max-width: 1024px) {
           .flex {
             flex-direction: column;
