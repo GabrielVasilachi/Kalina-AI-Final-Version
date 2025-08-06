@@ -138,6 +138,18 @@ export function HeroSectionDesktop() {
             initial="hidden"
             animate={titleReveal.isVisible ? "visible" : "hidden"}
           >
+            {/* Small text above title with effect */}
+            <motion.div 
+              className="mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <span className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-blue-50 to-purple-50 text-gray-700 border border-gray-200 shadow-sm">
+                ✨ The Future of AI Communication
+              </span>
+            </motion.div>
+            
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-black leading-tight mb-8 tracking-wide">
               <span>
                 {t('hero.title')}
@@ -146,6 +158,18 @@ export function HeroSectionDesktop() {
             <h2 className="text-xl lg:text-2xl font-medium text-gray-700 mb-6" style={{letterSpacing: '0.03em'}}>
               {t('hero.subtitle')}
             </h2>
+            
+            {/* Two Simple Glass Buttons */}
+            <div className="flex gap-4 mt-8">
+              <button 
+                className="px-8 py-3 rounded-full font-medium bg-gray-100 border border-gray-700 text-black transition-colors duration-200 hover:bg-black hover:text-white">
+                Get Started
+              </button>
+              <button 
+                className="px-8 py-3 rounded-full font-medium bg-black text-white transition-colors duration-200">
+                Learn More
+              </button>
+            </div>
           </motion.div>
         </div>
 
