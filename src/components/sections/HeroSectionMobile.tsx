@@ -123,18 +123,18 @@ export function HeroSectionMobile() {
       </div>
 
       {/* Mobile iPhone image - Always at the bottom */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20" style={{ width: '320px', height: '320px' }}>
+      <div className="absolute left-1/2 transform -translate-x-1/2 z-20" style={{ width: '480px', height: '480px', bottom: '-130px' }}>
         <img
           src="/iphone_image.png"
           alt="iPhone with AI Assistant"
-          style={{ width: '320px', height: '320px', objectFit: 'contain'}}
+          style={{ width: '480px', height: '480px', objectFit: 'contain'}}
         />
 
         {/* Form Section - overlayed on iPhone */}
         <motion.div 
           ref={formReveal.ref}
           className="absolute flex flex-col items-center justify-start pt-4"
-          style={{ top: '100px', left: '50%', transform: 'translateX(-50%)', width: '150px', minWidth: '150px', maxWidth: '150px', zIndex: 30 }}
+          style={{ top: '130px', left: '50%', transform: 'translateX(-50%)', width: '150px', minWidth: '150px', maxWidth: '150px', zIndex: 30 }}
           variants={containerVariants}
           initial="hidden"
           animate={formReveal.isVisible ? "visible" : "hidden"}
@@ -149,9 +149,9 @@ export function HeroSectionMobile() {
               border: '1px solid rgba(255, 255, 255, 0.08)',
               position: 'absolute',
               top: '-57px',
-              left: '-10px',
+              left: '-60px',
               transform: 'none',
-              width: '170px',
+              width: '270px',
               zIndex: 30,
               transition: 'cubic-bezier(.4,0,.2,1)'
             }}
@@ -162,11 +162,11 @@ export function HeroSectionMobile() {
               <div className="flex flex-row items-center gap-2">
                 {/* Left: White rounded square */}
                 <div className="flex-shrink-0">
-                  <div className="bg-white flex items-center justify-center" style={{ width: '18px', height: '18px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
+                  <div className="bg-white flex items-center justify-center" style={{ width: '28px', height: '28px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
                     <img
                       src="/GraphicsForSections/KallinaLogo.png"
                       alt="Kallina Logo"
-                      style={{ width: '15px', height: '15px', objectFit: 'contain' }}
+                      style={{ width: '20px', height: '20px', objectFit: 'contain' }}
                     />
                   </div>
                 </div>

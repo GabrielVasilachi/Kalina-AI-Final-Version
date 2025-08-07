@@ -35,8 +35,8 @@ export function LanguageSelector() {
   }
 
   const languages = [
-    { code: 'ro' as Language, name: 'Română', flag: 'RO' },
-    { code: 'en' as Language, name: 'English', flag: 'EN' }
+    { code: 'ro' as Language, name: '', flag: 'RO' },
+    { code: 'en' as Language, name: '', flag: 'EN' }
   ]
 
   const currentLanguage = languages.find(lang => lang.code === language)
@@ -59,17 +59,17 @@ export function LanguageSelector() {
           borderRadius: '16px',
           padding: '8px 12px',
           boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-          transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+          transition: 'none'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)' // when hovering over the button language selector
-          e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)' // shadow effect on hover
-          e.currentTarget.style.transform = 'translateY(-1px)'
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+          e.currentTarget.style.transform = 'none'
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.42)' // background color when not hovering
-          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)' // shadow effect when not hovering
-          e.currentTarget.style.transform = 'translateY(0px)'
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
+          e.currentTarget.style.transform = 'none'
         }}
         aria-label="Selectează limba"
       >
@@ -89,7 +89,7 @@ export function LanguageSelector() {
 
       {isOpen && (
         <div 
-          className="absolute top-full right-0 mt-2 min-w-[140px] z-50"
+          className="absolute top-full mt-2 min-w-[140px] z-50 right-0 sm:left-0 sm:right-auto"
           style={{
             background: 'rgba(255, 255, 255, 0.6)',
             border: '1px solid rgba(255, 255, 255, 0.2)',

@@ -137,9 +137,9 @@ export function AnalyticsShowcaseSection() {
       ]
     },
     {
-      title: 'Team Collaboration',
-      subtitle: 'Connected Agent Network',
-      description: 'Enable seamless collaboration between agents with integrated communication tools, knowledge sharing platforms, and team management features across all channels.',
+      title: 'Keep Coverage Balanced & Knowledge Flowing',
+      subtitle: 'SMART SHIFT SCHEDULING',
+      description: 'Coordinate agent calendars, balance daily call loads, and give everyone instant access to shared resources—so the whole team moves in lock-step.',
       video: {
         title: 'Agent Collaboration Platform',
         description: 'Team coordination and communication management interface',
@@ -147,16 +147,16 @@ export function AnalyticsShowcaseSection() {
       },
       features: [
         {
-          title: 'Shared Knowledge Base',
-          description: 'Agents can access and contribute to a central knowledge repository.'
+          title: 'Unified Team Calendar',
+          description: 'Visualize every agent’s shifts, break windows, and assigned call counts in one view.'
         },
         {
-          title: 'Internal Messaging',
-          description: 'Chat and coordinate with teammates in real time.'
+          title: 'Auto Load Balancing',
+          description: 'Dynamically distribute new calls based on real-time availability to prevent overloads.'
         },
         {
-          title: 'Team Performance',
-          description: 'Managers track team goals and collaboration metrics.'
+          title: 'Instant Knowledge & Chat',
+          description: 'Jump from any calendar slot to internal messaging or the shared knowledge base for quick answers and hand-offs.'
         }
       ]
     }
@@ -192,7 +192,9 @@ export function AnalyticsShowcaseSection() {
 
   // GSAP ScrollTrigger for pinning right side and step transitions (desktop only)
   useEffect(() => {
-    if (typeof window !== 'undefined' && rightSideRef.current && sectionRef.current && window.innerWidth >= 1024) {
+    if (typeof window !== 'undefined' && rightSideRef.current && sectionRef.current && window.innerWidth >= 102
+      
+    ) {
       const rightSide = rightSideRef.current;
       const section = sectionRef.current;
 
@@ -433,6 +435,8 @@ export function AnalyticsShowcaseSection() {
                     alt={animationSteps[currentStep].video.title}
                     className="w-full h-auto rounded-2xl shadow-2xl object-cover"
                     style={{ width: '120%', maxWidth: '120%' }}
+                    /* Responsive shrink on smaller screens */
+                    sizes="(max-width: 1024px) 100vw, 120vw"
                   />
                 ) : (
                   <video
@@ -464,6 +468,13 @@ export function AnalyticsShowcaseSection() {
       </div>
 
       <style jsx>{`
+        @media (max-width: 1200px) {
+          .max-w-4xl img,
+          .max-w-4xl video {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
         @media (max-width: 640px) {
           .max-w-7xl {
             padding-left: 20px !important;

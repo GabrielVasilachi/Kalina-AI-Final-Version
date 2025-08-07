@@ -204,17 +204,33 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
           ))}
         </div>
       </div>
-      <header className={`fixed left-0 right-0 z-[9999] transition-all duration-500 backdrop-blur-xl bg-white/30` +
-        (isScrolled 
-          ? ' glass border-b border-neutral-200/20' 
-          : ' bg-transparent border-b border-transparent')
-      } style={{overflow: 'visible', top: '32px'}}>
+      <header 
+        className="fixed left-0 right-0 z-[9999] glass border-b border-white/30"
+        style={{
+          overflow: 'visible', 
+          top: '32px', 
+          transition: 'none', 
+          transform: 'none', 
+          boxShadow: 'none',
+          background: 'rgba(255, 255, 255, 0.3)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+          e.currentTarget.style.backdropFilter = 'blur(16px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+          e.currentTarget.style.backdropFilter = 'blur(16px)';
+        }}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-50">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <Link
               href="/"
-              className={`text-2xl font-bold magnetic-hover text-shimmer animate-gradient transition-colors duration-300 whitespace-nowrap mr-12 ${
+              className={`text-2xl font-bold text-shimmer animate-gradient transition-colors duration-300 whitespace-nowrap mr-12 ${
                 isOverDemo ? 'text-white' : 'text-brand-400'
               }`}
             >
@@ -228,7 +244,7 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <button
-                className={`transition-all duration-300 magnetic-hover relative group px-4 py-2 ${
+                className={`  relative group px-4 py-2 ${
                   isOverDemo ? 'text-white hover:text-gray-200' : 'text-gray-600 hover:text-black'
                 }`}
                 aria-haspopup="true"
@@ -239,14 +255,14 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   
                   {t('nav.products')}
                 </span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </button>
               <div
                 className={`absolute left-0 top-full w-64 rounded-xl shadow-lg z-[200] dropdown ${openDropdown === 'products' ? 'block' : 'hidden'}`}
                 role="menu"
                 style={{
                   marginTop: '-1px',
-                  background: openDropdown === 'products' ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.72)',
+                  background: openDropdown === 'products' ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.72)',
                   border: '1px solid rgba(255,255,255,0.22)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
@@ -254,25 +270,25 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   transition: 'background 0.3s, box-shadow 0.3s'
                 }}
               >
-                <Link href="/platform" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-t-xl">
+                <Link href="/platform" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all rounded-t-xl">
                   <span className="flex items-center gap-3">
                     
                     {t('products.platform')}
                   </span>
                 </Link>
-                <Link href="/ai-agents" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all">
+                <Link href="/ai-agents" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all">
                   <span className="flex items-center gap-3">
                     
                     {t('products.agents')}
                   </span>
                 </Link>
-                <Link href="/features" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all">
+                <Link href="/features" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all">
                   <span className="flex items-center gap-3">
                     
                     {t('products.features')}
                   </span>
                 </Link>
-                <Link href="/integrations" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-b-xl">
+                <Link href="/integrations" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all rounded-b-xl">
                   <span className="flex items-center gap-3">
                     
                     {t('products.integrations')}
@@ -287,7 +303,7 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <button
-                className={`transition-all duration-300 magnetic-hover relative group px-4 py-2 ${
+                className={`relative group px-4 py-2 ${
                   isOverDemo ? 'text-white hover:text-gray-200' : 'text-gray-600 hover:text-black'
                 }`}
                 aria-haspopup="true"
@@ -298,14 +314,14 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   
                   {t('nav.solutions')}
                 </span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                <span className=" absolute bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </button>
               <div
                 className={`absolute left-0 top-full w-64 rounded-xl shadow-lg z-[200] dropdown ${openDropdown === 'solutions' ? 'block' : 'hidden'}`}
                 role="menu"
                 style={{
                   marginTop: '-1px',
-                  background: openDropdown === 'solutions' ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.72)',
+                  background: openDropdown === 'solutions' ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.72)',
                   border: '1px solid rgba(255,255,255,0.22)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
@@ -313,19 +329,19 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   transition: 'background 0.3s, box-shadow 0.3s'
                 }}
               >
-                <Link href="/healthcare-ai" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-t-xl">
+                <Link href="/healthcare-ai" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all rounded-t-xl">
                   <span className="flex items-center gap-3">
                     
                     {t('solutions.healthcare')}
                   </span>
                 </Link>
-                <Link href="/restaurants" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all">
+                <Link href="/restaurants" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all">
                   <span className="flex items-center gap-3">
                     
                     {t('solutions.restaurants')}
                   </span>
                 </Link>
-                <Link href="/enterprise" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-b-xl">
+                <Link href="/enterprise" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all rounded-b-xl">
                   <span className="flex items-center gap-3">
                     
                     {t('solutions.enterprise')}
@@ -340,7 +356,7 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <button
-                className={`transition-all duration-300 magnetic-hover relative group px-4 py-2 ${
+                className={`  relative group px-4 py-2 ${
                   isOverDemo ? 'text-white hover:text-gray-200' : 'text-gray-600 hover:text-black'
                 }`}
                 aria-haspopup="true"
@@ -351,14 +367,14 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   
                   {t('nav.research')}
                 </span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                <span className=" absolute bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </button>
               <div
                 className={`absolute left-0 top-full w-64 rounded-xl shadow-lg z-[200] dropdown ${openDropdown === 'research' ? 'block' : 'hidden'}`}
                 role="menu"
                 style={{
                   marginTop: '-1px',
-                  background: openDropdown === 'research' ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.72)',
+                  background: openDropdown === 'research' ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.72)',
                   border: '1px solid rgba(255,255,255,0.22)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
@@ -366,25 +382,25 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   transition: 'background 0.3s, box-shadow 0.3s'
                 }}
               >
-                <Link href="/developers" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-t-xl">
+                <Link href="/developers" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all rounded-t-xl">
                   <span className="flex items-center gap-3">
                     
                     {t('research.developers')}
                   </span>
                 </Link>
-                <Link href="/api-documentation" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all">
+                <Link href="/api-documentation" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all">
                   <span className="flex items-center gap-3">
                     
                     {t('research.apiSdk')}
                   </span>
                 </Link>
-                <Link href="/analytics" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all">
+                <Link href="/analytics" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all">
                   <span className="flex items-center gap-3">
                     
                     {t('research.analytics')}
                   </span>
                 </Link>
-                <Link href="/getting-started" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-b-xl">
+                <Link href="/getting-started" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all rounded-b-xl">
                   <span className="flex items-center gap-3">
                     
                     {t('research.quickGuide')}
@@ -399,7 +415,7 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <button
-                className={`transition-all duration-300 magnetic-hover relative group px-4 py-2 ${
+                className={`  relative group px-4 py-2 ${
                   isOverDemo ? 'text-white hover:text-gray-200' : 'text-gray-600 hover:text-black'
                 }`}
                 aria-haspopup="true"
@@ -410,14 +426,14 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   
                   {t('nav.resources')}
                 </span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                <span className=" absolute bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </button>
               <div
                 className={`absolute left-0 top-full w-64 rounded-xl shadow-lg z-[200] dropdown ${openDropdown === 'resources' ? 'block' : 'hidden'}`}
                 role="menu"
                 style={{
                   marginTop: '-1px',
-                  background: openDropdown === 'resources' ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.72)',
+                  background: openDropdown === 'resources' ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.72)',
                   border: '1px solid rgba(255,255,255,0.22)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
@@ -425,25 +441,25 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   transition: 'background 0.3s, box-shadow 0.3s'
                 }}
               >
-                <Link href="/blog" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-t-xl">
+                <Link href="/blog" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all rounded-t-xl">
                   <span className="flex items-center gap-3">
                     
                     {t('resources.blogCases')}
                   </span>
                 </Link>
-                <Link href="/whats-new" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all">
+                <Link href="/whats-new" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all">
                   <span className="flex items-center gap-3">
                     
                     {t('resources.news')}
                   </span>
                 </Link>
-                <Link href="/support" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all">
+                <Link href="/support" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all">
                   <span className="flex items-center gap-3">
                     
                     {t('resources.support')}
                   </span>
                 </Link>
-                <Link href="/community" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-blue-100/20 transition-all rounded-b-xl">
+                <Link href="/community" className="block px-6 py-3 text-gray-600 hover:text-black hover:bg-[#f3f4f6] transition-all rounded-b-xl">
                   <span className="flex items-center gap-3">
                     
                     {t('resources.community')}
@@ -452,17 +468,17 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
               </div>
             </div>
             {/* Restul linkurilor simple */}
-            <Link href="/pricing" className={`transition-all duration-300 magnetic-hover relative group px-4 py-2 ${
+            <Link href="/pricing" className={`  relative group px-4 py-2 ${
               isOverDemo ? 'text-white hover:text-gray-200' : 'text-gray-600 hover:text-black'
             }`}>
               {t('nav.pricing')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+              <span className=" absolute bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link href="/company" className={`transition-all duration-300 magnetic-hover relative group px-4 py-2 ${
+            <Link href="/company" className={`  relative group px-4 py-2 ${
               isOverDemo ? 'text-white hover:text-gray-200' : 'text-gray-600 hover:text-black'
             }`}>
               {t('nav.company')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+              <span className=" absolute bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
             </Link>
             </nav>
           </div>
@@ -480,23 +496,21 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 alignItems: 'center',
                 justifyContent: 'center',
                 background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
+                border: '1px solid rgb(0, 0, 0)',
                 borderRadius: '16px',
                 padding: '8px 16px',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-                transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+                boxShadow: 'none',
+                transition: 'none'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
-                e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
-                e.currentTarget.style.transform = 'translateY(-1px)'
+                e.currentTarget.style.background = 'rgb(0, 0, 0)'
+                e.currentTarget.style.color = 'white'
+                e.currentTarget.style.boxShadow = 'none'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
-                e.currentTarget.style.transform = 'translateY(0px)'
+                e.currentTarget.style.background = 'rgb(255, 255, 255)'
+                e.currentTarget.style.color = 'black'
+                e.currentTarget.style.boxShadow = 'none'
               }}
             >
               {t('nav.signIn')}
@@ -510,52 +524,55 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: 'rgba(15, 15, 20, 0.75)', // darker glassmorphism
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
+                background: 'rgb(0, 0, 0)',
+                border: '1px solid rgb(0, 0, 0)',
                 borderRadius: '16px',
                 padding: '8px 16px',
-                boxShadow: '0 4px 24px rgba(0, 0, 0, 0.18)',
-                transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+                boxShadow: 'none',
+                transition: 'none'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(15, 15, 20, 0.92)'
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.22)'
-                e.currentTarget.style.transform = 'translateY(-1px)'
+                e.currentTarget.style.background = 'rgb(255, 255, 255)';
+                e.currentTarget.style.color = 'black';
+                e.currentTarget.style.border = '1px solid rgb(0, 0, 0)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(15, 15, 20, 0.75)'
-                e.currentTarget.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.18)'
-                e.currentTarget.style.transform = 'translateY(0px)'
+                e.currentTarget.style.background = 'rgb(0, 0, 0)';
+                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.border = '1px solid rgb(0, 0, 0)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               {t('nav.getStarted')}
             </Link>
           </div>
 
-          {/* Mobile Burger Menu Button */}
-          <button
-            onClick={() => {
-              console.log('Burger clicked, current state:', isMobileMenuOpen);
-              setIsMobileMenuOpen(!isMobileMenuOpen);
-            }}
-            className={`xl:hidden relative z-[10000] w-10 h-10 flex flex-col justify-center items-center transition-all duration-300 border-2 border-transparent hover:border-gray-600/30 rounded mr-4 ${
-              isOverDemo ? 'text-white' : 'text-brand-400'
-            }`}
-            aria-label="Toggle mobile menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-              isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-            }`}></span>
-            <span className={`block h-0.5 w-6 bg-current transition-all duration-300 my-1 ${
-              isMobileMenuOpen ? 'opacity-0' : ''
-            }`}></span>
-            <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-              isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-            }`}></span>
-          </button>
+          {/* Mobile LanguageSelector and Burger Menu Button (right side) */}
+          <div className="flex items-center xl:hidden ml-auto">
+            <LanguageSelector />
+            <button
+              onClick={() => {
+                console.log('Burger clicked, current state:', isMobileMenuOpen);
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+              }}
+              className={`relative z-[10000] w-10 h-10 flex flex-col justify-center items-center transition-all duration-300 border-2 border-transparent hover:border-gray-600/30 rounded ml-2 ${
+                isOverDemo ? 'text-white' : 'text-brand-400'
+              }`}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
+                isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+              }`}></span>
+              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 my-1 ${
+                isMobileMenuOpen ? 'opacity-0' : ''
+              }`}></span>
+              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
+                isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+              }`}></span>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation Menu - Full Featured */}
@@ -570,9 +587,6 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                     className="flex items-center justify-between w-full text-left text-gray-600 font-semibold text-lg py-3 hover:text-black transition-colors"
                   >
                     <span className="flex items-center gap-2">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
                       {t('nav.products')}
                     </span>
                     <svg 
@@ -586,27 +600,15 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   {openMobileDropdown === 'products' && (
                     <div className="pb-3 pl-6 space-y-2">
                       <Link href="/platform" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
                         {t('products.platform')}
                       </Link>
                       <Link href="/ai-agents" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
-                        </svg>
                         {t('products.agents')}
                       </Link>
                       <Link href="/features" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                        </svg>
                         {t('products.features')}
                       </Link>
                       <Link href="/integrations" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
                         {t('products.integrations')}
                       </Link>
                     </div>
@@ -620,9 +622,6 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                     className="flex items-center justify-between w-full text-left text-gray-600 font-semibold text-lg py-3 hover:text-black transition-colors"
                   >
                     <span className="flex items-center gap-2">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                      </svg>
                       {t('nav.solutions')}
                     </span>
                     <svg 
@@ -636,21 +635,12 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   {openMobileDropdown === 'solutions' && (
                     <div className="pb-3 pl-6 space-y-2">
                       <Link href="/healthcare-ai" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
                         {t('solutions.healthcare')}
                       </Link>
                       <Link href="/restaurants" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
                         {t('solutions.restaurants')}
                       </Link>
                       <Link href="/enterprise" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                        </svg>
                         {t('solutions.enterprise')}
                       </Link>
                     </div>
@@ -664,9 +654,6 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                     className="flex items-center justify-between w-full text-left text-gray-600 font-semibold text-lg py-3 hover:text-black transition-colors"
                   >
                     <span className="flex items-center gap-2">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
                       {t('nav.research')}
                     </span>
                     <svg 
@@ -680,27 +667,15 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   {openMobileDropdown === 'research' && (
                     <div className="pb-3 pl-6 space-y-2">
                       <Link href="/developers" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                        </svg>
                         {t('research.developers')}
                       </Link>
                       <Link href="/api-documentation" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                        </svg>
                         {t('research.apiSdk')}
                       </Link>
                       <Link href="/analytics" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                        </svg>
                         {t('research.analytics')}
                       </Link>
                       <Link href="/getting-started" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
                         {t('research.quickGuide')}
                       </Link>
                     </div>
@@ -714,9 +689,6 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                     className="flex items-center justify-between w-full text-left text-gray-600 font-semibold text-lg py-3 hover:text-black transition-colors"
                   >
                     <span className="flex items-center gap-2">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                      </svg>
                       {t('nav.resources')}
                     </span>
                     <svg 
@@ -730,27 +702,15 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   {openMobileDropdown === 'resources' && (
                     <div className="pb-3 pl-6 space-y-2">
                       <Link href="/blog" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                        </svg>
                         {t('resources.blogCases')}
                       </Link>
                       <Link href="/whats-new" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
                         {t('resources.news')}
                       </Link>
                       <Link href="/support" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
                         {t('resources.support')}
                       </Link>
                       <Link href="/community" className="flex items-center gap-3 text-gray-600 py-2 hover:text-black transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
                         {t('resources.community')}
                       </Link>
                     </div>
@@ -770,35 +730,30 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   </Link>
                 </div>
 
-                {/* Language Selector for Mobile */}
-                <div className="border-b border-gray-100 py-3">
-                  <LanguageSelector />
-                </div>
+                {/* Language Selector for Mobile - removed, now in header */}
 
                 {/* CTA Buttons - iPhone Notification Style */}
-                <div className="pt-4 space-y-3">
+                <div className="pt-4 flex flex-row gap-3">
                   <Link 
-                    href="app.kallina.info/auth"
-                    className="w-full block text-center font-semibold text-black focus:outline-none"
+                    href="https://app.kallina.info"
+                    className="flex-1 block text-center font-semibold focus:outline-none"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      background: '#fff',
+                      color: '#000',
+                      border: '1.5px solid #000',
                       backdropFilter: 'blur(10px)',
                       WebkitBackdropFilter: 'blur(10px)',
-                      borderRadius: '16px',
+                      borderRadius: '9999px',
                       padding: '12px 20px',
-                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-                      transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+                      transition: 'background 0.3s, color 0.3s'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
-                      e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.15)'
-                      e.currentTarget.style.transform = 'translateY(-1px)'
+                      e.currentTarget.style.background = '#000';
+                      e.currentTarget.style.color = '#fff';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
-                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'
-                      e.currentTarget.style.transform = 'translateY(0px)'
+                      e.currentTarget.style.background = '#fff';
+                      e.currentTarget.style.color = '#000';
                     }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -806,26 +761,24 @@ export function NavigationHeader({ logoPosition = 'left' }: NavigationHeaderProp
                   </Link>
                   <Link 
                     href="/getting-started"
-                    className="w-full block text-center font-semibold text-white focus:outline-none"
+                    className="flex-1 block text-center font-semibold focus:outline-none"
                     style={{
-                      background: 'rgba(30, 30, 40, 0.55)', // slightly lighter than desktop dark
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      background: '#000',
+                      color: '#fff',
+                      border: '1.5px solid #000',
                       backdropFilter: 'blur(10px)',
                       WebkitBackdropFilter: 'blur(10px)',
-                      borderRadius: '16px',
+                      borderRadius: '9999px',
                       padding: '12px 20px',
-                      boxShadow: '0 4px 24px rgba(0, 0, 0, 0.15)',
-                      transition: 'background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease'
+                      transition: 'background 0.3s, color 0.3s'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(30, 30, 40, 0.75)'
-                      e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.22)'
-                      e.currentTarget.style.transform = 'translateY(-1px)'
+                      e.currentTarget.style.background = '#fff';
+                      e.currentTarget.style.color = '#000';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(30, 30, 40, 0.55)'
-                      e.currentTarget.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.15)'
-                      e.currentTarget.style.transform = 'translateY(0px)'
+                      e.currentTarget.style.background = '#000';
+                      e.currentTarget.style.color = '#fff';
                     }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

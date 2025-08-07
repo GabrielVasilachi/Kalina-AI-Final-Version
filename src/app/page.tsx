@@ -19,6 +19,8 @@ import { FrequentlyAskedQuestions } from '@/components/sections/FrequentlyAskedQ
 import { NavigationHeader } from '@/components/layout/NavigationHeader'
 import { SmoothScrollContextProvider } from '@/components/providers/SmoothScrollContextProvider'
 import { ResponsiveHeroSection } from '@/components/sections/ResponsiveHeroSection'
+import WhatsKallinaSection from '@/components/sections/WhatsKallinaSection'
+import AreYouABusinessOwnerSection from '@/components/sections/AreYouABusinessOwnerSection'
 
 export default function HomePage() {
   return (
@@ -32,9 +34,10 @@ export default function HomePage() {
           <ResponsiveHeroSection />
           <ProductDemoSection />
           <TrustedBySection />
+          <WhatsKallinaSection />
           <AnalyticsShowcaseSection />
           <KallinaIsMadeForYouSection />
-
+          <AreYouABusinessOwnerSection />
           <TechnologyShowcaseSection />
           <ROICalculatorSection />
           <MainFeaturesSection />

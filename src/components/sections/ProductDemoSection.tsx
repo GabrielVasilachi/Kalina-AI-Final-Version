@@ -497,40 +497,40 @@ export function ProductDemoSection() {
       {/* Switcher buttons */}
       <div className="flex justify-center gap-2 md:gap-4 mb-8 flex-wrap">
         <button
-          className={`rounded-full font-semibold border-2 transition-all duration-200 ${
+          className={`rounded-full font-semibold border-2 border-black transition-all duration-200 ${
             activeTab === 'issuetracking'
-              ? 'bg-black text-white border-black'
-              : 'bg-white text-black border-gray-300 hover:border-gray-400'
+              ? 'bg-black text-white'
+              : 'bg-white text-black'
           } ${getSwitcherButtonClasses()}`}
           onClick={() => setActiveTab('issuetracking')}
         >
           Issue Tracking
         </button>
         <button
-          className={`rounded-full font-semibold border-2 transition-all duration-200 ${
+          className={`rounded-full font-semibold border-2 border-black transition-all duration-200 ${
             activeTab === 'conversation'
-              ? 'bg-black text-white border-black'
-              : 'bg-white text-black border-gray-300 hover:border-gray-400'
+              ? 'bg-black text-white'
+              : 'bg-white text-black'
           } ${getSwitcherButtonClasses()}`}
           onClick={() => setActiveTab('conversation')}
         >
           Conversation AI
         </button>
         <button
-          className={`rounded-full font-semibold border-2 transition-all duration-200 ${
+          className={`rounded-full font-semibold border-2 border-black transition-all duration-200 ${
             activeTab === 'calendar'
-              ? 'bg-black text-white border-black'
-              : 'bg-white text-black border-gray-300 hover:border-gray-400'
+              ? 'bg-black text-white'
+              : 'bg-white text-black'
           } ${getSwitcherButtonClasses()}`}
           onClick={() => setActiveTab('calendar')}
         >
           Calendar AI
         </button>
         <button
-          className={`rounded-full font-semibold border-2 transition-all duration-200 ${
+          className={`rounded-full font-semibold border-2 border-black transition-all duration-200 ${
             activeTab === 'magicbutton'
-              ? 'bg-black text-white border-black'
-              : 'bg-white text-black border-gray-300 hover:border-gray-400'
+              ? 'bg-black text-white'
+              : 'bg-white text-black'
           } ${getSwitcherButtonClasses()}`}
           onClick={() => setActiveTab('magicbutton')}
         >

@@ -163,11 +163,11 @@ export function HeroSectionDesktop() {
             <div className="flex gap-4 mt-8">
               <button 
                 className="px-8 py-3 rounded-full font-medium bg-gray-100 border border-gray-700 text-black transition-colors duration-200 hover:bg-black hover:text-white">
-                Get Started
+                Sign-in
               </button>
               <button 
-                className="px-8 py-3 rounded-full font-medium bg-black text-white transition-colors duration-200">
-                Learn More
+                className="px-8 py-3 rounded-full font-medium border border-black hover:bg-white hover:border-black hover:text-black bg-black text-white transition-colors duration-200">
+                Create Account
               </button>
             </div>
           </motion.div>
@@ -210,7 +210,7 @@ export function HeroSectionDesktop() {
           >
             {/* Notification Header - moved higher and made smaller */}
             <motion.div
-              className="mb-4 rounded-2xl shadow-2xl p-5 flex items-center gap-5 group transition-all duration-500"
+              className="mb-4 rounded-2xl shadow-2xl p-3 flex items-center gap-4 group transition-all duration-500"
               style={{ 
                 background: 'rgba(0, 0, 0, 0.5)',
                 backdropFilter: 'blur(18px)',
@@ -233,11 +233,11 @@ export function HeroSectionDesktop() {
                 <div className="flex flex-row items-center gap-2">
                   {/* Left: White rounded square */}
                 <div className="flex-shrink-0">
-                  <div className="bg-white flex items-center justify-center" style={{ width: '48px', height: '48px', borderRadius: '14px', boxShadow: '0 4px 16px rgba(0,0,0,0.14)' }}>
+                  <div className="bg-white flex items-center justify-center" style={{ width: '38px', height: '38px', borderRadius: '10px', boxShadow: '0 4px 16px rgba(0,0,0,0.14)' }}>
                     <img
                       src="/GraphicsForSections/KallinaLogo.png"
                       alt="Kallina Logo"
-                      style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+                      style={{ width: '24px', height: '24px', objectFit: 'contain' }}
                     />
                   </div>
                 </div>
@@ -248,7 +248,7 @@ export function HeroSectionDesktop() {
                   </div>
                 </div>
                 {/* Timestamp */}
-                <span className="text-base text-gray-400 font-medium" style={{position: 'relative', top: '-18px'}}>3m ago</span>
+                <span className="text-xs text-gray-200 font-medium" style={{position: 'relative', top: '-18px'}}>3m ago</span>
               </div>
             </motion.div>
             {/* Input Fields */}
