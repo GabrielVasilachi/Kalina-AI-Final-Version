@@ -13,9 +13,9 @@ export const metadata = {
   keywords: 'AI calls, voice communication, low latency, encryption, global coverage',
   authors: [{ name: 'Kallina AI Team' }],
   icons: {
-    icon: '/GraphicsForSections/KallinaLogo.png',
-    apple: '/GraphicsForSections/KallinaLogo.png',
-    shortcut: '/GraphicsForSections/KallinaLogo.png',
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
+    shortcut: '/favicon.ico',
   },
   openGraph: {
     title: 'Kallina AI',
@@ -47,8 +47,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/GraphicsForSections/KallinaLogo.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#ffffff" />
       </head>

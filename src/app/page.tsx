@@ -38,16 +38,16 @@ export default function HomePage() {
           <AnalyticsShowcaseSection />
           <KallinaIsMadeForYouSection />
           <AreYouABusinessOwnerSection />
-          <TechnologyShowcaseSection />
+          {/* <TechnologyShowcaseSection /> */}
           <ROICalculatorSection />
-          <MainFeaturesSection />
-          <CompetitiveAdvantageSection />
-          <AdvancedCapabilitiesSection />
-          <TestimonialsSection />
+          {/* <MainFeaturesSection /> */}
+          {/* <CompetitiveAdvantageSection /> */}
+          {/* <AdvancedCapabilitiesSection /> */}
+          {/* <TestimonialsSection /> */}
           
           {/* Stacked Feature Sections */}
           <InteractiveFeatureCards />
-          <HowItWorksSection />
+          {/* <HowItWorksSection /> */}
           <FrequentlyAskedQuestions />
           <FinalCTASection />
           {/* <CallToActionSection /> */}

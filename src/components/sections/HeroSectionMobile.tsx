@@ -101,11 +101,11 @@ export function HeroSectionMobile() {
       />
 
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-start flex-grow px-6 pt-24 pb-12">
+      <div className="relative z-10 flex flex-col items-center justify-start flex-grow px-6 pt-16 pb-12">
         {/* Title Section */}
         <motion.div
           ref={titleReveal.ref}
-          className="text-center mb-8 pt-24"
+          className="text-center mb-8 pt-16"
           variants={containerVariants}
           initial="hidden"
           animate={titleReveal.isVisible ? "visible" : "hidden"}

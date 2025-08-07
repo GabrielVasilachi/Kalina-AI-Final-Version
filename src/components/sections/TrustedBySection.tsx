@@ -119,17 +119,12 @@ export function TrustedBySection() {
         </div>
         
         {/* Metrics */}
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 text-center transition-all duration-1000 delay-400 ${
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-10 transition-all duration-1000 delay-400 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
         }`}>
           {metrics.map((metric, index) => (
             <div 
-              key={metric.label}
-              className="group hover:bg-white/90 hover:shadow-xl hover:shadow-brand-300/20 hover:scale-105 rounded-lg p-4 transition-all duration-300"
-              style={{
-                transitionDelay: `${index * 150}ms`
-              }}
-            >
+              key={metric.label}>
               <div className="text-3xl md:text-4xl font-bold text-black mb-2 group-hover:scale-105 group-hover:text-brand-500 transition-all duration-300">
                 <CountUp end={metric.value} duration={1.2} resetKey={isVisible ? 'visible' : 'hidden'} />
               </div>
@@ -144,12 +139,12 @@ export function TrustedBySection() {
         <div className={`text-center mt-4 transition-all duration-1000 delay-600 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
         }`}>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 text-lg mb-4">
             {t('cta.title')}
           </p>
           <a
             href="/getting-started"
-            className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gradient-to-r hover:from-brand-400 hover:to-brand-500 hover:scale-105 hover:shadow-lg hover:shadow-brand-400/30 transition-all duration-300"
+            className="inline-block bg-black border border-black text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:bg-white hover:text-black"
           >
             {t('common.getStarted')}
           </a>
